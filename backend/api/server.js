@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 
-const configureMiddleware = require('../config/middleware.js');
+const configureMiddleware = require("../config/middleware.js");
 
 const server = express();
 
