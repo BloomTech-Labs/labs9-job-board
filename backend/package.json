@@ -4,13 +4,16 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest --watch --verbose"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -21,5 +24,8 @@
     "knex": "^0.16.3",
     "pg": "^7.7.1"
   },
-  "description": ""
+  "description": "",
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
