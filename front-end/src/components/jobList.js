@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const JobList = props => {
+const jobList = props => {
     return (
         <div>
 
