@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axois';
 import { Route } from 'react-router-dom';
-
+import JobList from './jobList';
 
 
 class JobsContainer extends Component {
@@ -15,7 +15,7 @@ class JobsContainer extends Component {
     render() {
         return (
             <div>
-                Hello
+                <jobList />
             </div>
         )
     }
