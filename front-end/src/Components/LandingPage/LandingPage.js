@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import JobList from './JobList';
 
 
-class JobsContainer extends Component {
+class LandingPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,4 +21,4 @@ class JobsContainer extends Component {
     }
 }
 
-export default JobsContainer;
+export default LandingPage;
