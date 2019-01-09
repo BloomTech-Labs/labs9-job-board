@@ -47,7 +47,7 @@ class SignIn extends React.Component {
         <button className="form-button">Sign In</button>
         <Link to="/forgot-password">Forgot Password?</Link>
         <span>
-          New user? <Link to="/signup">Sign Up</Link>
+          New user? <Link to="/sign-up">Sign Up</Link>
         </span>
       </div>
     );
