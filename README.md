@@ -19,3 +19,4 @@ Knowledge Without College is a JavaScript app that eases the job search for peop
 ## Authors and Acknowledgement
 
 ## License
+
