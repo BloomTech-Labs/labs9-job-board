@@ -1,4 +1,5 @@
 import app from "firebase/app";
+import "firebase/auth";
 
 // configuration provided from Firebase website
 const config = {
@@ -13,7 +14,30 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config);
+
+    this.auth = app.auth();
   }
+
+  // create new user with email/password
+  doCreateUserWithEmailAndPassword = (email, password) => {
+    return this.auth.createUserWithEmailAndPassword(email, password);
+  };
+
+  doSignInWithEmailAndPassword = (email, password) => {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  };
+
+  doSignOut = () => {
+    return this.auth.signOut();
+  };
+
+  doPasswordReset = email => {
+    return this.auth.sendPasswordResetEmail(email);
+  };
+
+  doPasswordUpdate = password => {
+    this.auth.currentUser.updatePassword(password);
+  };
 }
 
 export default Firebase;
