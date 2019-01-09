@@ -5,6 +5,7 @@ import { withFirebase } from "../Firebase/index";
 
 import * as ROUTES from "../../constants/routes";
 
+// initial state, form submission state reset
 const DEFAULT_STATE = {
   email: "",
   password: "",
@@ -12,10 +13,12 @@ const DEFAULT_STATE = {
   error: null
 };
 
+// component for /sign-up route
 const SignUp = props => {
   return <SignUpForm />;
 };
 
+// SignUpForm without Firebase connectivity
 class SignUpFormUnconnected extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +33,7 @@ class SignUpFormUnconnected extends React.Component {
     event.preventDefault();
 
     const { email, password } = this.state;
-    console.log("outside of try");
+
     try {
       await this.props.firebase.doCreateUserWithEmailAndPassword(
         email,
@@ -44,6 +47,7 @@ class SignUpFormUnconnected extends React.Component {
   };
 
   render() {
+    // verifies that passwords match, password and email non-empty
     const isInvalid =
       this.state.password !== this.state.confirmPassword ||
       this.state.password === "" ||
@@ -98,6 +102,7 @@ class SignUpFormUnconnected extends React.Component {
   }
 }
 
+// connects form to React Router and Firebase
 const SignUpForm = withRouter(withFirebase(SignUpFormUnconnected));
 
 export default SignUp;
