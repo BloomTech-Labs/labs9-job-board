@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import * as ROUTES from "../../constants/routes";
+
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ class SignIn extends React.Component {
     return (
       <div className="sign-in-container">
         <form className="sign-in-form">
-          <label className="sign-in-label">
+          <label className="form-label">
             Email:
             <input
               type="text"
@@ -31,7 +33,7 @@ class SignIn extends React.Component {
               autoComplete="on"
             />
           </label>
-          <label className="sign-in-label">
+          <label className="form-label">
             Password:
             <input
               type="password"
@@ -45,9 +47,9 @@ class SignIn extends React.Component {
           </label>
         </form>
         <button className="form-button">Sign In</button>
-        <Link to="/forgot-password">Forgot Password?</Link>
+        <Link to={ROUTES.RESET_PASSWORD}>Forgot Password?</Link>
         <span>
-          New user? <Link to="/sign-up">Sign Up</Link>
+          New user? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
         </span>
       </div>
     );

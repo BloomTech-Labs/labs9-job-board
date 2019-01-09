@@ -5,7 +5,7 @@ import JobList from "./jobList";
 import SingleJob from "./singleJob";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
-import ForgotPassword from "./ForgotPassword/ForgotPassword";
+import ResetPassword from "./ResetPassword/ResetPassword";
 
 const url = "http://localhost:7777";
 
@@ -47,7 +47,7 @@ class JobsContainer extends Component {
         />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/reset-password" component={ResetPassword} />
       </div>
     );
   }

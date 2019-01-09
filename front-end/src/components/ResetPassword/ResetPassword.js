@@ -1,11 +1,10 @@
 import React from "react";
 
-class SignUp extends React.Component {
+class ForgotPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: ""
     };
   }
 
@@ -15,8 +14,8 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="sign-up-container">
-        <form className="sign-up-form">
+      <div className="reset-container">
+        <form className="reset-form">
           <label className="form-label">
             Email:
             <input
@@ -29,23 +28,11 @@ class SignUp extends React.Component {
               autoComplete="on"
             />
           </label>
-          <label className="form-label">
-            Password:
-            <input
-              type="password"
-              name="password"
-              className="form-input"
-              onChange={this.changeHandler}
-              placeholder="Password"
-              value={this.state.password}
-              autoComplete="off"
-            />
-          </label>
         </form>
-        <button className="form-button">Sign Up</button>
+        <button className="form-button">Reset Password</button>
       </div>
     );
   }
 }
 
-export default SignUp;
+export default ForgotPassword;
