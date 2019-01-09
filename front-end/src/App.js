@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import JobsContainer from './components/jobsContainer';
+import React, { Component } from "react";
+import "./App.css";
+import JobsContainer from "./components/jobsContainer";
 
 class App extends Component {
   render() {
