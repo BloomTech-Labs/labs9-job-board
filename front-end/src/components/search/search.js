@@ -12,9 +12,9 @@ const Search = props => {
             <h5>Finance</h5>
             <form>
                 <input
-                placeholder ='search jobs'
-                type='text'
-                name='searchTarget'
+                    placeholder='search jobs'
+                    type='text'
+                    name='searchTarget'
                 />
             </form>
         </div>
