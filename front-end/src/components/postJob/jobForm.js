@@ -1,18 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const PostJobForm = styled.form`
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 9px;
-`
+// const PostJobForm = styled.form`
+//     margin: 5px 0;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     font-size: 9px;
+// `
 
 const JobForm = props => {
     return (
         <div>
-            <PostJobForm onSubmit={props.addJob}>
+            <form onSubmit={props.addJob}>
                     <h3>Title</h3>
                     <input 
                         value={props.title}
@@ -86,7 +86,7 @@ const JobForm = props => {
                     >
                         Save
                     </button>
-                </PostJobForm>
+                </form>
         </div>
     );
 };
