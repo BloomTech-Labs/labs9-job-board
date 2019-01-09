@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const url = "http://localhost:7777";
+const url = process.env.REACT_APP_DB_UR;
 
 class SingleJob extends Component {
     constructor(props) {
