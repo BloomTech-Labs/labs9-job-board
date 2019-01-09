@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Jobs from './job.js';
-import Header from '.header.js';
-import Search from './search.js';
+import Header from '../header/header.js';
+import Search from '../search/search.js';
 
 const JobList = props => {
     return (
