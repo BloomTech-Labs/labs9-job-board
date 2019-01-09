@@ -37,7 +37,6 @@ class JobsContainer extends Component {
                 <Route path='/jobs/:id' render={(Ownprops) => {
                     return (<SingleJob {...Ownprops} />)
                 }}
-
                 />
             </div>
         )
