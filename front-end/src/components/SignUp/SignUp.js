@@ -1,4 +1,9 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
+
+import { withFirebase } from "../Firebase/index";
+
+import * as ROUTES from "../../constants/routes";
 
 const DEFAULT_STATE = {
   email: "",
@@ -7,7 +12,11 @@ const DEFAULT_STATE = {
   error: null
 };
 
-class SignUp extends React.Component {
+const SignUp = props => {
+  return <SignUpForm />;
+};
+
+class SignUpFormUnconnected extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...DEFAULT_STATE };
@@ -17,7 +26,22 @@ class SignUp extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  submitHandler = event => {};
+  submitHandler = async event => {
+    event.preventDefault();
+
+    const { email, password } = this.state;
+    console.log("outside of try");
+    try {
+      await this.props.firebase.doCreateUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await this.setState({ ...DEFAULT_STATE });
+      this.props.history.push(ROUTES.LANDING);
+    } catch (error) {
+      await this.setState({ error });
+    }
+  };
 
   render() {
     const isInvalid =
@@ -64,14 +88,16 @@ class SignUp extends React.Component {
               autoComplete="off"
             />
           </label>
+          <button className="form-button" disabled={isInvalid} type="submit">
+            Sign Up
+          </button>
+          {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
-        <button className="form-button" disabled={isInvalid}>
-          Sign Up
-        </button>
-        {this.state.error ? <span>{this.state.error.message}</span> : null}
       </div>
     );
   }
 }
+
+const SignUpForm = withRouter(withFirebase(SignUpFormUnconnected));
 
 export default SignUp;
