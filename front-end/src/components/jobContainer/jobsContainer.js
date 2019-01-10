@@ -56,35 +56,33 @@ class JobsContainer extends Component {
     console.log("click", this.handleInput);
     console.log("Search", this.state.search);
     return (
-      <div>
-        <Route
-          exact
-          path="/"
-          render={Ownprops => {
-            return (
-              <JobList
-                {...Ownprops}
-                searchResults={this.searchResults}
-                search={this.state.search}
-                jobs={
-                  this.state.searchJobs.length > 0
-                    ? this.state.searchJobs
-                    : this.state.jobs
-                }
-              />
-            );
-          }}
-        />
-        <Route
-          path="/jobs/:id"
-          render={Ownprops => {
-            return <SingleJob {...Ownprops} />;
-          }}
-        />
-        <Route path="/sign-in" component={SignIn} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/reset-password" component={ResetPassword} />
-      </div>
+      <JobList />
+      // <div>
+      //   <Route
+      //     exact
+      //     path="/"
+      //     render={Ownprops => {
+      //       return (
+      //         <JobList
+      //           {...Ownprops}
+      //           searchResults={this.searchResults}
+      //           search={this.state.search}
+      //           jobs={
+      //             this.state.searchJobs.length > 0
+      //               ? this.state.searchJobs
+      //               : this.state.jobs
+      //           }
+      //         />
+      //       );
+      //     }}
+      //   />
+      //   <Route
+      //     path="/jobs/:id"
+      //     render={Ownprops => {
+      //       return <SingleJob {...Ownprops} />;
+      //     }}
+      //   />
+      // </div>
     );
   }
 }
