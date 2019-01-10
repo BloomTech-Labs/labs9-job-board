@@ -1,6 +1,6 @@
 import React from "react";
 
-class ForgotPassword extends React.Component {
+class ResetPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,4 +35,4 @@ class ForgotPassword extends React.Component {
   }
 }
 
-export default ForgotPassword;
+export default ResetPassword;
