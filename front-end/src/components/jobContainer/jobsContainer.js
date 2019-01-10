@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
+
 import JobList from "../jobList/jobList.js";
 import SingleJob from "../SingleJob/singleJob";
 import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
+
 import ResetPassword from "../ResetPassword/ResetPassword";
 
 const url = process.env.REACT_APP_DB_URL;
