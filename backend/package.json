@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon",
-    "start": "node",
+    "start": "node index.js",
     "test": "jest --watch --verbose"
   },
   "keywords": [],
