@@ -2,7 +2,6 @@
 require('dotenv').config();
 
 
-
 const dbConnection = process.env.DATABASE_URL;
 
 module.exports = {
@@ -13,6 +12,7 @@ module.exports = {
       filename: './db/database.sqlite3'
     },
     migrations: {
+      tableName: 'knex_migrations',
       directory: './db/migrations'
     },
     seeds: {
@@ -33,7 +33,10 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations',
       directory: './db/migrations',
-    }
+    },
+    seeds: {
+      directory: './db/seeds',
+    },
   }
 
 };
