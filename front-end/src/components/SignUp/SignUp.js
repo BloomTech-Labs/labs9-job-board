@@ -47,7 +47,7 @@ class SignUpFormUnconnected extends React.Component {
   };
 
   render() {
-    // verifies that passwords match, password and email non-empty
+    // verifies password and email non-empty
     const isInvalid =
       this.state.password !== this.state.confirmPassword ||
       this.state.password === "" ||
@@ -97,6 +97,9 @@ class SignUpFormUnconnected extends React.Component {
           </button>
           {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
+        <span>
+          Already have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        </span>
       </div>
     );
   }

@@ -4,6 +4,9 @@ import { withRouter, Link } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 
+import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
+import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
+
 const SignIn = props => {
   return <SignInForm />;
 };
@@ -22,6 +25,10 @@ class SignInFormUnconnected extends React.Component {
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  googleAuthSubmit = event => {
+    event.target.setAttribute("src", googleButtonPressed);
   };
 
   submitHandler = async event => {
@@ -75,6 +82,11 @@ class SignInFormUnconnected extends React.Component {
         <span>
           New user? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
         </span>
+        <img
+          src={googleButton}
+          alt="Sign in with Google"
+          onClick={this.googleAuthSubmit}
+        />
       </div>
     );
   }
