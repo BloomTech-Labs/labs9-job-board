@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import JobsContainer from "./components/jobContainer/jobsContainer.js";
+import Routes from "./components/Routes/Routes.js";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <JobsContainer />
+        <Routes />
+        {/* <Footer /> */}
       </div>
     );
   }
