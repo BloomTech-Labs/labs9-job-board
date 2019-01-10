@@ -29,7 +29,7 @@ exports.up = function(knex, Promise) {
     // if string is url --> redirect to new window
     tbl.string("application-method", 128).notNullable();
 
-    tbl.blob("avatar-image");
+    tbl.string("avatar-image", 200);
 
     tbl.integer("balance").notNullable();
 
