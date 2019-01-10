@@ -61,3 +61,6 @@ typings/
 
 # next.js build output
 .next
+
+# database file
+database.sqlite3
