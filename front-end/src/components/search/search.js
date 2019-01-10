@@ -3,7 +3,7 @@ import React from 'react';
 const Search = props => {
     return (
         <div>
-            <h5>Design</h5>
+            <h5>GE</h5>
             <h5>UI/UX</h5>
             <h5>Programming</h5>
             <h5>Management</h5>
@@ -14,7 +14,9 @@ const Search = props => {
                 <input
                     placeholder='search jobs'
                     type='text'
-                    name='searchTarget'
+                    name='search'
+                    onChange={props.searchResults}
+                    value={props.search}
                 />
             </form>
         </div>
