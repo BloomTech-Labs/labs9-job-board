@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
-import JobList from './jobList';
-import SingleJob from './singleJob';
+import JobList from '../jobList/jobList.js';
+import SingleJob from '../singleJob/singleJob.js';
 
-const url = "http://localhost:7777";
+const url = process.env.REACT_APP_DB_UR;
 
 
 class JobsContainer extends Component {
@@ -35,9 +35,8 @@ class JobsContainer extends Component {
                 }}
                 />
                 <Route path='/jobs/:id' render={(Ownprops) => {
-                    return(<SingleJob {...Ownprops} />)
+                    return (<SingleJob {...Ownprops} />)
                 }}
-
                 />
             </div>
         )

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Jobs = props => {
 
-    return(
+    return (
         <div>
             <h3>{props.job.titleSalary}</h3>
         </div>
