@@ -1,38 +1,57 @@
-
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('users', function(tbl) {
-        // make changes to the table using the tbl object passed as a parameter
-    
-        // primary key
-        tbl.increments(); // generate and id field and make it autoincfement and the primary key
-    
-        // other fields
-        tbl.string('first-name', 255);
+  return knex.schema.createTable("users", function(tbl) {
+    // make changes to the table using the tbl object passed as a parameter
 
-        tbl.string('last-name', 255);
+    // primary key
+    tbl.increments(); // generate and id field and make it autoincfement and the primary key
 
-        tbl.string('email', 128);
-        
-        tbl.string('company-name', 255);
-        
-        tbl.string('password', 128)
+    // Firebase user id
+    tbl
+      .string("user-uid", 255)
+      .notNullable()
+      .unique();
 
-        tbl.string('summary', 500);
-        
-        tbl.string('application-inbox', 128);
-        
-        tbl.blob('avatar-image');
+    // other fields
+    tbl.string("first-name", 255).notNullable();
 
-        tbl.integer('balance');
+    tbl.string("last-name", 255).notNullable();
 
-        tbl
-            .boolean('unlimited')
-            .defaultTo( false )
+    tbl
+      .string("email", 128)
+      .unique()
+      .notNullable();
 
-        tbl.timestamps(true, true);
-      });
+    tbl.string("company-name", 255).notNullable();
+
+    tbl.string("summary", 500).notNullable();
+
+    // if string is email --> mailto
+    // if string is url --> redirect to new window
+    tbl.string("application-method", 128).notNullable();
+
+    tbl.blob("avatar-image");
+
+    tbl.integer("balance").notNullable();
+
+    tbl
+      .boolean("unlimited")
+      .notNullable()
+      .defaultTo(false);
+
+    tbl.timestamp("expiration");
+
+    tbl
+      .timestamp("created-at")
+      .defaultTo(knex.raw("now()"))
+      .notNullable();
+
+    tbl
+      .timestamp("updated-at")
+      .defaultTo(knex.raw("now()"))
+      .notNullable();
+  });
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.dropTableIfExists('users');
+  return knex.schema.dropTableIfExists("users");
 };
