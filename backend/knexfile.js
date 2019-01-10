@@ -12,7 +12,7 @@ module.exports = {
       filename: './db/database.sqlite3'
     },
     migrations: {
-      tableName: 'knex_migrations',
+      
       directory: './db/migrations'
     },
     seeds: {
@@ -31,7 +31,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations',
+      
       directory: './db/migrations',
     },
     seeds: {
