@@ -2,8 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 
-// TODO: Need to display a list of all jobs (Get) and Get only one job -- ONCE COMPLETE DELETE THIS TODO
-
 // TODO: Test routes -- ONCE COMPLETE DELETE THIS TODO
 
 // Display all jobs
@@ -19,6 +17,30 @@ router.get("/job", (req, res) => {
   });
 });
 
+// Display one job
+router.get("/job/:id", (req, res) => {
+  const { id } = req.params;
+  // TODO: add database
+  where({ id })
+    .first()
+    .then(singleJob => {
+      if (singleJob) {
+        res.status(200).json(singleJob);
+      } else {
+        res.status(404).json({
+          errorMessage: "The job with the specified ID does not exist.",
+          error: error
+        });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        errorMessage: "The job information could not be retrieved.",
+        error: error
+      });
+    });
+});
+
 // Creating a new job
 router.post("/job", (req, res) => {
   const newJob = { ...req.body };
@@ -31,7 +53,8 @@ router.post("/job", (req, res) => {
       })
       .catch(error => {
         res.status(500).json({
-          errorMessage: "There was an error adding your job to the database."
+          errorMessage: "There was an error adding your job to the database.",
+          error: error
         });
       });
   } else {
@@ -55,7 +78,10 @@ router.delete("/job/:id", (req, res) => {
       }
     })
     .catch(error => {
-      res.status(500).json({ errorMessage: "Job could not be deleted." });
+      res.status(500).json({
+        errorMessage: "Job could not be deleted.",
+        error: error
+      });
     });
 });
 
@@ -78,7 +104,10 @@ router.put("/job/:id", (req, res) => {
         res.status(200).json(updateJob[0]);
       })
       .catch(error => {
-        res.status(500).json({ errorMessage: "Job could not be updated." });
+        res.status(500).json({
+          errorMessage: "Job could not be updated.",
+          error: error
+        });
       });
   } else {
     res.status(400).json({
