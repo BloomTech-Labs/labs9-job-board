@@ -7,7 +7,7 @@ import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
 import ResetPassword from "../ResetPassword/ResetPassword";
 
-const url = process.env.REACT_APP_DB_UR;
+const url = process.env.REACT_APP_DB_URL;
 
 class JobsContainer extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class JobsContainer extends Component {
     this.state = {
       jobs: [],
       searchJobs: [],
-      search: '',
+      search: ""
     };
   }
 
@@ -29,41 +29,48 @@ class JobsContainer extends Component {
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   handleInput = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   searchResults = event => {
     this.handleInput(event);
     this.setState(preState => {
       const searchJobs = preState.jobs.filter(result => {
-        return result.title.includes(preState.search) ||
+        return (
+          result.title.includes(preState.search) ||
           result.company.includes(preState.search) ||
           result.topSkills.includes(preState.search) ||
-          result.familiar.includes(preState.search);
+          result.familiar.includes(preState.search)
+        );
       });
-      return { searchJobs: searchJobs }
-    })
+      return { searchJobs: searchJobs };
+    });
   };
 
-
   render() {
-    console.log('click', this.handleInput);
-    console.log('Search', this.state.search)
+    console.log("click", this.handleInput);
+    console.log("Search", this.state.search);
     return (
       <div>
         <Route
           exact
           path="/"
           render={Ownprops => {
-            return <JobList {...Ownprops}
-              searchResults={this.searchResults}
-              search={this.state.search}
-              jobs={this.state.searchJobs.length > 0 ?
-                this.state.searchJobs
-                : this.state.jobs} />;
+            return (
+              <JobList
+                {...Ownprops}
+                searchResults={this.searchResults}
+                search={this.state.search}
+                jobs={
+                  this.state.searchJobs.length > 0
+                    ? this.state.searchJobs
+                    : this.state.jobs
+                }
+              />
+            );
           }}
         />
         <Route
