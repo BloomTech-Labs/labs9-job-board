@@ -1,7 +1,13 @@
 const express = require('express');
+const knexConfig = require('../knexfile');
+const knex = require('knex');
 
+
+const db = knex(knexConfig.development);
 const router = express.Router();
 
+
+//-------------JOB ENDPOINTS-------------------
 // TODO: Need to display a list of all jobs (Get) and Get only one job -- ONCE COMPLETE DELETE THIS TODO
 
 // TODO: Test routes -- ONCE COMPLETE DELETE THIS TODO
@@ -74,5 +80,27 @@ router.put('/job/:id', (req, res) => {
 		});
 	}
 });
+
+//-------------USER ENDPOINTS-------------------
+//GET all users
+router.get('/users', (req,res) => {
+	db('users')
+	.then(users => res.status(200).json(users))
+	.catch(err => res.status(500).json(err))
+})
+
+//POST new user
+router.post('/users', (req, res) => {
+	const user = req.body;
+
+	db('users')
+	  .insert(user)
+	  .then(ids => {
+		res.status(201).json(ids);
+	  })
+	  .catch(err => {
+		res.status(500).json({ message: 'Error inserting user', err });
+	  });
+})
 
 module.exports = router;
