@@ -7,29 +7,29 @@ exports.up = function(knex, Promise) {
 
     // Firebase user id
     tbl
-      .string("user-uid", 255)
+      .string("user_uid", 255)
       .notNullable()
       .unique();
 
     // other fields
-    tbl.string("first-name", 255).notNullable();
+    tbl.string("first_name", 255).notNullable();
 
-    tbl.string("last-name", 255).notNullable();
+    tbl.string("last_name", 255).notNullable();
 
     tbl
       .string("email", 128)
       .unique()
       .notNullable();
 
-    tbl.string("company-name", 255).notNullable();
+    tbl.string("company_name", 255).notNullable();
 
     tbl.string("summary", 500).notNullable();
 
     // if string is email --> mailto
     // if string is url --> redirect to new window
-    tbl.string("application-method", 128).notNullable();
+    tbl.string("application_method", 128).notNullable();
 
-    tbl.string("avatar-image", 200);
+    tbl.string("avatar_image", 200);
 
     tbl.integer("balance").notNullable();
 
@@ -41,12 +41,12 @@ exports.up = function(knex, Promise) {
     tbl.timestamp("expiration");
 
     tbl
-      .timestamp("created-at")
+      .timestamp("created_at")
       .defaultTo(knex.raw("now()"))
       .notNullable();
 
     tbl
-      .timestamp("updated-at")
+      .timestamp("updated_at")
       .defaultTo(knex.raw("now()"))
       .notNullable();
   });

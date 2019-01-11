@@ -22,7 +22,7 @@ exports.up = function(knex, Promise) {
 
     tbl.boolean("active").defaultTo(true);
 
-    tbl.boolean("collegeDegree").defaultTo(false);
+    tbl.boolean("college_Degree").defaultTo(false);
 
     tbl
       .timestamp("created_at")
