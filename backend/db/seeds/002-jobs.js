@@ -6,8 +6,10 @@ exports.seed = function(knex) {
       topSkills: "python, CSS",
       addSkills: "soft skills",
       familier: "C++",
-      description: "Can build things",
-      requirements: "Not a code monkey",
+      description:
+        "Untangle is seeking a Senior Software Engineer to join our Cloud Engineering team. This is a great role for a versatile full stack developer capable of working on multiple platforms and technology stacks. In this position, you will be an integral part of the development of web services and cloud infrastructure to support our product back-end and web console. ",
+      requirements:
+        "Experience writing and shipping code with a modern web application framework (Rails, Laravel, Django, etc…). Excellent command of modern web browsers. Experience with version control fundamentals. Strong understanding of AWS.",
       active: true,
       collegeDegree: false,
       users_id: 1
@@ -18,8 +20,10 @@ exports.seed = function(knex) {
       topSkills: "Javascript, css",
       addSkills: "sales",
       familier: "work",
-      description: "works well with others",
-      requirements: "2 years of javascript",
+      description:
+        "The Full-Stack developer is responsible for developing software components and architecture patterns. Create user interfaces and visualizations to provide decision makers and data scientists access to platform data. Operationally support platform components and databases.",
+      requirements:
+        "Bachelor's degree or 4+ years of experience or 2+ with a MS degree. * 2+ years of hands-on development experience. * Experience with object-oriented programing in Java or Go. * Spring Framework exposure is preferred. * Experience with CI/CD tools like Jenkins, Travis CI, etc. * Frontend skills in JavaScript, HTML, and CSS is required. * Ember.js experience is preferred. ",
       collegeDegree: "true",
       users_id: 9
     },
