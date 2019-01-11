@@ -33,8 +33,10 @@ exports.seed = function(knex) {
       topSkills: "Node.js, React",
       addSkills: "photoshop",
       familier: "web design",
-      description: "build things from ground up",
-      requirements: "6 years of full stack development",
+      description:
+        "Analytics Corporation has an on-site opportunity for a skilled Full Stack .Net developer who can work for Straveda as a W2 employee. USC/GC/EAD (CPT/EAD candidates will not be considered). ",
+      requirements:
+        "Required Work Experience : 3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development, including SQL Server Healthcare Industry experience desirable but not required. USC/GC/EAD on Straveda Payroll W2. Position is on-site in Longmont, CO. NO C2C ",
       active: false,
       collegeDegree: false,
       users_id: 1
@@ -45,35 +47,39 @@ exports.seed = function(knex) {
       topSkills: "Python, Statistics",
       addSkills: "Javascipt",
       familier: "react",
-      description: "",
+      description:
+        "Position for a talented individual for a Software Developer who fulfills an important role within the organization’s product team. Core functions of the role require a developer with",
       requirements:
         "3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development,",
-      active: "",
-      collegeDegree: "",
+      active: true,
+      collegeDegree: false,
       users_id: 2
     },
     {
-      title: "rowValue1",
-      salary: "60,000",
-      topSkills: "",
-      addSkills: "",
-      familier: "",
-      description: "",
-      requirements: "",
-      active: "",
-      collegeDegree: "",
+      title: "Junior Quality Engineer",
+      salary: "70,000",
+      topSkills: "JavaScript, HTML",
+      addSkills: "Mathematics",
+      familier: "Physics, Computer Science",
+      description:
+        "QE team is a rapidly growing & very well diversified team with very strong focus on cutting-edge test automation tools & technologies.",
+      requirements:
+        "Bachelors degree in Computer Science or related field is preferred. 1-2 years of experience in a QA or testing environment",
+      collegeDegree: false,
       users_id: 3
     },
     {
-      title: "rowValue1",
+      title: "Senior Software Engineer",
       salary: "50,000",
-      topSkills: "",
-      addSkills: "",
-      familier: "",
-      description: "",
-      requirements: "",
-      active: "",
-      collegeDegree: "",
+      topSkills: "C, C++",
+      addSkills: "JavaScript, CSS",
+      familier: "HTML",
+      description:
+        "The Senior Software Engineer role requires an experienced software engineer who can operate across the whole stack: ",
+      requirements:
+        " low-level C firmware, high-level C++ and Python applications, build systems, software delivery systems, API architecture, software documentation and customer support. If this begins to describe you, keep reading.",
+      active: true,
+      collegeDegree: false,
       users_id: 4
     },
     {
