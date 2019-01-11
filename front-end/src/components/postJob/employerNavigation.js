@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const EmployerNavigation = props => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return <div />;
 };
 
 export default EmployerNavigation;
