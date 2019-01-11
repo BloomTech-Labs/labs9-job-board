@@ -11,7 +11,8 @@ exports.seed = function(knex) {
       application_method: "m@ge.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "1"
+      balance: "1",
+      unlimited: false
     },
     {
       user_uid: "ZQUtu2ibTpUFg68nPPoQMfFQQUN2",
@@ -23,7 +24,8 @@ exports.seed = function(knex) {
       application_method: "m@BlackRockl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "5"
+      balance: "5",
+      unlimited: false
     },
     {
       user_uid: "BnpuhRS5xWOeUyqfNvGyNqgz8HA2",
@@ -35,7 +37,8 @@ exports.seed = function(knex) {
       application_method: "m@IMGl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "10"
+      balance: "10",
+      unlimited: false
     },
     {
       user_uid: "k6zGdAGNXJboyBH22U4eKNAl3eh2",
@@ -47,7 +50,8 @@ exports.seed = function(knex) {
       application_method: "m@publixl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "4"
+      balance: "4",
+      unlimited: true
     },
     {
       user_uid: "dt6jVUI6dudYM5DrSWAbBTddMio1",
@@ -59,7 +63,8 @@ exports.seed = function(knex) {
       application_method: "m@acel.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "6"
+      balance: "6",
+      unlimited: false
     },
     {
       user_uid: "BNfN3SgLy0XLoeAUvnQzt4I0upT2",
@@ -71,7 +76,8 @@ exports.seed = function(knex) {
       application_method: "m@homedepotl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "7"
+      balance: "7",
+      unlimited: false
     },
     {
       user_uid: "0o49ThJUfaPqaYKzHBTS97v9KB01",
@@ -83,7 +89,8 @@ exports.seed = function(knex) {
       application_method: "m@lowesl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "7"
+      balance: "7",
+      unlimited: false
     },
     {
       user_uid: "Z9X0aBtlsUWUZRI5KERVivFpJIw1",
@@ -108,7 +115,8 @@ exports.seed = function(knex) {
       application_method: "m@rocksl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "9"
+      balance: "9",
+      unlimited: false
     },
     {
       user_uid: "FGhDotudMKclCqaOCeT2HrzksUy2",
@@ -120,7 +128,8 @@ exports.seed = function(knex) {
       application_method: "m@foodnstuff.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
-      balance: "5"
+      balance: "5",
+      unlimited: false
     }
   ]);
 };
