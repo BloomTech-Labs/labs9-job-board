@@ -1,5 +1,5 @@
 exports.seed = function(knex) {
-  return knex("table_name").insert([
+  return knex("jobs").insert([
     {
       title: "Web Dev",
       salary: "90,000",
