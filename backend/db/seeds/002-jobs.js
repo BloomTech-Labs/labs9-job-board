@@ -83,27 +83,27 @@ exports.seed = function(knex) {
       users_id: 4
     },
     {
-      title: "rowValue1",
-      salary: "40,000",
-      topSkills: "",
-      addSkills: "",
-      familier: "",
-      description: "",
-      requirements: "",
-      active: "",
-      collegeDegree: "",
+      title: "Senior Software Engineer",
+      salary: "80,000",
+      topSkills: "JavaScript, CSS",
+      addSkills: "HTML",
+      familier: "C, C++",
+      description:
+        " Senior Software Engineer to join our Cloud Engineering team. This is a great role for a versatile full stack developer capable of working on multiple platforms and technology stacks. In this position, you will be an integral part of the development of web services and cloud infrastructure to support our product back-end and web console.",
+      requirements: "JavaScript, CSS",
       users_id: 5
     },
     {
-      title: "rowValue1",
-      salary: "30,000",
-      topSkills: "",
-      addSkills: "",
-      familier: "",
-      description: "",
-      requirements: "",
-      active: "",
-      collegeDegree: "",
+      title: "Python Application Developer III",
+      salary: "130,000",
+      topSkills: "Python",
+      addSkills: "Django",
+      familier: "Rails",
+      description:
+        "ork will consist primarily of advancing the maturity of several applications for managing data related to building energy performance and data exchange. The successful applicant will work collaboratively to identify, design, implement, and test new functionality. ",
+      requirements:
+        "Relevant PhD . Or, relevant Master's Degree and 3 or more years of experience . Or, relevant Bachelor's Degree and 5 or more years of experience . Demonstrates broad understanding and wide application of engineering technical procedures, principles, theories and concepts in the field. General knowledge of other related disciplines.",
+      collegeDegree: true,
       users_id: 6
     },
     {
