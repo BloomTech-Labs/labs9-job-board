@@ -107,27 +107,26 @@ exports.seed = function(knex) {
       users_id: 6
     },
     {
-      title: "rowValue1",
-      salary: "40,000",
-      topSkills: "",
-      addSkills: "",
-      familier: "",
-      description: "",
-      requirements: "",
-      active: "",
-      collegeDegree: "",
+      title: "Senior Software Engineer",
+      salary: "90,000",
+      topSkills: "JavaScript, CSS",
+      addSkills: "Python",
+      familier: "rails",
+      description:
+        "We are seeking a full stack web developer to help build and lead the next generation of investing software within the alternative investment market",
+      requirements: "3+ years of Application Development experience",
       users_id: 7
     },
     {
-      title: "rowValue1",
+      title: "Software Engineer",
       salary: "65,000",
-      topSkills: "",
-      addSkills: "",
-      familier: "",
-      description: "",
-      requirements: "",
-      active: "",
-      collegeDegree: "",
+      topSkills: "HTML, JavaScript, CSS",
+      addSkills: "AJAX",
+      familier: "Python",
+      description:
+        "As a member of one of our product teams, this person will be responsible for creating, enhancing, and supporting common features. Working side-by-side with Product Owners, Quality Assurance Engineers, and Business Stakeholders.",
+      requirements:
+        "Must be proficient in object-oriented design and development and unit-testing, Web Services, and web pages preferably inASP.NETand/orASP.NETMVC with C#",
       users_id: 8
     }
   ]);
