@@ -11,7 +11,7 @@ exports.seed = function(knex) {
       requirements:
         "Experience writing and shipping code with a modern web application framework (Rails, Laravel, Django, etc…). Excellent command of modern web browsers. Experience with version control fundamentals. Strong understanding of AWS.",
       active: true,
-      collegeDegree: false,
+      college_degree: false,
       users_id: 1
     },
     {
@@ -24,7 +24,7 @@ exports.seed = function(knex) {
         "The Full-Stack developer is responsible for developing software components and architecture patterns. Create user interfaces and visualizations to provide decision makers and data scientists access to platform data. Operationally support platform components and databases.",
       requirements:
         "Bachelor's degree or 4+ years of experience or 2+ with a MS degree. * 2+ years of hands-on development experience. * Experience with object-oriented programing in Java or Go. * Spring Framework exposure is preferred. * Experience with CI/CD tools like Jenkins, Travis CI, etc. * Frontend skills in JavaScript, HTML, and CSS is required. * Ember.js experience is preferred. ",
-      collegeDegree: "true",
+      college_degree: "true",
       users_id: 9
     },
     {
@@ -38,7 +38,7 @@ exports.seed = function(knex) {
       requirements:
         "Required Work Experience : 3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development, including SQL Server Healthcare Industry experience desirable but not required. USC/GC/EAD on Straveda Payroll W2. Position is on-site in Longmont, CO. NO C2C ",
       active: false,
-      collegeDegree: false,
+      college_degree: false,
       users_id: 1
     },
     {
@@ -52,7 +52,7 @@ exports.seed = function(knex) {
       requirements:
         "3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development,",
       active: true,
-      collegeDegree: false,
+      college_degree: false,
       users_id: 2
     },
     {
@@ -65,7 +65,7 @@ exports.seed = function(knex) {
         "QE team is a rapidly growing & very well diversified team with very strong focus on cutting-edge test automation tools & technologies.",
       requirements:
         "Bachelors degree in Computer Science or related field is preferred. 1-2 years of experience in a QA or testing environment",
-      collegeDegree: false,
+      college_degree: false,
       users_id: 3
     },
     {
@@ -79,7 +79,7 @@ exports.seed = function(knex) {
       requirements:
         " low-level C firmware, high-level C++ and Python applications, build systems, software delivery systems, API architecture, software documentation and customer support. If this begins to describe you, keep reading.",
       active: true,
-      collegeDegree: false,
+      college_degree: false,
       users_id: 4
     },
     {
@@ -103,7 +103,7 @@ exports.seed = function(knex) {
         "ork will consist primarily of advancing the maturity of several applications for managing data related to building energy performance and data exchange. The successful applicant will work collaboratively to identify, design, implement, and test new functionality. ",
       requirements:
         "Relevant PhD . Or, relevant Master's Degree and 3 or more years of experience . Or, relevant Bachelor's Degree and 5 or more years of experience . Demonstrates broad understanding and wide application of engineering technical procedures, principles, theories and concepts in the field. General knowledge of other related disciplines.",
-      collegeDegree: true,
+      college_degree: true,
       users_id: 6
     },
     {
