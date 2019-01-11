@@ -1,13 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { Route } from "react-router-dom";
 
-import JobList from "../jobList/jobList.js";
-import SingleJob from "../SingleJob/singleJob";
-import SignIn from "../SignIn/SignIn.js";
-import SignUp from "../SignUp/SignUp.js";
-
-import ResetPassword from "../ResetPassword/ResetPassword";
+import JobList from "./jobList.js";
+import Search from "./search";
+import Header from "./header";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -56,33 +53,30 @@ class JobsContainer extends Component {
     console.log("click", this.handleInput);
     console.log("Search", this.state.search);
     return (
-      <JobList />
-      // <div>
-      //   <Route
-      //     exact
-      //     path="/"
-      //     render={Ownprops => {
-      //       return (
-      //         <JobList
-      //           {...Ownprops}
-      //           searchResults={this.searchResults}
-      //           search={this.state.search}
-      //           jobs={
-      //             this.state.searchJobs.length > 0
-      //               ? this.state.searchJobs
-      //               : this.state.jobs
-      //           }
-      //         />
-      //       );
-      //     }}
-      //   />
-      //   <Route
-      //     path="/jobs/:id"
-      //     render={Ownprops => {
-      //       return <SingleJob {...Ownprops} />;
-      //     }}
-      //   />
-      // </div>
+      <div className="jobs-container">
+        <Header />
+        <Link to="/sign-in">
+          <button>Post a job</button>
+        </Link>
+        <Search
+          searchResults={this.searchResults}
+          search={this.state.search}
+          jobs={
+            this.state.searchJobs.length > 0
+              ? this.state.searchJobs
+              : this.state.jobs
+          }
+        />
+        <JobList
+          searchResults={this.searchResults}
+          search={this.state.search}
+          jobs={
+            this.state.searchJobs.length > 0
+              ? this.state.searchJobs
+              : this.state.jobs
+          }
+        />
+      </div>
     );
   }
 }
