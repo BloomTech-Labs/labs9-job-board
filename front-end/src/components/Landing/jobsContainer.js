@@ -20,7 +20,7 @@ class JobsContainer extends Component {
 
   componentDidMount() {
     axios
-      .get(`${url}/test/api/jobs`)
+      .get(`${url}/api/job`)
       .then(res => {
         console.log(res);
         this.setState({ jobs: res.data });
@@ -38,12 +38,7 @@ class JobsContainer extends Component {
     this.handleInput(event);
     this.setState(preState => {
       const searchJobs = preState.jobs.filter(result => {
-        return (
-          result.title.includes(preState.search) ||
-          result.company.includes(preState.search) ||
-          result.topSkills.includes(preState.search) ||
-          result.familiar.includes(preState.search)
-        );
+        return result.title.includes(preState.search);
       });
       return { searchJobs: searchJobs };
     });
@@ -58,18 +53,8 @@ class JobsContainer extends Component {
         <Link to="/sign-in">
           <button>Post a job</button>
         </Link>
-        <Search
-          searchResults={this.searchResults}
-          search={this.state.search}
-          jobs={
-            this.state.searchJobs.length > 0
-              ? this.state.searchJobs
-              : this.state.jobs
-          }
-        />
+        <Search searchResults={this.searchResults} search={this.state.search} />
         <JobList
-          searchResults={this.searchResults}
-          search={this.state.search}
           jobs={
             this.state.searchJobs.length > 0
               ? this.state.searchJobs

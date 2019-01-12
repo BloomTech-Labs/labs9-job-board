@@ -6,7 +6,7 @@ const JobList = props => {
   return (
     <div>
       {props.jobs.map(job => (
-        <Link to={`/jobs/${job.id}`} id={job.id} key={job.id}>
+        <Link to={`/jobs/${job.id}`} key={job.id}>
           <Jobs job={job} id={job.id} />
         </Link>
       ))}
