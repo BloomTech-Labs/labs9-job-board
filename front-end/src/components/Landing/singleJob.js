@@ -51,7 +51,7 @@ class SingleJob extends Component {
         <h3>{this.state.job.salary}</h3>
         <h3>{this.state.job.addSkills}</h3>
         <h3>{this.state.job.topSkills}</h3>
-        <h3>{this.state.job.fimiliar}</h3>
+        <h3>{this.state.job.familiar}</h3>
         <h3>{this.state.job.description}</h3>
         <h3>{this.state.job.requirements}</h3>
         {this.state.job.collegeDegree === 0 ? (
