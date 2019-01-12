@@ -100,8 +100,8 @@ exports.seed = function(knex) {
       first_name: "jill",
       last_name: "smith",
       email: "m.smith@stop.com",
-      company_name: "stop",
-      summary: "we do nothing",
+      company_name: "Knex",
+      summary: "we make JavaScript play nice with databases",
       application_method: "m@stopl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",

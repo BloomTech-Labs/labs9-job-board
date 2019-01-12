@@ -13,10 +13,9 @@ const router = express.Router();
 // Display all jobs
 router.get("/job", (req, res) => {
   // TODO: add database
-  db("jobs")
-    .select("title", "company_name", "salary")
-    .from("users")
-    .leftJoin("jobs", "users.id", "jobs.users_id")
+  db("users")
+    .from("jobs")
+    .leftJoin("users", "jobs.users_id", "users.id")
     .then(allJobs => {
       res.status(200).json(allJobs);
     })
