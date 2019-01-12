@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import JobsContainer from "../Landing/jobsContainer";
 import SingleJob from "../Landing/singleJob.js";
 import PostJob from "../postJob/postJob.js";
+import Profile from "../CompanyProfile/Profile.js";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import ResetPassword from "../ResetPassword/ResetPassword";
@@ -24,6 +25,7 @@ class Routes extends Component {
         <Route exact path={ROUTES.LANDING} component={JobsContainer} />
         <Route path={ROUTES.JOB} render={props => <SingleJob {...props} />} />
         <Route path={ROUTES.POST_JOB} component={PostJob} />
+        <Route path={ROUTES.COMPANY_PROFILE} component={Profile} />
         <Route path={ROUTES.BILLING} component={Billing} />
         <Route path={ROUTES.SIGN_UP} component={SignUp} />
         <Route path={ROUTES.SIGN_IN} component={SignIn} />
