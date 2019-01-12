@@ -44,8 +44,9 @@ class SingleJob extends Component {
           <p>tell a friend</p>
           <p>Report</p>
         </div>
-        <h3>{this.state.job.image}</h3>
-        <h3>{this.state.job.company}</h3>
+        <img src={this.state.job.user.avatar_image} />
+        <h3>{this.state.job.user.company_name}</h3>
+        <h3>{this.state.job.user.summary}</h3>
         <h3>{this.state.job.title}</h3>
         <h3>{this.state.job.salary}</h3>
         <h3>{this.state.job.addSkills}</h3>

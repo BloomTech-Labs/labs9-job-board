@@ -31,9 +31,15 @@ router.get("/job/:id", (req, res) => {
   db("jobs")
     .where({ id })
     .first()
-    .then(singleJob => {
-      if (singleJob) {
-        res.status(200).json(singleJob);
+    .then(job => {
+      if (job) {
+        db("users")
+          .where({ id })
+          .first()
+          .then(user => {
+            job.user = user;
+            res.status(200).json(job);
+          });
       } else {
         res.status(404).json({
           errorMessage: "The job with the specified ID does not exist.",
