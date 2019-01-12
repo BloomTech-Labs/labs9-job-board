@@ -7,7 +7,7 @@ exports.seed = function(knex) {
       last_name: "smith",
       email: "m.smith@gmail.com",
       company_name: "GE",
-      summary: "great place to work",
+      summary: "great place to work. We are developing the new new thing",
       application_method: "m@ge.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
@@ -46,7 +46,8 @@ exports.seed = function(knex) {
       last_name: "smith",
       email: "m.smith@publix.com",
       company_name: "publix",
-      summary: "shop shop",
+      summary:
+        "The best grocery store in the south, where we treat our employees right",
       application_method: "m@publixl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
@@ -58,8 +59,9 @@ exports.seed = function(knex) {
       first_name: "kim",
       last_name: "smith",
       email: "m.smith@ace.com",
-      company_name: "ace",
-      summary: "hammer and nails",
+      company_name: "Ace",
+      summary:
+        "We sell fishing gear directly to the consumer over the internet. Check our stuff out!",
       application_method: "m@acel.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
@@ -71,8 +73,9 @@ exports.seed = function(knex) {
       first_name: "sally",
       last_name: "smith",
       email: "m.smith@homedepot.com",
-      company_name: "homedepot",
-      summary: "just do it yourself",
+      company_name: "Homedepot",
+      summary:
+        "Everything you need for home do it yourself projects. One stop shop",
       application_method: "m@homedepotl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
@@ -84,8 +87,8 @@ exports.seed = function(knex) {
       first_name: "kelly",
       last_name: "smith",
       email: "m.smith@Lowes.com",
-      company_name: "lowes",
-      summary: "just nails",
+      company_name: "Lowes",
+      summary: "Home improvement and the store for doing it yourself.",
       application_method: "m@lowesl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
@@ -110,8 +113,9 @@ exports.seed = function(knex) {
       first_name: "allie",
       last_name: "smith",
       email: "m.smith@rocks.com",
-      company_name: "rocks",
-      summary: "we sell rocks",
+      company_name: "Rock Capital",
+      summary:
+        "we sell rocks. It is the only tool to always get you into your vehile when locked out guaranteed",
       application_method: "m@rocksl.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
@@ -123,8 +127,9 @@ exports.seed = function(knex) {
       first_name: "steve",
       last_name: "smith",
       email: "m.smith@foodnstuff.com",
-      company_name: "foodnstuff",
-      summary: "food and stuff",
+      company_name: "food 'n Stuff",
+      summary:
+        "We not only sell food over the Internet but we also sell stuff.",
       application_method: "m@foodnstuff.com",
       avatar_image:
         "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F_400x400.jpg",
