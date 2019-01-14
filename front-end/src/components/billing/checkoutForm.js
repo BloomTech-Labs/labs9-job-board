@@ -27,15 +27,22 @@ const createOptions = () => {
 };
 
 class CheckoutForm extends Component {
-	state = {
-		errorMessage: '',
-	};
+	constructor(props) {
+		super(props);
+		this.state = { complete: false };
+		this.submit = this.submit.bind(this);
+	}
 
-	handleChange = ({ error }) => {
-		if (error) {
-			this.setState({ errorMessage: error.message });
-		}
-	};
+	async submit(ev) {
+		let { token } = await this.props.stripe.createToken({ name: 'Name' });
+		let response = await fetch('/charge', {
+			method: 'POST',
+			HEADERS: { 'Content-Type': 'text/plain' },
+			body: token.id,
+		});
+
+		if (response.ok) this.setState({ complete: true });
+	}
 
 	render() {
 		if (this.state.complete) return <h1>Purhcase Complete!</h1>;
