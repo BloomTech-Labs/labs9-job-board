@@ -1,10 +1,8 @@
-* {
-  box-sizing: border-box;
-}
-
 html {
+  height: 100%;
+  width: 100%;
   font-size: 62.5%;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
 
 p {
@@ -12,9 +10,10 @@ p {
   line-height: 1.4;
 }
 
-.container {
+.App {
   max-width: 1000px;
   width: 90%;
+  height: 100%;
   margin: 0 auto;
   background-color: #f4f5f7;
 }
