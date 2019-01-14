@@ -7,7 +7,7 @@ const NavBar = props => {
   return (
     <div className="nav-bar">
       <a href="/" className="logo">
-        <h1 className="logo">Knowledge Without College!</h1>
+        <h1>Knowledge Without College!</h1>
       </a>
       <EmployerLogin />
     </div>
