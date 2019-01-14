@@ -3,10 +3,11 @@
   border: 1px solid blue;
   justify-content: space-between;
   align-items: center;
+  background: gray;
 }
 
-.nav-bar a {
-  background: pink;
+.nav-bar .logo {
+  background-color: pink;
   text-decoration: none;
   color: black;
   border-radius: 3%;
@@ -16,14 +17,19 @@
 }
 
 .employer-login-container {
-  display: flex;
-  justify-content: end;
+  width: 20%;
+  background-color: blue;
+  border-radius: 40px;
 }
 
-.employer-login {
-  border: 1px solid red;
-}
-
-.employer-login h3 {
+.employer-login-container h3 {
   font-size: 2rem;
+}
+
+.login-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.employer-login button {
 }

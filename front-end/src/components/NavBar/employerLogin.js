@@ -5,14 +5,14 @@ import "./navBar.css";
 const EmployerLogin = props => {
   return (
     <div className="employer-login-container">
-      <div className="employer-login">
-        <h3>EMPLOYER</h3>
-        <Link to="/sign-in">
-          <button>Sign In</button>
-        </Link>
-        <Link to="/sign-up">
-          <button>Sign Up</button>
-        </Link>
+      <h3>Employers</h3>
+      <div className="login-buttons-container">
+        <a href="/sign-in">
+          <button className="login">Log In</button>
+        </a>
+        <a href="/sign-up">
+          <button className="signup">Sign Up</button>
+        </a>
       </div>
     </div>
   );

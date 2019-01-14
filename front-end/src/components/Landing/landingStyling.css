@@ -1,6 +1,6 @@
 .search-categories-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .categories {
@@ -8,20 +8,21 @@
   justify-content: center;
   align-items: center;
   border: 1px solid red;
-  width: 100%;
+  width: 65%;
   height: 50px;
 }
 
 .categories h5 {
-  margin: 0 3% 0 3%;
+  margin: 0 2% 0 2%;
   font-size: 1.5rem;
 }
 
 .search-bar {
-  margin-left: 3%;
+  width: 30%;
 }
 
 .search-bar .search-input {
   height: 50px;
   font-size: 1.5rem;
+  width: 100%;
 }
