@@ -1,3 +1,20 @@
+.nav-bar {
+  display: flex;
+  border: 1px solid blue;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar a {
+  background: pink;
+  text-decoration: none;
+  color: black;
+  border-radius: 3%;
+}
+
+.nav-bar .logo h1 {
+}
+
 .employer-login-container {
   display: flex;
   justify-content: end;
@@ -5,7 +22,6 @@
 
 .employer-login {
   border: 1px solid red;
-  width: 20%;
 }
 
 .employer-login h3 {
