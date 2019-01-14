@@ -12,7 +12,7 @@ const router = express.Router();
 
 // Display all jobs
 router.get("/job", (req, res) => {
-  // TODO: add database
+  
   db("users")
     .from("jobs")
     .leftJoin("users", "jobs.users_id", "users.id")
@@ -62,7 +62,7 @@ router.post("/job", (req, res) => {
   const newJob = { ...req.body };
 
   if (newJob) {
-    // TODO: add database
+    db("jobs")
     insert(newJob)
       .then(addJob => {
         res.status(201).json(addJob[0]);
@@ -154,5 +154,63 @@ router.post("/users", (req, res) => {
       res.status(500).json({ message: "Error inserting user", err });
     });
 });
+
+//GET user by id
+router.get('/users/:id', (req, res) => {
+  const { id } = req.params;
+  
+  db("users")
+    .where({ id: id})
+    .first()
+    .then(user => {
+      if (!user) {
+          res.status(404).json({ message: 'A user with that ID was not found.' });
+      } else {
+          res.status(200).json(user);
+      }
+  })
+  .catch(err => {
+      res.status(500).json({ error: 'There was an error getting the user.', err });
+  });
+});
+
+//UPDATE user
+server.put('/users/:id', (req, res) => {
+  const changes = req.body;
+  const { id } = req.params;
+
+  db('users')
+    .where({ id: id })
+    .update(changes)
+    .then(count => {
+        if (count === 0) {
+            res.status(404).json({ message: 'A user with that ID does not exist.' });
+        } else {
+            res.status(201).json({message: 'updated the following amount of users:',count});
+        }
+    })
+    .catch(err => {
+        res.status(500).json({ error: 'There was an error editing the user.', err });
+    });
+
+});
+
+server.delete('/users/:id', (req, res) => {
+  const { id } = req.params;
+  db('users')
+      .where({ id: id})
+      .del()
+      .then(count => {
+          if (count === 0) {
+              res.status(404).json({ message: 'A user with that ID does not exist.' });
+          } else {
+              res.status(200).json({message: 'deleted the following amount of users:',count});
+          }
+      })
+      .catch(err => {
+          res.status(500).json({ error: 'There was an error deleting the user.', err });
+      });
+});
+
 
 module.exports = router;
