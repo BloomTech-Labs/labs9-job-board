@@ -86,7 +86,7 @@ class CheckoutForm extends Component {
 				<div className="error" role="alert">
 					{this.state.errorMessage}
 				</div>
-				<button>Pay</button>
+				<button>Buy Now</button>
 			</form>
 		);
 	}
