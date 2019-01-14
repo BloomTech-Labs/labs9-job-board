@@ -15,4 +15,5 @@ module.exports = server => {
 	// express routers
 	server.use('/test', testRouter);
 	server.use('/api', router);
+	server.use('/stripe', stripeRouter);
 };
