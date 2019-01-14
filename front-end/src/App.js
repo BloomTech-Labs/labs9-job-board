@@ -4,6 +4,7 @@ import "./App.css";
 import Routes from "./components/Routes/Routes.js";
 import { withFirebase } from './components/Firebase/index';
 import SignOut from './components/SignOut/SignOut';
+import NavBar from "./components/NavBar/navBar";
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <NavBar /> */}
+          <NavBar />
           {this.state.authenticatedUser ? <SignOut /> : null}
           <Routes authenticatedUser={this.state.authenticatedUser} />
           {/* <Footer /> */}

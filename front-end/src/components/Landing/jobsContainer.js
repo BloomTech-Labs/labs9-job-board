@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
-import JobList from "./jobList.js";
+import JobList from "./jobList";
 import Search from "./search";
-import Header from "./header";
+import Categories from "./categories";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -49,11 +48,13 @@ class JobsContainer extends Component {
     console.log("Search", this.state.search);
     return (
       <div className="jobs-container">
-        <Header />
-        <Link to="/sign-in">
-          <button>Post a job</button>
-        </Link>
-        <Search searchResults={this.searchResults} search={this.state.search} />
+        <div className="search-categories-container">
+          <Categories />
+          <Search
+            searchResults={this.searchResults}
+            search={this.state.search}
+          />
+        </div>
         <JobList
           jobs={
             this.state.searchJobs.length > 0

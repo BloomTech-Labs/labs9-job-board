@@ -1,3 +1,20 @@
-.App {
-  width: 100%;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Roboto;
+}
+
+p {
+  font-size: 2.6rem;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #f4f5f7;
 }

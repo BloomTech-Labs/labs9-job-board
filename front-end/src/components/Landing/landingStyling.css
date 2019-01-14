@@ -1,0 +1,32 @@
+.jobs-container {
+  height: 1000px;
+}
+
+.search-categories-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  width: 65%;
+  height: 50px;
+}
+
+.categories h5 {
+  margin: 0 2% 0 2%;
+  font-size: 1.5rem;
+}
+
+.search-bar {
+  width: 30%;
+}
+
+.search-bar .search-input {
+  height: 50px;
+  font-size: 1.5rem;
+  width: 100%;
+}
