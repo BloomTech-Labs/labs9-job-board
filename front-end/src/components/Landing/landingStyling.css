@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  border: 1px solid green;
   width: 65%;
   height: 50px;
 }
@@ -40,27 +40,54 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .header .left-side h2 {
-  font-size: 4rem;
+  font-size: 7rem;
   color: white;
-  margin-top: 50px;
+  margin: 5% 0 0 5%;
   font-family: Merriweather;
+  font-weight: 900;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .header .left-side h4 {
   font-size: 3rem;
   color: white;
-  margin-bottom: 50px;
+  margin: 2% 0 0 5%;
+  font-family: Merriweather;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.header .left-side p {
+  color: white;
+  font-family: Merriweather;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-top: 50px;
+}
+
+.header .left-side p span a {
+  font-family: Merriweather;
+  font-weight: 900;
+  text-decoration: none;
+  color: white;
+}
+
+.header .left-side p span:hover {
+  font-family: Merriweather;
+  font-weight: 900;
+  text-decoration: underline;
 }
 
 .header .right-side {
-  background-color: blue;
   width: 50%;
 }
 
 .header .right-side img {
   width: 100%;
+  height: 100%;
 }
