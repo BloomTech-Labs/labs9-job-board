@@ -15,11 +15,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.firebase.auth.onAuthStateChanged(authenticatedUser => {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authenticatedUser => {
       authenticatedUser
         ? this.setState({ authenticatedUser })
         : this.setState({ authenticatedUser: null });
     });
+  }
+
+  componentWillUnmount() {
+    this.listener();
   }
 
   render() {
