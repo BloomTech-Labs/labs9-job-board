@@ -102,7 +102,7 @@ exports.seed = function(knex) {
       description:
         "ork will consist primarily of advancing the maturity of several applications for managing data related to building energy performance and data exchange. The successful applicant will work collaboratively to identify, design, implement, and test new functionality. ",
       requirements:
-        "Relevant PhD . Or, relevant Master's Degree and 3 or more years of experience . Or, relevant Bachelor's Degree and 5 or more years of experience . Demonstrates broad understanding and wide application of engineering technical procedures, principles, theories and concepts in the field. General knowledge of other related disciplines.",
+        "Relevant PhD . Or, relevant Master's degree and 3 or more years of experience . Or, relevant Bachelor's degree and 5 or more years of experience . Demonstrates broad understanding and wide application of engineering technical procedures, principles, theories and concepts in the field. General knowledge of other related disciplines.",
       college_degree: true,
       users_id: 6
     },
