@@ -46,13 +46,6 @@ class CheckoutForm extends Component {
 						CVC
 						<CardCVCElement onChange={this.handleChange} />
 					</label>
-					<input
-						type="radio"
-						name="react-tips"
-						value="option1"
-						checked={true}
-						className="form-check-input"
-					/>
 				</div>
 				<div className="form-check">
 					<label>
