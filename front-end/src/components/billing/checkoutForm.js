@@ -51,6 +51,25 @@ class CheckoutForm extends Component {
 					CVC
 					<CardCVCElement {...createOptions()} onChange={this.handleChange} />
 				</label>
+				<input
+					type="radio"
+					name="react-tips"
+					value="option1"
+					checked={true}
+					className="form-check-input"
+				/>
+			</div>
+			<div className="form-check">
+				<label>
+					<input
+						type="radio"
+						name="react-tips"
+						value="option1"
+						checked={true}
+						className="form-check-input"
+					/>
+					Unlimited Jobs, 1 Month $299.99
+				</label>
 			</div>
 			<div className="error" role="alert">
 				{this.state.errorMessage}
