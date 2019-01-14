@@ -1,6 +1,7 @@
 const express = require('express')();
 const cors = require('cors');
 const helmet = require('helmet');
+const bodyParser = require('body-parser');
 
 const testRouter = require('../routers/testRouter.js');
 const router = require('../routers/router.js');
