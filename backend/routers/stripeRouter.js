@@ -1,4 +1,4 @@
-const express = require('express')();
+const express = require('express');
 const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
 const router = express.Router();
 
@@ -15,5 +15,3 @@ router.post('/charge', async (req, res) => {
 		res.status(500).end();
 	}
 });
-
-router.listen(9000, () => console.log('Listening on port 9000'));
