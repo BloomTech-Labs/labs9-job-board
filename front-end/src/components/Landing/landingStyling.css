@@ -30,3 +30,37 @@
   font-size: 1.5rem;
   width: 100%;
 }
+
+.header {
+  display: flex;
+}
+
+.header .left-side {
+  background-color: #e82f3a;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header .left-side h2 {
+  font-size: 4rem;
+  color: white;
+  margin-top: 50px;
+  font-family: Merriweather;
+}
+
+.header .left-side h4 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.header .right-side {
+  background-color: blue;
+  width: 50%;
+}
+
+.header .right-side img {
+  width: 100%;
+}
