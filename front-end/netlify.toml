@@ -1,6 +1,0 @@
-# Global settings applied to the whole site.  
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
