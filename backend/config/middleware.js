@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express')();
 const cors = require('cors');
 const helmet = require('helmet');
 
@@ -10,6 +10,7 @@ module.exports = server => {
 	server.use(express.json());
 	server.use(cors());
 	server.use(helmet());
+	server.use(require('body-parser').text());
 
 	// express routers
 	server.use('/test', testRouter);
