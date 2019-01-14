@@ -65,20 +65,18 @@ class ResetPasswordFormUnconnected extends React.Component {
 
     return (
       <div className="reset-container">
+        <div className="reset-header"></div>
         <form className="reset-form" onSubmit={this.submitHandler}>
-          <label className="form-label">
-            Email:
-            <input
-              type="text"
-              name="email"
-              className="form-input"
-              onChange={this.changeHandler}
-              placeholder="Email"
-              value={this.state.email}
-              autoComplete="on"
-            />
-          </label>
-          <button className="form-button" disabled={invalidInput}>Reset Password</button>
+          <input
+            type="text"
+            name="email"
+            className="reset-form-input"
+            onChange={this.changeHandler}
+            placeholder="Email"
+            value={this.state.email}
+            autoComplete="on"
+          />
+          <button className={`reset-form-button${invalidInput ? '' : ' not-disabled'}`} disabled={invalidInput}>Reset Password</button>
           {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
       </div>
