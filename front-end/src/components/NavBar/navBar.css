@@ -8,15 +8,17 @@
 }
 
 .nav-bar .logo {
-  background-color: pink;
   text-decoration: none;
-  color: black;
-  border-radius: 20px;
   margin-left: 0.5%;
-  font-size: 1.5rem;
+  border-radius: 20px;
 }
 
 .nav-bar .logo h1 {
+  font-size: 2rem;
+  color: black;
+  background-color: lightblue;
+  width: 100%;
+  padding: 10px;
 }
 
 .employer-login-container {
