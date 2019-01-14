@@ -25,7 +25,7 @@ exports.seed = function(knex) {
       requirements:
         "Bachelor's degree or 4+ years of experience or 2+ with a MS degree. * 2+ years of hands-on development experience. * Experience with object-oriented programing in Java or Go. * Spring Framework exposure is preferred. * Experience with CI/CD tools like Jenkins, Travis CI, etc. * Frontend skills in JavaScript, HTML, and CSS is required. * Ember.js experience is preferred. ",
       college_Degree: false,
-      users_id: 9
+      users_id: 2
     },
     {
       title: "Full Stack",
@@ -39,7 +39,7 @@ exports.seed = function(knex) {
         "Required Work Experience : 3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development, including SQL Server Healthcare Industry experience desirable but not required. USC/GC/EAD on Straveda Payroll W2. Position is on-site in Longmont, CO. NO C2C ",
       active: false,
       college_Degree: false,
-      users_id: 1
+      users_id: 3
     },
     {
       title: "Data Science",
@@ -53,7 +53,7 @@ exports.seed = function(knex) {
         "3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development,",
       active: true,
       college_Degree: true,
-      users_id: 2
+      users_id: 4
     },
     {
       title: "Junior Quality Engineer",
@@ -66,7 +66,7 @@ exports.seed = function(knex) {
       requirements:
         "Bachelors degree in Computer Science or related field is preferred. 1-2 years of experience in a QA or testing environment",
       college_Degree: false,
-      users_id: 3
+      users_id: 5
     },
     {
       title: "Senior Software Engineer",

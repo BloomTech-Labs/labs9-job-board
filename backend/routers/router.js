@@ -175,7 +175,7 @@ router.get('/users/:id', (req, res) => {
 });
 
 //UPDATE user
-server.put('/users/:id', (req, res) => {
+router.put('/users/:id', (req, res) => {
   const changes = req.body;
   const { id } = req.params;
 
@@ -195,7 +195,7 @@ server.put('/users/:id', (req, res) => {
 
 });
 
-server.delete('/users/:id', (req, res) => {
+router.delete('/users/:id', (req, res) => {
   const { id } = req.params;
   db('users')
       .where({ id: id})
