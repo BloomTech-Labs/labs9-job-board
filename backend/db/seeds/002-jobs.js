@@ -11,7 +11,7 @@ exports.seed = function(knex) {
       requirements:
         "Experience writing and shipping code with a modern web application framework (Rails, Laravel, Django, etc…). Excellent command of modern web browsers. Experience with version control fundamentals. Strong understanding of AWS.",
       active: true,
-      college_degree: false,
+      college_Degree: false,
       users_id: 1
     },
     {
@@ -24,7 +24,7 @@ exports.seed = function(knex) {
         "The Full-Stack developer is responsible for developing software components and architecture patterns. Create user interfaces and visualizations to provide decision makers and data scientists access to platform data. Operationally support platform components and databases.",
       requirements:
         "Bachelor's degree or 4+ years of experience or 2+ with a MS degree. * 2+ years of hands-on development experience. * Experience with object-oriented programing in Java or Go. * Spring Framework exposure is preferred. * Experience with CI/CD tools like Jenkins, Travis CI, etc. * Frontend skills in JavaScript, HTML, and CSS is required. * Ember.js experience is preferred. ",
-      college_degree: "true",
+      college_Degree: false,
       users_id: 9
     },
     {
@@ -38,7 +38,7 @@ exports.seed = function(knex) {
       requirements:
         "Required Work Experience : 3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development, including SQL Server Healthcare Industry experience desirable but not required. USC/GC/EAD on Straveda Payroll W2. Position is on-site in Longmont, CO. NO C2C ",
       active: false,
-      college_degree: false,
+      college_Degree: false,
       users_id: 1
     },
     {
@@ -52,7 +52,7 @@ exports.seed = function(knex) {
       requirements:
         "3 plus years with .Net development experience including both webforms and MVC or MVVM. Three plus years in full-stack Microsoft web development,",
       active: true,
-      college_degree: false,
+      college_Degree: true,
       users_id: 2
     },
     {
@@ -65,7 +65,7 @@ exports.seed = function(knex) {
         "QE team is a rapidly growing & very well diversified team with very strong focus on cutting-edge test automation tools & technologies.",
       requirements:
         "Bachelors degree in Computer Science or related field is preferred. 1-2 years of experience in a QA or testing environment",
-      college_degree: false,
+      college_Degree: false,
       users_id: 3
     },
     {
@@ -79,7 +79,7 @@ exports.seed = function(knex) {
       requirements:
         " low-level C firmware, high-level C++ and Python applications, build systems, software delivery systems, API architecture, software documentation and customer support. If this begins to describe you, keep reading.",
       active: true,
-      college_degree: false,
+      college_Degree: false,
       users_id: 4
     },
     {
@@ -91,6 +91,7 @@ exports.seed = function(knex) {
       description:
         " Senior Software Engineer to join our Cloud Engineering team. This is a great role for a versatile full stack developer capable of working on multiple platforms and technology stacks. In this position, you will be an integral part of the development of web services and cloud infrastructure to support our product back-end and web console.",
       requirements: "JavaScript, CSS",
+      college_Degree: false,
       users_id: 5
     },
     {
@@ -102,8 +103,8 @@ exports.seed = function(knex) {
       description:
         "ork will consist primarily of advancing the maturity of several applications for managing data related to building energy performance and data exchange. The successful applicant will work collaboratively to identify, design, implement, and test new functionality. ",
       requirements:
-        "Relevant PhD . Or, relevant Master's degree and 3 or more years of experience . Or, relevant Bachelor's degree and 5 or more years of experience . Demonstrates broad understanding and wide application of engineering technical procedures, principles, theories and concepts in the field. General knowledge of other related disciplines.",
-      college_degree: true,
+        "Relevant PhD . Or, relevant Master's Degree and 3 or more years of experience . Or, relevant Bachelor's Degree and 5 or more years of experience . Demonstrates broad understanding and wide application of engineering technical procedures, principles, theories and concepts in the field. General knowledge of other related disciplines.",
+      college_Degree: false,
       users_id: 6
     },
     {
@@ -115,6 +116,7 @@ exports.seed = function(knex) {
       description:
         "We are seeking a full stack web developer to help build and lead the next generation of investing software within the alternative investment market",
       requirements: "3+ years of Application Development experience",
+      college_Degree: false,
       users_id: 7
     },
     {
@@ -127,6 +129,7 @@ exports.seed = function(knex) {
         "As a member of one of our product teams, this person will be responsible for creating, enhancing, and supporting common features. Working side-by-side with Product Owners, Quality Assurance Engineers, and Business Stakeholders.",
       requirements:
         "Must be proficient in object-oriented design and development and unit-testing, Web Services, and web pages preferably inASP.NETand/orASP.NETMVC with C#",
+      college_Degree: false,
       users_id: 8
     }
   ]);
