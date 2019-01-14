@@ -1,0 +1,19 @@
+.search-categories-container {
+  display: flex;
+  justify-content: center;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+  width: 100%;
+}
+
+.categories h5 {
+  margin: 0 1% 0 1%;
+}
+
+.search-bar {
+  margin-left: 3%;
+}
