@@ -10,6 +10,7 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
 
 import * as ROUTES from "../../constants/routes";
+import './Routes.css';
 
 class Routes extends Component {
   constructor(props) {

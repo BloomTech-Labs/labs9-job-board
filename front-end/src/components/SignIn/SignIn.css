@@ -1,0 +1,25 @@
+.sign-in-container {
+    width: 400px;
+    margin: 50px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sign-in-container .sign-in-form {
+    border: 1px solid blue;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sign-in-container .sign-in-form .form-label {
+    width: 100%;
+}
+
+.sign-in-container .sign-in-form .form-input {
+    width: 100%;
+}

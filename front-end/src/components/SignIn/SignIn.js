@@ -4,6 +4,8 @@ import { withRouter, Link, Redirect } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 
+import "./SignIn.css";
+
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 import facebookButton from '../../images/facebook-login-btn.png';
