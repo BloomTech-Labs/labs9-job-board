@@ -4,7 +4,7 @@ const helmet = require('helmet');
 
 const testRouter = require('../routers/testRouter.js');
 const router = require('../routers/router.js');
-
+const stripeRouter = require('../routers/stripeRouter.js');
 module.exports = server => {
 	// middleware
 	server.use(express.json());
