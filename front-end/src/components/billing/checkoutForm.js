@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { CardElement, injectStripe } from 'react-stripe-elements';
+import {
+	CardNumberElement,
+	CardExpiryElement,
+	CardCVCElement,
+	injectStripe,
+	StripeProvider,
+	Elements,
+} from 'react-stripe-elements';
 
 class CheckoutForm extends Component {
 	state = {
