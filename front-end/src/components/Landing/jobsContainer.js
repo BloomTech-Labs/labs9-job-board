@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import JobList from "./jobList";
@@ -50,9 +49,6 @@ class JobsContainer extends Component {
     console.log("Search", this.state.search);
     return (
       <div className="jobs-container">
-        <Link to="/sign-in">
-          <button>Post a job</button>
-        </Link>
         <Header />
         <div className="search-categories-container">
           <Categories />

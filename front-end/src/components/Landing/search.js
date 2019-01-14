@@ -10,6 +10,7 @@ const Search = props => {
         name="search"
         onChange={props.searchResults}
         value={props.search}
+        className="search-input"
       />
     </form>
   );

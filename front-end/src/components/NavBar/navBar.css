@@ -1,0 +1,13 @@
+.employer-login-container {
+  display: flex;
+  justify-content: end;
+}
+
+.employer-login {
+  border: 1px solid red;
+  width: 20%;
+}
+
+.employer-login h3 {
+  font-size: 2rem;
+}

@@ -6,14 +6,22 @@
 .categories {
   display: flex;
   justify-content: center;
+  align-items: center;
   border: 1px solid red;
   width: 100%;
+  height: 50px;
 }
 
 .categories h5 {
-  margin: 0 1% 0 1%;
+  margin: 0 3% 0 3%;
+  font-size: 1.5rem;
 }
 
 .search-bar {
   margin-left: 3%;
+}
+
+.search-bar .search-input {
+  height: 50px;
+  font-size: 1.5rem;
 }
