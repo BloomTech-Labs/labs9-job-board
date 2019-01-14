@@ -1,14 +1,17 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 
+import "./SignIn.css";
+
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
+import facebookButton from '../../images/facebook-login-btn.png';
 
 const SignIn = props => {
-  return <SignInForm />;
+  return props.authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignInForm />;
 };
 
 const DEFAULT_STATE = {
@@ -27,8 +30,27 @@ class SignInFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  googleAuthSubmit = event => {
+  googleAuthSubmit = async event => {
+    event.preventDefault();
     event.target.setAttribute("src", googleButtonPressed);
+    try {
+      const googleAuth = await this.props.firebase.doSignInWithGoogle();
+      // ----------- TO DO --------------
+      // save user info to db
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  facebookAuthSubmit = async event => {
+    event.preventDefault();
+    try {
+      const facebookAuth = await this.props.firebase.doSignInWithFacebook();
+      // ----------- TO DO --------------
+      // save user info to db
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   submitHandler = async event => {
@@ -48,45 +70,47 @@ class SignInFormUnconnected extends React.Component {
 
     return (
       <div className="sign-in-container">
+        <div className="sign-in-header"></div>
         <form className="sign-in-form" onSubmit={this.submitHandler}>
-          <label className="form-label">
-            Email:
-            <input
-              type="text"
-              name="email"
-              className="form-input"
-              onChange={this.changeHandler}
-              placeholder="Email"
-              value={this.state.email}
-              autoComplete="on"
-            />
-          </label>
-          <label className="form-label">
-            Password:
-            <input
-              type="password"
-              name="password"
-              className="form-input"
-              onChange={this.changeHandler}
-              placeholder="Password"
-              value={this.state.password}
-              autoComplete="off"
-            />
-          </label>
-          <button className="form-button" disabled={isInvalid} type="submit">
+          <input
+            type="text"
+            name="email"
+            className="sign-in-form-input"
+            onChange={this.changeHandler}
+            placeholder="Email"
+            value={this.state.email}
+            autoComplete="on"
+          />
+          <input
+            type="password"
+            name="password"
+            className="sign-in-form-input"
+            onChange={this.changeHandler}
+            placeholder="Password"
+            value={this.state.password}
+            autoComplete="off"
+          />
+          {this.state.error ? <span>{this.state.error.message}</span> : null}
+          <button className={`sign-in-form-button${isInvalid ? '' : ' not-disabled'}`} disabled={isInvalid} type="submit">
             Sign In
           </button>
-          {this.state.error ? <span>{this.state.error.message}</span> : null}
+          <img
+            src={googleButton}
+            alt="Sign in with Google"
+            onClick={this.googleAuthSubmit}
+          />
+          <img
+            src={facebookButton}
+            alt="Sign in with Facebook"
+            onClick={this.facebookAuthSubmit}
+          />
         </form>
-        <Link to={ROUTES.RESET_PASSWORD}>Forgot Password?</Link>
-        <span>
-          New user? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-        </span>
-        <img
-          src={googleButton}
-          alt="Sign in with Google"
-          onClick={this.googleAuthSubmit}
-        />
+        <div className="sign-in-footer">
+          <span><Link to={ROUTES.RESET_PASSWORD}>Forgot Password?</Link></span>
+          <span>
+            New user? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+          </span>
+        </div>
       </div>
     );
   }

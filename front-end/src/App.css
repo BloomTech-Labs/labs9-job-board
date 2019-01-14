@@ -1,14 +1,6 @@
-.App {
-  text-align: center;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 html {
   font-size: 62.5%;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
 
 p {
@@ -16,7 +8,7 @@ p {
   line-height: 1.4;
 }
 
-.container {
+.App {
   max-width: 1000px;
   width: 90%;
   margin: 0 auto;

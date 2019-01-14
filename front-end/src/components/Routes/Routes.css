@@ -1,0 +1,6 @@
+.routes {
+    width: 100%;
+    display: flex;
+    justify-items: flex-start;
+    align-self: flex-start;
+}
