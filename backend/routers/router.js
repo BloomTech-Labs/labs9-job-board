@@ -195,20 +195,20 @@ server.put('/users/:id', (req, res) => {
 
 });
 
-server.delete('/notes/:id', (req, res) => {
+server.delete('/users/:id', (req, res) => {
   const { id } = req.params;
-  db('notes')
+  db('users')
       .where({ id: id})
       .del()
       .then(count => {
           if (count === 0) {
-              res.status(404).json({ message: 'A note with that ID does not exist.' });
+              res.status(404).json({ message: 'A user with that ID does not exist.' });
           } else {
-              res.status(200).json({message: 'deleted the following amount of notes:',count});
+              res.status(200).json({message: 'deleted the following amount of users:',count});
           }
       })
       .catch(err => {
-          res.status(500).json({ error: 'There was an error deleting the note.', err });
+          res.status(500).json({ error: 'There was an error deleting the user.', err });
       });
 });
 
