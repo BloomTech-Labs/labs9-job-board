@@ -78,6 +78,18 @@ class CheckoutForm extends Component {
 						Post Job (12) - $99.99
 					</label>
 				</div>
+				<div className="form-check">
+					<label>
+						<input
+							type="radio"
+							name="react-tips"
+							value="option1"
+							checked={true}
+							className="form-check-input"
+						/>
+						Post Job - $9.99
+					</label>
+				</div>
 				<div className="error" role="alert">
 					{this.state.errorMessage}
 				</div>
