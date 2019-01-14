@@ -29,38 +29,23 @@ class CheckoutForm extends Component {
 	};
 
 	render() {
-		<form onSubmit={this.handleSubmit.bind(this)}>
-			<div className="split-form">
-				<label>
-					Card number
-					<CardNumberElement
-						{...createOptions()}
-						onChange={this.handleChange}
-					/>
-				</label>
-				<label>
-					Expiration date
-					<CardExpiryElement
-						{...createOptions()}
-						onChange={this.handleChange}
-					/>
-				</label>
-			</div>
-			<div className="split-form">
-				<label>
-					CVC
-					<CardCVCElement {...createOptions()} onChange={this.handleChange} />
-				</label>
-				<input
-					type="radio"
-					name="react-tips"
-					value="option1"
-					checked={true}
-					className="form-check-input"
-				/>
-			</div>
-			<div className="form-check">
-				<label>
+		return (
+			<form onSubmit={this.handleSubmit.bind(this)}>
+				<div className="split-form">
+					<label>
+						Card number
+						<CardNumberElement onChange={this.handleChange} />
+					</label>
+					<label>
+						Expiration date
+						<CardExpiryElement onChange={this.handleChange} />
+					</label>
+				</div>
+				<div className="split-form">
+					<label>
+						CVC
+						<CardCVCElement onChange={this.handleChange} />
+					</label>
 					<input
 						type="radio"
 						name="react-tips"
@@ -68,14 +53,25 @@ class CheckoutForm extends Component {
 						checked={true}
 						className="form-check-input"
 					/>
-					Unlimited Jobs, 1 Month $299.99
-				</label>
-			</div>
-			<div className="error" role="alert">
-				{this.state.errorMessage}
-			</div>
-			<button>Pay</button>
-		</form>;
+				</div>
+				<div className="form-check">
+					<label>
+						<input
+							type="radio"
+							name="react-tips"
+							value="option1"
+							checked={true}
+							className="form-check-input"
+						/>
+						Unlimited Jobs, 1 Month $299.99
+					</label>
+				</div>
+				<div className="error" role="alert">
+					{this.state.errorMessage}
+				</div>
+				<button>Pay</button>
+			</form>
+		);
 	}
 }
 
