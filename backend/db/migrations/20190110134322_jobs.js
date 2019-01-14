@@ -16,13 +16,13 @@ exports.up = function(knex, Promise) {
 
     tbl.string("familiar", 128);
 
-    tbl.string("description", 500).notNullable();
+    tbl.string("description", 4000).notNullable();
 
-    tbl.string("requirements", 128);
+    tbl.string("requirements", 5000);
 
     tbl.boolean("active").defaultTo(true);
 
-    tbl.boolean("collegeDegree").defaultTo(true);
+    tbl.boolean("college_Degree").defaultTo(false);
 
     tbl
       .timestamp("created_at")

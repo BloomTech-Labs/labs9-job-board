@@ -19,8 +19,9 @@ class SingleJob extends Component {
 
   fetchJob = id => {
     axios
-      .get(`${url}/test/jobs/${id}`)
+      .get(`${url}/api/job/${id}`)
       .then(res => {
+        console.log(res);
         this.setState(() => ({
           job: res.data
         }));
@@ -31,6 +32,7 @@ class SingleJob extends Component {
   };
 
   render() {
+    console.log("this.props", this.props);
     if (!this.state.job) {
       return <div>Loading Job...</div>;
     }
@@ -42,13 +44,16 @@ class SingleJob extends Component {
           <p>tell a friend</p>
           <p>Report</p>
         </div>
-        <h1>One Jobs</h1>
+        <img src={this.state.job.user.avatar_image} />
+        <h3>{this.state.job.user.company_name}</h3>
+        <h3>{this.state.job.user.summary}</h3>
         <h3>{this.state.job.title}</h3>
-        <h3>{this.state.job.company}</h3>
-        <h3>{this.state.job.addSkills}</h3>
         <h3>{this.state.job.salary}</h3>
-        <h3>{this.state.job.topSkills}</h3>
         <h3>{this.state.job.addSkills}</h3>
+        <h3>{this.state.job.topSkills}</h3>
+        <h3>{this.state.job.familiar}</h3>
+        <h3>{this.state.job.description}</h3>
+        <h3>{this.state.job.requirements}</h3>
         {this.state.job.collegeDegree === 0 ? (
           <h4>No College required</h4>
         ) : (

@@ -1,7 +1,6 @@
-const express = require('express');
-const knexConfig = require('../knexfile');
-const knex = require('knex');
-
+const express = require("express");
+const knexConfig = require("../knexfile");
+const knex = require("knex");
 
 const db = knex(knexConfig.development);
 const router = express.Router();
@@ -14,25 +13,35 @@ const router = express.Router();
 // Display all jobs
 router.get("/job", (req, res) => {
   // TODO: add database
-  then(allJobs => {
-    res.status(200).json(allJobs);
-  }).catch(error => {
-    res.status(500).json({
-      errorMessage: "The jobs information could not be retrieved.",
-      error: error
+  db("users")
+    .from("jobs")
+    .leftJoin("users", "jobs.users_id", "users.id")
+    .then(allJobs => {
+      res.status(200).json(allJobs);
+    })
+    .catch(error => {
+      res.status(500).json({
+        errorMessage: "The jobs information could not be retrieved.",
+        error: error
+      });
     });
-  });
 });
 
 // Display one job
 router.get("/job/:id", (req, res) => {
   const { id } = req.params;
-  // TODO: add database
-  where({ id })
+  db("jobs")
+    .where({ id })
     .first()
-    .then(singleJob => {
-      if (singleJob) {
-        res.status(200).json(singleJob);
+    .then(job => {
+      if (job) {
+        db("users")
+          .where({ id })
+          .first()
+          .then(user => {
+            job.user = user;
+            res.status(200).json(job);
+          });
       } else {
         res.status(404).json({
           errorMessage: "The job with the specified ID does not exist.",
@@ -126,24 +135,24 @@ router.put("/job/:id", (req, res) => {
 
 //-------------USER ENDPOINTS-------------------
 //GET all users
-router.get('/users', (req,res) => {
-	db('users')
-	.then(users => res.status(200).json(users))
-	.catch(err => res.status(500).json(err))
-})
+router.get("/users", (req, res) => {
+  db("users")
+    .then(users => res.status(200).json(users))
+    .catch(err => res.status(500).json(err));
+});
 
 //POST new user
-router.post('/users', (req, res) => {
-	const user = req.body;
+router.post("/users", (req, res) => {
+  const user = req.body;
 
-	db('users')
-	  .insert(user)
-	  .then(ids => {
-		res.status(201).json(ids);
-	  })
-	  .catch(err => {
-		res.status(500).json({ message: 'Error inserting user', err });
-	  });
-})
+  db("users")
+    .insert(user)
+    .then(ids => {
+      res.status(201).json(ids);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Error inserting user", err });
+    });
+});
 
 module.exports = router;
