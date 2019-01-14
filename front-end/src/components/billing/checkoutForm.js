@@ -52,7 +52,7 @@ class CheckoutForm extends Component {
 						<input
 							type="radio"
 							name="react-tips"
-							value="option1"
+							value="unlimited jobs"
 							checked={true}
 							className="form-check-input"
 						/>
@@ -64,7 +64,7 @@ class CheckoutForm extends Component {
 						<input
 							type="radio"
 							name="react-tips"
-							value="option1"
+							value="post job (12)"
 							checked={true}
 							className="form-check-input"
 						/>
@@ -76,7 +76,7 @@ class CheckoutForm extends Component {
 						<input
 							type="radio"
 							name="react-tips"
-							value="option1"
+							value="post job"
 							checked={true}
 							className="form-check-input"
 						/>
