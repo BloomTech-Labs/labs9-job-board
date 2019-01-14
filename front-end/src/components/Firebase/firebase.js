@@ -15,6 +15,24 @@ class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
+    this.googleProvider = new app.auth.GoogleAuthProvider();
+    this.facebookProvider = new app.auth.FacebookAuthProvider();
+  }
+
+  // SIGN IN - Google OAuth
+  doSignInWithGoogle = () => {
+    return this.auth.signInWithRedirect(this.googleProvider);
+  }
+
+  // SIGN IN - Facebook OAuth
+  doSignInWithFacebook = () => {
+    return this.auth.signInWithRedirect(this.facebookProvider);
+  }
+
+  // REDIRECT RESULT
+  // unsure if this will be needed
+  doGetRedirectData = () => {
+    return this.auth.getRedirectResult();
   }
 
   // SIGN UP - email and password

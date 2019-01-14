@@ -1,14 +1,15 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
+import facebookButton from '../../images/facebook-login-btn.png';
 
 const SignIn = props => {
-  return <SignInForm />;
+  return props.authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignInForm />;
 };
 
 const DEFAULT_STATE = {
@@ -27,8 +28,27 @@ class SignInFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  googleAuthSubmit = event => {
+  googleAuthSubmit = async event => {
+    event.preventDefault();
     event.target.setAttribute("src", googleButtonPressed);
+    try {
+      const googleAuth = await this.props.firebase.doSignInWithGoogle();
+      // ----------- TO DO --------------
+      // save user info to db
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  facebookAuthSubmit = async event => {
+    event.preventDefault();
+    try {
+      const facebookAuth = await this.props.firebase.doSignInWithFacebook();
+      // ----------- TO DO --------------
+      // save user info to db
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   submitHandler = async event => {
@@ -86,6 +106,11 @@ class SignInFormUnconnected extends React.Component {
           src={googleButton}
           alt="Sign in with Google"
           onClick={this.googleAuthSubmit}
+        />
+        <img
+          src={facebookButton}
+          alt="Sign in with Facebook"
+          onClick={this.facebookAuthSubmit}
         />
       </div>
     );
