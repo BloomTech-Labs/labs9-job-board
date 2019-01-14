@@ -1,0 +1,57 @@
+.nav-bar {
+  display: flex;
+  border: 1px solid blue;
+  justify-content: space-between;
+  align-items: center;
+  background: gray;
+  height: 100px;
+}
+
+.nav-bar .logo {
+  text-decoration: none;
+  margin-left: 0.5%;
+  border-radius: 20px;
+}
+
+.nav-bar .logo h1 {
+  font-size: 2rem;
+  color: black;
+  background-color: lightblue;
+  width: 100%;
+  padding: 10px;
+}
+
+.employer-login-container {
+  width: 10%;
+  margin-right: 0.5%;
+  background-color: lightblue;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.employer-login-container h3 {
+  margin: 0;
+}
+
+.login-buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login-buttons-container a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  background-color: purple;
+  border-radius: 20px;
+  width: 40%;
+  padding: 10px 0;
+}
+
+.login-buttons-container a:hover {
+  text-decoration: underline;
+}
