@@ -29,14 +29,34 @@ class CheckoutForm extends Component {
 	};
 
 	render() {
-		if (this.state.complete) return <h1>Purhcase Complete!</h1>;
-
-		return (
-			<div className="checkout">
-				<CardElement />
-				<button onClick={this.submit}>Buy</button>
+		<form onSubmit={this.handleSubmit.bind(this)}>
+			<div className="split-form">
+				<label>
+					Card number
+					<CardNumberElement
+						{...createOptions()}
+						onChange={this.handleChange}
+					/>
+				</label>
+				<label>
+					Expiration date
+					<CardExpiryElement
+						{...createOptions()}
+						onChange={this.handleChange}
+					/>
+				</label>
 			</div>
-		);
+			<div className="split-form">
+				<label>
+					CVC
+					<CardCVCElement {...createOptions()} onChange={this.handleChange} />
+				</label>
+			</div>
+			<div className="error" role="alert">
+				{this.state.errorMessage}
+			</div>
+			<button>Pay</button>
+		</form>;
 	}
 }
 
