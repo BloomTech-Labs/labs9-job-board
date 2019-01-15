@@ -4,8 +4,6 @@ import {
 	CardExpiryElement,
 	CardCVCElement,
 	injectStripe,
-	StripeProvider,
-	Elements,
 } from 'react-stripe-elements';
 
 class CheckoutForm extends Component {
