@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
 
-const cloudUrl = process.env.REACT_APP_CLOUD_PRESET;
-const cloudUpload = process.env.REACT_APP_CLOUD_UPLOAD;
+const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
+const CLOUD_UPLOAD = process.env.REACT_APP_CLOUDINARY_URL;
 
 class ProfilePic extends Component {
   constructor(props) {
@@ -19,30 +19,21 @@ class ProfilePic extends Component {
       uploadedPic: files[0]
     });
 
-    this.handeUpload(files[0]);
+    this.handleImageUpload(files[0]);
   }
 
-  handeUpload(file) {
-    const upload = request
-      .post(cloudUpload)
-      .field(`upload_reset`, cloudUrl)
-      .field("file", file);
+  handleImageUpload(file) {
+    let upload = request.post(CLOUD_UPLOAD).field("file", file);
 
-    upload
-      .then((err, res) => {
-        if (err) {
-          console.log(err);
-        }
-
-        if (res.body.secure_url !== "") {
-          this.setState({
-            picUrl: res.body.secure_url
-          });
-        }
-      })
-      .catch(err => {
+    upload.end((err, res) => {
+      if (err) {
         console.log(err);
-      });
+      } else if (res.body.secure_url !== "") {
+        this.setState({
+          picUrl: res.body.secure_url
+        });
+      }
+    });
   }
 
   render() {
@@ -51,7 +42,7 @@ class ProfilePic extends Component {
         <div>
           <Dropzone
             multipe={false}
-            onDrop={this.onDrop}
+            onDrop={this.onDrop.bind(this)}
             accept="image/jpg, image/png"
           >
             {({ getRootProps, getInputProps }) => {
