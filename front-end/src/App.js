@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./App.css";
-import Routes from "./components/Routes/Routes.js";
-import { withAuthentication } from './components/Sessions/index.js';
+import { withAuthentication } from './components/Session';
 
-import SignOut from './components/SignOut/SignOut';
+import Routes from "./components/Routes/Routes.js";
 import NavBar from "./components/NavBar/navBar";
 
 class App extends Component {

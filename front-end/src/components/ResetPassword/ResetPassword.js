@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 import { withFirebase } from '../Firebase/index';
 import ResetPasswordModal from './ResetPasswordModal';
 import * as ROUTES from '../../constants/routes';
+import { AuthenticatedUserContext } from '../Session';
 
 import "./ResetPassword.css";
 
@@ -24,8 +25,13 @@ class ResetPassword extends React.Component {
   render() {
     return (
       <div className="reset-password">
-        <ResetPasswordForm toggleModal={this.toggleModal} />
-        {this.state.modalVisible ? <ResetPasswordModal modalVisible={this.state.modalVisible} /> : null}
+        <AuthenticatedUserContext.Consumer>
+          {authenticatedUser => authenticatedUser ?
+            <Redirect to={ROUTES.LANDING} />
+            :
+            <ResetPasswordForm toggleModal={this.toggleModal} />
+          }
+        </AuthenticatedUserContext.Consumer>
       </div>
     )
   }
@@ -79,6 +85,7 @@ class ResetPasswordFormUnconnected extends React.Component {
           <button className={`reset-form-button${invalidInput ? '' : ' not-disabled'}`} disabled={invalidInput}>Reset Password</button>
           {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
+        {this.state.modalVisible ? <ResetPasswordModal modalVisible={this.state.modalVisible} /> : null}
       </div>
     );
   }
@@ -86,6 +93,6 @@ class ResetPasswordFormUnconnected extends React.Component {
 
 export default ResetPassword;
 
-const ResetPasswordForm = withFirebase(ResetPasswordFormUnconnected);
+const ResetPasswordForm = withRouter(withFirebase(ResetPasswordFormUnconnected));
 
 export { ResetPasswordForm };
