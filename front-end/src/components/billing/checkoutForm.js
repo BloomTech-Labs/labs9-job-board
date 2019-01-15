@@ -10,17 +10,18 @@ class CheckoutForm extends Component {
 	state = {
 		errorMessage: '',
 	};
-
+	// if error occurs, list the error that occured
 	handleChange = ({ error }) => {
 		if (error) {
 			this.setState({ errorMessage: error.message });
 		}
 	};
-
+	// if successfully submitted create a token
 	handleSubmit = evt => {
 		evt.preventDefault();
 		if (this.props.stripe) {
 			this.props.stripe.createToken().then(this.props.handleResult);
+			console.log('Token was created');
 		} else {
 			console.log("Stripe.js hasn't loaded yet.");
 		}
