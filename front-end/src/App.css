@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #f4f5f7;
 }
 
 * {
@@ -20,5 +21,5 @@ p {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
-  background-color: #f4f5f7;
+  background-color: #d3d3d3;
 }

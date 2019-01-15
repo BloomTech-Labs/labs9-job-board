@@ -11,7 +11,6 @@
 .nav-bar .logo {
   text-decoration: none;
   margin-left: 0.5%;
-  border-radius: 20px;
 }
 
 .nav-bar .logo h1 {
@@ -19,9 +18,14 @@
   font-weight: 500;
   color: white;
   background-color: #e82f3a;
-  border-radius: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
   width: 100%;
   padding: 10px;
+}
+
+.nav-bar .logo h1:hover {
+  border: 3px solid black;
 }
 
 /* ==========Employer Login========== */
@@ -30,13 +34,21 @@
   width: 10%;
   margin-right: 0.5%;
   background-color: #e82f3a;
+  border: 1px solid black;
   color: white;
   border-radius: 20px;
   font-size: 1.8rem;
-  height: 60px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  -webkit-transition: height 0.4s ease-in-out;
+  transition: height 0.4s ease-in-out;
+}
+
+.employer-login-container:hover {
+  height: 90px;
+  border: 2px solid black;
 }
 
 .employer-login-container h3 {
@@ -52,7 +64,7 @@
   font-size: 1.5rem;
   text-decoration: none;
   color: white;
-  background-color: rgba(255, 158, 78, 0.815);
+  background-color: gray;
   border-radius: 20px;
   width: 40%;
   padding: 5px 0;
