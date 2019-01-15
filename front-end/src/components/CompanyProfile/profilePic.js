@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Dropzone from "react-dropzone";
 import request from "superagent";
+import axios from "axios";
 
 const CLOUD_PRESET = process.env.REACT_APP_CLOUD_PRESET;
 const CLOUD_UPLOAD = process.env.REACT_APP_CLOUDINARY_URL;
