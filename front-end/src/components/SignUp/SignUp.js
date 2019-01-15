@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 
 import { withFirebase } from "../Firebase/index";
+import { AuthenticatedUserContext } from '../Session';
 
 import * as ROUTES from "../../constants/routes";
 
@@ -19,8 +20,16 @@ const DEFAULT_STATE = {
 };
 
 // component for /sign-up route
-const SignUp = props => {
-  return props.authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />;
+const SignUp = () => {
+  return (
+    <AuthenticatedUserContext.Consumer>
+      {authenticatedUser => authenticatedUser ?
+        <Redirect to={ROUTES.LANDING} />
+        :
+        < SignUpForm />
+      }
+    </AuthenticatedUserContext.Consumer>
+  );
 };
 
 // SignUpForm without Firebase connectivity

@@ -1,5 +1,5 @@
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable("users", function(tbl) {
+exports.up = function (knex, Promise) {
+  return knex.schema.createTable("users", function (tbl) {
     // make changes to the table using the tbl object passed as a parameter
 
     // primary key
@@ -9,7 +9,9 @@ exports.up = function(knex, Promise) {
     tbl
       .string("user_uid", 255)
       .notNullable()
-      .unique();
+      .unique()
+      .references("user_uid")
+      .inTable("login");
 
     // other fields
     tbl.string("first_name", 255).notNullable();
@@ -52,6 +54,6 @@ exports.up = function(knex, Promise) {
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   return knex.schema.dropTableIfExists("users");
 };

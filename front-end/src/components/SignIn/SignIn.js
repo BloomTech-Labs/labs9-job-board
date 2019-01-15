@@ -3,6 +3,7 @@ import { withRouter, Link, Redirect } from "react-router-dom";
 
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
+import { AuthenticatedUserContext } from '../Session';
 
 import "./SignIn.css";
 
@@ -10,8 +11,16 @@ import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 import facebookButton from '../../images/facebook-login-btn.png';
 
-const SignIn = props => {
-  return props.authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignInForm />;
+const SignIn = () => {
+  return (
+    <AuthenticatedUserContext.Consumer>
+      {authenticatedUser => authenticatedUser ?
+        <Redirect to={ROUTES.LANDING} />
+        :
+        < SignInForm />
+      }
+    </AuthenticatedUserContext.Consumer>
+  );
 };
 
 const DEFAULT_STATE = {

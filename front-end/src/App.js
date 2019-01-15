@@ -1,39 +1,28 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+
 import "./App.css";
+import { withAuthentication } from './components/Session';
+import { AuthenticatedUserContext } from './components/Session/index.js';
+
 import Routes from "./components/Routes/Routes.js";
-import { withFirebase } from './components/Firebase/index';
-import SignOut from './components/SignOut/SignOut';
 import NavBar from "./components/NavBar/navBar";
+import SignOut from './components/SignOut/SignOut.js';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      authenticatedUser: null
-    }
-  }
-
-  componentDidMount() {
-    this.listener = this.props.firebase.auth.onAuthStateChanged(authenticatedUser => {
-      authenticatedUser
-        ? this.setState({ authenticatedUser })
-        : this.setState({ authenticatedUser: null });
-    });
-  }
-
-  componentWillUnmount() {
-    this.listener();
-  }
-
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
-          {this.state.authenticatedUser ? <SignOut /> : null}
-          <Routes authenticatedUser={this.state.authenticatedUser} />
+          <AuthenticatedUserContext.Consumer>
+            {authenticatedUser => authenticatedUser ?
+              <SignOut />
+              :
+              null
+            }
+          </AuthenticatedUserContext.Consumer>
+          <Routes />
           {/* <Footer /> */}
         </div>
       </Router>
@@ -41,4 +30,4 @@ class App extends Component {
   }
 }
 
-export default withFirebase(App);
+export default withAuthentication(App);
