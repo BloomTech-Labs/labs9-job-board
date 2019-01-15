@@ -1,8 +1,6 @@
 const express = require("express");
-const knexConfig = require("../knexfile");
-const knex = require("knex");
 
-const db = knex(knexConfig.development);
+const db = require("../db/config");
 const router = express.Router();
 
 //-------------JOB ENDPOINTS-------------------
@@ -16,19 +14,6 @@ router.get("/job", (req, res) => {
   db("users")
     .from("jobs")
     .join("users", "jobs.users_id", "users.id")
-    .then(allJobs => {
-      res.status(200).json(allJobs);
-    })
-    .catch(error => {
-      res.status(501).json({
-        errorMessage: "The jobs information could not be retrieved.",
-        error: error
-      });
-    });
-});
-
-router.get("/jobs", (req, res) => {
-  db("jobs")
     .then(allJobs => {
       res.status(200).json(allJobs);
     })
