@@ -2,17 +2,38 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Routes from "./components/Routes/Routes.js";
+import { withFirebase } from './components/Firebase/index';
+import SignOut from './components/SignOut/SignOut';
 import NavBar from "./components/NavBar/navBar";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authenticatedUser: null
+    }
+  }
+
+  componentDidMount() {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authenticatedUser => {
+      authenticatedUser
+        ? this.setState({ authenticatedUser })
+        : this.setState({ authenticatedUser: null });
+    });
+  }
+
+  componentWillUnmount() {
+    this.listener();
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
-          <div className="container">
-            <Routes />
-          </div>
+          {this.state.authenticatedUser ? <SignOut /> : null}
+          <Routes authenticatedUser={this.state.authenticatedUser} />
           {/* <Footer /> */}
         </div>
       </Router>
@@ -20,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withFirebase(App);
