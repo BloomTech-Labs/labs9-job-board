@@ -39,6 +39,9 @@
 
 .hamburger .menu {
   margin: 0 1% 0 0;
+  text-align: center;
+  width: 100%;
+  display: none;
 }
 
 .hamburger .menu .nav-links {
@@ -46,14 +49,21 @@
   color: white;
   margin: 0 1%;
   line-height: 70px;
+  display: block;
+  border-bottom: 1px solid #eaeaeb;
 }
 
 .hamburger label {
   font-size: 2rem;
+  cursor: pointer;
 }
 
 #toggle {
   display: none;
+}
+
+#toggle:checked + .menu {
+  display: block;
 }
 
 /* ==========Employer Login========== */
