@@ -1,7 +1,8 @@
-exports.seed = function(knex) {
+exports.seed = function (knex) {
   // Deletes ALL existing entries
   return knex("users").insert([
     {
+      id: 1,
       user_uid: "wAGMaaOB8SWSbhKmfuCbPS3piXB2",
       first_name: "mike",
       last_name: "smith",
@@ -15,6 +16,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 2,
       user_uid: "ZQUtu2ibTpUFg68nPPoQMfFQQUN2",
       first_name: "steve",
       last_name: "smith",
@@ -28,6 +30,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 3,
       user_uid: "BnpuhRS5xWOeUyqfNvGyNqgz8HA2",
       first_name: "joe",
       last_name: "smith",
@@ -41,6 +44,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 4,
       user_uid: "k6zGdAGNXJboyBH22U4eKNAl3eh2",
       first_name: "mike",
       last_name: "smith",
@@ -55,6 +59,7 @@ exports.seed = function(knex) {
       unlimited: true
     },
     {
+      id: 5,
       user_uid: "dt6jVUI6dudYM5DrSWAbBTddMio1",
       first_name: "kim",
       last_name: "smith",
@@ -69,6 +74,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 6,
       user_uid: "BNfN3SgLy0XLoeAUvnQzt4I0upT2",
       first_name: "sally",
       last_name: "smith",
@@ -83,6 +89,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 7,
       user_uid: "0o49ThJUfaPqaYKzHBTS97v9KB01",
       first_name: "kelly",
       last_name: "smith",
@@ -96,6 +103,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 8,
       user_uid: "Z9X0aBtlsUWUZRI5KERVivFpJIw1",
       first_name: "jill",
       last_name: "smith",
@@ -109,6 +117,7 @@ exports.seed = function(knex) {
       unlimited: true
     },
     {
+      id: 9,
       user_uid: "tQzX7zHXAxYt3cwaLh5hiECa2vL2",
       first_name: "allie",
       last_name: "smith",
@@ -123,6 +132,7 @@ exports.seed = function(knex) {
       unlimited: false
     },
     {
+      id: 10,
       user_uid: "FGhDotudMKclCqaOCeT2HrzksUy2",
       first_name: "steve",
       last_name: "smith",
