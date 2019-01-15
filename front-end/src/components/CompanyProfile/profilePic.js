@@ -18,17 +18,60 @@ class ProfilePic extends Component {
     this.setState({
       uploadedPic: files[0]
     });
+
+    this.handeUpload(files[0]);
   }
+
+  handeUpload(file) {
+    const upload = request
+      .post(cloudUpload)
+      .field(`upload_reset`, cloudUrl)
+      .field("file", file);
+
+    upload
+      .then((err, res) => {
+        if (err) {
+          console.log(err);
+        }
+
+        if (res.body.secure_url !== "") {
+          this.setState({
+            picUrl: res.body.secure_url
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <form>
-        <Dropzone
-          multipe={false}
-          accept="image/jpg, image/png"
-          onDrop={this.onImageDrop.bind(this)}
-        >
-          <p>Upload a profile picture</p>
-        </Dropzone>
+        <div>
+          <Dropzone
+            multipe={false}
+            onDrop={this.onDrop}
+            accept="image/jpg, image/png"
+          >
+            {({ getRootProps, getInputProps }) => {
+              return (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {<p>Upload a profile picture</p>}
+                </div>
+              );
+            }}
+          </Dropzone>
+        </div>
+        <div>
+          {this.state.picUrl === "" ? null : (
+            <div>
+              <p>{this.state.uploadedPic.name}</p>
+              <img src={this.state.picUrl} />
+            </div>
+          )}
+        </div>
       </form>
     );
   }
