@@ -32,6 +32,7 @@ class ResetPassword extends React.Component {
             <ResetPasswordForm toggleModal={this.toggleModal} />
           }
         </AuthenticatedUserContext.Consumer>
+        {this.state.modalVisible ? <ResetPasswordModal modalVisible={this.state.modalVisible} /> : null}
       </div>
     )
   }
@@ -85,7 +86,6 @@ class ResetPasswordFormUnconnected extends React.Component {
           <button className={`reset-form-button${invalidInput ? '' : ' not-disabled'}`} disabled={invalidInput}>Reset Password</button>
           {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
-        {this.state.modalVisible ? <ResetPasswordModal modalVisible={this.state.modalVisible} /> : null}
       </div>
     );
   }

@@ -10,7 +10,6 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
 
 import * as ROUTES from "../../constants/routes";
-import { AuthenticatedUserContext } from '../Sessions/index.js';
 import './Routes.css';
 
 class Routes extends Component {
