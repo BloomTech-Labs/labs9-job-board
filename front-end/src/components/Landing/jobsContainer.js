@@ -58,8 +58,7 @@ class JobsContainer extends Component {
             search={this.state.search}
           />
         </div>
-        {/* Temporarily added job component to fix styling */}
-        <Jobs />
+        <Jobs /> {/* Temporarily added <Jobs /> component to fix styling */}
         <JobList
           jobs={
             this.state.searchJobs.length > 0
