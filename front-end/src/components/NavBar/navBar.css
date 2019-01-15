@@ -1,11 +1,12 @@
 .nav-bar {
   display: flex;
-  border: 1px solid blue;
   justify-content: space-between;
   align-items: center;
   background: gray;
   height: 100px;
 }
+
+/* ==========Logo========== */
 
 .nav-bar .logo {
   text-decoration: none;
@@ -22,6 +23,8 @@
   width: 100%;
   padding: 10px;
 }
+
+/* ==========Employer Login========== */
 
 .employer-login-container {
   width: 10%;

@@ -10,7 +10,9 @@ const Header = props => {
         <h2>
           No degree? <br /> No problem.
         </h2>
-        <h4>Bridging together brilliant minds with prominent companies.</h4>
+        <h4>
+          Matching brilliant minds with the world's most prominent companies.
+        </h4>
         <p>
           Looking to hire?{" "}
           <span>

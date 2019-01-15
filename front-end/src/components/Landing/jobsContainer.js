@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import JobList from "./jobList";
+import Jobs from "./job";
 import Search from "./search";
 import Categories from "./categories";
 import Header from "./header";
@@ -57,6 +58,8 @@ class JobsContainer extends Component {
             search={this.state.search}
           />
         </div>
+        {/* Temporarily added job component to fix styling */}
+        <Jobs />
         <JobList
           jobs={
             this.state.searchJobs.length > 0
