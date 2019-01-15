@@ -11,16 +11,29 @@ const router = express.Router();
 // TODO: Test routes -- ONCE COMPLETE DELETE THIS TODO
 
 // Display all jobs
+
 router.get("/job", (req, res) => {
-  
   db("users")
     .from("jobs")
-    .leftJoin("users", "jobs.users_id", "users.id")
+    .join("users", "jobs.users_id", "users.id")
     .then(allJobs => {
       res.status(200).json(allJobs);
     })
     .catch(error => {
-      res.status(500).json({
+      res.status(501).json({
+        errorMessage: "The jobs information could not be retrieved.",
+        error: error
+      });
+    });
+});
+
+router.get("/jobs", (req, res) => {
+  db("jobs")
+    .then(allJobs => {
+      res.status(200).json(allJobs);
+    })
+    .catch(error => {
+      res.status(501).json({
         errorMessage: "The jobs information could not be retrieved.",
         error: error
       });
@@ -62,7 +75,7 @@ router.post("/job", (req, res) => {
   const newJob = { ...req.body };
 
   if (newJob) {
-    db("jobs")
+    db("jobs");
     insert(newJob)
       .then(addJob => {
         res.status(201).json(addJob[0]);
@@ -137,8 +150,12 @@ router.put("/job/:id", (req, res) => {
 //GET all users
 router.get("/users", (req, res) => {
   db("users")
-    .then(users => res.status(200).json(users))
-    .catch(err => res.status(500).json(err));
+    .then(users => {
+      res.status(200).json(users);
+    })
+    .catch(err => {
+      res.status(501).json(err);
+    });
 });
 
 //POST new user
@@ -156,61 +173,73 @@ router.post("/users", (req, res) => {
 });
 
 //GET user by id
-router.get('/users/:id', (req, res) => {
+router.get("/users/:id", (req, res) => {
   const { id } = req.params;
-  
+
   db("users")
-    .where({ id: id})
+    .where({ id: id })
     .first()
     .then(user => {
       if (!user) {
-          res.status(404).json({ message: 'A user with that ID was not found.' });
+        res.status(404).json({ message: "A user with that ID was not found." });
       } else {
-          res.status(200).json(user);
+        res.status(200).json(user);
       }
-  })
-  .catch(err => {
-      res.status(500).json({ error: 'There was an error getting the user.', err });
-  });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: "There was an error getting the user.", err });
+    });
 });
 
 //UPDATE user
-router.put('/users/:id', (req, res) => {
+router.put("/users/:id", (req, res) => {
   const changes = req.body;
   const { id } = req.params;
 
-  db('users')
+  db("users")
     .where({ id: id })
     .update(changes)
     .then(count => {
-        if (count === 0) {
-            res.status(404).json({ message: 'A user with that ID does not exist.' });
-        } else {
-            res.status(201).json({message: 'updated the following amount of users:',count});
-        }
+      if (count === 0) {
+        res
+          .status(404)
+          .json({ message: "A user with that ID does not exist." });
+      } else {
+        res
+          .status(201)
+          .json({ message: "updated the following amount of users:", count });
+      }
     })
     .catch(err => {
-        res.status(500).json({ error: 'There was an error editing the user.', err });
+      res
+        .status(500)
+        .json({ error: "There was an error editing the user.", err });
     });
-
 });
 
-router.delete('/users/:id', (req, res) => {
+router.delete("/users/:id", (req, res) => {
   const { id } = req.params;
-  db('users')
-      .where({ id: id})
-      .del()
-      .then(count => {
-          if (count === 0) {
-              res.status(404).json({ message: 'A user with that ID does not exist.' });
-          } else {
-              res.status(200).json({message: 'deleted the following amount of users:',count});
-          }
-      })
-      .catch(err => {
-          res.status(500).json({ error: 'There was an error deleting the user.', err });
-      });
+  db("users")
+    .where({ id: id })
+    .del()
+    .then(count => {
+      if (count === 0) {
+        res
+          .status(404)
+          .json({ message: "A user with that ID does not exist." });
+      } else {
+        res
+          .status(200)
+          .json({ message: "deleted the following amount of users:", count });
+      }
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: "There was an error deleting the user.", err });
+    });
 });
-
 
 module.exports = router;
