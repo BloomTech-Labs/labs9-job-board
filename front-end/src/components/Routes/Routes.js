@@ -10,6 +10,7 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
 
 import * as ROUTES from "../../constants/routes";
+import { AuthenticatedUserContext } from '../Sessions/index.js';
 import './Routes.css';
 
 class Routes extends Component {
@@ -28,8 +29,8 @@ class Routes extends Component {
         <Route path={ROUTES.POST_JOB} component={PostJob} />
         <Route path={ROUTES.COMPANY_PROFILE} component={Profile} />
         <Route path={ROUTES.BILLING} component={Billing} />
-        <Route path={ROUTES.SIGN_UP} render={props => <SignUp {...props} authenticatedUser={this.props.authenticatedUser} />} />
-        <Route path={ROUTES.SIGN_IN} render={props => <SignIn {...props} authenticatedUser={this.props.authenticatedUser} />} />
+        <Route path={ROUTES.SIGN_UP} component={SignUp} />
+        <Route path={ROUTES.SIGN_IN} component={SignIn} />
         <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
         <Route path={ROUTES.ACCOUNT} />
       </div>
