@@ -28,6 +28,34 @@
   border: 3px solid black;
 }
 
+/* ==========Hamburger========== */
+
+.hamburger {
+  border-bottom: 1px solid #eaeaeb;
+  text-align: right;
+  height: 70px;
+  line-height: 1.1;
+}
+
+.hamburger .menu {
+  margin: 0 1% 0 0;
+}
+
+.hamburger .menu .nav-links {
+  text-decoration: none;
+  color: white;
+  margin: 0 1%;
+  line-height: 70px;
+}
+
+.hamburger label {
+  font-size: 2rem;
+}
+
+#toggle {
+  display: none;
+}
+
 /* ==========Employer Login========== */
 
 .employer-login-container {
