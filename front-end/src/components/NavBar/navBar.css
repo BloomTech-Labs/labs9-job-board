@@ -35,10 +35,10 @@
   text-align: right;
   height: 70px;
   line-height: 1.1;
+  margin: 0 1% 0 0;
 }
 
 .hamburger .menu {
-  margin: 0 1% 0 0;
   text-align: center;
   width: 100%;
   display: none;
@@ -54,7 +54,7 @@
 }
 
 .hamburger label {
-  font-size: 2rem;
+  font-size: 4rem;
   cursor: pointer;
 }
 
@@ -64,6 +64,10 @@
 
 #toggle:checked + .menu {
   display: block;
+}
+
+.yooo {
+  height: 100%;
 }
 
 /* ==========Employer Login========== */

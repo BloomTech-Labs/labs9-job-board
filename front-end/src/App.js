@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Routes from "./components/Routes/Routes.js";
-import { withFirebase } from './components/Firebase/index';
-import SignOut from './components/SignOut/SignOut';
-import NavBar from "./components/NavBar/navBar";
+import { withFirebase } from "./components/Firebase/index";
+import SignOut from "./components/SignOut/SignOut";
+import Toolbar from "./components/Toolbar/Toolbar";
 
 class App extends Component {
   constructor(props) {
@@ -12,15 +12,17 @@ class App extends Component {
 
     this.state = {
       authenticatedUser: null
-    }
+    };
   }
 
   componentDidMount() {
-    this.listener = this.props.firebase.auth.onAuthStateChanged(authenticatedUser => {
-      authenticatedUser
-        ? this.setState({ authenticatedUser })
-        : this.setState({ authenticatedUser: null });
-    });
+    this.listener = this.props.firebase.auth.onAuthStateChanged(
+      authenticatedUser => {
+        authenticatedUser
+          ? this.setState({ authenticatedUser })
+          : this.setState({ authenticatedUser: null });
+      }
+    );
   }
 
   componentWillUnmount() {
@@ -31,7 +33,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar />
+          <Toolbar />
           {this.state.authenticatedUser ? <SignOut /> : null}
           <Routes authenticatedUser={this.state.authenticatedUser} />
           {/* <Footer /> */}
