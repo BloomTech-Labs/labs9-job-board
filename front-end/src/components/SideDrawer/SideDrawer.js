@@ -3,8 +3,13 @@ import { NavLink } from "react-router-dom";
 import "./SideDrawer.css";
 
 const SideDrawer = props => {
+  let drawerClasses = "side-drawer";
+
+  if (props.show) {
+    drawerClasses = "open";
+  }
   return (
-    <nav className="side-drawer">
+    <nav className={drawerClasses}>
       <div className="side-drawer-navigation-items">
         <NavLink className="nav-NavLinks" to="/">
           Home

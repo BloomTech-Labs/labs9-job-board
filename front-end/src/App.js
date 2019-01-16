@@ -28,11 +28,9 @@ class App extends Component {
   };
 
   render() {
-    let sideDrawer;
     let backdrop;
 
     if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />;
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
@@ -40,7 +38,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Toolbar drawerToggleClickHandler={this.drawerToggleClickHandler} />
-          {sideDrawer}
+          <SideDrawer show={this.state.sideDrawerOpen} />
           {backdrop}
           <AuthenticatedUserContext.Consumer>
             {authenticatedUser => (authenticatedUser ? <SignOut /> : null)}
