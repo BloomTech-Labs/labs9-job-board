@@ -1,3 +1,56 @@
+/* ==========Toolbar========== */
+
+.toolbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: gray;
+  height: 60px;
+}
+
+.toolbar-navigation {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */ /* CONNECTED WITH BELOW*/
+  height: 100%;
+  padding: 0 1%;
+}
+
+.toolbar-logo {
+  margin-left: 1%;
+}
+
+.toolbar-logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 4rem;
+}
+
+.toolbar-navigation-items {
+  width: 100%; /* HERE (15min of video) */
+}
+
+.toolbar-navigation-items {
+  font-size: 1.5rem;
+  margin-left: 2%;
+  display: flex;
+}
+
+.toolbar-navigation-items a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 1%;
+  margin: 0 2%;
+  background-color: #e82f3a;
+  border-radius: 2px;
+}
+
+.toolbar-navigation-items a:hover,
+.toolbar-navigation-items a:active {
+  background-color: black;
+}
+
 /* ==========Toggle Button========== */
 
 .toggle-button {
@@ -31,12 +84,36 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 400px;
+  width: 25%;
+  z-index: 200;
+}
+
+.side-drawer-navigation-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-align: left;
+  margin-left: 10%;
+}
+
+.side-drawer-navigation-items a {
+  margin: 1rem 0;
+  color: #e82f3a;
+  text-decoration: none;
+}
+
+.side-drawer-navigation-items a:hover,
+.side-drawer-navigation-items a:active {
+  color: orange;
 }
 
 .backdrop {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: ;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  top: 0;
+  left: 0;
 }
