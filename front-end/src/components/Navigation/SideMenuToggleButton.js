@@ -1,8 +1,7 @@
 import React from "react";
+import "./Navigation.css";
 
-import "./SideDrawer.css";
-
-const DrawerToggleButton = props => {
+const SideMenuToggleButton = props => {
   return (
     <button className="toggle-button" onClick={props.click}>
       <div className="toggle-button-line" />
@@ -12,4 +11,4 @@ const DrawerToggleButton = props => {
   );
 };
 
-export default DrawerToggleButton;
+export default SideMenuToggleButton;

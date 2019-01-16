@@ -1,6 +1,6 @@
-/* ==========Toolbar========== */
+/* ==========Navbar========== */
 
-.toolbar {
+.navbar {
   width: 100%;
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@
   height: 60px;
 }
 
-.toolbar-navigation {
+.navbar-navigation {
   display: flex;
   align-items: center;
   /* justify-content: space-between; */ /* CONNECTED WITH BELOW*/
@@ -17,27 +17,27 @@
   padding: 0 1%;
 }
 
-.toolbar-logo {
+.navbar-logo {
   margin-left: 1%;
 }
 
-.toolbar-logo a {
+.navbar-logo a {
   color: white;
   text-decoration: none;
   font-size: 4rem;
 }
 
-.toolbar-navigation-items {
+.navbar-navigation-items {
   width: 100%; /* HERE (15min of video) */
 }
 
-.toolbar-navigation-items {
+.navbar-navigation-items {
   font-size: 1.5rem;
   margin-left: 2%;
   display: flex;
 }
 
-.toolbar-navigation-items a {
+.navbar-navigation-items a {
   color: white;
   text-decoration: none;
   padding: 10px 1%;
@@ -46,8 +46,8 @@
   border-radius: 2px;
 }
 
-.toolbar-navigation-items a:hover,
-.toolbar-navigation-items a:active {
+.navbar-navigation-items a:hover,
+.navbar-navigation-items a:active {
   background-color: black;
 }
 
@@ -75,9 +75,9 @@
   background-color: white;
 }
 
-/* ==========Side Drawer========== */
+/* ==========Side Menu========== */
 
-.side-drawer {
+.side-menu {
   height: 100%;
   background: white;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.8);
@@ -103,7 +103,7 @@
   transition: transform 0.3s ease-out;
 }
 
-.side-drawer-navigation-items {
+.side-menu-navigation-items {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,14 +112,14 @@
   margin-left: 10%;
 }
 
-.side-drawer-navigation-items a {
+.side-menu-navigation-items a {
   margin: 1rem 0;
   color: #e82f3a;
   text-decoration: none;
 }
 
-.side-drawer-navigation-items a:hover,
-.side-drawer-navigation-items a:active {
+.side-menu-navigation-items a:hover,
+.side-menu-navigation-items a:active {
   color: orange;
 }
 

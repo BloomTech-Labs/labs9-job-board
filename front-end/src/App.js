@@ -6,40 +6,15 @@ import { withAuthentication } from "./components/Session";
 import { AuthenticatedUserContext } from "./components/Session/index.js";
 
 import Routes from "./components/Routes/Routes.js";
-
-import Toolbar from "./components/Toolbar/Toolbar";
-import SideDrawer from "./components/SideDrawer/SideDrawer";
-import Backdrop from "./components/Backdrop/Backdrop";
+import Navigation from "./components/Navigation/Navigation";
 import SignOut from "./components/SignOut/SignOut.js";
 
 class App extends Component {
-  state = {
-    sideDrawerOpen: false
-  };
-
-  drawerToggleClickHandler = () => {
-    this.setState(prevState => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
-
   render() {
-    let backdrop;
-
-    if (this.state.sideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />;
-    }
-
     return (
       <Router>
         <div className="App">
-          <Toolbar drawerToggleClickHandler={this.drawerToggleClickHandler} />
-          <SideDrawer show={this.state.sideDrawerOpen} />
-          {backdrop}
+          <Navigation />
           <AuthenticatedUserContext.Consumer>
             {authenticatedUser => (authenticatedUser ? <SignOut /> : null)}
           </AuthenticatedUserContext.Consumer>
