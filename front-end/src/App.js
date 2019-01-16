@@ -35,7 +35,10 @@ class App extends Component {
         <div className="App">
           <Toolbar />
           {this.state.authenticatedUser ? <SignOut /> : null}
-          <Routes authenticatedUser={this.state.authenticatedUser} />
+          <Routes
+            className="routes"
+            authenticatedUser={this.state.authenticatedUser}
+          />
           {/* <Footer /> */}
         </div>
       </Router>

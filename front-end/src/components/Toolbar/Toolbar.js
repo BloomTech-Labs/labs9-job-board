@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Toolbar.css";
 
 const Toolbar = props => {
@@ -11,48 +11,30 @@ const Toolbar = props => {
           <Link to="/">Logo</Link>
         </div>
         <div className="toolbar-navigation-items">
-          <ul>
-            <li>
-              <Link className="nav-links" to="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/jobs/:id">
-                Single Job
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/post-job">
-                Post Job
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/billing">
-                Billing
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/account">
-                Account
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/sign-up">
-                Sign Up
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/sign-in">
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-links" to="/reset-password">
-                Reset Password
-              </Link>
-            </li>
-          </ul>
+          <NavLink className="nav-NavLinks" to="/">
+            Home
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/jobs/:id">
+            Single Job
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/post-job">
+            Post Job
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/billing">
+            Billing
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/account">
+            Account
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/sign-up">
+            Sign Up
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/sign-in">
+            Sign In
+          </NavLink>
+          <NavLink className="nav-NavLinks" to="/reset-password">
+            Reset Password
+          </NavLink>
         </div>
       </nav>
     </header>
