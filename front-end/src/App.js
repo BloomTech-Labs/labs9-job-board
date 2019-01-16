@@ -6,15 +6,14 @@ import { withAuthentication } from './components/Session';
 import { AuthenticatedUserContext } from './components/Session/index.js';
 
 import Routes from "./components/Routes/Routes.js";
-import NavBar from "./components/NavBar/navBar";
-import SignOut from './components/SignOut/SignOut.js';
 
-class App extends Component {
+import Toolbar from "./components/Toolbar/Toolbar";
+import SignOut from './components/SignOut/SignOut.js';
   render() {
     return (
       <Router>
         <div className="App">
-          <NavBar />
+          <Toolbar />
           <AuthenticatedUserContext.Consumer>
             {authenticatedUser => authenticatedUser ?
               <SignOut />

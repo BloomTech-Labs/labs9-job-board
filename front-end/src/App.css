@@ -9,7 +9,7 @@
 
 html {
   font-size: 62.5%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 p {
@@ -22,4 +22,8 @@ p {
   width: 90%;
   margin: 0 auto;
   background-color: #d3d3d3;
+}
+
+.routes {
+  margin-top: 70px;
 }

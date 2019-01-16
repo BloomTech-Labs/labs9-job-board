@@ -28,6 +28,48 @@
   border: 3px solid black;
 }
 
+/* ==========Hamburger========== */
+
+.hamburger {
+  border-bottom: 1px solid #eaeaeb;
+  text-align: right;
+  height: 70px;
+  line-height: 1.1;
+  margin: 0 1% 0 0;
+}
+
+.hamburger .menu {
+  text-align: center;
+  width: 100%;
+  display: none;
+}
+
+.hamburger .menu .nav-links {
+  text-decoration: none;
+  color: white;
+  margin: 0 1%;
+  line-height: 70px;
+  display: block;
+  border-bottom: 1px solid #eaeaeb;
+}
+
+.hamburger label {
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+#toggle {
+  display: none;
+}
+
+#toggle:checked + .menu {
+  display: block;
+}
+
+.yooo {
+  height: 100%;
+}
+
 /* ==========Employer Login========== */
 
 .employer-login-container {
