@@ -45,7 +45,9 @@ router.get("/job/:id", (req, res) => {
             "summary",
             "application_method",
             "avatar_image",
-            "balance"
+            "balance",
+            "created_at",
+            "updated_at"
           )
           .then(user => {
             job.user = user;
