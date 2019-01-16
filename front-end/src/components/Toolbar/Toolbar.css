@@ -15,6 +15,10 @@
   padding: 0 1%;
 }
 
+.toolbar-logo {
+  margin-left: 1%;
+}
+
 .toolbar-logo a {
   color: white;
   text-decoration: none;

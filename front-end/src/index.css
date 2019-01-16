@@ -109,6 +109,7 @@ section {
 }
 body {
   line-height: 1;
+  height: 100%;
 }
 ol,
 ul {
@@ -130,6 +131,8 @@ table {
   border-spacing: 0;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }

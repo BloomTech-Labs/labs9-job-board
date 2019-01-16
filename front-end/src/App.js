@@ -8,6 +8,7 @@ import { AuthenticatedUserContext } from "./components/Session/index.js";
 import Routes from "./components/Routes/Routes.js";
 
 import Toolbar from "./components/Toolbar/Toolbar";
+import SideDrawer from "./components/SideDrawer/SideDrawer";
 import SignOut from "./components/SignOut/SignOut.js";
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <SideDrawer />
           <Toolbar />
           <AuthenticatedUserContext.Consumer>
             {authenticatedUser => (authenticatedUser ? <SignOut /> : null)}
