@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
+import ProfilePic from "./profilePic";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -65,8 +66,11 @@ class UpdateProfile extends Component {
           return(
               <div>
                   <ProfileForm />
-                  <p>{this.state}</p>
+                  <ProfilePic />
+                  
               </div>
           )
       }
 }
+
+export default UpdateProfile;
