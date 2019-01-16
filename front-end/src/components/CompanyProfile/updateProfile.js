@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ProfileForm from "./Profile";
+import ProfileForm from "./profileForm";
 
 const url = process.env.REACT_APP_DB_URL;
 
