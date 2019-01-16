@@ -89,7 +89,7 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="react-tips"
 							value="post job"
-							checked={this.state.select.selectedOption === 'post job'}
+							checked={this.state.selectedOption === 'post job'}
 							onChange={this.handleOptionChange}
 							className="form-check-input"
 						/>
