@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
+// import ProfilePic from "./profilePic";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -20,20 +21,7 @@ class UpdateProfile extends Component {
         };
     }
 
-    componentDidMount() {
-        const id = this.props.match.params.id
-        this.getUser(id);
-    }
-
-    getUser = id => {
-        axios 
-            .get(`${url}/api/users/${id}`)
-            .then(res => {
-                this.setState(() => ({user:res.data}))
-            })
-            .catch(error => console.log(error))
-    }
-
+   
     updateUser = e => {
         e.preventDefault();
         const id = this.props.match.params.id;
@@ -65,8 +53,11 @@ class UpdateProfile extends Component {
           return(
               <div>
                   <ProfileForm />
-                  <p>{this.state}</p>
+                  {/* <ProfilePic /> */}
+                  
               </div>
           )
       }
 }
+
+export default UpdateProfile;

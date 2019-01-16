@@ -17,14 +17,16 @@ class App extends Component {
         <div className="App">
           <Toolbar />
           <AuthenticatedUserContext.Consumer>
-            {authenticatedUser => (authenticatedUser ? <SignOut /> : null)}
+            {authenticatedUser =>  (authenticatedUser ? <SignOut /> : null)}
           </AuthenticatedUserContext.Consumer>
           <Routes className="routes" />
           {/* <Footer /> */}
         </div>
       </Router>
-    );
+    )
   }
 }
+
+
 
 export default withAuthentication(App);
