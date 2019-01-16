@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./App.css";
-import { withAuthentication } from './components/Session';
-import { AuthenticatedUserContext } from './components/Session/index.js';
+import { withAuthentication } from "./components/Session";
+import { AuthenticatedUserContext } from "./components/Session/index.js";
 
 import Routes from "./components/Routes/Routes.js";
+
+import Toolbar from "./components/Toolbar/Toolbar";
+import SignOut from "./components/SignOut/SignOut.js";
+
 
 import Toolbar from "./components/Toolbar/Toolbar";
 import SignOut from './components/SignOut/SignOut.js';
@@ -15,13 +19,9 @@ import SignOut from './components/SignOut/SignOut.js';
         <div className="App">
           <Toolbar />
           <AuthenticatedUserContext.Consumer>
-            {authenticatedUser => authenticatedUser ?
-              <SignOut />
-              :
-              null
-            }
+            {authenticatedUser => (authenticatedUser ? <SignOut /> : null)}
           </AuthenticatedUserContext.Consumer>
-          <Routes />
+          <Routes className="routes" />
           {/* <Footer /> */}
         </div>
       </Router>
