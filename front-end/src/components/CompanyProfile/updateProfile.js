@@ -8,6 +8,7 @@ class UpdateProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: [],
             image: '',
             email: '',
             firstName: '',
@@ -28,7 +29,7 @@ class UpdateProfile extends Component {
         axios 
             .get(`${url}/api/users/${id}`)
             .then(res => {
-                this.setState(() => (res.data))
+                this.setState(() => ({user:res.data}))
             })
             .catch(error => console.log(error))
     }
@@ -49,7 +50,22 @@ class UpdateProfile extends Component {
 
         axios
         .put(`${url}/api/users/${id}`, updatedUser)
-        .then
-        .catch
+        .then(res => {
+            console.log('response', res)
+            this.setState({ user: res.data })
+        .catch( err => console.log(err))
+        })
     }
+
+    changeHandler = event => {
+        this.setState({ [event.target.name]: event.target.value });
+      };
+
+      render() {
+          return(
+              <div>
+                  <p>{this.state}</p>
+              </div>
+          )
+      }
 }
