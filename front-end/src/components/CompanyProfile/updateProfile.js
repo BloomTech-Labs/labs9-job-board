@@ -64,6 +64,7 @@ class UpdateProfile extends Component {
       render() {
           return(
               <div>
+                  <ProfileForm />
                   <p>{this.state}</p>
               </div>
           )
