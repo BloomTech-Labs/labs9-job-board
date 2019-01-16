@@ -6,9 +6,9 @@ import EmployerLogin from "./employerLogin";
 const NavBar = props => {
   return (
     <div className="nav-bar">
-      <a href="/" className="logo">
+      <Link to="/" className="logo">
         <h1>Knowledge Without College!</h1>
-      </a>
+      </Link>
       <EmployerLogin />
     </div>
   );

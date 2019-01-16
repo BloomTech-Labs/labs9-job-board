@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #f4f5f7;
 }
 
 * {
@@ -8,7 +9,7 @@
 
 html {
   font-size: 62.5%;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
 
 p {
@@ -17,8 +18,8 @@ p {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   width: 90%;
   margin: 0 auto;
-  background-color: #f4f5f7;
+  background-color: #d3d3d3;
 }

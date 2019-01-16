@@ -7,8 +7,8 @@ const EmployerLogin = props => {
     <div className="employer-login-container">
       <h3>Employers</h3>
       <div className="login-buttons-container">
-        <a href="/sign-in">Log In</a>
-        <a href="/sign-up">Sign Up</a>
+        <Link to="/sign-in">Log In</Link>
+        <Link to="/sign-up">Sign Up</Link>
       </div>
     </div>
   );
