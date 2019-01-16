@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const url = process.env.REACT_APP_DB_URL;
+
 
 const ProfileForm = props => {
   return (
@@ -58,9 +58,7 @@ const ProfileForm = props => {
         
       </form>
       <div>
-        <p>Old Password</p>
-        <p>New Password</p>
-        <p>Confirm Password</p>
+        <p>Change Password with Firebase Form</p>
       </div>
       <button> Billing and Jobs </button>
 
