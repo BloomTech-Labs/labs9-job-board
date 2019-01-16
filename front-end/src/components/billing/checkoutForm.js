@@ -10,6 +10,12 @@ class CheckoutForm extends Component {
 	state = {
 		errorMessage: '',
 	};
+	// initiating the radio button 
+	getInitialState = () => {
+		return {
+			selectedOption: 'unlimited jobs'
+		};
+	}
 	// if error occurs, list the error that occured
 	handleChange = ({ error }) => {
 		if (error) {
@@ -26,6 +32,10 @@ class CheckoutForm extends Component {
 			console.log("Stripe.js hasn't loaded yet.");
 		}
 	};
+
+	// handleOptionChange = () => {
+	// 	this.setState({selectedOption: })
+	// }
 
 	render() {
 		return (
@@ -52,8 +62,9 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="react-tips"
 							value="unlimited jobs"
-							checked={true}
+							checked={this.state.selectedOption === 'unlimited jobs'}
 							className="form-check-input"
+							onChange={}
 						/>
 						Unlimited Jobs, 1 Month $299.99
 					</label>
