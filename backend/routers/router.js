@@ -33,6 +33,7 @@ router.get("/job/:id", (req, res) => {
     .first()
     .then(job => {
       if (job) {
+        console.log(job);
         db("users")
           .where({ id })
           .first()
@@ -44,9 +45,7 @@ router.get("/job/:id", (req, res) => {
             "summary",
             "application_method",
             "avatar_image",
-            "balance",
-            "created_at",
-            "updated_at"
+            "balance"
           )
           .then(user => {
             job.user = user;
