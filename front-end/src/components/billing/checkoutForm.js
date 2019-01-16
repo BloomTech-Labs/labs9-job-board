@@ -33,7 +33,7 @@ class CheckoutForm extends Component {
 			console.log("Stripe.js hasn't loaded yet.");
 		}
 	};
-
+	// for handling radio buttons
 	handleOptionChange = changeEvent => {
 		this.setState({ selectedOption: changeEvent.target.value });
 	};
