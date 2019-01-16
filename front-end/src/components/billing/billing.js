@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Elements, StripeProvider } from 'react-stripe-elements';
-import BillingCheckout from './billingCheckout';
+import CheckoutForm from './checkoutForm';
 
 class Billing extends Component {
 	render() {
@@ -9,7 +9,7 @@ class Billing extends Component {
 				<div className="billing-header">
 					<h1>KWC Billing</h1>
 					<Elements>
-						<BillingCheckout />
+						<CheckoutForm />
 					</Elements>
 				</div>
 			</StripeProvider>
