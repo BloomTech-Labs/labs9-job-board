@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navigation.css";
+import "./NavigationStyles.css";
 
 const Backdrop = props => {
   return <div className="backdrop" onClick={props.click} />;

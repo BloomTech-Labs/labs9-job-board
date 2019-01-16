@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../sideMenu/sideMenu.css";
-import sideMenuToggleButton from "../sideMenu/DrawerToggleButton";
+import "./NavigationStyles.css";
+import SideMenuToggleButton from "./SideMenuToggleButton";
 
 const Navbar = props => {
   return (

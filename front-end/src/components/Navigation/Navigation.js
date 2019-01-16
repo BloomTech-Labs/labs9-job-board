@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-import Toolbar from "./Toolbar";
+import Navbar from "./Navbar";
 import Backdrop from "./Backdrop";
+import SideMenu from "./SideMenu";
 
 class Navigation extends Component {
   state = {
@@ -14,20 +15,23 @@ class Navigation extends Component {
     });
   };
 
-  backdropClickHandler = () => {
+  closeSideMenuClickHandler = () => {
     this.setState({ sideMenuOpen: false });
   };
 
   render() {
     let backdrop;
     if (this.state.sideMenuOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />;
+      backdrop = <Backdrop click={this.closeSideMenuClickHandler} />;
     }
 
     return (
-      <div className="App">
-        <Toolbar sideMenuToggleClickHandler={this.sideMenuToggleClickHandler} />
-        <SideMenu show={this.state.sideMenuOpen} />
+      <div>
+        <Navbar sideMenuToggleClickHandler={this.sideMenuToggleClickHandler} />
+        <SideMenu
+          click={this.closeSideMenuClickHandler}
+          show={this.state.sideMenuOpen}
+        />
         {backdrop}
       </div>
     );
