@@ -1,44 +1,27 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+
 import "./App.css";
+import { withAuthentication } from './components/Session';
+import { AuthenticatedUserContext } from './components/Session/index.js';
+
 import Routes from "./components/Routes/Routes.js";
-import { withFirebase } from "./components/Firebase/index";
-import SignOut from "./components/SignOut/SignOut";
+
 import Toolbar from "./components/Toolbar/Toolbar";
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      authenticatedUser: null
-    };
-  }
-
-  componentDidMount() {
-    this.listener = this.props.firebase.auth.onAuthStateChanged(
-      authenticatedUser => {
-        authenticatedUser
-          ? this.setState({ authenticatedUser })
-          : this.setState({ authenticatedUser: null });
-      }
-    );
-  }
-
-  componentWillUnmount() {
-    this.listener();
-  }
-
+import SignOut from './components/SignOut/SignOut.js';
   render() {
     return (
       <Router>
         <div className="App">
           <Toolbar />
-          {this.state.authenticatedUser ? <SignOut /> : null}
-          <Routes
-            className="routes"
-            authenticatedUser={this.state.authenticatedUser}
-          />
+          <AuthenticatedUserContext.Consumer>
+            {authenticatedUser => authenticatedUser ?
+              <SignOut />
+              :
+              null
+            }
+          </AuthenticatedUserContext.Consumer>
+          <Routes />
           {/* <Footer /> */}
         </div>
       </Router>
@@ -46,4 +29,4 @@ class App extends Component {
   }
 }
 
-export default withFirebase(App);
+export default withAuthentication(App);
