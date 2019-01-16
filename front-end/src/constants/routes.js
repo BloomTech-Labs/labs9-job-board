@@ -1,7 +1,7 @@
 export const LANDING = "/";
 export const JOB = "/jobs/:id";
 export const POST_JOB = "/post-job";
-export const COMPANY_PROFILE = "/profile";
+// export const COMPANY_PROFILE = "/profile";
 export const BILLING = "/billing";
 export const SIGN_UP = "/sign-up";
 export const SIGN_IN = "/sign-in";
