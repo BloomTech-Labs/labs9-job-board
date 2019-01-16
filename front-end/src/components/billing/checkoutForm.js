@@ -23,8 +23,9 @@ class CheckoutForm extends Component {
 		}
 	};
 	// if successfully submitted create a token
-	handleSubmit = evt => {
-		evt.preventDefault();
+	handleSubmit = formSubmitEvent => {
+		formSubmitEvent.preventDefault();
+		console.log('You have selected:', this.state.selectedOption);
 		if (this.props.stripe) {
 			this.props.stripe.createToken().then(this.props.handleResult);
 			console.log('Token was created');
