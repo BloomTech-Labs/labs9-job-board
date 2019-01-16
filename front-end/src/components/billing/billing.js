@@ -11,6 +11,8 @@ class Billing extends Component {
 					<h1>KWC Billing</h1>
 					<Elements>
 						<CheckoutForm />
+					</Elements>
+					<Elements>
 						<BillingCheckout />
 					</Elements>
 				</div>
