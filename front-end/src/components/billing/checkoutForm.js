@@ -10,12 +10,12 @@ class CheckoutForm extends Component {
 	state = {
 		errorMessage: '',
 	};
-	// initiating the radio button 
+	// initiating the radio button
 	getInitialState = () => {
 		return {
-			selectedOption: 'unlimited jobs'
+			selectedOption: 'unlimited jobs',
 		};
-	}
+	};
 	// if error occurs, list the error that occured
 	handleChange = ({ error }) => {
 		if (error) {
@@ -64,7 +64,6 @@ class CheckoutForm extends Component {
 							value="unlimited jobs"
 							checked={this.state.selectedOption === 'unlimited jobs'}
 							className="form-check-input"
-							onChange={}
 						/>
 						Unlimited Jobs, 1 Month $299.99
 					</label>
@@ -87,7 +86,7 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="react-tips"
 							value="post job"
-							checked={true}
+							checked={this.state.select.selectedOption === 'post job'}
 							className="form-check-input"
 						/>
 						Post Job - $9.99
