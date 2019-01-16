@@ -33,9 +33,9 @@ class CheckoutForm extends Component {
 		}
 	};
 
-	// handleOptionChange = () => {
-	// 	this.setState({selectedOption: })
-	// }
+	handleOptionChange = () => {
+		this.setState({ selectedOption: changeEvent.target.value });
+	};
 
 	render() {
 		return (
@@ -63,6 +63,7 @@ class CheckoutForm extends Component {
 							name="react-tips"
 							value="unlimited jobs"
 							checked={this.state.selectedOption === 'unlimited jobs'}
+							onChange={this.handleOptionChange}
 							className="form-check-input"
 						/>
 						Unlimited Jobs, 1 Month $299.99
@@ -75,6 +76,7 @@ class CheckoutForm extends Component {
 							name="react-tips"
 							value="post job (12)"
 							checked={this.state.selectedOption === 'post job (12)'}
+							onChange={this.handleOptionChange}
 							className="form-check-input"
 						/>
 						Post Job (12) - $99.99
@@ -87,6 +89,7 @@ class CheckoutForm extends Component {
 							name="react-tips"
 							value="post job"
 							checked={this.state.select.selectedOption === 'post job'}
+							onChange={this.handleOptionChange}
 							className="form-check-input"
 						/>
 						Post Job - $9.99
