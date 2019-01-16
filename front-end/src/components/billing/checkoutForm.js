@@ -34,7 +34,7 @@ class CheckoutForm extends Component {
 		}
 	};
 
-	handleOptionChange = () => {
+	handleOptionChange = changeEvent => {
 		this.setState({ selectedOption: changeEvent.target.value });
 	};
 
