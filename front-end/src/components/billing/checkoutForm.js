@@ -75,7 +75,7 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="react-tips"
 							value="post job (12)"
-							checked={true}
+							checked={this.state.selectedOption === 'post job (12)'}
 							className="form-check-input"
 						/>
 						Post Job (12) - $99.99
