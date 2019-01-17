@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import JobsContainer from "../Landing/jobsContainer";
-import SingleJob from "../Landing/singleJob.js";
-import PostJob from "../postJob/postJob.js";
+import JobsContainer from "../Landing/JobsContainer";
+import SingleJob from "../Landing/SingleJob";
+import PostJob from "../PostJob/PostJob";
 import Profile from "../CompanyProfile/profileForm.js";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
@@ -10,7 +10,7 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
 
 import * as ROUTES from "../../constants/routes";
-import './Routes.css';
+import "./Routes.css";
 
 class Routes extends Component {
   constructor(props) {

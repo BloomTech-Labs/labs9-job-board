@@ -5,7 +5,7 @@ import {
   Input,
   InputContainer,
   TextArea
-} from "./jobFormStyling";
+} from "./JobFormStyling";
 
 const JobForm = props => {
   return (
