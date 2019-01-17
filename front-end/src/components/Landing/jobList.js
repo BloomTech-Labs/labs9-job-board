@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Jobs from "./Job";
+import Jobs from "./job";
 
 const JobList = props => {
   return (
