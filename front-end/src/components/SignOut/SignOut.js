@@ -4,6 +4,8 @@ import { withFirebase } from "../Firebase";
 
 import * as ROUTES from "../../constants/routes";
 
+import "./SignOut.css";
+
 class SignOut extends React.Component {
   constructor(props) {
     super(props);
