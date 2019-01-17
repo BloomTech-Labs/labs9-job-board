@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import JobsContainer from "../Landing/JobsContainer";
-import SingleJob from "../Landing/SingleJob";
-import PostJob from "../PostJob/PostJob";
+import JobsContainer from "../Landing/jobsContainer";
+import SingleJob from "../Landing/singleJob";
+import PostJob from "../postJob/postJob";
 import Profile from "../CompanyProfile/profileForm.js";
 import UpdateProfile from "../CompanyProfile/updateProfile.js";
 import SignUp from "../SignUp/SignUp";
