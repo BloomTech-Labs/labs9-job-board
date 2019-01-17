@@ -19,26 +19,13 @@ const paymentApi = app => {
 	});
 
 	app.post('/', async (req, res) => {
-		// const body = {
-		// 	token: req.body.token.id,
-		// 	amount: req.body.amount,
-		// 	currency: 'usd',
-		// };
+		const body = {
+			token: req.body.token.id,
+			amount: req.body.amount,
+			currency: 'usd',
+		};
 
-		// stripe.charges.create(body, stripeChargeCallback(res));
-
-		try {
-			let { status } = await stripe.charges.create({
-				amount: 2000,
-				currency: 'usd',
-				description: 'An example charge',
-				source: req.body,
-			});
-
-			res.json({ status });
-		} catch (err) {
-			res.status(500).end();
-		}
+		stripe.charges.create(body, stripeChargeCallback(res));
 	});
 	return app;
 };
