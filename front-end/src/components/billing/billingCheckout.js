@@ -24,7 +24,7 @@ const billingCheckout = () => {
 	};
 	return (
 		<div>
-			<div>
+			{/* <div>
 				<StripeCheckout
 					label="Unlimited Jobs" //Component button text
 					name="KWC" //Modal Header
@@ -34,7 +34,7 @@ const billingCheckout = () => {
 					token={onToken}
 					stripeKey={publishableKey}
 				/>
-			</div>
+			</div> */}
 			<div>
 				<StripeCheckout
 					label="Post Jobs" //Component button text
@@ -46,7 +46,7 @@ const billingCheckout = () => {
 					stripeKey={publishableKey}
 				/>
 			</div>
-			<div>
+			{/* <div>
 				<StripeCheckout
 					label="Post Job" //Component button text
 					name="KWC" //Modal Header
@@ -56,7 +56,7 @@ const billingCheckout = () => {
 					token={onToken}
 					stripeKey={publishableKey}
 				/>
-			</div>
+			</div> */}
 		</div>
 	);
 };
