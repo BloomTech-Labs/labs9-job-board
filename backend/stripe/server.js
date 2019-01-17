@@ -1,19 +1,19 @@
 const express = require('express');
-const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
-const router = express.Router();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
-router.post('/charge', async (req, res) => {
-	try {
-		let { status } = await stripe.charges.create({
-			amount: 2000,
-			currency: 'usd',
-			description: 'An example cahrge',
-			source: req.body,
-		});
-		res.jsson({ status });
-	} catch (err) {
-		res.status(500).end();
-	}
+dotenv.config();
+
+const app = express();
+
+app.use(cors());
+
+const configureRoutes = require('./routes');
+
+configureRoutes(app);
+
+app.listen(8000, error => {
+	if (error) throw error;
+	console.log('Server running on port ' + 8000);
 });
-
-module.exports = router;
