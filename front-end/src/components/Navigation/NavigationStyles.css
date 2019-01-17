@@ -109,9 +109,11 @@
   flex-direction: column;
   height: 100%;
   text-align: left;
+  flex-wrap: wrap;
 }
 
 .side-menu-navigation-items a {
+  width: 100%;
   padding: 30px 0;
   color: black;
   text-decoration: none;

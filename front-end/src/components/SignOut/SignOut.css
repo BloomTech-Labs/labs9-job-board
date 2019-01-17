@@ -1,0 +1,15 @@
+.hamburger-button {
+  padding: 30px 0;
+  color: black;
+  text-decoration: none;
+  background-color: #d3d3d3;
+  border-bottom: 1px solid #7a7a7a;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.hamburger-button:hover,
+.hamburger-button:active {
+  color: #e82f3a;
+  background-color: #afafaf;
+}
