@@ -25,7 +25,7 @@ exports.up = function (knex, Promise) {
     tbl.boolean("college_degree").defaultTo(false);
 
     tbl
-      .timestamp("created_at")
+      .date("created_at")
       .defaultTo(knex.raw("now()"))
       .notNullable();
 
