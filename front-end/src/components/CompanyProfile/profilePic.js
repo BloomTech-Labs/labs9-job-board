@@ -29,7 +29,14 @@ class ProfilePic extends Component {
   }
 
   render() {
-    return <div />;
+    return (
+      <div>
+        <button onClick={this.uploadPhoto.bind(this)}>Add Image</button>
+        {this.state.profilePic.length > 0 ? (
+          <img src={this.state.profilePic[0].url} />
+        ) : null}
+      </div>
+    );
   }
 }
 
