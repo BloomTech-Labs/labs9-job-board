@@ -14,7 +14,7 @@ const billingCheckout = () => {
 
 		axios
 			// need help figuring out what to add to the post routes to match up with the backend route
-			.post('http://localhost:8000/billing', body => {})
+			.post('http://localhost:9000/', body => {})
 			.then(response => {
 				console.log(response);
 				alert('Payment Success!');

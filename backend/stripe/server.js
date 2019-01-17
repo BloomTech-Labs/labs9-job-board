@@ -18,7 +18,7 @@ const configureRoutes = require('./index');
 
 configureRoutes(app);
 
-app.listen(8000, error => {
+app.listen(9000, error => {
 	if (error) throw error;
-	console.log('Server running on port ' + 8000);
+	console.log('Server running on port ' + 9000);
 });
