@@ -20,43 +20,44 @@ const billingCheckout = () => {
 			})
 			.catch(error => {
 				console.log('Payment Error: ', error);
+				console.log('token created');
 			});
 	};
 	return (
 		<div>
-			{/* <div>
+			<div>
 				<StripeCheckout
 					label="Unlimited Jobs" //Component button text
 					name="KWC" //Modal Header
 					description="Unlimited Jobs (1 month)"
-					panelLabel="Unlimited Jobs" //Submit button in modal
+					panelLabel="100 credits" //Submit button in modal
 					amount={29999} //Amount in cents $299.99
 					token={onToken}
 					stripeKey={publishableKey}
 				/>
-			</div> */}
+			</div>
 			<div>
 				<StripeCheckout
 					label="Post Jobs" //Component button text
 					name="KWC" //Modal Header
 					description="Post Jobs (12)"
-					panelLabel="Post Jobs" //Submit button in modal
+					panelLabel="5 credits" //Submit button in modal
 					amount={9999} //Amount in cents $99.99
 					token={onToken}
 					stripeKey={publishableKey}
 				/>
 			</div>
-			{/* <div>
+			<div>
 				<StripeCheckout
 					label="Post Job" //Component button text
 					name="KWC" //Modal Header
 					description="Post a Job"
-					panelLabel="Post a Job" //Submit button in modal
+					panelLabel="1 credit" //Submit button in modal
 					amount={999} //Amount in cents $9.99
 					token={onToken}
 					stripeKey={publishableKey}
 				/>
-			</div> */}
+			</div>
 		</div>
 	);
 };
