@@ -16,12 +16,10 @@ const billingCheckout = () => {
 			// need help figuring out what to add to the post routes to match up with the backend route
 			.post('http://localhost:9000/', body => {})
 			.then(response => {
-				console.log(response);
-				alert('Payment Success!');
+				console.log('Payment Success', response);
 			})
 			.catch(error => {
 				console.log('Payment Error: ', error);
-				alert('Payment Error');
 			});
 	};
 	return (
