@@ -4,6 +4,7 @@ import JobsContainer from "../Landing/JobsContainer";
 import SingleJob from "../Landing/SingleJob";
 import PostJob from "../PostJob/PostJob";
 import Profile from "../CompanyProfile/profileForm.js";
+import UpdateProfile from "../CompanyProfile/updateProfile.js";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import ResetPassword from "../ResetPassword/ResetPassword";
@@ -26,12 +27,12 @@ class Routes extends Component {
         <Route exact path={ROUTES.LANDING} component={JobsContainer} />
         <Route path={ROUTES.JOB} render={props => <SingleJob {...props} />} />
         <Route path={ROUTES.POST_JOB} component={PostJob} />
-        <Route path={ROUTES.COMPANY_PROFILE} component={Profile} />
+        {/* <Route path={ROUTES.COMPANY_PROFILE} component={Profile} /> */}
         <Route path={ROUTES.BILLING} component={Billing} />
         <Route path={ROUTES.SIGN_UP} component={SignUp} />
         <Route path={ROUTES.SIGN_IN} component={SignIn} />
         <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
-        <Route path={ROUTES.ACCOUNT} />
+        <Route path={ROUTES.ACCOUNT} component = {UpdateProfile} />
       </div>
     );
   }
