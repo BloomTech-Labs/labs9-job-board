@@ -33,6 +33,7 @@ router.get("/job/:id", (req, res) => {
     .first()
     .then(job => {
       if (job) {
+        console.log(job);
         db("users")
           .where({ id })
           .first()
