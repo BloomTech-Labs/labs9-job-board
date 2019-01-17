@@ -17,6 +17,7 @@ const paymentApi = app => {
 			timestamp: new Date().toISOString(),
 		});
 	});
+
 	app.post('/billing', (req, res) => {
 		const body = {
 			token: req.body.token.id,
