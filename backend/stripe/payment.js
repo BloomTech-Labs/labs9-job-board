@@ -17,7 +17,7 @@ const paymentApi = app => {
 		});
 	});
 
-	app.post('/', async (req, res) => {
+	app.post('/payment', async (req, res) => {
 		const body = {
 			token: req.body.token.id,
 			amount: req.body.amount,
