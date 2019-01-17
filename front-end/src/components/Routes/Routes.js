@@ -9,6 +9,7 @@ import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
+import RedirectPage from "../RedirectPage/RedirectPage";
 
 import * as ROUTES from "../../constants/routes";
 import "./Routes.css";
@@ -30,9 +31,10 @@ class Routes extends Component {
         {/* <Route path={ROUTES.COMPANY_PROFILE} component={Profile} /> */}
         <Route path={ROUTES.BILLING} component={Billing} />
         <Route path={ROUTES.SIGN_UP} component={SignUp} />
-        <Route path={ROUTES.SIGN_IN} component={SignIn} />
+        <Route path={ROUTES.SIGN_IN} render={() => <SignIn />} />
         <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
-        <Route path={ROUTES.ACCOUNT} component = {UpdateProfile} />
+        <Route path={ROUTES.REDIRECT} component={RedirectPage} />
+        <Route path={ROUTES.ACCOUNT} component={UpdateProfile} />
       </div>
     );
   }

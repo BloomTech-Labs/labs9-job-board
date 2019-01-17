@@ -2,14 +2,14 @@ import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 
 import { withFirebase } from "../Firebase/index";
-import { AuthenticatedUserContext } from '../Session';
+import { AuthenticatedUserContext } from "../Session";
 
 import * as ROUTES from "../../constants/routes";
 
 import "./SignUp.css";
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
-import facebookButton from '../../images/facebook-login-btn.png';
+// import facebookButton from '../../images/facebook-login-btn.png';
 
 // initial state, form submission state reset
 const DEFAULT_STATE = {
@@ -23,10 +23,8 @@ const DEFAULT_STATE = {
 const SignUp = () => {
   return (
     <AuthenticatedUserContext.Consumer>
-      {authenticatedUser => authenticatedUser ?
-        <Redirect to={ROUTES.LANDING} />
-        :
-        < SignUpForm />
+      {authenticatedUser =>
+        authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />
       }
     </AuthenticatedUserContext.Consumer>
   );
@@ -55,16 +53,16 @@ class SignUpFormUnconnected extends React.Component {
     }
   };
 
-  facebookAuthSubmit = async event => {
-    event.preventDefault();
-    try {
-      const facebookAuth = await this.props.firebase.doSignInWithFacebook();
-      // ----------- TO DO --------------
-      // save user info to db
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // facebookAuthSubmit = async event => {
+  //   event.preventDefault();
+  //   try {
+  //     const facebookAuth = await this.props.firebase.doSignInWithFacebook();
+  //     // ----------- TO DO --------------
+  //     // save user info to db
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   submitHandler = async event => {
     event.preventDefault();
@@ -92,7 +90,7 @@ class SignUpFormUnconnected extends React.Component {
 
     return (
       <div className="sign-up-container">
-        <div className="sign-up-header"></div>
+        <div className="sign-up-header" />
         <form className="sign-up-form" onSubmit={this.submitHandler}>
           <input
             type="text"
@@ -121,7 +119,11 @@ class SignUpFormUnconnected extends React.Component {
             value={this.state.confirmPassword}
             autoComplete="off"
           />
-          <button className={`sign-up-form-button${isInvalid ? '' : ' not-disabled'}`} disabled={isInvalid} type="submit">
+          <button
+            className={`sign-up-form-button${isInvalid ? "" : " not-disabled"}`}
+            disabled={isInvalid}
+            type="submit"
+          >
             Sign Up
           </button>
           <img
@@ -129,11 +131,11 @@ class SignUpFormUnconnected extends React.Component {
             alt="Sign in with Google"
             onClick={this.googleAuthSubmit}
           />
-          <img
+          {/* <img
             src={facebookButton}
             alt="Sign in with Facebook"
             onClick={this.facebookAuthSubmit}
-          />
+          /> */}
           {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
         <span>

@@ -1,10 +1,10 @@
 import React from "react";
-import { withRouter, Redirect } from 'react-router-dom';
+import { Link, withRouter, Redirect } from "react-router-dom";
 
-import { withFirebase } from '../Firebase/index';
-import ResetPasswordModal from './ResetPasswordModal';
-import * as ROUTES from '../../constants/routes';
-import { AuthenticatedUserContext } from '../Session';
+import { withFirebase } from "../Firebase/index";
+import ResetPasswordModal from "./ResetPasswordModal";
+import * as ROUTES from "../../constants/routes";
+import { AuthenticatedUserContext } from "../Session";
 
 import "./ResetPassword.css";
 
@@ -13,35 +13,39 @@ class ResetPassword extends React.Component {
     super(props);
     this.state = {
       modalVisible: false
-    }
+    };
   }
 
   toggleModal = () => {
     this.setState(prevState => ({
       modalVisible: !prevState.modalVisible
     }));
-  }
+  };
 
   render() {
     return (
       <div className="reset-password">
         <AuthenticatedUserContext.Consumer>
-          {authenticatedUser => authenticatedUser ?
-            <Redirect to={ROUTES.LANDING} />
-            :
-            <ResetPasswordForm toggleModal={this.toggleModal} />
+          {authenticatedUser =>
+            authenticatedUser ? (
+              <Redirect to={ROUTES.LANDING} />
+            ) : (
+              <ResetPasswordForm toggleModal={this.toggleModal} />
+            )
           }
         </AuthenticatedUserContext.Consumer>
-        {this.state.modalVisible ? <ResetPasswordModal modalVisible={this.state.modalVisible} /> : null}
+        {this.state.modalVisible ? (
+          <ResetPasswordModal modalVisible={this.state.modalVisible} />
+        ) : null}
       </div>
-    )
+    );
   }
 }
 
 const DEFAULT_STATE = {
-  email: '',
+  email: "",
   error: null
-}
+};
 
 class ResetPasswordFormUnconnected extends React.Component {
   constructor(props) {
@@ -65,14 +69,14 @@ class ResetPasswordFormUnconnected extends React.Component {
     } catch (error) {
       this.setState({ error });
     }
-  }
+  };
 
   render() {
-    const invalidInput = (this.state.email === '');
+    const invalidInput = this.state.email === "";
 
     return (
       <div className="reset-container">
-        <div className="reset-header"></div>
+        <div className="reset-header" />
         <form className="reset-form" onSubmit={this.submitHandler}>
           <input
             type="text"
@@ -83,9 +87,19 @@ class ResetPasswordFormUnconnected extends React.Component {
             value={this.state.email}
             autoComplete="on"
           />
-          <button className={`reset-form-button${invalidInput ? '' : ' not-disabled'}`} disabled={invalidInput}>Reset Password</button>
+          <button
+            className={`reset-form-button${
+              invalidInput ? "" : " not-disabled"
+            }`}
+            disabled={invalidInput}
+          >
+            Reset Password
+          </button>
           {this.state.error ? <span>{this.state.error.message}</span> : null}
         </form>
+        <span>
+          Remember your password? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        </span>
       </div>
     );
   }
@@ -93,6 +107,8 @@ class ResetPasswordFormUnconnected extends React.Component {
 
 export default ResetPassword;
 
-const ResetPasswordForm = withRouter(withFirebase(ResetPasswordFormUnconnected));
+const ResetPasswordForm = withRouter(
+  withFirebase(ResetPasswordFormUnconnected)
+);
 
 export { ResetPasswordForm };
