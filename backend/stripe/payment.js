@@ -13,9 +13,9 @@ const paymentApi = app => {
 			timestamp: new Date().toISOString(),
 		});
 	});
-	app.post('/', (req, res) => {
+	app.post('/payment', (req, res) => {
 		const body = {
-			source: req.body.token.id,
+			token: req.body.token.id,
 			amount: req.body.amount,
 			currency: 'usd',
 		};
