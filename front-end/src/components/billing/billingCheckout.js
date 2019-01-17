@@ -7,9 +7,9 @@ const billingCheckout = () => {
 
 	const onToken = token => {
 		const body = {
-			unlimited_jobs: 29999,
-			post_jobs12: 9999,
-			post_job: 999,
+			// unlimited_jobs: 29999,
+			// post_jobs12: 9999,
+			// post_job: 999,
 			token: token,
 		};
 
