@@ -6,8 +6,7 @@ import { withAuthentication } from "./components/Session";
 import { AuthenticatedUserContext } from "./components/Session/index.js";
 
 import Routes from "./components/Routes/Routes.js";
-
-import Toolbar from "./components/Toolbar/Toolbar";
+import Navigation from "./components/Navigation/Navigation";
 import SignOut from "./components/SignOut/SignOut.js";
 
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Toolbar />
+          <Navigation />
           <AuthenticatedUserContext.Consumer>
             {authenticatedUser =>  (authenticatedUser ? <SignOut /> : null)}
           </AuthenticatedUserContext.Consumer>

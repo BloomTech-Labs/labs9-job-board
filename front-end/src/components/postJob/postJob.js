@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import JobForm from "./jobForm";
+import JobForm from "./JobForm";
 import axios from "axios";
 
 const url = process.env.REACT_APP_DB_UR;
