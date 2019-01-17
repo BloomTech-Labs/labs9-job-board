@@ -33,9 +33,22 @@ router.get("/job/:id", (req, res) => {
     .first()
     .then(job => {
       if (job) {
+        console.log(job);
         db("users")
           .where({ id })
           .first()
+          .select(
+            "first_name",
+            "last_name",
+            "email",
+            "company_name",
+            "summary",
+            "application_method",
+            "avatar_image",
+            "balance",
+            "created_at",
+            "updated_at"
+          )
           .then(user => {
             job.user = user;
             res.status(200).json(job);

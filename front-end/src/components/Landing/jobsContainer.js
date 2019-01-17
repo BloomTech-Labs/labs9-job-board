@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import JobList from "./jobList";
-import Jobs from "./job";
-import Search from "./search";
-import Categories from "./categories";
-import Header from "./header";
+import JobList from "./JobList";
+import Jobs from "./Job";
+import Search from "./Search";
+import Categories from "./Categories";
+import Header from "./Header";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -49,7 +49,7 @@ class JobsContainer extends Component {
     console.log("click", this.handleInput);
     console.log("Search", this.state.search);
     return (
-      <div className="jobs-container">
+      <div className="jobs-container container">
         <Header />
         <div className="search-categories-container">
           <Categories />
