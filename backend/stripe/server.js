@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors());
 
-const configureRoutes = require('./routes');
+const configureRoutes = require('./index');
 
 configureRoutes(app);
 
