@@ -33,9 +33,22 @@ router.get("/job/:id", (req, res) => {
     .first()
     .then(job => {
       if (job) {
+        console.log(job);
         db("users")
           .where({ id })
           .first()
+          .select(
+            "first_name",
+            "last_name",
+            "email",
+            "company_name",
+            "summary",
+            "application_method",
+            "avatar_image",
+            "balance",
+            "created_at",
+            "updated_at"
+          )
           .then(user => {
             job.user = user;
             res.status(200).json(job);
@@ -53,6 +66,26 @@ router.get("/job/:id", (req, res) => {
         error: error
       });
     });
+});
+
+router.get("/jobs/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const jobs = await db("jobs")
+      .where({ "jobs.id": id })
+      .join("users", "jobs.users_id", "=", "users.id");
+    // .select("last_name");
+    if (!jobs.length) {
+      return res.status(400).json({
+        errorMessage: "The job with the specified ID does not exis"
+      });
+    }
+    return res.status(200).json(jobs);
+  } catch (err) {
+    return res
+      .status(501)
+      .json({ errorMessage: "The job information could not be retrieved." });
+  }
 });
 
 // Creating a new job
