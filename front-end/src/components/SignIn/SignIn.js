@@ -4,6 +4,7 @@ import { withRouter, Link, Redirect } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 import { AuthenticatedUserContext } from "../Session";
+import RedirectPage from "../RedirectPage/RedirectPage";
 
 import "./SignIn.css";
 
@@ -11,19 +12,24 @@ import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 // import facebookButton from '../../images/facebook-login-btn.png';
 
-const SignIn = () => {
-  return (
-    <AuthenticatedUserContext.Consumer>
-      {authenticatedUser =>
-        authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignInForm />
-      }
-    </AuthenticatedUserContext.Consumer>
-  );
-};
+class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return this.props.authenticatedUser ? (
+      <Redirect to={ROUTES.LANDING} />
+    ) : (
+      <SignInForm />
+    );
+  }
+}
 
 const DEFAULT_STATE = {
   email: "",
   password: "",
+  redirect: false,
   error: null
 };
 
@@ -37,16 +43,27 @@ class SignInFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  googleAuthSubmit = async event => {
+  redirectSubmit = async event => {
     event.preventDefault();
     event.target.setAttribute("src", googleButtonPressed);
+    this.props.history.push({
+      pathname: ROUTES.REDIRECT,
+      state: {
+        redirectFunction: this.googleAuthSubmit
+      }
+    });
     try {
-      const googleAuth = await this.props.firebase.doSignInWithGoogle();
-      // ----------- TO DO --------------
-      // save user info to db
-    } catch (error) {
-      console.log(error);
-    }
+      await this.setState({ redirect: true });
+    } catch (error) {}
+  };
+
+  googleAuthSubmit = async event => {
+    this.props.history.push({
+      pathname: ROUTES.REDIRECT,
+      state: {
+        redirectMethod: "google"
+      }
+    });
   };
 
   // facebookAuthSubmit = async event => {
@@ -132,4 +149,10 @@ class SignInFormUnconnected extends React.Component {
 // connects form to React Router and Firebase
 const SignInForm = withRouter(withFirebase(SignInFormUnconnected));
 
-export default SignIn;
+export default React.forwardRef((props, ref) => (
+  <AuthenticatedUserContext.Consumer>
+    {authenticatedUser => (
+      <SignIn {...props} authenticatedUser={authenticatedUser} ref={ref} />
+    )}
+  </AuthenticatedUserContext.Consumer>
+));
