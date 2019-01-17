@@ -6,58 +6,52 @@ import ProfileForm from "./profileForm";
 const url = process.env.REACT_APP_DB_URL;
 
 class UpdateProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: [],
-            image: '',
-            email: '',
-            firstName: '',
-            lastName: '',
-            companyName: '',
-            companySummary: '',
-            applicationInbox: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: [],
+      image: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+      companyName: "",
+      companySummary: "",
+      applicationInbox: ""
+    };
+  }
 
-        };
-    }
+  updateUser = e => {
+    e.preventDefault();
+    const id = this.props.match.params.id;
 
-   
-    updateUser = e => {
-        e.preventDefault();
-        const id = this.props.match.params.id;
-        
-        const updatedUser = {
-            image: this.state.image,
-            email: this.state.email,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            companyName: this.state.companyName,
-            companySummary: this.state.companySummary,
-            applicationInbox: this.state.applicationInbox
-        }
+    const updatedUser = {
+      image: this.state.image,
+      email: this.state.email,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      companyName: this.state.companyName,
+      companySummary: this.state.companySummary,
+      applicationInbox: this.state.applicationInbox
+    };
 
-        axios
-        .put(`${url}/api/users/${id}`, updatedUser)
-        .then(res => {
-            console.log('response', res)
-            this.setState({ user: res.data })
-        .catch( err => console.log(err))
-        })
-    }
+    axios.put(`${url}/api/users/${id}`, updatedUser).then(res => {
+      console.log("response", res);
+      this.setState({ user: res.data }).catch(err => console.log(err));
+    });
+  };
 
-    changeHandler = event => {
-        this.setState({ [event.target.name]: event.target.value });
-      };
+  changeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
-      render() {
-          return(
-              <div>
-                  <ProfileForm />
-                  {/* <ProfilePic /> */}
-                  
-              </div>
-          )
-      }
+  render() {
+    return (
+      <div>
+        <ProfileForm />
+        <ProfilePic />
+      </div>
+    );
+  }
 }
 
 export default UpdateProfile;
