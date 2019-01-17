@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import JobList from "./jobList";
-import Jobs from "./job";
+import Jobs from "./Job";
 import Search from "./search";
 import Categories from "./categories";
-import Header from "./header";
+import Header from "./Header";
 
 const url = process.env.REACT_APP_DB_URL;
 

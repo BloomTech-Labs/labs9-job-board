@@ -19,6 +19,8 @@
 
 .navbar-logo {
   margin-left: 1%;
+  width: 100%;
+  text-align: left;
 }
 
 .navbar-logo a {
@@ -115,7 +117,7 @@
   text-decoration: none;
   background-color: #d3d3d3;
   border-bottom: 1px solid #7a7a7a;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
 }
 
