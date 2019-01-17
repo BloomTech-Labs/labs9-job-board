@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-const configureRoutes = require('../routes');
+const configureRoutes = require('./payment');
 
 configureRoutes(app);
 
