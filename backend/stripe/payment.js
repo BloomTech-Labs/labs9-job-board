@@ -1,4 +1,5 @@
 // missing something and need some help figuring out what it is, need second pair of eyes
+const express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_TEST_KEY);
 
 const stripeChargeCallback = res => (stripeErr, stripeRes) => {
