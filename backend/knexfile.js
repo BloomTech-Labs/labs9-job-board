@@ -12,10 +12,8 @@ const dbConnection = process.env.DATABASE_URL || localPgConnection;
 
 module.exports = {
   development: {
-    client: "sqlite3",
-    connection: {
-      filename: "./db/database.sqlite3"
-    },
+    client: "pg",
+    connection: "postgres://localhost/kwc_local",
     migrations: {
       directory: "./db/migrations"
     },
@@ -24,7 +22,7 @@ module.exports = {
     },
     useNullAsDefault: true
   },
-  
+
   production: {
     client: "pg",
     connection: dbConnection,
