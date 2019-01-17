@@ -68,6 +68,26 @@ router.get("/job/:id", (req, res) => {
     });
 });
 
+router.get("/jobs/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const jobs = await db("jobs")
+      .where({ "jobs.id": id })
+      .join("users", "jobs.users_id", "=", "users.id");
+    // .select("last_name");
+    if (!jobs.length) {
+      return res.status(400).json({
+        errorMessage: "The job with the specified ID does not exis"
+      });
+    }
+    return res.status(200).json(jobs);
+  } catch (err) {
+    return res
+      .status(501)
+      .json({ errorMessage: "The job information could not be retrieved." });
+  }
+});
+
 // Creating a new job
 router.post("/job", (req, res) => {
   const newJob = { ...req.body };
