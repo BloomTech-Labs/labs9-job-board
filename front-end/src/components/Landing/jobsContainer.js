@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import JobList from "./JobList";
+import JobList from "./jobList";
 import Jobs from "./Job";
 import Search from "./Search";
 import Categories from "./Categories";
