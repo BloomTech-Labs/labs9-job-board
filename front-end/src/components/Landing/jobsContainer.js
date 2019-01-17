@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import JobList from "./jobList";
+
 import Jobs from "./job";
 import Search from "./search";
+
 import Categories from "./Categories";
 import Header from "./header";
 
