@@ -47,30 +47,29 @@ class JobsContainer extends Component {
 		});
 	};
 
-	render() {
-		console.log('click', this.handleInput);
-		console.log('Search', this.state.search);
-		return (
-			<div className="jobs-container container">
-				<Header />
-				<div className="search-categories-container">
-					<Categories />
-					<Search
-						searchResults={this.searchResults}
-						search={this.state.search}
-					/>
-				</div>
-				<Jobs /> {/* Temporarily added <Jobs /> component to fix styling */}
-				<JobList
-					jobs={
-						this.state.searchJobs.length > 0
-							? this.state.searchJobs
-							: this.state.jobs
-					}
-				/>
-			</div>
-		);
-	}
+  render() {
+    console.log("click", this.handleInput);
+    console.log("Search", this.state.search);
+    return (
+      <div className="jobs-container container">
+        <Header />
+        <div className="search-categories-container">
+          <Categories />
+          <Search
+            searchResults={this.searchResults}
+            search={this.state.search}
+          />
+        </div>
+        <JobList
+          jobs={
+            this.state.searchJobs.length > 0
+              ? this.state.searchJobs
+              : this.state.jobs
+          }
+        />
+      </div>
+    );
+  }
 }
 
 export default JobsContainer;
