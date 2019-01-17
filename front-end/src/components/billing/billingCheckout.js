@@ -7,12 +7,14 @@ const billingCheckout = () => {
 
 	const onToken = token => {
 		const body = {
+			//Need to find out how to add multiple payments to mirror the amounts in checkout
 			amount: 9999,
 			token: token,
 		};
 
 		axios
-			.post('http://localhost:8000/payment', body)
+			// need help figuring out what to add to the post routes to match up with the backend route
+			.post('http://localhost:8000/billing', body => {})
 			.then(response => {
 				console.log(response);
 				alert('Payment Success!');
