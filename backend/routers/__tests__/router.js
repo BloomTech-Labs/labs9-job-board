@@ -33,4 +33,24 @@ describe("router.js", () => {
       expect(response.status).toBe(500);
     });
   });
+
+  describe("delete /job:/id route", () => {
+    it("returns status code 500", async () => {
+      let response = await request(server).delete("/:id");
+      expect(response.status).toBe(500);
+    });
+    it("deletes user", async () => {
+      let response = await request(server)
+        .delete("/:id")
+        .send({ _id: 1 });
+      expect(response.body).toEqual({ message: `Job with ID 5 deleted.` });
+    });
+  });
+
+  describe("update /job/:id route", () => {
+    it("returns status code 500", async () => {
+      let response = await request(server).delete(":/id");
+      expect(response.status).toBe(500);
+    });
+  });
 });
