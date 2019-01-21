@@ -25,8 +25,10 @@
 
 const app = require('express')();
 const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
+const cors = require('cors');
 
 app.use(require('body-parser').text());
+app.use(cors());
 
 app.get('/', async (req, res) => {
 	res.send({
