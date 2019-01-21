@@ -23,7 +23,7 @@
 // 	console.log('Server running on port ' + 9000);
 // });
 
-const app = require('express')();
+const app = require('express');
 const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
 
 app.use(require('body-parser').text());
