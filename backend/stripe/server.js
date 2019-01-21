@@ -28,6 +28,13 @@ const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
 
 app.use(require('body-parser').text());
 
+app.get('/', async (req, res) => {
+	res.send({
+		message: 'Hello Stripe checkout server!',
+		timestamp: new Date().toISOString(),
+	});
+});
+
 app.post('/charge', async (req, res) => {
 	try {
 		let { status } = await stripe.charges.create({
