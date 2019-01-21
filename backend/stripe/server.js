@@ -23,10 +23,10 @@
 // 	console.log('Server running on port ' + 9000);
 // });
 
-const app = require('express');
+const app = require('express')();
 const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
 
-// app.use(require('body-parser').text());
+app.use(require('body-parser').text());
 
 app.get('/', async (req, res) => {
 	res.send({
@@ -38,9 +38,9 @@ app.get('/', async (req, res) => {
 app.post('/charge', async (req, res) => {
 	try {
 		let { status } = await stripe.charges.create({
-			amount: 29999,
+			amount: 9999,
 			currency: 'usd',
-			description: 'Unlimited Jobs - 100 tokens',
+			description: 'An example charge',
 			source: req.body,
 		});
 
