@@ -287,7 +287,6 @@
 /* ==========Single Job========== */
 
 .single-job-container {
-  border: 1px solid blue;
   display: flex;
   flex-direction: row-reverse;
   max-width: 1200px;
@@ -346,9 +345,6 @@
   border-bottom: 2px solid #ccc;
 }
 
-.job-skills-desc-req college {
-  border-bottom: none;
-}
 .apply-btn {
   width: 63%;
   height: 27px;
