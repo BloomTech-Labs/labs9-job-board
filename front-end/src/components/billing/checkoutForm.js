@@ -30,6 +30,7 @@ class CheckoutForm extends Component {
 		return (
 			<div className="checkout">
 				<p>KWC Billing</p>
+				<p>Would you like to complete your purchase?</p>
 				<CardNumberElement />
 				<CardExpiryElement />
 				<CardCVCElement />
