@@ -8,7 +8,6 @@ class Billing extends Component {
 		return (
 			<StripeProvider apiKey="pk_test_Q92ozglyNRHHwz44yCal2sV7">
 				<div className="example">
-					<h1>KWC Billing</h1>
 					<Elements>
 						<CheckoutForm />
 					</Elements>
