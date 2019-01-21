@@ -44,14 +44,20 @@ class SingleJob extends Component {
           <p>Report</p>
         </div>
         <div className="job-listing">
-          <img src={this.state.job.user.avatar_image} />
-          <h3>{this.state.job.user.company_name}</h3>
-          <h3>{this.state.job.user.summary}</h3>
-          <h3>{this.state.job.title}</h3>
-          <h3>{this.state.job.salary}</h3>
-          <h3>{this.state.job.addSkills}</h3>
-          <h3>{this.state.job.topSkills}</h3>
-          <h3>{this.state.job.familiar}</h3>
+          <div className="job-company-summary">
+            <h2>{this.state.job.user.company_name}</h2>
+            <h3>{this.state.job.user.summary}</h3>
+          </div>
+
+          <div className="job-title-salary">
+            <h3>{this.state.job.title}</h3>
+            <h3>${this.state.job.salary}</h3>
+          </div>
+          <div className="job-skills">
+            <h3>{this.state.job.addSkills}</h3>
+            <h3>{this.state.job.topSkills}</h3>
+            <h3>{this.state.job.familiar}</h3>
+          </div>
           <h3>{this.state.job.description}</h3>
           <h3>{this.state.job.requirements}</h3>
           {this.state.job.collegeDegree === 0 ? (
@@ -59,6 +65,9 @@ class SingleJob extends Component {
           ) : (
             <h4>College degree required</h4>
           )}
+        </div>
+        <div className="company-logo">
+          <img src={this.state.job.user.avatar_image} />
         </div>
       </div>
     );

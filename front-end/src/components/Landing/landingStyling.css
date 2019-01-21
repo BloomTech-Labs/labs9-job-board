@@ -296,15 +296,58 @@
 }
 
 .job-listing {
-  width: 80%;
+  width: 60%;
+  margin: 0 3%;
+  margin: 0 5% 30px 4%;
+  padding: 0 8% 0 0;
+}
+
+.job-company-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 2px solid #ccc;
+}
+
+.company-logo {
+  width: 20%;
+  margin-left: 8%;
+}
+
+.company-logo img {
+  height: 100px;
+  margin: 0 1%;
+}
+
+.job-company-summary h2 {
+  font-size: 7rem;
+}
+
+.job-company-summary h3 {
+  font-size: 2.6rem;
+  text-align: left;
+  line-height: 1.25;
+  padding-bottom: 30px;
+}
+
+.job-title-salary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 3rem;
+  padding: 30px 13%;
+  border-bottom: 2px solid #ccc;
 }
 
 .apply-btn {
-  width: 40%;
-  height: 50px;
+  width: 63%;
+  height: 27px;
 }
 
 .apply-share {
   width: 20%;
-  border: 1px solid orange;
+}
+
+.apply-share p {
+  margin: 15px 0;
+  font-size: 1.4;
 }
