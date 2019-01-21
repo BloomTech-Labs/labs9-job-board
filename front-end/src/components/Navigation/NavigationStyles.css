@@ -83,6 +83,7 @@
   height: 100%;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.8);
   position: fixed;
+  background-color: #d3d3d3;
   top: 0;
   left: 0;
   width: 25%;
