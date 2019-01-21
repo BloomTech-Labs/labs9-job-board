@@ -3,7 +3,7 @@ import axios from "axios";
 
 import JobList from "./jobList";
 
-import Jobs from "./job";
+//import Jobs from "./job";
 import Search from "./search";
 
 import Categories from "./categories";

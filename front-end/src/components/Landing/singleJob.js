@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const url = process.env.REACT_APP_DB_URL;
+const url = process.env.REACT_APP_DB_URL_TEST;
 
 class SingleJob extends Component {
   constructor(props) {
@@ -19,11 +19,10 @@ class SingleJob extends Component {
 
   fetchJob = id => {
     axios
-      .get(`${url}/api/job/${id}`)
-      .then(res => {
-        console.log(res);
-        this.setState(() => ({
-          job: res.data
+      .get(`${url}/api/jobs/${id}`)
+      .then(async res => {
+        await this.setState(() => ({
+          job: res.data[0]
         }));
       })
       .catch(err => {
@@ -44,9 +43,9 @@ class SingleJob extends Component {
           <p>tell a friend</p>
           <p>Report</p>
         </div>
-        <img src={this.state.job.user.avatar_image} />
-        <h3>{this.state.job.user.company_name}</h3>
-        <h3>{this.state.job.user.summary}</h3>
+        <img src={this.state.job.avatar_image} alt="avatar" />
+        <h3>{this.state.job.company_name}</h3>
+        <h3>{this.state.job.summary}</h3>
         <h3>{this.state.job.title}</h3>
         <h3>{this.state.job.salary}</h3>
         <h3>{this.state.job.addSkills}</h3>

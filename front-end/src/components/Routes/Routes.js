@@ -5,7 +5,7 @@ import JobsContainer from "../Landing/jobsContainer";
 import SingleJob from "../Landing/singleJob";
 import PostJob from "../postJob/postJob";
 
-import Profile from "../CompanyProfile/profileForm.js";
+//import Profile from "../CompanyProfile/profileForm.js";
 import UpdateProfile from "../CompanyProfile/updateProfile.js";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";

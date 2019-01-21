@@ -5,7 +5,7 @@ import "./NavigationStyles.css";
 
 import LoadingBar from "../../images/loading-bars.svg";
 
-import * as ROUTES from "../../constants/routes";
+//import * as ROUTES from "../../constants/routes";
 
 class sideMenu extends React.Component {
   constructor(props) {

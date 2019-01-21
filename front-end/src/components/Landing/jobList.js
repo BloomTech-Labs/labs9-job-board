@@ -7,7 +7,11 @@ const JobList = props => {
     <div>
       {props.jobs.map(job => {
         // console.log(job.title, job.id);
-        return <Jobs job={job} id={job.id} key={job.id} />;
+        return (
+          <Link className="job-links" to={`/jobs/${job.id}`} key={job.id}>
+            <Jobs job={job} key={job.id} />
+          </Link>
+        );
       })}
     </div>
   );
