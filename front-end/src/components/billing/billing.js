@@ -7,12 +7,10 @@ class Billing extends Component {
 	render() {
 		return (
 			<StripeProvider apiKey="pk_test_Q92ozglyNRHHwz44yCal2sV7">
-				<div className="billing-header">
-					{/* <Elements>
-						<CheckoutForm />
-					</Elements> */}
+				<div className="example">
+					<h1>KWC Billing</h1>
 					<Elements>
-						<BillingCheckout />
+						<CheckoutForm />
 					</Elements>
 				</div>
 			</StripeProvider>
