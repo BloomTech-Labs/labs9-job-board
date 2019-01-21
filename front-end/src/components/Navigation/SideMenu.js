@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AuthenticatedUserContext } from "../Session/index.js";
 import SignOut from "../SignOut/SignOut.js";
 import "./NavigationStyles.css";
+
+import Spinner from "../../images/loading-bars.svg";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -27,7 +28,9 @@ class sideMenu extends React.Component {
     return (
       <nav className={sideMenuClass}>
         {this.state.authUser === "" ? (
-          <div>Loading...</div>
+          <div className="side-menu-loading">
+            <img src={Spinner} alt="loading" />
+          </div>
         ) : this.state.authUser ? (
           <div className="side-menu-navigation-items">
             <NavLink onClick={this.props.click} to="/">

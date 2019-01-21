@@ -104,6 +104,13 @@
   transition: transform 0.3s ease-out;
 }
 
+.side-menu-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .side-menu-navigation-items {
   display: flex;
   flex-direction: column;
