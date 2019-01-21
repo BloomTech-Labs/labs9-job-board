@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import SignOut from "../SignOut/SignOut.js";
 import "./NavigationStyles.css";
 
-import Spinner from "../../images/loading-bars.svg";
+import LoadingBar from "../../images/loading-bars.svg";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -29,7 +29,7 @@ class sideMenu extends React.Component {
       <nav className={sideMenuClass}>
         {this.state.authUser === "" ? (
           <div className="side-menu-loading">
-            <img src={Spinner} alt="loading" />
+            <img src={LoadingBar} alt="loading" />
           </div>
         ) : this.state.authUser ? (
           <div className="side-menu-navigation-items">

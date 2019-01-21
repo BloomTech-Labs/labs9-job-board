@@ -23,15 +23,22 @@ router.post("/login", (req, res) => {
   }
 });
 
-// [GET] /api/auth/firstLogin
-router.post("/firstLogin", (req, res) => {
+// [GET] /api/auth/hasAccountInfo
+router.post("/hasAccountInfo", (req, res) => {
   const user_uid = { ...req.body };
 
   if (user_uid) {
     db("login")
       .where(user_uid)
       .then(res => {
-        if (res.length) {
+        if (!res.length) {
+          res.status(200).send(false);
+        } else {
+          return db("users").where(user_uid);
+        }
+      })
+      .then(res => {
+        if (!res.length) {
           res.status(200).send(false);
         } else {
           res.status(200).send(true);

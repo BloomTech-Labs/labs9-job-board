@@ -8,12 +8,19 @@ const router = express.Router();
 
 // TODO: Test routes -- ONCE COMPLETE DELETE THIS TODO
 
-// Display all jobs
-
-router.get("/job", (req, res) => {
-  db("users")
-    .from("jobs")
-    .join("users", "jobs.users_id", "users.id")
+// [GET] /api/job
+// Return all active jobs in database
+router.get("/jobs", (req, res) => {
+  db("jobs as j")
+    .innerJoin("users as u", "j.users_id", "u.id")
+    .select(
+      "j.*",
+      "u.company_name",
+      "u.summary",
+      "u.application_method",
+      "u.avatar_image"
+    )
+    .where({ active: true })
     .then(allJobs => {
       res.status(200).json(allJobs);
     })
