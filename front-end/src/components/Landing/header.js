@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Link as Slide, animateScroll as scroll } from "react-scroll";
 
 import picture from "../../images/shaking-hands.jpeg";
 
@@ -24,9 +25,16 @@ const Header = props => {
           <Link to="/sign-up" className="post-search-job">
             Post a Job
           </Link>
-          <Link to="/sign-up" className="post-search-job">
+          <Slide
+            spy={true}
+            offset={-70}
+            duration={933}
+            to="all-jobs"
+            smooth={true}
+            className="post-search-job"
+          >
             Search jobs
-          </Link>
+          </Slide>
         </div>
       </div>
       <div className="right-side">
