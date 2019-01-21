@@ -155,6 +155,18 @@
   font-size: 1.5rem;
 }
 
+@media (max-width: 1000px) {
+  .search-categories-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .categories {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
 /* ==========Search Input========== */
 
 .search-bar {
