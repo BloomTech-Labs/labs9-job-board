@@ -37,28 +37,29 @@ class SingleJob extends Component {
       return <div>Loading Job...</div>;
     }
     return (
-      <div>
-        <Link to="/">Back to Jobs</Link>
-        <div>
-          <button>apply</button>
+      <div className="single-job-container">
+        <div className="apply-share">
+          <button className="apply-btn">apply</button>
           <p>tell a friend</p>
           <p>Report</p>
         </div>
-        <img src={this.state.job.user.avatar_image} />
-        <h3>{this.state.job.user.company_name}</h3>
-        <h3>{this.state.job.user.summary}</h3>
-        <h3>{this.state.job.title}</h3>
-        <h3>{this.state.job.salary}</h3>
-        <h3>{this.state.job.addSkills}</h3>
-        <h3>{this.state.job.topSkills}</h3>
-        <h3>{this.state.job.familiar}</h3>
-        <h3>{this.state.job.description}</h3>
-        <h3>{this.state.job.requirements}</h3>
-        {this.state.job.collegeDegree === 0 ? (
-          <h4>No College required</h4>
-        ) : (
-          <h4>College degree required</h4>
-        )}
+        <div className="job-listing">
+          <img src={this.state.job.user.avatar_image} />
+          <h3>{this.state.job.user.company_name}</h3>
+          <h3>{this.state.job.user.summary}</h3>
+          <h3>{this.state.job.title}</h3>
+          <h3>{this.state.job.salary}</h3>
+          <h3>{this.state.job.addSkills}</h3>
+          <h3>{this.state.job.topSkills}</h3>
+          <h3>{this.state.job.familiar}</h3>
+          <h3>{this.state.job.description}</h3>
+          <h3>{this.state.job.requirements}</h3>
+          {this.state.job.collegeDegree === 0 ? (
+            <h4>No College required</h4>
+          ) : (
+            <h4>College degree required</h4>
+          )}
+        </div>
       </div>
     );
   }

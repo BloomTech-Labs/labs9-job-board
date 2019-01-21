@@ -283,3 +283,28 @@
 .each-job .right-side {
   width: 10%;
 }
+
+/* ==========Single Job========== */
+
+.single-job-container {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row-reverse;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 1%;
+}
+
+.job-listing {
+  width: 80%;
+}
+
+.apply-btn {
+  width: 40%;
+  height: 50px;
+}
+
+.apply-share {
+  width: 20%;
+  border: 1px solid orange;
+}
