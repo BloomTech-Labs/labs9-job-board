@@ -53,18 +53,24 @@ class SingleJob extends Component {
             <h3>{this.state.job.title}</h3>
             <h3>${this.state.job.salary}</h3>
           </div>
-          <div className="job-skills">
+          <div className="job-skills-desc-req">
             <h3>{this.state.job.addSkills}</h3>
             <h3>{this.state.job.topSkills}</h3>
             <h3>{this.state.job.familiar}</h3>
           </div>
-          <h3>{this.state.job.description}</h3>
-          <h3>{this.state.job.requirements}</h3>
-          {this.state.job.collegeDegree === 0 ? (
-            <h4>No College required</h4>
-          ) : (
-            <h4>College degree required</h4>
-          )}
+          <div className="job-skills-desc-req">
+            <h3>{this.state.job.description}</h3>
+          </div>
+          <div className="job-skills-desc-req">
+            <h3>{this.state.job.requirements}</h3>
+          </div>
+          <div className="job-skills-desc-req college">
+            {this.state.job.collegeDegree === 0 ? (
+              <h4>No College required</h4>
+            ) : (
+              <h4>College degree required</h4>
+            )}
+          </div>
         </div>
         <div className="company-logo">
           <img src={this.state.job.user.avatar_image} />
