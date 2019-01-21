@@ -82,7 +82,17 @@
   border-radius: 20px;
   width: 40%;
   height: 50px;
-  margin: 0 1%;
+  margin: 30px 1%;
+}
+
+.post-search-job:hover {
+  border: 2px solid rgb(150, 148, 148);
+}
+
+.post-search-btns a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #000018;
 }
 
 @media (max-width: 1000px) {
