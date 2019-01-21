@@ -42,3 +42,5 @@ app.post('/charge', async (req, res) => {
 		res.status(500).end();
 	}
 });
+
+app.listen(9000, () => console.log('Listening on port 9000'));
