@@ -16,7 +16,7 @@ class CheckoutForm extends Component {
 
 	async submit(ev) {
 		let { token } = await this.props.stripe.createToken({ name: 'Name' });
-		let response = await fetch('/charge', {
+		let response = await fetch('http://localhost:9000/charge', {
 			method: 'POST',
 			headers: { 'Content-Type': 'text/plain' },
 			body: token.id,
@@ -24,6 +24,7 @@ class CheckoutForm extends Component {
 		// if checkout is complete then message will be displayed
 		if (response.ok) this.setState({ complete: true });
 		console.log('Purchase Complete!');
+		alert('Payment Successful!');
 	}
 
 	render() {
