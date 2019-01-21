@@ -9,6 +9,8 @@ import {
 class CheckoutForm extends Component {
 	constructor(props) {
 		super(props);
+		//render a message only if purchase is complete
+		this.state = { complete: false };
 		this.submit = this.submit.bind(this);
 	}
 
@@ -19,8 +21,9 @@ class CheckoutForm extends Component {
 			headers: { 'Content-Type': 'text/plain' },
 			body: token.id,
 		});
-
-		if (response.ok) console.log('Purchase Complete!');
+		// if checkout is complete then message will be displayed
+		if (response.ok) this.setState({ complete: true });
+		console.log('Purchase Complete!');
 	}
 
 	render() {
