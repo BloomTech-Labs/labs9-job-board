@@ -10,7 +10,7 @@ router.post("/login", (req, res) => {
   if (newUser) {
     db("login")
       .insert(newUser)
-      .then(addJob => {
+      .then(() => {
         res.status(201).send(true);
       })
       .catch(err => {
@@ -19,6 +19,26 @@ router.post("/login", (req, res) => {
         } else {
           res.status(500).json({ message: "Error posting to table" });
         }
+      });
+  }
+});
+
+// [GET] /api/auth/firstLogin
+router.post("/firstLogin", (req, res) => {
+  const user_uid = { ...req.body };
+
+  if (user_uid) {
+    db("login")
+      .where(user_uid)
+      .then(res => {
+        if (res.length) {
+          res.status(200).send(false);
+        } else {
+          res.status(200).send(true);
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: "Error determining first login" });
       });
   }
 });

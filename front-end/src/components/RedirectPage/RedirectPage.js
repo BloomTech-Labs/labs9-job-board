@@ -12,11 +12,22 @@ import "./RedirectPage.css";
 const RedirectPage = props => {
   if (props.location.state) {
     if (props.location.state.redirectMethod === "google") {
-      props.firebase.doSignInWithGoogle();
+      props.firebase.doSignInWithGoogle(); // <-------------------- handle errors
     }
   } else {
-    props.history.push(ROUTES.LANDING);
+    props.firebase
+      .redirectResult()
+      .then(response => {
+        console.log(response.user);
+        // null ----> redirect Landing
+        // use response.user.uid to determine if they have filled out their account information
+      })
+      .catch(error => console.log(error));
+
+    // props.history.push(ROUTES.LANDING);
   }
+  // console.log(error);
+
   return (
     <div className="redirect-page-container">
       <img src={Spinner} alt="Loading spinner" />
