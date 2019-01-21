@@ -13,6 +13,7 @@
   width: 50%;
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
 }
 
 .header .left-side h2 {
@@ -87,6 +88,7 @@
 
 .post-search-job:hover {
   border: 2px solid rgb(150, 148, 148);
+  cursor: pointer;
 }
 
 .post-search-btns a {
@@ -103,6 +105,7 @@
     width: 100%;
     padding-bottom: 30px;
     align-items: center;
+    padding-top: 20px;
   }
 
   .header .left-side h2 {
