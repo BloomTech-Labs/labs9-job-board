@@ -13,13 +13,21 @@ const Header = props => {
         <h4>
           Matching brilliant minds with the world's most prominent companies.
         </h4>
-        <p>
+        {/* <p>
           Looking to hire?{" "}
           <span>
             <Link to="/sign-up">Create an employer profile</Link>
           </span>
           .
-        </p>
+        </p> */}
+        <div className="post-search-btns">
+          <Link to="/sign-up" className="post-search-job">
+            Post a Job
+          </Link>
+          <Link to="/sign-up" className="post-search-job">
+            Search jobs
+          </Link>
+        </div>
       </div>
       <div className="right-side">
         <img src={picture} alt="shaking hands" />
