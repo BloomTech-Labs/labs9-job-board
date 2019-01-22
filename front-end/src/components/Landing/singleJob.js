@@ -30,15 +30,21 @@ class SingleJob extends Component {
       });
   };
 
+  clickHandler() {
+    window.location = `mailto:${this.state.job.application_method}`;
+  }
+
   render() {
-    console.log("this.props", this.props);
+    console.log("this.props", this.state.job);
     if (!this.state.job) {
       return <div>Loading Job...</div>;
     }
     return (
       <div className="single-job-container">
         <div className="apply-share">
-          <button className="apply-btn">Apply</button>
+          <button className="apply-btn" onClick={() => this.clickHandler()}>
+            Apply
+          </button>
           <a href="javascript: window.location='mailto:?subject=Check this Job!&body= '+ window.location;">
             Tell a Friend
           </a>
