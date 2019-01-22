@@ -25,7 +25,6 @@ class CheckoutForm extends Component {
 		// if checkout is complete then message will be displayed
 		if (response.ok) this.setState({ complete: true });
 		console.log('Purchase Complete!');
-		alert('Payment Successful!');
 	}
 
 	render() {
