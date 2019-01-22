@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import CheckoutForm from './checkoutForm';
 
+const url = process.env.REACT_APP_STRIPE_TEST_KEY;
+
 class Billing extends Component {
 	render() {
 		return (
-			<StripeProvider apiKey="pk_test_Q92ozglyNRHHwz44yCal2sV7">
+			<StripeProvider apiKey={REACT_APP_STRIPE_TEST_KEY}>
 				<div className="example">
 					<Elements>
 						<CheckoutForm />
