@@ -34,7 +34,5 @@ app.post('/charge', async (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-	if (!err) {
-		console.log('Live Server Running!!!!');
-	}
+	console.log('Live Server Running!!!!');
 });
