@@ -1,31 +1,31 @@
 .job-form {
   color: green;
   margin-top: 20px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .input-container {
   display: flex;
   justify-content: start;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .input-titles {
   color: blue;
   font-size: 1.8rem;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
 }
 
-.input-titles input {
+.input-container input {
   width: 30%;
   margin-left: 2%;
   font-size: 1.8rem;
   justify-content: start;
   margin-bottom: 20px;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
-.input-titles textarea {
+.input-container textarea {
   width: 60%;
   height: 30vh;
   border-radius: 3px;
@@ -37,4 +37,18 @@
   font-family: sans-serif;
   resize: none;
   margin-left: 2%;
+}
+
+.top {
+  display: flex;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
 }
