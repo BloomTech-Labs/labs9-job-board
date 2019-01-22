@@ -370,6 +370,11 @@
   text-align: left;
   line-height: 1.25;
   padding: 20px 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.college {
+  border-bottom: none;
 }
 
 .apply-btn {

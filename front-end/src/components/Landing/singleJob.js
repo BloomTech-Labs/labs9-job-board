@@ -66,9 +66,10 @@ class SingleJob extends Component {
           </div>
           <div className="job-skills-desc-req">
             <h4>Skills:</h4>
-            <h3>{this.state.job.addSkills}</h3>
-            <h3>{this.state.job.topSkills}</h3>
-            <h3>{this.state.job.familiar}</h3>
+            <h3>
+              {this.state.job.add_skills}, {this.state.job.top_skills},{" "}
+              {this.state.job.familiar}
+            </h3>
           </div>
           <div className="job-skills-desc-req">
             <h4>Job Description:</h4>
