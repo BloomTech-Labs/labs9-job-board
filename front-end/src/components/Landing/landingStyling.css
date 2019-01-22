@@ -375,7 +375,6 @@
   .single-job-container {
     flex-direction: column-reverse;
     width: 100%;
-    border: 1px solid orange;
   }
 
   .job-listing {
@@ -398,7 +397,6 @@
   .apply-share {
     width: 100%;
     align-items: center;
-    border: 1px solid orange;
   }
 
   .apply-btn {
