@@ -4,7 +4,7 @@ import Jobs from "./job";
 
 const JobList = props => {
   return (
-    <div>
+    <div className="all-jobs">
       {props.jobs.map(job => (
         <Link className="job-links" to={`/jobs/${job.id}`} key={job.id}>
           <Jobs job={job} id={job.id} />
