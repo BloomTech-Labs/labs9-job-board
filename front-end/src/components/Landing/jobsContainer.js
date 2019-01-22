@@ -3,12 +3,15 @@ import axios from "axios";
 
 import JobList from "./jobList";
 
+
 //import Jobs from "./job";
+
 import Search from "./search";
 
 import Categories from "./categories";
 import Header from "./header";
 import LoadingBar from "../../images/loading-bars.svg";
+
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -41,7 +44,7 @@ class JobsContainer extends Component {
     this.handleInput(event);
     this.setState(preState => {
       const searchJobs = preState.jobs.filter(result => {
-        return result.title.includes(preState.search);
+        return result.title.toLowerCase().includes(preState.search);
       });
       return { searchJobs: searchJobs };
     });
@@ -50,6 +53,7 @@ class JobsContainer extends Component {
   render() {
     // console.log("click", this.handleInput);
     // console.log("Search", this.state.search);
+
     return (
       <div className="jobs-container container">
         <Header />
