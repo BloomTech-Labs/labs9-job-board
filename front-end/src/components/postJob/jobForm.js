@@ -7,7 +7,7 @@ const JobForm = props => {
       <div className="post-job-title">Post a Job</div>
       <hr />
       <form className="job-form" onSubmit={props.addJob}>
-        <div className="top">
+        <div className="post-job-top">
           <div className="title-container">
             <label
               className="input-titles"
@@ -91,20 +91,40 @@ const JobForm = props => {
             />
           </div>
         </div>
-        <h5>Active</h5>
-        <input type="checkbox" name="active" value={props.active} />
-        <h5>This requires a degree</h5>
-        <input
-          type="checkbox"
-          name="requiresDegree"
-          value={props.requiresDegree}
-        />
-        <button type="reset" onClick={props.handleInput}>
-          Cancel
-        </button>
-        <button type="submit" onClick={props.handleInput}>
-          Save
-        </button>
+        <div className="post-job-bottom">
+          <div className="job-active">
+            <label className="switch">
+              <input type="checkbox" name="active" value={props.active} />
+              <span class="slider round" />
+            </label>
+            <h5>Active</h5>
+          </div>
+          <div className="requires-degree">
+            <input
+              type="checkbox"
+              name="requiresDegree"
+              value={props.requiresDegree}
+              className="degree-checkbox"
+            />
+            <h5>This job does not require a degree</h5>
+          </div>
+          <div className="post-job-buttons-container">
+            <button
+              className="post-job-buttons"
+              type="reset"
+              onClick={props.handleInput}
+            >
+              Cancel
+            </button>
+            <button
+              className="post-job-buttons"
+              type="submit"
+              onClick={props.handleInput}
+            >
+              Save
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
