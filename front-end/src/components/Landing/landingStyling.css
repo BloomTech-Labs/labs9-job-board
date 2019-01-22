@@ -284,6 +284,26 @@
   width: 10%;
 }
 
+@media (max-width: 1250px) {
+  .each-job .left-side {
+    width: 75%;
+  }
+
+  .each-job .right-side {
+    width: 25%;
+  }
+}
+
+@media (max-width: 780px) {
+  .each-job .left-side {
+    width: 70%;
+  }
+
+  .each-job .right-side {
+    width: 25%;
+  }
+}
+
 /* ==========Single Job========== */
 
 .single-job-container {
