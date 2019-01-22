@@ -13,7 +13,13 @@ const dbConnection = process.env.DATABASE_URL || localPgConnection;
 module.exports = {
   development: {
     client: "pg",
-    connection: "postgres://localhost/kwc_local",
+    connection: {
+      host : 'localhost',
+      user : 'postgres',
+      password : 'PASSWORD',
+      database : 'kwc_local',
+      charset: 'utf8'
+    },
     migrations: {
       directory: "./db/migrations"
     },
