@@ -1,31 +1,9 @@
-// const express = require('express');
-// const cors = require('cors');
-// const bodyParser = require('body-parser');
-// const dotenv = require('dotenv');
-
-// dotenv.config();
-
-// const app = express();
-
-// app.use(cors());
-// // parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// // parse application/json
-// app.use(bodyParser.json());
-
-// const configureRoutes = require('./payment');
-
-// configureRoutes(app);
-
-// app.listen(9000, error => {
-// 	if (error) throw error;
-// 	console.log('Server running on port ' + 9000);
-// });
-
 const app = require('express')();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
+const dotenv = require('dotenv').config();
+
+// require('dotenv').config();
 
 app.use(cors());
 app.use(require('body-parser').text());
@@ -35,6 +13,9 @@ app.get('/', async (req, res) => {
 		message: 'Hello Stripe checkout server!',
 		timestamp: new Date().toISOString(),
 	});
+});
+app.get('/charge', async (req, res) => {
+	//TODO: Need to have all of the charges listed
 });
 
 app.post('/charge', async (req, res) => {
@@ -52,4 +33,8 @@ app.post('/charge', async (req, res) => {
 	}
 });
 
-app.listen(9000, () => console.log('Listening on port 9000'));
+app.listen(process.env.PORT, () => {
+	if (!err) {
+		console.log('Live Server Running!!!!');
+	}
+});
