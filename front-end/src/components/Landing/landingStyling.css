@@ -296,9 +296,14 @@
 
 .job-listing {
   width: 60%;
-  margin: 0 3%;
   margin: 0 5% 30px 4%;
-  padding: 0 8% 0 0;
+  padding-right: 8%;
+}
+
+.job-listing h4 {
+  font-weight: bold;
+  font-size: 2.6rem;
+  padding: 10px 0;
 }
 
 .job-company-summary {
@@ -320,6 +325,7 @@
 
 .job-company-summary h2 {
   font-size: 7rem;
+  padding-bottom: 20px;
 }
 
 .job-company-summary h3 {
@@ -331,24 +337,26 @@
 
 .job-title-salary {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   font-size: 3rem;
-  padding: 30px 13%;
+  padding: 20px 0;
+  line-height: 1.5;
+  align-items: end;
   border-bottom: 2px solid #ccc;
 }
 
 .job-skills-desc-req {
   font-size: 2rem;
   text-align: left;
-  line-height: 1.3;
-  padding: 30px 0;
-  border-bottom: 2px solid #ccc;
+  line-height: 1.25;
+  padding: 20px 0;
 }
 
 .apply-btn {
-  width: 80%;
-  height: 27px;
+  width: 90%;
+  height: 35px;
   font-size: 1.9rem;
+  background-color: #e82f3a;
 }
 
 .apply-share {
@@ -359,6 +367,41 @@
 }
 
 .apply-share a {
-  margin: 25px 0 0 0;
+  margin-top: 25px;
   font-size: 1.8rem;
+}
+
+@media (max-width: 780px) {
+  .single-job-container {
+    flex-direction: column-reverse;
+    width: 100%;
+    border: 1px solid orange;
+  }
+
+  .job-listing {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0;
+    padding: 20px 13%;
+  }
+
+  .company-logo {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  .company-logo img {
+    height: 200px;
+  }
+
+  .apply-share {
+    width: 100%;
+    align-items: center;
+    border: 1px solid orange;
+  }
+
+  .apply-btn {
+    height: 50px;
+  }
 }
