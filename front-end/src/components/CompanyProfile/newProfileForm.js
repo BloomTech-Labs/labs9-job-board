@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProfilePic from "./profilePic";
+import "./newProfileFormStyling.css"
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -17,17 +18,9 @@ class NewProfileForm extends Component {
       };
   }
 
-  // componentDidMount() {
-  //   axios
-  //     .get(`${url}/api/users`)
-  //     .then(res => {
-  //       console.log(res);
-  //       this.setState({ user: res.data });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
+  componentDidMount() {
+    console.log(this.props.authUser);
+  }
 
 
   addNew = e => {
@@ -59,20 +52,12 @@ class NewProfileForm extends Component {
 
   render() {
     return (
-      <div>
-        <form className="createNewUser" onSubmit={this.addNew}>
-          <h2> New User Information </h2>
+      <div className = 'full-page'>
+        <form className="new-user-form" onSubmit={this.addNew}>
+          <h2> Tell us about you! </h2>
           <input
             type="text"
-            className="emailHolder"
-            onChange={this.handleInputChange}
-            placeholder="Email"
-            value={this.state.email}
-            name="email"
-          />
-          <input
-            type="text"
-            className="firstNameHolder"
+            className="input firstNameHolder"
             onChange={this.handleInputChange}
             placeholder="First Name"
             value={this.state.firstName}
@@ -80,7 +65,7 @@ class NewProfileForm extends Component {
           />
           <input
             type="text"
-            className="lastNameHolder"
+            className="input lastNameHolder"
             onChange={this.handleInputChange}
             placeholder="Last Name"
             value={this.state.lastName}
@@ -88,15 +73,23 @@ class NewProfileForm extends Component {
           />
           <input
             type="text"
-            className="companyNameHolder"
+            className="input emailHolder"
+            onChange={this.handleInputChange}
+            placeholder="Email"
+            value={this.state.email}
+            name="email"
+          />
+          <input
+            type="text"
+            className="input companyNameHolder"
             onChange={this.handleInputChange}
             placeholder="Company Name"
             value={this.state.companyName}
             name="companyName"
           />
-          <input
-            type="textarea"
-            className="companySummaryHolder"
+          <textarea
+            type="text"
+            className="input companySummaryHolder"
             onChange={this.handleInputChange}
             placeholder="Company Summary"
             value={this.state.companySummary}
@@ -104,7 +97,7 @@ class NewProfileForm extends Component {
           />
           <input
             type="text"
-            className="applicationInboxHolder"
+            className="input applicationInboxHolder"
             onChange={this.handleInputChange}
             placeholder="Application Inbox"
             value={this.state.applicationInbox}
