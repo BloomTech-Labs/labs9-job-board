@@ -4,46 +4,36 @@ import "./PostJobStyling.css";
 const JobForm = props => {
   return (
     <div>
+      <div className="post-job-title">Post a Job</div>
+      <hr />
       <form className="job-form" onSubmit={props.addJob}>
         <div className="top">
           <div className="title-container">
-            <label className="input-titles" for="title">
+            <label
+              className="input-titles"
+              id="job-title-input-title"
+              for="title"
+            >
               Title
             </label>
-            <label className="input-titles" id="salary-title" for="salary">
+            <label className="input-titles" for="salary">
               Salary
             </label>
-            <label
-              className="input-titles"
-              id="top-skills-title"
-              for="top-skills"
-            >
+            <label className="input-titles" for="top-skills">
               Top Skills
             </label>
-            <label
-              className="input-titles"
-              id="additional-skills-title "
-              for="additional-skills"
-            >
+            <label className="input-titles" for="additional-skills">
               Additional Skills
             </label>
-            <label
-              className="input-titles"
-              id="familiar-with-title"
-              for="familiar-with"
-            >
+            <label className="input-titles" for="familiar-with">
               Familiar With
             </label>
-            <label
-              className="input-titles"
-              id="description-title"
-              for="description"
-            >
+            <label className="input-titles" for="description">
               Description
             </label>
             <label
               className="input-titles"
-              id="requirements-title"
+              id="requirements-input-title"
               for="requirements"
             >
               Requirements
