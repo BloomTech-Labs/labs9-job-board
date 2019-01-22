@@ -38,11 +38,11 @@ class SingleJob extends Component {
     return (
       <div className="single-job-container">
         <div className="apply-share">
-          <button className="apply-btn">apply</button>
-          <a href="javascript: window.location='mailto:?subject=Check this Job!&body= ' + window.location;">
+          <button className="apply-btn">Apply</button>
+          <a href="javascript: window.location='mailto:?subject=Check this Job!&body= '+ window.location;">
             Tell a Friend
           </a>
-          <a href="javascript: window.location='mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body= ' + window.location;">
+          <a href="javascript: window.location='mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body= '+ window.location;">
             Report
           </a>
         </div>
