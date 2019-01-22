@@ -7,7 +7,7 @@ const url = process.env.REACT_APP_STRIPE_TEST_KEY;
 class Billing extends Component {
 	render() {
 		return (
-			<StripeProvider apiKey={REACT_APP_STRIPE_TEST_KEY}>
+			<StripeProvider apiKey= "REACT_APP_STRIPE_TEST_KEY">
 				<div className="example">
 					<Elements>
 						<CheckoutForm />
