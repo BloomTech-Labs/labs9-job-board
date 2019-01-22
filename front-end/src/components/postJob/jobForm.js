@@ -7,106 +7,100 @@ const JobForm = props => {
       <form className="job-form" onSubmit={props.addJob}>
         <div className="top">
           <div className="title-container">
-            <label className="titles" for="job-title">
-              Job Title
+            <label className="input-titles" for="title">
+              Title
             </label>
-            <label className="titles" for="job-salary">
-              Job Salary
+            <label className="input-titles" id="salary-title" for="salary">
+              Salary
             </label>
-            <label className="titles" for="job-skills">
-              Job Skills
+            <label
+              className="input-titles"
+              id="top-skills-title"
+              for="top-skills"
+            >
+              Top Skills
+            </label>
+            <label
+              className="input-titles"
+              id="additional-skills-title "
+              for="additional-skills"
+            >
+              Additional Skills
+            </label>
+            <label
+              className="input-titles"
+              id="familiar-with-title"
+              for="familiar-with"
+            >
+              Familiar With
+            </label>
+            <label
+              className="input-titles"
+              id="description-title"
+              for="description"
+            >
+              Description
+            </label>
+            <label
+              className="input-titles"
+              id="requirements-title"
+              for="requirements"
+            >
+              Requirements
             </label>
           </div>
-          <div className="inputs-container">
-            <input id="job-title" />
-            <input id="job-salary" />
-            <input id="job-skills" />
+          <div className="input-container">
+            <input
+              id="title"
+              value={props.title}
+              name="title"
+              onChange={props.handleInput}
+              placeholder="Job title"
+            />
+            <input
+              id="salary"
+              value={props.salary}
+              name="salary"
+              onChange={props.handleInput}
+              placeholder="Salary range"
+            />
+            <input
+              id="top-skills"
+              value={props.topSkills}
+              name="topSkills"
+              onChange={props.handleInput}
+              placeholder="Top 5 skills (largest on your posting) *separate with commas*"
+            />
+            <input
+              id="additional-skills"
+              value={props.additionalSkills}
+              name="additionalSkills"
+              onChange={props.handleInput}
+              placeholder="More skills (medium on your posting) *separate with commas*"
+            />
+            <input
+              id="familiar-with"
+              value={props.familiarWith}
+              name="familiarWith"
+              onChange={props.handleInput}
+              placeholder="Remaining skills (small on your posting) *separate with commas*"
+            />
+            <textarea
+              id="description"
+              value={props.description}
+              name="description"
+              onChange={props.handleInput}
+              placeholder="Job description"
+            />
+            <textarea
+              id="requirements"
+              value={props.requirements}
+              name="requirements"
+              onChange={props.handleInput}
+              placeholder="Job requirements"
+            />
           </div>
         </div>
-        {/* <div class="input-container">
-          <label className="input-titles" for="title">
-            Title
-          </label>
-          <input
-            id="title"
-            value={props.title}
-            name="title"
-            onChange={props.handleInput}
-            placeholder="Job Title"
-          />
-        </div>
-        <div class="input-container">
-          <label className="input-titles" for="salary">
-            Salary
-          </label>
-          <input
-            id="salary"
-            value={props.salary}
-            name="salary"
-            onChange={props.handleInput}
-            placeholder="Salary Range"
-          />
-        </div>
-        <div class="input-container">
-          <label className="input-titles" for="top-skills">
-            Top Skills
-          </label>
-          <input
-            id="top-skills"
-            value={props.topSkills}
-            name="topSkills"
-            onChange={props.handleInput}
-            placeholder="Top Skills"
-          />
-        </div>
-        <div class="input-container">
-          <label className="input-titles" for="additional-skills">
-            Additional Skills
-          </label>
-          <input
-            id="additional-skills"
-            value={props.additionalSkills}
-            name="additionalSkills"
-            onChange={props.handleInput}
-            placeholder="Additional Skills"
-          />
-        </div>
-        <div class="input-container">
-          <label className="input-titles" for="familiar-with">
-            Familiar With
-          </label>
-          <input
-            id="familiar-with"
-            value={props.familiarWith}
-            name="familiarWith"
-            onChange={props.handleInput}
-            placeholder="Remaining Skills"
-          />
-        </div>
-        <div class="input-container">
-          <label className="input-titles" for="description">
-            Description
-          </label>
-          <textarea
-            id="description"
-            value={props.description}
-            name="description"
-            onChange={props.handleInput}
-            placeholder="Job Description"
-          />
-        </div>
-        <div class="input-container">
-          <label className="input-titles" for="requirements">
-            Requirements
-          </label>
-          <textarea
-            id="requirements"
-            value={props.requirements}
-            name="requirements"
-            onChange={props.handleInput}
-            placeholder="Job Requirements"
-          />
-        </div> */}
         <h5>Active</h5>
         <input type="checkbox" name="active" value={props.active} />
         <h5>This requires a degree</h5>
