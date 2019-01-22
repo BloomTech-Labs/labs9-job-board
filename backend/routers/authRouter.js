@@ -3,6 +3,48 @@ const express = require("express");
 const db = require("../db/config");
 const router = express.Router();
 
+// [POST] /api/auth/login/:id
+// returns if provided user_uid and email exist in login table
+router.post("/login/:firebase_id", async (req, res, next) => {
+  const { user_uid, email } = req.body;
+
+  try {
+    if (user_uid && email) {
+      const checkId = await db("login").where({ user_uid: user_uid });
+      console.log("checkId", checkId);
+      if (checkId.length) {
+        const checkIdEmail = await db("login").where({ user_uid, email });
+        if (checkIdEmail.length) {
+          res.status(200).json({
+            status: "already exists in login",
+            action: "check user table"
+          });
+        } else {
+          const update = await db("login")
+            .where({ user_uid })
+            .update({ email });
+          update
+            ? res.status(200).json({
+                status: "successfully updated",
+                action: "check user table"
+              })
+            : res.status(400).json({ status: "failed to update" });
+        }
+      } else {
+        const createNewLogin = await db("login").insert({ user_uid, email });
+        createNewLogin.rowCount
+          ? res.status(201).json({
+              status: "created new user",
+              action: "redirect to new user"
+            })
+          : res.status(400).json({ status: "failed to create new user" });
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // [POST] /api/auth/login
 router.post("/login", (req, res) => {
   const newUser = { ...req.body };
