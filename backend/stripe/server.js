@@ -24,7 +24,7 @@
 // });
 
 const app = require('express')();
-const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
 
 app.use(cors());
