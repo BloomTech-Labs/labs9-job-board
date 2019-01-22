@@ -55,6 +55,7 @@ class NewProfileForm extends Component {
       <div className = 'full-page'>
         <form className="new-user-form" onSubmit={this.addNew}>
           <h2> Tell us about you! </h2>
+      <ProfilePic/>
           <input
             type="text"
             className="input firstNameHolder"
@@ -104,9 +105,8 @@ class NewProfileForm extends Component {
             name="applicationInbox"
           />
 
-          <button type="submit">Save</button>
+          <button className ='save-button' type="submit">Save</button>
         </form>
-        <ProfilePic />
       </div>
     );
   }
