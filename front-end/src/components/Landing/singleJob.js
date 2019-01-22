@@ -39,13 +39,17 @@ class SingleJob extends Component {
       <div className="single-job-container">
         <div className="apply-share">
           <button className="apply-btn">apply</button>
-          <p>tell a friend</p>
-          <p>Report</p>
+          <a href="javascript: window.location='mailto:?subject=Check this Job!&body= ' + window.location;">
+            Tell a Friend
+          </a>
+          <a href="javascript: window.location='mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body= ' + window.location;">
+            Report
+          </a>
         </div>
         <div className="job-listing">
           <div className="job-company-summary">
-            <h2>{this.state.job.user.company_name}</h2>
-            <h3>{this.state.job.user.summary}</h3>
+            <h2>{this.state.job.company_name}</h2>
+            <h3>{this.state.job.summary}</h3>
           </div>
 
           <div className="job-title-salary">
@@ -72,7 +76,7 @@ class SingleJob extends Component {
           </div>
         </div>
         <div className="company-logo">
-          <img src={this.state.job.user.avatar_image} />
+          <img src={this.state.job.avatar_image} />
         </div>
       </div>
     );
