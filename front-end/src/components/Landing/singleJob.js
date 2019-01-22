@@ -19,11 +19,10 @@ class SingleJob extends Component {
 
   fetchJob = id => {
     axios
-      .get(`${url}/api/job/${id}`)
-      .then(res => {
-        console.log(res);
-        this.setState(() => ({
-          job: res.data
+      .get(`${url}/api/jobs/${id}`)
+      .then(async res => {
+        await this.setState(() => ({
+          job: res.data[0]
         }));
       })
       .catch(err => {

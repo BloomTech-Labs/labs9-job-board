@@ -4,7 +4,7 @@ import { withRouter, Link, Redirect } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 import { AuthenticatedUserContext } from "../Session";
-import RedirectPage from "../RedirectPage/RedirectPage";
+//import RedirectPage from "../RedirectPage/RedirectPage";
 
 import "./SignIn.css";
 

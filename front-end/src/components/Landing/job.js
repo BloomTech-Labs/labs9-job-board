@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-// added some temporary fake data to fix styling (replace)
+//import { Link } from "react-router-dom";
 
 const Jobs = props => {
   return (
@@ -15,11 +13,20 @@ const Jobs = props => {
           <h3>{props.job.salary}</h3>
         </div>
         <div className="right-side">
-          <h3>{props.job.created_at}</h3>
+          <h3>{formatDate(props.job.created_at)}</h3>
         </div>
       </div>
     </div>
   );
 };
+
+function formatDate(date) {
+  const newDate = new Date(date);
+  let month = newDate.getMonth() + 1;
+  let day = newDate.getDate();
+  let year = newDate.getFullYear();
+
+  return `${month}/${day}/${year}`;
+}
 
 export default Jobs;

@@ -1,6 +1,10 @@
 import app from "firebase/app";
 import "firebase/auth";
 
+import axios from "axios";
+
+const URL = process.env.REACT_APP_DB_URL;
+
 // configuration provided with Firebase account
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -19,9 +23,34 @@ class Firebase {
     // this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
+  redirectResult = async () => {
+    try {
+      const redirectResults = await this.auth.getRedirectResult();
+      return redirectResults;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // SIGN IN - Google OAuth
-  doSignInWithGoogle = () => {
-    return this.auth.signInWithRedirect(this.googleProvider);
+  doSignInWithGoogle = async () => {
+    try {
+      const authUser = await this.auth.signInWithRedirect(this.googleProvider);
+
+      if (authUser.user && authUser.user.uid) {
+        const response = await axios.post(
+          `${URL}/api/auth/firstLogin`,
+          authUser.user.uid
+        );
+        if (response.status !== 500) {
+          return response ? { newUser: true } : { newUser: false };
+        } else {
+          return { message: "Failed to determine first login" };
+        }
+      }
+    } catch (error) {
+      return { message: "Failed to determine first login" };
+    }
   };
 
   // SIGN IN - Facebook OAuth

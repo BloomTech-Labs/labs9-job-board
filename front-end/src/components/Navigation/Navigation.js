@@ -31,6 +31,7 @@ class Navigation extends Component {
         <SideMenu
           click={this.closeSideMenuClickHandler}
           show={this.state.sideMenuOpen}
+          authUser={this.props.authUser}
         />
         {backdrop}
       </div>

@@ -83,6 +83,7 @@
   height: 100%;
   box-shadow: 1px 0 20px rgba(0, 0, 0, 0.8);
   position: fixed;
+  background-color: #d3d3d3;
   top: 0;
   left: 0;
   width: 25%;
@@ -102,6 +103,13 @@
   z-index: 200;
   transform: translateX(0);
   transition: transform 0.3s ease-out;
+}
+
+.side-menu-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .side-menu-navigation-items {

@@ -3,11 +3,15 @@ import axios from "axios";
 
 import JobList from "./jobList";
 
-import Jobs from "./job";
+
+//import Jobs from "./job";
+
 import Search from "./search";
 
 import Categories from "./categories";
 import Header from "./header";
+import LoadingBar from "../../images/loading-bars.svg";
+
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -23,9 +27,8 @@ class JobsContainer extends Component {
 
   componentDidMount() {
     axios
-      .get(`${url}/api/job`)
+      .get(`${url}/api/jobs`)
       .then(res => {
-        console.log(res);
         this.setState({ jobs: res.data });
       })
       .catch(err => {
@@ -48,8 +51,9 @@ class JobsContainer extends Component {
   };
 
   render() {
-    console.log("click", this.state.searchJobs);
-    console.log("Search", this.state.search);
+    // console.log("click", this.handleInput);
+    // console.log("Search", this.state.search);
+
     return (
       <div className="jobs-container container">
         <Header />
@@ -60,13 +64,17 @@ class JobsContainer extends Component {
             search={this.state.search}
           />
         </div>
-        <JobList
-          jobs={
-            this.state.searchJobs.length > 0
-              ? this.state.searchJobs
-              : this.state.jobs
-          }
-        />
+        {this.state.jobs.length ? (
+          <JobList
+            jobs={
+              this.state.searchJobs.length > 0
+                ? this.state.searchJobs
+                : this.state.jobs
+            }
+          />
+        ) : (
+          <img src={LoadingBar} alt="loading" />
+        )}
       </div>
     );
   }

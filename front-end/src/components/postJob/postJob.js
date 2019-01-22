@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import JobForm from "./jobForm";
 import axios from "axios";
 
-const url = process.env.REACT_APP_DB_UR;
+const url = process.env.REACT_APP_DB_URL;
 
 class PostJob extends Component {
   constructor(props) {
@@ -18,6 +18,10 @@ class PostJob extends Component {
       active: true,
       requiresDegree: false
     };
+  }
+
+  componentDidMount() {
+    console.log(this.props.authUser);
   }
 
   addJob = event => {

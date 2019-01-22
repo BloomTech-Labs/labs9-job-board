@@ -8,12 +8,19 @@ const router = express.Router();
 
 // TODO: Test routes -- ONCE COMPLETE DELETE THIS TODO
 
-// Display all jobs
-
-router.get("/job", (req, res) => {
-  db("users")
-    .from("jobs")
-    .join("users", "jobs.users_id", "users.id")
+// [GET] /api/jobs
+// Return all active jobs in database
+router.get("/jobs", (req, res) => {
+  db("jobs as j")
+    .innerJoin("users as u", "j.users_id", "u.id")
+    .select(
+      "j.*",
+      "u.company_name",
+      "u.summary",
+      "u.application_method",
+      "u.avatar_image"
+    )
+    .where({ active: true })
     .then(allJobs => {
       res.status(200).json(allJobs);
     })
@@ -26,33 +33,22 @@ router.get("/job", (req, res) => {
 });
 
 // Display one job
-router.get("/job/:id", (req, res) => {
+router.get("/jobs/:id", (req, res) => {
   const { id } = req.params;
-  db("jobs")
-    .where({ id })
-    .first()
+
+  db("jobs as j")
+    .innerJoin("users as u", "j.users_id", "u.id")
+    .select(
+      "j.*",
+      "u.company_name",
+      "u.summary",
+      "u.application_method",
+      "u.avatar_image"
+    )
+    .where({ "j.id": id })
     .then(job => {
-      if (job) {
-        console.log(job);
-        db("users")
-          .where({ id })
-          .first()
-          .select(
-            "first_name",
-            "last_name",
-            "email",
-            "company_name",
-            "summary",
-            "application_method",
-            "avatar_image",
-            "balance",
-            "created_at",
-            "updated_at"
-          )
-          .then(user => {
-            job.user = user;
-            res.status(200).json(job);
-          });
+      if (job.length) {
+        res.status(200).json(job);
       } else {
         res.status(404).json({
           errorMessage: "The job with the specified ID does not exist.",
@@ -68,25 +64,25 @@ router.get("/job/:id", (req, res) => {
     });
 });
 
-router.get("/jobs/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const jobs = await db("jobs")
-      .where({ "jobs.id": id })
-      .join("users", "jobs.users_id", "=", "users.id");
-    // .select("last_name");
-    if (!jobs.length) {
-      return res.status(400).json({
-        errorMessage: "The job with the specified ID does not exis"
-      });
-    }
-    return res.status(200).json(jobs);
-  } catch (err) {
-    return res
-      .status(501)
-      .json({ errorMessage: "The job information could not be retrieved." });
-  }
-});
+// router.get("/jobs/:id", async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const jobs = await db("jobs")
+//       .where({ "jobs.id": id })
+//       .join("users", "jobs.users_id", "=", "users.id");
+//     // .select("last_name");
+//     if (!jobs.length) {
+//       return res.status(400).json({
+//         errorMessage: "The job with the specified ID does not exis"
+//       });
+//     }
+//     return res.status(200).json(jobs);
+//   } catch (err) {
+//     return res
+//       .status(501)
+//       .json({ errorMessage: "The job information could not be retrieved." });
+//   }
+// });
 
 // Creating a new job
 router.post("/job", (req, res) => {
