@@ -21,6 +21,7 @@ class CheckoutForm extends Component {
 			headers: { 'Content-Type': 'text/plain' },
 			body: token.id,
 		});
+		console.log(response.body);
 		// if checkout is complete then message will be displayed
 		if (response.ok) this.setState({ complete: true });
 		console.log('Purchase Complete');
