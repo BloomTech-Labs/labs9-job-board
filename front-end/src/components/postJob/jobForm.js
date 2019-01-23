@@ -94,7 +94,12 @@ const JobForm = props => {
         <div className="post-job-bottom">
           <div className="job-active">
             <label className="switch">
-              <input type="checkbox" name="active" value={props.active} />
+              <input
+                type="checkbox"
+                name="active"
+                value={props.active}
+                onClick={props.jobActiveToggle}
+              />
               <span class="slider round" />
             </label>
             <h5>Active</h5>
@@ -103,10 +108,11 @@ const JobForm = props => {
             <input
               type="checkbox"
               name="requiresDegree"
-              value={props.requiresDegree}
               className="degree-checkbox"
+              value={props.requiresDegree}
+              onClick={props.requiresDegreeToggle}
             />
-            <h5>This job does not require a degree</h5>
+            <h5>This job requires a degree</h5>
           </div>
           <div className="post-job-buttons-container">
             <button
