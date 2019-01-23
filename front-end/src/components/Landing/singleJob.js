@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -30,15 +29,21 @@ class SingleJob extends Component {
       });
   };
 
+  clickHandler() {
+    window.location = `mailto:${this.state.job.application_method}`;
+  }
+
   render() {
-    console.log("this.props", this.props);
+    console.log("this.props", this.state.job);
     if (!this.state.job) {
       return <div>Loading Job...</div>;
     }
     return (
       <div className="single-job-container">
         <div className="apply-share">
-          <button className="apply-btn">Apply</button>
+          <button className="apply-btn" onClick={() => this.clickHandler()}>
+            Apply
+          </button>
           <a href="javascript: window.location='mailto:?subject=Check this Job!&body= '+ window.location;">
             Tell a Friend
           </a>
@@ -60,9 +65,10 @@ class SingleJob extends Component {
           </div>
           <div className="job-skills-desc-req">
             <h4>Skills:</h4>
-            <h3>{this.state.job.addSkills}</h3>
-            <h3>{this.state.job.topSkills}</h3>
-            <h3>{this.state.job.familiar}</h3>
+            <h3>
+              {this.state.job.add_skills}, {this.state.job.top_skills},{" "}
+              {this.state.job.familiar}
+            </h3>
           </div>
           <div className="job-skills-desc-req">
             <h4>Job Description:</h4>

@@ -1,5 +1,6 @@
 .jobs-container {
-  height: 1000px;
+  min-height: 1000px;
+  padding-bottom: 50px;
 }
 
 /* ==========Landing Page Header========== */
@@ -284,6 +285,26 @@
   width: 10%;
 }
 
+@media (max-width: 1250px) {
+  .each-job .left-side {
+    width: 75%;
+  }
+
+  .each-job .right-side {
+    width: 25%;
+  }
+}
+
+@media (max-width: 780px) {
+  .each-job .left-side {
+    width: 70%;
+  }
+
+  .each-job .right-side {
+    width: 25%;
+  }
+}
+
 /* ==========Single Job========== */
 
 .single-job-container {
@@ -350,6 +371,11 @@
   text-align: left;
   line-height: 1.25;
   padding: 20px 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.college {
+  border-bottom: none;
 }
 
 .apply-btn {
