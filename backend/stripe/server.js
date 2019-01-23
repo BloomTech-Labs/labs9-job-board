@@ -27,46 +27,16 @@ app.get('/charge', async (req, res) => {
 });
 
 app.post('/charge', async (req, res) => {
-	// logic for if any of these options are selected
-	if (req.body.option) {
-		try {
-			let { status } = await stripe.charges.create({
-				amount: 29999,
-				currency: 'usd',
-				description: '100 credits',
-				source: req.body.token.token.id,
-			});
-
-			res.json({ status });
-		} catch (err) {
-			res.status(500).end();
-		}
-	} else if (req.body.option) {
-		try {
-			let { status } = await stripe.charges.create({
-				amount: 9999,
-				currency: 'usd',
-				description: '50 credits',
-				source: req.body.token.token.id,
-			});
-			res.json({ status });
-		} catch (err) {
-			console.log(err);
-			res.status(500).end();
-		}
-	} else {
-		try {
-			let { status } = await stripe.charges.create({
-				amount: 999,
-				currency: 'usd',
-				description: 'a credit',
-				source: req.body.token.token.id,
-			});
-			res.json({ status });
-		} catch (err) {
-			console.log(err);
-			res.status(500).end();
-		}
+	try {
+		let { status } = await stripe.charges.create({
+			amount: 9999,
+			currency: 'usd',
+			description: '50 credits charge',
+			source: req.body,
+		});
+		res.json({ status });
+	} catch (err) {
+		res.status(500).end();
 	}
 });
 

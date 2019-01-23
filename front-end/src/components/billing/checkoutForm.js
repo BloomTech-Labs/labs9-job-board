@@ -20,7 +20,7 @@ class CheckoutForm extends Component {
 		let response = await fetch('http://localhost:9000/charge', {
 			method: 'POST',
 			headers: { 'Content-Type': 'text/plain' },
-			body: token.id,
+			body: token,
 		});
 		// if checkout is complete then message will be displayed
 		if (response.ok) this.setState({ complete: true });
