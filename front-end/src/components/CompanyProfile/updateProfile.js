@@ -56,7 +56,6 @@ class UpdateProfile extends Component {
     return (
       <div className="profile-container">
         <ProfileForm />
-        <ProfilePic />
       </div>
     );
   }
