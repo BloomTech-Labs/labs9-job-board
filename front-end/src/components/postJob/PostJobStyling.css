@@ -53,6 +53,18 @@ hr {
   width: 20%;
 }
 
+@media (max-width: 1000px) {
+  .title-container {
+    width: 25%;
+  }
+}
+
+@media (max-width: 780px) {
+  .title-container {
+    width: 30%;
+  }
+}
+
 .title-container .input-titles {
   color: black;
   font-size: 2.5rem;
@@ -68,7 +80,8 @@ hr {
 
 @media (max-width: 780px) {
   .title-container .input-titles {
-    font-size: 1.6rem;
+    font-size: 1.95rem;
+    margin-top: 73.5px;
   }
 }
 
@@ -84,6 +97,18 @@ hr {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+
+@media (max-width: 1000px) {
+  .input-container {
+    width: 75%;
+  }
+}
+
+@media (max-width: 780px) {
+  .input-container {
+    width: 70%;
+  }
 }
 
 .input-container input {
@@ -102,7 +127,7 @@ hr {
 
 @media (max-width: 780px) {
   .input-container input {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -127,7 +152,7 @@ hr {
 
 @media (max-width: 780px) {
   .input-container textarea {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -149,13 +174,11 @@ hr {
   width: 100%;
 }
 
-@media (max-width: 1000px) {
-  .post-job-bottom {
-    font-size: 1.4rem;
-  }
-}
-
 @media (max-width: 780px) {
+  .post-job-bottom {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .post-job-bottom h5 {
@@ -169,10 +192,22 @@ hr {
   width: 33%;
 }
 
+@media (max-width: 780px) {
+  .job-active {
+    width: 50%;
+  }
+}
+
 .requires-degree {
   display: flex;
   align-items: center;
   width: 33%;
+}
+
+@media (max-width: 780px) {
+  .requires-degree {
+    width: 50%;
+  }
 }
 
 .requires-degree .degree-checkbox {
@@ -182,8 +217,8 @@ hr {
 
 @media (max-width: 1000px) {
   .requires-degree .degree-checkbox {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -191,10 +226,16 @@ hr {
   display: flex;
   justify-content: center;
   width: 33%;
-  height: 50px;
 }
 
-.post-job-bottom {
+@media (max-width: 780px) {
+  .post-job-buttons-container {
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}
+
+/* .post-job-bottom {
   border: 1px solid red;
 }
 
@@ -208,7 +249,7 @@ hr {
 
 .post-job-buttons-container {
   border: 1px solid green;
-}
+} */
 
 .post-job-buttons {
   display: inline-block;
@@ -226,6 +267,15 @@ hr {
 @media (max-width: 1000px) {
   .post-job-buttons {
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .post-job-buttons {
+    padding: 1rem 2.5rem;
+    margin: 5% 0;
+    border-radius: 0.12rem;
+    font-size: 2rem;
   }
 }
 
