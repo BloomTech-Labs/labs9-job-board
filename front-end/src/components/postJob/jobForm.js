@@ -1,9 +1,9 @@
 import React from "react";
-import "./PostJobStyling.css";
+import "./postJobStyling.scss";
 
 const JobForm = props => {
   return (
-    <div>
+    <div className="post-job-container">
       <div className="post-job-title">Post a Job</div>
       <hr />
       <form className="job-form" onSubmit={props.addJob}>
