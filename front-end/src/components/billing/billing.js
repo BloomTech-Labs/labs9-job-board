@@ -7,7 +7,7 @@ import CheckoutForm from './checkoutForm';
 class Billing extends Component {
 	render() {
 		return (
-			<StripeProvider apiKey="pk_test_pg4HlNAjsfnKzQaFk5CmMeB4">
+			<StripeProvider apiKey="pk_test_77iYkIzmRpuMiC1SxkCkMIBp">
 				<div className="example">
 					<Elements>
 						<CheckoutForm />
