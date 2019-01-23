@@ -9,6 +9,7 @@ class NewProfileForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        uid: "",
         email: "",
         firstName: "",
         lastName: "",
@@ -18,15 +19,20 @@ class NewProfileForm extends Component {
       };
   }
 
-  componentDidMount() {
-    console.log(this.props.authUser);
+  componentDidUpdate() {
+    if (this.props.authUser.uid !== this.state.uid) {
+      this.setState({ uid: this.props.authUser.uid });
+    }
   }
 
+  //take user id passed from initial sign up
+  //post new user information to that id
 
   addNew = e => {
     e.preventDefault();
 
     const newUser = {
+      uid: this.state.uid,
       email: this.state.email,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -39,6 +45,7 @@ class NewProfileForm extends Component {
       .post(`${url}/api/users`, newUser)
       .then(res => {
         console.log("ADDING USER", res);
+        
       
       })
       .catch(error => {
@@ -51,11 +58,16 @@ class NewProfileForm extends Component {
   };
 
   render() {
+
+    if (this.props.authUser) {
+      console.log(this.state.uid);
+    }
+
     return (
       <div className = 'full-page'>
         <form className="new-user-form" onSubmit={this.addNew}>
           <h2> Tell us about you! </h2>
-      <ProfilePic/>
+          <ProfilePic/>
           <input
             type="text"
             className="input firstNameHolder"

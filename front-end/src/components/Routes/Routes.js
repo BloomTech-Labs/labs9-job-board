@@ -43,7 +43,14 @@ class Routes extends Component {
           )}
         /> */}
         <Route path={ROUTES.ACCOUNT} component={UpdateProfile} />
-        <Route path={ROUTES.NEW_PROFILE} component={NewProfileForm} />
+        <Route 
+          path={ROUTES.NEW_PROFILE} 
+          render= { props => (
+            <NewProfileForm 
+              {...props} 
+              authUser = {this.props.authUser} />
+          )}
+        />      
       </div>
     );
   }
