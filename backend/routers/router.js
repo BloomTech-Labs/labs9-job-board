@@ -22,7 +22,41 @@ router.get("/jobs", (req, res) => {
     )
     .where({ active: true })
     .then(allJobs => {
-      res.status(200).json(allJobs);
+      if (allJobs.length) {
+        res.status(200).json(allJobs);
+      } else {
+        res.status(200).json({ message: "No active jobs in database" });
+      }
+    })
+    .catch(error => {
+      res.status(501).json({
+        errorMessage: "The jobs information could not be retrieved.",
+        error: error
+      });
+    });
+});
+
+// [GET] /api/jobs/category/:category
+// returns all jobs with provided category
+router.get("/jobs/category/:category", (req, res) => {
+  const { category } = req.params;
+
+  db("jobs as j")
+    .innerJoin("users as u", "j.users_id", "u.id")
+    .select(
+      "j.*",
+      "u.company_name",
+      "u.summary",
+      "u.application_method",
+      "u.avatar_image"
+    )
+    .where({ active: true, category })
+    .then(filteredJobs => {
+      if (filteredJobs.length) {
+        res.status(200).json(filteredJobs);
+      } else {
+        res.status(200).json({ message: "No active jobs in category" });
+      }
     })
     .catch(error => {
       res.status(501).json({
@@ -63,26 +97,6 @@ router.get("/jobs/:id", (req, res) => {
       });
     });
 });
-
-// router.get("/jobs/:id", async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const jobs = await db("jobs")
-//       .where({ "jobs.id": id })
-//       .join("users", "jobs.users_id", "=", "users.id");
-//     // .select("last_name");
-//     if (!jobs.length) {
-//       return res.status(400).json({
-//         errorMessage: "The job with the specified ID does not exis"
-//       });
-//     }
-//     return res.status(200).json(jobs);
-//   } catch (err) {
-//     return res
-//       .status(501)
-//       .json({ errorMessage: "The job information could not be retrieved." });
-//   }
-// });
 
 // Creating a new job
 router.post("/job", (req, res) => {

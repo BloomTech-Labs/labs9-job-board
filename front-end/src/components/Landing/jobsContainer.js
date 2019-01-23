@@ -3,7 +3,6 @@ import axios from "axios";
 
 import JobList from "./jobList";
 
-
 //import Jobs from "./job";
 
 import Search from "./search";
@@ -12,8 +11,7 @@ import Categories from "./categories";
 import Header from "./header";
 import LoadingBar from "../../images/loading-bars.svg";
 
-
-const url = process.env.REACT_APP_DB_URL;
+const url = process.env.REACT_APP_DB_URL_TEST;
 
 class JobsContainer extends Component {
   constructor(props) {
@@ -21,20 +19,48 @@ class JobsContainer extends Component {
     this.state = {
       jobs: [],
       searchJobs: [],
-      search: ""
+      search: "",
+      fetching: false,
+      error: false
     };
   }
 
   componentDidMount() {
-    axios
-      .get(`${url}/api/jobs`)
-      .then(res => {
-        this.setState({ jobs: res.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.setState({ fetching: true }, () => {
+      axios
+        .get(`${url}/api/jobs`)
+        .then(res => {
+          this.setState({ jobs: res.data, fetching: false });
+        })
+        .catch(err => {
+          this.setState({ error: true, fetching: false });
+        });
+    });
   }
+
+  searchByCategory = category => {
+    if (category !== "all") {
+      axios
+        .get(`${url}/api/jobs/category/${category}`)
+        .then(res => {
+          this.setState({ jobs: res.data });
+        })
+        .catch(err => {
+          this.setState({ error: true, fetching: false });
+        });
+    } else {
+      this.setState({ fetching: true }, () => {
+        axios
+          .get(`${url}/api/jobs`)
+          .then(res => {
+            this.setState({ jobs: res.data, fetching: false });
+          })
+          .catch(err => {
+            this.setState({ error: true, fetching: false });
+          });
+      });
+    }
+  };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -46,6 +72,7 @@ class JobsContainer extends Component {
       const searchJobs = preState.jobs.filter(result => {
         return result.title.toLowerCase().includes(preState.search);
       });
+      console.log(searchJobs);
       return { searchJobs: searchJobs };
     });
   };
@@ -58,22 +85,22 @@ class JobsContainer extends Component {
       <div className="jobs-container container">
         <Header />
         <div className="search-categories-container">
-          <Categories />
+          <Categories searchByCategory={this.searchByCategory} />
           <Search
             searchResults={this.searchResults}
             search={this.state.search}
           />
         </div>
-        {this.state.jobs.length ? (
-          <JobList
-            jobs={
-              this.state.searchJobs.length > 0
-                ? this.state.searchJobs
-                : this.state.jobs
-            }
-          />
-        ) : (
+        {this.state.fetching ? (
           <img src={LoadingBar} alt="loading" />
+        ) : this.state.jobs.length ? (
+          <JobList
+            jobs={this.state.search ? this.state.searchJobs : this.state.jobs}
+          />
+        ) : this.state.error ? (
+          <div>Error retrieving jobs</div>
+        ) : (
+          <div>No results found</div>
         )}
       </div>
     );

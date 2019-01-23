@@ -143,21 +143,35 @@
 .categories {
   display: flex;
   justify-content: center;
-  align-items: center;
   border: 2px solid #ccc;
   background-color: white;
-  border-radius: 20px;
-  width: 49%;
+  /* width: 49%; */
   height: 50px;
 }
 
-.categories:hover {
+/* .categories:hover {
   border: 2px solid rgb(124, 124, 124);
+} */
+
+.categories .categories-tab {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0 10px;
 }
 
-.categories h5 {
-  margin: 0 2%;
-  font-size: 1.5rem;
+.categories .categories-tab:hover {
+  background: lightblue;
+  cursor: pointer;
+}
+
+.categories .selected {
+  background: yellow;
+}
+
+.categories .selected:hover {
+  background: yellow;
 }
 
 @media (max-width: 1250px) {
