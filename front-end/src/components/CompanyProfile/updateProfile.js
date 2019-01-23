@@ -23,7 +23,6 @@ class UpdateProfile extends Component {
   updateUser = e => {
     e.preventDefault();
     const id = this.props.match.params.id;
-
     const updatedUser = {
       image: this.state.image,
       email: this.state.email,
@@ -31,9 +30,9 @@ class UpdateProfile extends Component {
       lastName: this.state.lastName,
       companyName: this.state.companyName,
       companySummary: this.state.companySummary,
-      applicationInbox: this.state.applicationInbox
+      applicationInbox: this.state.applicationInbox,
+      uid: this.props.authUser.uid
     };
-
     axios.put(`${url}/api/users/${id}`, updatedUser).then(res => {
       console.log("response", res);
       this.setState({ user: res.data }).catch(err => console.log(err));
@@ -45,7 +44,9 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log("update", this.props.authUser);
+    if (this.props.authUser) {
+      console.log(this.props.authUser.uid);
+    }
     return (
       <div>
         <ProfileForm />
