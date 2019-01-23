@@ -11,7 +11,7 @@ import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
-import RedirectPage from "../RedirectPage/RedirectPage";
+//import RedirectPage from "../RedirectPage/RedirectPage";
 import NewProfileForm from "../CompanyProfile/newProfileForm";
 
 import * as ROUTES from "../../constants/routes";
@@ -36,7 +36,12 @@ class Routes extends Component {
         />
         <Route path={ROUTES.SIGN_IN} render={() => <SignIn />} />
         <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
-        <Route path={ROUTES.REDIRECT} component={RedirectPage} />
+        {/* <Route
+          path={ROUTES.REDIRECT}
+          render={props => (
+            <RedirectPage {...props} authUser={this.props.authUser} />
+          )}
+        /> */}
         <Route path={ROUTES.ACCOUNT} component={UpdateProfile} />
         <Route path={ROUTES.NEW_PROFILE} component={NewProfileForm} />
       </div>

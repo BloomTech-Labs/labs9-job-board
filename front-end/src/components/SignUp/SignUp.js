@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
+import axios from "axios";
 
 import { withFirebase } from "../Firebase/index";
 // import { AuthenticatedUserContext } from "../Session";
@@ -11,6 +12,8 @@ import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 // import facebookButton from '../../images/facebook-login-btn.png';
 
+const URL = process.env.REACT_APP_DB_URL;
+
 // initial state, form submission state reset
 const DEFAULT_STATE = {
   email: "",
@@ -21,7 +24,6 @@ const DEFAULT_STATE = {
 
 // component for /sign-up route
 const SignUp = props => {
-  console.log(props.authUser);
   return props.authUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />;
 };
 
@@ -39,12 +41,51 @@ class SignUpFormUnconnected extends React.Component {
   googleAuthSubmit = event => {
     event.preventDefault();
     event.target.setAttribute("src", googleButtonPressed);
-    this.props.history.push({
-      pathname: ROUTES.REDIRECT,
-      state: {
-        redirectMethod: "google"
-      }
-    });
+
+    let user_uid, email;
+
+    this.props.firebase
+      .doSignInWithGooglePopUp()
+      .then(authUser => {
+        console.log("authUser", authUser);
+        if (authUser.user && authUser.user.uid && authUser.user.email) {
+          user_uid = authUser.user.uid;
+          email = authUser.user.email;
+
+          // checks if in login table
+          return axios.post(`${URL}/api/auth/login`, {
+            user_uid,
+            email
+          });
+        } else {
+          this.props.history.push(ROUTES.LANDING);
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("firstlogin", response);
+        if (response.data.action === "check user table") {
+          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
+            user_uid,
+            email
+          });
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("users table", response);
+        // handle routing
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   emailAuthSubmit = async event => {

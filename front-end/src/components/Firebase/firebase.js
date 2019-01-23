@@ -23,34 +23,18 @@ class Firebase {
     // this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
-  redirectResult = async () => {
-    try {
-      const redirectResults = await this.auth.getRedirectResult();
-      return redirectResults;
-    } catch (error) {
-      console.log(error);
-    }
+  redirectResult = () => {
+    return this.auth.getRedirectResult();
   };
 
   // SIGN IN - Google OAuth
-  doSignInWithGoogle = async () => {
-    try {
-      const authUser = await this.auth.signInWithRedirect(this.googleProvider);
+  doSignInWithGoogle = () => {
+    return this.auth.signInWithRedirect(this.googleProvider);
+  };
 
-      if (authUser.user && authUser.user.uid) {
-        const response = await axios.post(
-          `${URL}/api/auth/firstLogin`,
-          authUser.user.uid
-        );
-        if (response.status !== 500) {
-          return response ? { newUser: true } : { newUser: false };
-        } else {
-          return { message: "Failed to determine first login" };
-        }
-      }
-    } catch (error) {
-      return { message: "Failed to determine first login" };
-    }
+  doSignInWithGooglePopUp = () => {
+    console.log("in popup");
+    return this.auth.signInWithPopup(this.googleProvider);
   };
 
   // SIGN IN - Facebook OAuth
@@ -61,7 +45,18 @@ class Firebase {
   // REDIRECT RESULT
   // unsure if this will be needed
   doGetRedirectData = () => {
-    return this.auth.getRedirectResult();
+    this.auth
+      .getRedirectResult()
+      .then(result => {
+        return result;
+      })
+      .then(user => {
+        if (this.authRedirected) return; // Skip
+
+        // Do stuff.
+
+        this.authRedirected = true; // Mark redirected
+      });
   };
 
   // SIGN UP - email and password
