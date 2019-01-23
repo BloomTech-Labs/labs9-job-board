@@ -32,7 +32,7 @@ class ProfilePic extends Component {
     return (
       <div>
         {this.state.profilePic.length > 0 ? (
-          <img src={this.state.profilePic[0].url} alt="profile" />
+          <img className='profile-pic' src={this.state.profilePic[0].url} alt="profile" />
         ) : (
           <button className='profile-pic-button' onClick={this.uploadPhoto.bind(this)}>Add Image +</button>
         )}

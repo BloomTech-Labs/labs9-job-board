@@ -76,3 +76,7 @@
       border: 2px solid rgb(82, 82, 82);
       
   }
+
+ .profile-pic {
+    border-radius: 50%;
+ }
