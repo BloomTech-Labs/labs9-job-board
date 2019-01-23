@@ -25,13 +25,13 @@ class UpdateProfile extends Component {
 		const id = this.props.match.params.id;
 
 		const updatedUser = {
-			image: this.state.image,
-			email: this.state.email,
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			companyName: this.state.companyName,
-			companySummary: this.state.companySummary,
-			applicationInbox: this.state.applicationInbox,
+			user_uid: this.state.uid,
+      		email: this.state.email,
+			first_name: this.state.firstName,
+			last_name: this.state.lastName,
+			company_name: this.state.companyName,
+			summary: this.state.companySummary,
+			application_method: this.state.applicationInbox
 		};
 
 		axios.put(`${url}/api/users/${id}`, updatedUser).then(res => {
