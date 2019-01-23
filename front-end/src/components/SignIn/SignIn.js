@@ -150,7 +150,7 @@ class SignInFormUnconnected extends React.Component {
       })
       .then(response => {
         console.log("users table", response);
-        if (response.action === "redirect to landing") {
+        if (response.data.action === "redirect to landing") {
           this.props.history.push(ROUTES.LANDING);
         } else {
           this.props.history.push({
