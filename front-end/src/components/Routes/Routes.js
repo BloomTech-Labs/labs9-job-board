@@ -37,7 +37,12 @@ class Routes extends Component {
         <Route path={ROUTES.SIGN_IN} render={() => <SignIn />} />
         <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
         <Route path={ROUTES.REDIRECT} component={RedirectPage} />
-        <Route path={ROUTES.ACCOUNT} component={UpdateProfile} />
+        <Route
+          path={ROUTES.ACCOUNT}
+          render={props => (
+            <UpdateProfile {...props} authUser={this.props.authUser} />
+          )}
+        />
         <Route path={ROUTES.NEW_PROFILE} component={NewProfileForm} />
       </div>
     );
