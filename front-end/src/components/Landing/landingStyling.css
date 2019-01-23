@@ -1,5 +1,6 @@
 .jobs-container {
-  height: 1000px;
+  min-height: 1000px;
+  padding-bottom: 50px;
 }
 
 /* ==========Landing Page Header========== */
