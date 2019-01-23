@@ -1,66 +1,65 @@
 import React from "react";
-
+import ProfilePic from './profilePic';
+import { Link } from "react-router-dom";
 
 
 
 const ProfileForm = props => {
   return (
-    <div>
-      <form>
-        <input
-         type="image"
-         id="image" 
-         alt="Company Profile Photo"
-         />
-        <div>
-          <label>Email</label>
-          <input
-            id="email"
-            placeholder="user@gmail.com"
-          />
-        </div>
-        <div>
-          <label>First Name</label>
-          <input
+    <div className = 'update-profile-page'>
+      <form className = 'update-profile-form'>
+        
+          <label className = 'labels' >First Name</label>
+          <input className = 'update-input'
             id="firstName"
             placeholder="John"
           />
-        </div>
-        <div>
-          <label>Last Name</label>
-          <input
+        
+        
+          <label className = 'labels'>Last Name</label>
+          <input className = 'update-input'
             id="lastName"
             placeholder="Doe"
           />
-        </div>
-        <div>
-          <label>Company Name</label>
-          <input
+        
+        
+          <label className = 'labels'>Email</label>
+          <input className = 'update-input'
+            id="email"
+            placeholder="user@gmail.com"
+          />
+        
+        
+          <label className = 'labels'>Company Name</label>
+          <input className = 'update-input'
             id="companyName"
             placeholder="Lambda Technologies"
           />
-        </div>
-        <div>
-          <label>Company Summary</label>
-          <textarea
+      
+        
+          <label className = 'labels'>Company Summary</label>
+          <textarea 
+            className = 'companyUpdateSummaryHolder'
             id="companySummary"
             placeholder="Briefley describe your company for your potential employees"
           />
-        </div>
-        <div>
-          <label>Applications Inbox</label>
-          <input
+        
+        
+          <label className = 'labels'>Applications Inbox</label>
+          <input className = 'update-input'
             id="applicationInbox"
             placeholder="apply@company.com"
           />
-        </div>
-        <button type="submit"> Save </button>
+        
+        <button className ='update-profile-save-button' type="submit"> Save </button>
         
       </form>
-      <div>
-        <p>Change Password with Firebase Form</p>
+      <div className = "right-sidebar">
+        <ProfilePic />
+        <button className ='update-password right-button'>Change Password </button>
+        <Link to ='/billing' className ='right-button'>Billing and Jobs</Link> 
       </div>
-      <button> Billing and Jobs </button>
+      
 
     </div>
   )

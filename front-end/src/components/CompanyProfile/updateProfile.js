@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ProfileForm from './profileForm';
-import ProfilePic from './profilePic';
+// import ProfilePic from './profilePic';
+import './profileFormStyling.css'
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -9,7 +10,6 @@ class UpdateProfile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			user: [],
 			image: '',
 			email: '',
 			firstName: '',
@@ -46,9 +46,8 @@ class UpdateProfile extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className = 'profile-container'>
 				<ProfileForm />
-				<ProfilePic />
 			</div>
 		);
 	}
