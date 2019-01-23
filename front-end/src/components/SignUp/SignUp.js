@@ -12,7 +12,7 @@ import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 // import facebookButton from '../../images/facebook-login-btn.png';
 
-const URL = process.env.REACT_APP_DB_URL;
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 // initial state, form submission state reset
 const DEFAULT_STATE = {
@@ -81,7 +81,16 @@ class SignUpFormUnconnected extends React.Component {
       })
       .then(response => {
         console.log("users table", response);
-        // handle routing
+        if (response.action === "redirect to landing") {
+          this.props.history.push(ROUTES.LANDING);
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+        }
       })
       .catch(error => {
         console.log(error);
@@ -115,17 +124,6 @@ class SignUpFormUnconnected extends React.Component {
       await this.setState({ error });
     }
   };
-
-  // facebookAuthSubmit = async event => {
-  //   event.preventDefault();
-  //   try {
-  //     const facebookAuth = await this.props.firebase.doSignInWithFacebook();
-  //     // ----------- TO DO --------------
-  //     // save user info to db
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   render() {
     // verifies password and email non-empty

@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Link, Redirect } from "react-router-dom";
+import axios from "axios";
 
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
@@ -11,6 +12,8 @@ import "./SignIn.css";
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 // import facebookButton from '../../images/facebook-login-btn.png';
+
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -44,34 +47,142 @@ class SignInFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  googleAuthSubmit = async event => {
-    console.log("auth submitted");
-    // this.props.history.push({
-    //   pathname: ROUTES.REDIRECT,
-    //   state: {
-    //     redirectMethod: "google"
-    //   }
-    // });
+  googleAuthSubmit = event => {
+    event.preventDefault();
+    event.target.setAttribute("src", googleButtonPressed);
+
+    let user_uid, email;
+
+    this.props.firebase
+      .doSignInWithGooglePopUp()
+      .then(authUser => {
+        console.log("authUser", authUser);
+        if (authUser.user && authUser.user.uid && authUser.user.email) {
+          user_uid = authUser.user.uid;
+          email = authUser.user.email;
+
+          // checks if in login table
+          return axios.post(`${URL}/api/auth/login`, {
+            user_uid,
+            email
+          });
+        } else {
+          this.props.history.push(ROUTES.LANDING);
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("firstlogin", response);
+        if (response.data.action === "check user table") {
+          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
+            user_uid,
+            email
+          });
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("users table", response);
+        if (response.action === "redirect to landing") {
+          this.props.history.push(ROUTES.LANDING);
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
-  // facebookAuthSubmit = async event => {
-  //   event.preventDefault();
-  //   try {
-  //     const facebookAuth = await this.props.firebase.doSignInWithFacebook();
-  //     // ----------- TO DO --------------
-  //     // save user info to db
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  submitHandler = async event => {
+  emailAuthSubmit = async event => {
     event.preventDefault();
+
     const { email, password } = this.state;
+
+    let user_uid, firebase_email;
+
+    this.props.firebase
+      .doSignInWithEmailAndPassword(email, password)
+      .then(authUser => {
+        console.log("authUser", authUser);
+        if (authUser.user && authUser.user.uid && authUser.user.email) {
+          user_uid = authUser.user.uid;
+          firebase_email = authUser.user.email;
+
+          // checks if in login table
+          return axios.post(`${URL}/api/auth/login`, {
+            user_uid,
+            email: firebase_email
+          });
+        } else {
+          this.props.history.push(ROUTES.LANDING);
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("firstlogin", response);
+        if (response.data.action === "check user table") {
+          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
+            user_uid,
+            email: firebase_email
+          });
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("users table", response);
+        if (response.action === "redirect to landing") {
+          this.props.history.push(ROUTES.LANDING);
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
     try {
-      await this.props.firebase.doSignInWithEmailAndPassword(email, password);
-      await this.setState({ ...DEFAULT_STATE });
-      this.props.history.push(ROUTES.LANDING);
+      const createEmailUser = await this.props.firebase.doSignInWithEmailAndPassword(
+        email,
+        password
+      );
+
+      if (createEmailUser.user) {
+        this.props.history.push({
+          pathname: ROUTES.NEW_PROFILE,
+          state: {
+            user_uid: createEmailUser.user.uid
+          }
+        });
+      } else {
+        await this.setState({
+          error: "Error signing up new user. Please try again."
+        });
+      }
     } catch (error) {
       await this.setState({ error });
     }
@@ -83,7 +194,7 @@ class SignInFormUnconnected extends React.Component {
     return (
       <div className="sign-in-container">
         <div className="sign-in-header" />
-        <form className="sign-in-form" onSubmit={this.submitHandler}>
+        <form className="sign-in-form" onSubmit={this.emailAuthSubmit}>
           <input
             type="text"
             name="email"
@@ -114,6 +225,7 @@ class SignInFormUnconnected extends React.Component {
             src={googleButton}
             alt="Sign in with Google"
             onClick={this.googleAuthSubmit}
+            name="google"
           />
           {/* <img
             src={facebookButton}
