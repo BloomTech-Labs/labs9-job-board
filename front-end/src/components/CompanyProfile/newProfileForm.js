@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ProfilePic from "./profilePic";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -7,21 +8,32 @@ class NewProfileForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: "",
-      email: "",
-      firstName: "",
-      lastName: "",
-      companyName: "",
-      companySummary: "",
-      applicationInbox: ""
-    };
+        email: "",
+        firstName: "",
+        lastName: "",
+        companyName: "",
+        companySummary: "",
+        applicationInbox: ""
+      };
   }
+
+  // componentDidMount() {
+  //   axios
+  //     .get(`${url}/api/users`)
+  //     .then(res => {
+  //       console.log(res);
+  //       this.setState({ user: res.data });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
+
 
   addNew = e => {
     e.preventDefault();
 
     const newUser = {
-      image: this.state.image,
       email: this.state.email,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -31,10 +43,10 @@ class NewProfileForm extends Component {
     };
 
     axios
-      .post(`${url}/users`, newUser)
+      .post(`${url}/api/users`, newUser)
       .then(res => {
         console.log("ADDING USER", res);
-        // => not sure what to set this to----this.setState
+      
       })
       .catch(error => {
         console.log("ERROR", error);
@@ -50,15 +62,6 @@ class NewProfileForm extends Component {
       <div>
         <form className="createNewUser" onSubmit={this.addNew}>
           <h2> New User Information </h2>
-          <input
-            type="image"
-            className="imageHolder"
-            onChange={this.handleInputChange}
-            placeholder="User Image"
-            value={this.state.image}
-            name="image"
-            alt="avatar"
-          />
           <input
             type="text"
             className="emailHolder"
@@ -96,8 +99,8 @@ class NewProfileForm extends Component {
             className="companySummaryHolder"
             onChange={this.handleInputChange}
             placeholder="Company Summary"
-            value={this.state.companyName}
-            name="companyName"
+            value={this.state.companySummary}
+            name="companySummary"
           />
           <input
             type="text"
@@ -110,6 +113,7 @@ class NewProfileForm extends Component {
 
           <button type="submit">Save</button>
         </form>
+        <ProfilePic />
       </div>
     );
   }

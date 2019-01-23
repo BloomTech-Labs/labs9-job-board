@@ -1,30 +1,7 @@
-// const express = require('express');
-// const cors = require('cors');
-// const bodyParser = require('body-parser');
-// const dotenv = require('dotenv');
-
-// dotenv.config();
-
-// const app = express();
-
-// app.use(cors());
-// // parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// // parse application/json
-// app.use(bodyParser.json());
-
-// const configureRoutes = require('./payment');
-
-// configureRoutes(app);
-
-// app.listen(9000, error => {
-// 	if (error) throw error;
-// 	console.log('Server running on port ' + 9000);
-// });
-
+require('dotenv').config();
+const stripeSecret = process.env.SECRET_KEY;
 const app = require('express')();
-const stripe = require('stripe')('sk_test_W2k36bSR8IXQLEqa9IHJoCfz');
+const stripe = require('stripe')(stripeSecret);
 const cors = require('cors');
 
 app.use(cors());
@@ -35,6 +12,9 @@ app.get('/', async (req, res) => {
 		message: 'Hello Stripe checkout server!',
 		timestamp: new Date().toISOString(),
 	});
+});
+app.get('/charge', async (req, res) => {
+	//TODO: Need to have all of the charges listed
 });
 
 app.post('/charge', async (req, res) => {
