@@ -49,7 +49,7 @@ class PostJob extends Component {
 
   render() {
     return (
-      <div>
+      <div class="container">
         <JobForm
           handleInput={this.handleInput}
           title={this.state.title}

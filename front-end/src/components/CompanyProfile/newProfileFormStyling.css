@@ -1,0 +1,85 @@
+.full-page {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(82, 82, 82, 0.836);
+}
+
+.new-user-form {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    padding: 0 5% 0 5%;
+    flex-direction: column;
+    text-align: center;
+    
+}
+.new-user-form h2 {
+    font-size:  2.8rem;
+    padding-bottom: 20px;
+    color: whitesmoke;
+    font-weight: bold;
+    width: 100%;
+}
+
+.save-button{
+    padding: 10px;
+    width: 150px;
+    height:100px;
+    color: whitesmoke;
+    background: rgba(192, 2, 2, 0.788);
+    border-radius: 25px;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input{
+    width: 50%;
+    font-size: 1.8rem;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 15px 0 15px 10px;
+    border: 2px solid rgb(82, 82, 82);
+    border-radius: 25px;
+}
+
+.companySummaryHolder {
+    width: 50%;
+    min-height: 30px;
+    height: 150px;
+    border-radius: 25px;
+    padding: 15px 5px 15px 10px;
+    text-align: top;
+    line-height: 15px;
+    font-size: 1.8rem;
+    font-family: sans-serif;
+    resize: none;
+    line-height: 1.25;
+    border: 2px solid rgb(82, 82, 82);
+  }
+
+  .profile-pic-button {
+      padding: 30px;
+      margin: 10px;
+      color: rgb(82, 82, 82);
+      background: white;
+      cursor: pointer;
+      font-size: 2.2rem;
+      border-radius: 50%;
+      height: 200px;
+      width:200px;
+      border: 2px solid rgb(82, 82, 82);
+      
+  }
+
+ .profile-pic {
+    border-radius: 50%;
+ }

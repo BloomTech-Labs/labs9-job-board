@@ -1,56 +1,74 @@
-import React from "react";
-import Spinner from "../../images/loading-spinner.gif";
+// import React from "react";
+// import Spinner from "../../images/loading-spinner.gif";
 
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
-import { withFirebase } from "../Firebase/index";
+// import { withFirebase } from "../Firebase/index";
 
-import * as ROUTES from "../../constants/routes";
+// import * as ROUTES from "../../constants/routes";
 
-import "./RedirectPage.css";
-import axios from "axios";
+// import "./RedirectPage.css";
+// import axios from "axios";
 
-const URL = process.env.REACT_APP_DB_URL;
+// const URL = process.env.REACT_APP_DB_URL_TEST;
 
-const RedirectPage = props => {
-  if (props.location.state) {
-    if (props.location.state.redirectMethod === "google") {
-      props.firebase.doSignInWithGoogle(); // <-------------------- handle errors
-    }
-  } else {
-    props.firebase
-      .redirectResult()
-      .then(response => {
-        // console.log(response);
-        if (response.user && response.user.uid) {
-          axios
-            .post(`${URL}/api/hasAccountInfo`, { user_uid: response.user.uid })
-            .then(res => {
-              if (res) {
-                props.history.push(ROUTES.LANDING);
-              } else {
-                props.history.push(ROUTES.NEW_PROFILE);
-              }
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        } else {
-          props.history.push(ROUTES.LANDING);
-        }
-        // use response.user.uid to determine if they have filled out their account information
-      })
-      .catch(error => console.log(error));
+// const RedirectPage = props => {
+//   const redirectLogic = () => {
+//     // try {
+//     // debugger;
+//     if (props.location.state) {
+//       // debugger;
+//       if (props.location.state.redirectMethod === "google") {
+//         props.firebase
+//           .doSignInWithGooglePopUp()
+//           .then(authUser => {
+//             console.log("authUser", authUser);
+//             if (authUser.user && authUser.user.uid) {
+//               const user_uid = authUser.user.uid;
+//               const email = authUser.user.email;
 
-    // props.history.push(ROUTES.LANDING);
-  }
-  // console.log(error);
+//               return axios.post(`${URL}/api/auth/login`, {
+//                 user_uid,
+//                 email
+//               });
+//               // console.log("firstLogin", firstLogin);
 
-  return (
-    <div className="redirect-page-container">
-      <img src={Spinner} alt="Loading spinner" />
-    </div>
-  );
-};
+//               //props.history.push(ROUTES.LANDING);
+//             } else {
+//               props.history.push(ROUTES.LANDING);
+//             }
+//           })
+//           .then(response => {
+//             console.log("firstlogin", response);
+//           })
+//           .catch(error => {
+//             console.log(error);
+//           });
+//       } else {
+//         props.history.push({
+//           pathname: ROUTES.SIGN_IN,
+//           state: {
+//             error: "Please try to sign in again."
+//           }
+//         });
+//       }
+//     }
+//     // } catch (error) {
+//     //   console.log(error);
+//     // }
+//   };
 
-export default withRouter(withFirebase(RedirectPage));
+//   redirectLogic();
+
+//   // props.history.push(ROUTES.LANDING);
+
+//   // console.log(error);
+
+//   return (
+//     <div className="redirect-page-container">
+//       <img src={Spinner} alt="Loading spinner" />
+//     </div>
+//   );
+// };
+
+// export default withRouter(withFirebase(RedirectPage));

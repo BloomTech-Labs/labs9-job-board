@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
+import axios from "axios";
 
 import { withFirebase } from "../Firebase/index";
-import { AuthenticatedUserContext } from "../Session";
+// import { AuthenticatedUserContext } from "../Session";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -10,6 +11,8 @@ import "./SignUp.css";
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 // import facebookButton from '../../images/facebook-login-btn.png';
+
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 // initial state, form submission state reset
 const DEFAULT_STATE = {
@@ -20,14 +23,8 @@ const DEFAULT_STATE = {
 };
 
 // component for /sign-up route
-const SignUp = () => {
-  return (
-    <AuthenticatedUserContext.Consumer>
-      {authenticatedUser =>
-        authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />
-      }
-    </AuthenticatedUserContext.Consumer>
-  );
+const SignUp = props => {
+  return props.authUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />;
 };
 
 // SignUpForm without Firebase connectivity
@@ -41,41 +38,88 @@ class SignUpFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  googleAuthSubmit = async event => {
+  googleAuthSubmit = event => {
     event.preventDefault();
     event.target.setAttribute("src", googleButtonPressed);
-    try {
-      const googleAuth = await this.props.firebase.doSignInWithGoogle();
-      // ----------- TO DO --------------
-      // save user info to db
-    } catch (error) {
-      console.log(error);
-    }
+
+    let user_uid, email;
+
+    this.props.firebase
+      .doSignInWithGooglePopUp()
+      .then(authUser => {
+        console.log("authUser", authUser);
+        if (authUser.user && authUser.user.uid && authUser.user.email) {
+          user_uid = authUser.user.uid;
+          email = authUser.user.email;
+
+          // checks if in login table
+          return axios.post(`${URL}/api/auth/login`, {
+            user_uid,
+            email
+          });
+        } else {
+          this.props.history.push(ROUTES.LANDING);
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("firstlogin", response);
+        if (response.data.action === "check user table") {
+          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
+            user_uid,
+            email
+          });
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("users table", response);
+        if (response.action === "redirect to landing") {
+          this.props.history.push(ROUTES.LANDING);
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
-  // facebookAuthSubmit = async event => {
-  //   event.preventDefault();
-  //   try {
-  //     const facebookAuth = await this.props.firebase.doSignInWithFacebook();
-  //     // ----------- TO DO --------------
-  //     // save user info to db
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  submitHandler = async event => {
+  emailAuthSubmit = async event => {
     event.preventDefault();
 
     const { email, password } = this.state;
 
     try {
-      await this.props.firebase.doCreateUserWithEmailAndPassword(
+      const createEmailUser = await this.props.firebase.doCreateUserWithEmailAndPassword(
         email,
         password
       );
-      await this.setState({ ...DEFAULT_STATE });
-      this.props.history.push(ROUTES.LANDING);
+
+      if (createEmailUser.user) {
+        this.props.history.push({
+          pathname: ROUTES.NEW_PROFILE,
+          state: {
+            user_uid: createEmailUser.user.uid
+          }
+        });
+      } else {
+        await this.setState({
+          error: "Error signing up new user. Please try again."
+        });
+      }
     } catch (error) {
       await this.setState({ error });
     }
@@ -91,7 +135,7 @@ class SignUpFormUnconnected extends React.Component {
     return (
       <div className="sign-up-container">
         <div className="sign-up-header" />
-        <form className="sign-up-form" onSubmit={this.submitHandler}>
+        <form className="sign-up-form" onSubmit={this.emailAuthSubmit}>
           <input
             type="text"
             name="email"
