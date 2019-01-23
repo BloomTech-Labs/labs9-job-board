@@ -1,5 +1,5 @@
-exports.up = function (knex, Promise) {
-  return knex.schema.createTable("jobs", function (tbl) {
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable("jobs", function(tbl) {
     // make changes to the table using the tbl object passed as a parameter
 
     // primary key
@@ -20,9 +20,15 @@ exports.up = function (knex, Promise) {
 
     tbl.string("requirements", 5000);
 
-    tbl.boolean("active").defaultTo(true);
+    tbl
+      .boolean("active")
+      .notNullable()
+      .defaultTo(true);
 
-    tbl.boolean("college_degree").defaultTo(false);
+    tbl
+      .boolean("college_degree")
+      .notNullable()
+      .defaultTo(false);
 
     tbl
       .date("created_at")
@@ -39,6 +45,6 @@ exports.up = function (knex, Promise) {
   });
 };
 
-exports.down = function (knex, Promise) {
+exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists("jobs");
 };
