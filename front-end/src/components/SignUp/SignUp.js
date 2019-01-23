@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 
 import { withFirebase } from "../Firebase/index";
-import { AuthenticatedUserContext } from "../Session";
+// import { AuthenticatedUserContext } from "../Session";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -20,14 +20,9 @@ const DEFAULT_STATE = {
 };
 
 // component for /sign-up route
-const SignUp = () => {
-  return (
-    <AuthenticatedUserContext.Consumer>
-      {authenticatedUser =>
-        authenticatedUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />
-      }
-    </AuthenticatedUserContext.Consumer>
-  );
+const SignUp = props => {
+  console.log(props.authUser);
+  return props.authUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />;
 };
 
 // SignUpForm without Firebase connectivity
@@ -41,15 +36,42 @@ class SignUpFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  googleAuthSubmit = async event => {
+  googleAuthSubmit = event => {
     event.preventDefault();
     event.target.setAttribute("src", googleButtonPressed);
+    this.props.history.push({
+      pathname: ROUTES.REDIRECT,
+      state: {
+        redirectMethod: "google"
+      }
+    });
+  };
+
+  emailAuthSubmit = async event => {
+    event.preventDefault();
+
+    const { email, password } = this.state;
+
     try {
-      const googleAuth = await this.props.firebase.doSignInWithGoogle();
-      // ----------- TO DO --------------
-      // save user info to db
+      const createEmailUser = await this.props.firebase.doCreateUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      if (createEmailUser.user) {
+        this.props.history.push({
+          pathname: ROUTES.NEW_PROFILE,
+          state: {
+            user_uid: createEmailUser.user.uid
+          }
+        });
+      } else {
+        await this.setState({
+          error: "Error signing up new user. Please try again."
+        });
+      }
     } catch (error) {
-      console.log(error);
+      await this.setState({ error });
     }
   };
 
@@ -64,23 +86,6 @@ class SignUpFormUnconnected extends React.Component {
   //   }
   // };
 
-  submitHandler = async event => {
-    event.preventDefault();
-
-    const { email, password } = this.state;
-
-    try {
-      await this.props.firebase.doCreateUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await this.setState({ ...DEFAULT_STATE });
-      this.props.history.push(ROUTES.LANDING);
-    } catch (error) {
-      await this.setState({ error });
-    }
-  };
-
   render() {
     // verifies password and email non-empty
     const isInvalid =
@@ -91,7 +96,7 @@ class SignUpFormUnconnected extends React.Component {
     return (
       <div className="sign-up-container">
         <div className="sign-up-header" />
-        <form className="sign-up-form" onSubmit={this.submitHandler}>
+        <form className="sign-up-form" onSubmit={this.emailAuthSubmit}>
           <input
             type="text"
             name="email"
