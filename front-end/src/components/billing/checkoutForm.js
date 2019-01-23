@@ -19,7 +19,7 @@ class CheckoutForm extends Component {
 		let { token } = await this.props.stripe.createToken({ name: 'Name' });
 		let response = await fetch('http://localhost:9000/charge', {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'text/plain' },
 			body: token.id,
 		});
 		// if checkout is complete then message will be displayed
