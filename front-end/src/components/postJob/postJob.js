@@ -15,7 +15,7 @@ class PostJob extends Component {
       familiarWith: [],
       description: "",
       requirements: "",
-      active: true,
+      active: false,
       requiresDegree: false
     };
   }
@@ -45,8 +45,9 @@ class PostJob extends Component {
       .catch(err => console.log("ERROR", err));
   };
 
-  updateJob = e => {
+  updateJob = event => {
     event.preventDefault();
+    const id = this.props.match.params.id;
 
     const updatedJob = {
       title: this.state.title,
@@ -63,6 +64,18 @@ class PostJob extends Component {
     axios.put(`${url}/api/jobs/${id}`, updatedJob).then(res => {
       console.log("UPDATING JOB", res);
       this.setState({ job: res.data }).catch(err => console.log("ERROR", err));
+    });
+  };
+
+  jobActiveToggle = () => {
+    this.setState(prevState => {
+      return { active: !prevState.active };
+    });
+  };
+
+  requiresDegreeToggle = () => {
+    this.setState(prevState => {
+      return { requiresDegree: !prevState.requiresDegree };
     });
   };
 
@@ -84,6 +97,8 @@ class PostJob extends Component {
           requirements={this.state.requirements}
           active={this.state.active}
           requiresDegree={this.state.requiresDegree}
+          jobActiveToggle={this.jobActiveToggle}
+          requiresDegreeToggle={this.requiresDegreeToggle}
         />
       </div>
     );
