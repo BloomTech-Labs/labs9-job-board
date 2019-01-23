@@ -1,9 +1,8 @@
+require('dotenv').config();
+const stripeSecret = process.env.SECRET_KEY;
 const app = require('express')();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(stripeSecret);
 const cors = require('cors');
-const dotenv = require('dotenv').config();
-
-// require('dotenv').config();
 
 app.use(cors());
 app.use(require('body-parser').text());
@@ -33,6 +32,4 @@ app.post('/charge', async (req, res) => {
 	}
 });
 
-app.listen(process.env.PORT, () => {
-	console.log('Live Server Running!!!!');
-});
+app.listen(9000, () => console.log('Listening on port 9000'));
