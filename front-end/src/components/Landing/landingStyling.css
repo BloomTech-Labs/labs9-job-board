@@ -362,7 +362,7 @@
   font-size: 3rem;
   padding: 20px 0;
   line-height: 1.5;
-  align-items: end;
+  align-items: flex-start;
   border-bottom: 2px solid #ccc;
 }
 

@@ -42,15 +42,18 @@ class Routes extends Component {
             <RedirectPage {...props} authUser={this.props.authUser} />
           )}
         /> */}
-        <Route path={ROUTES.ACCOUNT} component={UpdateProfile} />
-        <Route 
-          path={ROUTES.NEW_PROFILE} 
-          render= { props => (
-            <NewProfileForm 
-              {...props} 
-              authUser = {this.props.authUser} />
+        <Route
+          path={ROUTES.ACCOUNT}
+          render={props => (
+            <UpdateProfile {...props} authUser={this.props.authUser} />
           )}
-        />      
+        />
+        <Route
+          path={ROUTES.NEW_PROFILE}
+          render={props => (
+            <NewProfileForm {...props} authUser={this.props.authUser} />
+          )}
+        />
       </div>
     );
   }

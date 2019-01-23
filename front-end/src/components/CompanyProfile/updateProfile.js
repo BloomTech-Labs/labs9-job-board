@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import ProfileForm from './profileForm';
+import React, { Component } from "react";
+import axios from "axios";
+import ProfileForm from "./profileForm";
 // import ProfilePic from './profilePic';
-import './profileFormStyling.css'
+import "./profileFormStyling.css";
 
 const url = process.env.REACT_APP_DB_URL;
 
 class UpdateProfile extends Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -51,6 +52,7 @@ class UpdateProfile extends Component {
 			</div>
 		);
 	}
+
 }
 
 export default UpdateProfile;
