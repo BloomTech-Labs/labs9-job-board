@@ -15,6 +15,7 @@ class CheckoutForm extends Component {
 	}
 
 	async submit(ev) {
+		ev.preventDefault();
 		let { token } = await this.props.stripe.createToken({ name: 'Name' });
 		let response = await fetch('http://localhost:9000/charge', {
 			method: 'POST',
@@ -23,19 +24,21 @@ class CheckoutForm extends Component {
 		});
 		// if checkout is complete then message will be displayed
 		if (response.ok) this.setState({ complete: true });
-		console.log('Purchase Complete!');
-		alert('Payment Successful!');
+		if (response.ok === 'succeeded')
+			document.getElementById('shop').innerHTML = '<p>Purchase commplete!</p>';
 	}
 
 	render() {
 		return (
-			<div className="checkout">
+			<div id="shop" className="checkout">
 				<p>KWC Billing</p>
 				<p>Would you like to complete your purchase?</p>
 				<CardNumberElement />
 				<CardExpiryElement />
 				<CardCVCElement />
-				<button onClick={this.submit}>Buy Now</button>
+				<button id="buttonCheckout" onClick={this.submit}>
+					Buy Now
+				</button>
 			</div>
 		);
 	}
