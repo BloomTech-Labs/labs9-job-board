@@ -15,7 +15,7 @@ class PostJob extends Component {
       familiarWith: [],
       description: "",
       requirements: "",
-      active: true,
+      active: false,
       requiresDegree: false
     };
   }
@@ -26,6 +26,7 @@ class PostJob extends Component {
 
   addJob = event => {
     event.preventDefault();
+
     const newJob = {
       title: this.state.title,
       salary: this.state.salary,
@@ -37,10 +38,45 @@ class PostJob extends Component {
       active: this.state.active,
       requiresDegree: this.state.requiresDegree
     };
+
     axios
-      .post(`${url}/post_job`, newJob)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .post(`${url}/api/jobs`, newJob)
+      .then(res => console.log("POSTING JOB", res))
+      .catch(err => console.log("ERROR", err));
+  };
+
+  updateJob = event => {
+    event.preventDefault();
+    const id = this.props.match.params.id;
+
+    const updatedJob = {
+      title: this.state.title,
+      salary: this.state.salary,
+      topSkills: this.state.topSkills,
+      additionalSkills: this.state.additionalSkills,
+      familiarWith: this.state.familiarWith,
+      description: this.state.description,
+      requirements: this.state.requirements,
+      active: this.state.active,
+      requiresDegree: this.state.requiresDegree
+    };
+
+    axios.put(`${url}/api/jobs/${id}`, updatedJob).then(res => {
+      console.log("UPDATING JOB", res);
+      this.setState({ job: res.data }).catch(err => console.log("ERROR", err));
+    });
+  };
+
+  jobActiveToggle = () => {
+    this.setState(prevState => {
+      return { active: !prevState.active };
+    });
+  };
+
+  requiresDegreeToggle = () => {
+    this.setState(prevState => {
+      return { requiresDegree: !prevState.requiresDegree };
+    });
   };
 
   handleInput = event => {
@@ -61,6 +97,8 @@ class PostJob extends Component {
           requirements={this.state.requirements}
           active={this.state.active}
           requiresDegree={this.state.requiresDegree}
+          jobActiveToggle={this.jobActiveToggle}
+          requiresDegreeToggle={this.requiresDegreeToggle}
         />
       </div>
     );
