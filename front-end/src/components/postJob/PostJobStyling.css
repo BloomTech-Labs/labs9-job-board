@@ -17,30 +17,30 @@ hr {
   );
 }
 
+/* .job-form {
+  border: 0.1px solid blue;
+}
+
+.title-container {
+  border: 0.1px solid red;
+}
+
+.title-container .input-titles {
+  border: 0.1px solid yellow;
+}
+
+.input-container {
+  border: 0.1px solid pink;
+}
+
+.input-container input {
+  border: 0.1px solid green;
+} */
+
 .job-form {
   margin-top: 40px;
   padding: 0 5% 0 5%;
 }
-
-/* .job-form {
-  border: 1px solid blue;
-}
-
-.title-container {
-  border: 1px solid red;
-}
-
-.title-container .input-titles {
-  border: 1px solid yellow;
-}
-
-.input-container {
-  border: 1px solid pink;
-}
-
-.input-container input {
-  border: 1px solid green;
-} */
 
 .post-job-top {
   display: flex;
@@ -57,6 +57,19 @@ hr {
   color: black;
   font-size: 2.5rem;
   margin-top: 70px;
+}
+
+@media (max-width: 1000px) {
+  .title-container .input-titles {
+    font-size: 2rem;
+    margin-top: 73px;
+  }
+}
+
+@media (max-width: 780px) {
+  .title-container .input-titles {
+    font-size: 1.6rem;
+  }
 }
 
 #job-title-input-title {
@@ -81,6 +94,18 @@ hr {
   padding: 10px 0 10px 10px;
 }
 
+@media (max-width: 1000px) {
+  .input-container input {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .input-container input {
+    font-size: 1.4rem;
+  }
+}
+
 .input-container textarea {
   width: 100%;
   height: 280px;
@@ -94,13 +119,43 @@ hr {
   resize: none;
 }
 
+@media (max-width: 1000px) {
+  .input-container textarea {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 780px) {
+  .input-container textarea {
+    font-size: 1.4rem;
+  }
+}
+
+/* @media (max-width: 1000px) {
+
+}
+
+@media (max-width: 780px) {
+
+} */
+
 /* ==========BOTTOM OF FORM========== */
 
 .post-job-bottom {
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
-  margin-bottom: 50px;
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .post-job-bottom {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 780px) {
 }
 
 .post-job-bottom h5 {
@@ -125,6 +180,13 @@ hr {
   height: 20px;
 }
 
+@media (max-width: 1000px) {
+  .requires-degree .degree-checkbox {
+    width: 15px;
+    height: 15px;
+  }
+}
+
 .post-job-buttons-container {
   display: flex;
   justify-content: center;
@@ -132,7 +194,7 @@ hr {
   height: 50px;
 }
 
-/* .post-job-bottom {
+.post-job-bottom {
   border: 1px solid red;
 }
 
@@ -146,19 +208,25 @@ hr {
 
 .post-job-buttons-container {
   border: 1px solid green;
-} */
+}
 
 .post-job-buttons {
   display: inline-block;
-  padding: 0.35em 1.2em;
+  padding: 0.35rem 1.2rem;
   border: 0.1em solid black;
   margin: 0 10% 0 10%;
-  border-radius: 0.12em;
+  border-radius: 0.12rem;
   background-color: rgb(95, 95, 95);
   color: white;
   text-align: center;
   transition: all 0.3s;
   font-size: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .post-job-buttons {
+    font-size: 1.8rem;
+  }
 }
 
 .post-job-buttons:hover {
