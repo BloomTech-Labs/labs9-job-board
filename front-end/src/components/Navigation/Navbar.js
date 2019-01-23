@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./NavigationStyles.css";
 import SideMenuToggleButton from "./SideMenuToggleButton";
 
 const Navbar = props => {
   return (
-    <header className="navbar">
+    <header className="navbar-container">
       <nav className="navbar-navigation">
         <div>
           <SideMenuToggleButton click={props.sideMenuToggleClickHandler} />

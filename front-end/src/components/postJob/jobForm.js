@@ -1,5 +1,4 @@
 import React from "react";
-import "./postJobStyling.scss";
 
 const JobForm = props => {
   return (

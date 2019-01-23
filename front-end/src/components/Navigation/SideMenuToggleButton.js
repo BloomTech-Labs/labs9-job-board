@@ -1,5 +1,4 @@
 import React from "react";
-import "./NavigationStyles.css";
 
 const SideMenuToggleButton = props => {
   return (
