@@ -38,6 +38,7 @@
     border: none;
     font-size: 1.8rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .input{
@@ -55,19 +56,21 @@
     min-height: 30px;
     height: 150px;
     border-radius: 25px;
-    padding: 15px 0 15px 10px;
+    padding: 15px 5px 15px 10px;
     text-align: top;
     line-height: 15px;
     font-size: 1.8rem;
     font-family: sans-serif;
     resize: none;
+    line-height: 1.25;
+    border: 2px solid rgb(82, 82, 82);
   }
 
   .profile-pic-button {
       padding: 30px;
       margin: 10px;
       color: rgb(82, 82, 82);
-      background: whitesmoke;
+      background: white;
       cursor: pointer;
       font-size: 2.2rem;
       border-radius: 50%;

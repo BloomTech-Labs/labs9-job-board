@@ -1,0 +1,100 @@
+
+.update-profile-page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    
+  }
+
+  .labels {
+      font-size: 1.8rem;
+      padding: 10px 12px;
+      display: flex;
+      width: 60%;
+      margin-top: 10px;
+  }
+
+  .update-profile-form {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      padding: 20px;
+      width: 100%;
+
+      
+  }
+
+  .profile-container {
+   
+    width: 100%;
+    height: 100%;
+  }
+  
+  .update-input {
+    width: 85%;
+    font-size: 1.8rem;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 15px 0 15px 10px;
+    border: 2px solid rgb(82, 82, 82);
+    border-radius: 25px;
+  }
+
+  .companyUpdateSummaryHolder {
+    width: 85%;
+    min-height: 30px;
+    height: 150px;
+    border-radius: 25px;
+    padding: 15px 5px 15px 10px;
+    text-align: top;
+    line-height: 15px;
+    font-size: 1.8rem;
+    font-family: sans-serif;
+    resize: none;
+    line-height: 1.25;
+    border: 2px solid rgb(82, 82, 82);
+  }
+
+  .update-profile-save-button {
+    padding: 10px;
+    margin-top: 10px; 
+    width: 85%;
+    height:50px;
+    color: whitesmoke;
+    background: rgba(192, 2, 2, 0.788);
+    border-radius: 25px;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .right-sidebar {
+      margin: 30px 50px 0px 0px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+  }
+
+ .right-button {
+    display: flex;
+    padding: 10px;
+    line-height: 1;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height:50px;
+    margin: 20px 0px 10px 0px;
+    color: whitesmoke;
+    background: rgba(32, 122, 158, 0.788);
+    border-radius: 25px;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+ }
+
