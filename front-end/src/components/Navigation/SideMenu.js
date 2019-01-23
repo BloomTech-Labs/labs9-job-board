@@ -10,14 +10,14 @@ import LoadingBar from "../../images/loading-bars.svg";
 class sideMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { authUser: "" };
+    // this.state = { authUser: "" };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.authUser !== this.props.authUser) {
-      this.setState({ authUser: this.props.authUser });
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.authUser !== this.props.authUser) {
+  //     this.setState({ authUser: this.props.authUser });
+  //   }
+  // }
 
   render() {
     let sideMenuClass = "side-menu";
@@ -27,11 +27,7 @@ class sideMenu extends React.Component {
     }
     return (
       <nav className={sideMenuClass}>
-        {this.state.authUser === "" ? (
-          <div className="side-menu-loading">
-            <img src={LoadingBar} alt="loading" />
-          </div>
-        ) : this.state.authUser ? (
+        {this.props.authUser ? (
           <div className="side-menu-navigation-items">
             <NavLink onClick={this.props.click} to="/">
               Home
