@@ -7,58 +7,52 @@ import "./profileFormStyling.css";
 const url = process.env.REACT_APP_DB_URL;
 
 class UpdateProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: "",
-      email: "",
-      firstName: "",
-      lastName: "",
-      companyName: "",
-      companySummary: "",
-      applicationInbox: "",
-      uid: ""
-    };
-  }
 
-  updateUser = e => {
-    e.preventDefault();
-    const id = this.props.match.params.id;
+	constructor(props) {
+		super(props);
+		this.state = {
+			image: '',
+			email: '',
+			firstName: '',
+			lastName: '',
+			companyName: '',
+			companySummary: '',
+			applicationInbox: '',
+		};
+	}
 
-    const updatedUser = {
-      image: this.state.image,
-      email: this.state.email,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      companyName: this.state.companyName,
-      companySummary: this.state.companySummary,
-      applicationInbox: this.state.applicationInbox,
-      uid: this.state.uid
-    };
+	updateUser = e => {
+		e.preventDefault();
+		const id = this.props.match.params.id;
 
-    axios.put(`${url}/api/users/${id}`, updatedUser).then(res => {
-      console.log("response", res);
-      this.setState({ user: res.data }).catch(err => console.log(err));
-    });
-  };
+		const updatedUser = {
+			user_uid: this.state.uid,
+      		email: this.state.email,
+			first_name: this.state.firstName,
+			last_name: this.state.lastName,
+			company_name: this.state.companyName,
+			summary: this.state.companySummary,
+			application_method: this.state.applicationInbox
+		};
 
-  changeHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+		axios.put(`${url}/api/users/${id}`, updatedUser).then(res => {
+			console.log('response', res);
+			this.setState({ user: res.data }).catch(err => console.log(err));
+		});
+	};
 
-  componentDidUpdate() {
-    if (this.props.authUser.uid !== this.state.uid) {
-      this.setState({ uid: this.props.authUser.uid });
-    }
-  }
+	changeHandler = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
 
-  render() {
-    return (
-      <div className="profile-container">
-        <ProfileForm />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className = 'profile-container'>
+				<ProfileForm />
+			</div>
+		);
+	}
+
 }
 
 export default UpdateProfile;

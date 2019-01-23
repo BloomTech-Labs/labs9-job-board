@@ -33,7 +33,10 @@ exports.up = function (knex, Promise) {
 
     tbl.string("avatar_image", 200);
 
-    tbl.integer("balance").notNullable();
+    tbl
+      .integer("balance")
+      .notNullable()
+      .defaultTo(0);
 
     tbl
       .boolean("unlimited")
