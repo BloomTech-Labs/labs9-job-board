@@ -16,7 +16,8 @@ class UpdateProfile extends Component {
       lastName: "",
       companyName: "",
       companySummary: "",
-      applicationInbox: ""
+      applicationInbox: "",
+      uid: ""
     };
   }
 
@@ -43,9 +44,15 @@ class UpdateProfile extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  componentDidUpdate() {
+    if (this.props.authUser.uid !== this.state.uid) {
+      this.setState({ uid: this.props.authUser.uid });
+    }
+  }
+
   render() {
     if (this.props.authUser) {
-      console.log(this.props.authUser.uid);
+      console.log(this.state.uid);
     }
     return (
       <div>
