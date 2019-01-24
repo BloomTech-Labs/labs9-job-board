@@ -102,27 +102,59 @@ class SignUpFormUnconnected extends React.Component {
 
     const { email, password } = this.state;
 
-    try {
-      const createEmailUser = await this.props.firebase.doCreateUserWithEmailAndPassword(
-        email,
-        password
-      );
+    let user_uid, firebase_email;
 
-      if (createEmailUser.user) {
-        this.props.history.push({
-          pathname: ROUTES.NEW_PROFILE,
-          state: {
-            user_uid: createEmailUser.user.uid
-          }
-        });
-      } else {
-        await this.setState({
-          error: "Error signing up new user. Please try again."
-        });
-      }
-    } catch (error) {
-      await this.setState({ error });
-    }
+    this.props.firebase
+      .doCreateUserWithEmailAndPassword(email, password)
+      .then(authUser => {
+        console.log("authUser", authUser);
+        if (authUser.user && authUser.user.uid && authUser.user.email) {
+          user_uid = authUser.user.uid;
+          firebase_email = authUser.user.email;
+
+          // checks if in login table
+          return axios.post(`${URL}/api/auth/login`, {
+            user_uid,
+            email: firebase_email
+          });
+        } else {
+          this.props.history.push(ROUTES.LANDING);
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("firstlogin", response);
+        if (response.data.action === "check user table") {
+          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
+            user_uid,
+            email: firebase_email
+          });
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+          throw "break promise";
+        }
+      })
+      .then(response => {
+        console.log("users table", response);
+        if (response.data.action === "redirect to landing") {
+          this.props.history.push(ROUTES.LANDING);
+        } else {
+          this.props.history.push({
+            pathname: ROUTES.NEW_PROFILE,
+            state: {
+              uid: user_uid
+            }
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render() {

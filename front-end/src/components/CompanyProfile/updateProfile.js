@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 // import ProfilePic from './profilePic';
-import "./profileFormStyling.css";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -18,6 +17,7 @@ class UpdateProfile extends Component {
       companySummary: "",
       applicationInbox: "",
       uid: ""
+
     };
   }
 
@@ -36,6 +36,7 @@ class UpdateProfile extends Component {
     };
 
     axios.put(`${url}/api/user`, updatedUser).then(res => {
+
       console.log("response", res);
       this.setState({ user: res.data }).catch(err => console.log(err));
     });
@@ -50,6 +51,7 @@ class UpdateProfile extends Component {
       this.setState({ uid: this.props.authUser.uid });
     }
   }
+
 
   render() {
     return (

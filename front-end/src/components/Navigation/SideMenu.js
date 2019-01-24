@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import SignOut from "../SignOut/SignOut.js";
-import "./NavigationStyles.css";
 
 import LoadingBar from "../../images/loading-bars.svg";
 

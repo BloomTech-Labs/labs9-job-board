@@ -15,20 +15,22 @@ class CheckoutForm extends Component {
 	}
 
 	async submit(ev) {
-		ev.preventDefault();
 		let { token } = await this.props.stripe.createToken({ name: 'Name' });
 		let response = await fetch('http://localhost:9000/charge', {
 			method: 'POST',
 			headers: { 'Content-Type': 'text/plain' },
 			body: token.id,
 		});
+		console.log(response);
 		// if checkout is complete then message will be displayed
 		if (response.ok) this.setState({ complete: true });
-		if (response.ok === 'succeeded')
-			document.getElementById('shop').innerHTML = '<p>Purchase commplete!</p>';
+		console.log('Purchase Complete');
 	}
 
 	render() {
+		if (this.state.complete) {
+			return <h1>Purchase Complete!</h1>;
+		}
 		return (
 			<div id="shop" className="checkout">
 				<p>KWC Billing</p>
