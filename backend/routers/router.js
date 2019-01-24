@@ -3,6 +3,19 @@ const express = require("express");
 const db = require("../db/config");
 const router = express.Router();
 
+const jobDataTypes = {
+  user_uid: "string",
+  title: "string",
+  salary: "string",
+  description: "string",
+  active: "boolean",
+  college_degree: "boolean",
+  top_skills: "string",
+  add_skills: "string",
+  familiar: "string",
+  requirements: "string"
+};
+
 //-------------JOB ENDPOINTS-------------------
 // TODO: Need to display a list of all jobs (Get) and Get only one job -- ONCE COMPLETE DELETE THIS TODO
 
@@ -127,12 +140,14 @@ router.post("/jobs", (req, res) => {
       .then(response => {
         // response - [{ id: ## }]
         if (response.length) {
-          insertObject.users_id = response[0].id;
           Object.keys(newJob).forEach(key => {
-            if (key !== "user_uid") {
-              insertObject[key] = newJob[key];
+            if (key !== "created_at") {
+              if (typeof newJob[key] === jobDataTypes[key]) {
+                insertObject[key] = newJob[key];
+              }
             }
           });
+          insertObject.users_id = response[0].id;
           return db("jobs").insert(insertObject);
         } else {
           throw "id not found";
@@ -155,54 +170,71 @@ router.post("/jobs", (req, res) => {
 });
 
 // Delete a job
-router.delete("/job/:id", (req, res) => {
-  const id = req.params.id;
-  findById(Number(id))
-    .remove(id)
-    .then(jobDeleted => {
-      if (jobDeleted) {
-        res.status(200).json({ message: `Job with ID ${id} deleted.` });
+router.delete("/jobs/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  if (!id) {
+    res.status(400).json({ message: "Invalid id" });
+    return;
+  }
+
+  db("jobs")
+    .where({ id })
+    .del()
+    .then(response => {
+      if (response) {
+        res.status(200).json({ message: "Successfully deleted job" });
       } else {
-        res.status(404).json({ message: `Job with ID ${id} does not exist.` });
+        res
+          .status(400)
+          .json({ message: "No job deleted. Verify id is correct." });
       }
     })
     .catch(error => {
-      res.status(500).json({
-        errorMessage: "Job could not be deleted.",
-        error: error
-      });
+      res.status(500).json({ message: "Failed to delete job" });
     });
 });
 
 // Update a job
-router.put("/job/:id", (req, res) => {
+router.put("/jobs/:id", (req, res) => {
   const updateJob = { ...req.body };
-  const id = req.params.id;
-  if (updateJob) {
-    update(`${id}`, updateJob)
-      .then(jobUpdated => {
-        if (jobUpdated) {
-          return findById(Number(`${id}`)); //change depending on what will be returned by db
+  const id = Number(req.params.id);
+
+  if (!id) {
+    res.status(400).json({ message: "Invalid id" });
+    return;
+  }
+
+  const putObject = {};
+
+  Object.keys(updateJob).forEach(key => {
+    if (typeof updateJob[key] === jobDataTypes[key]) {
+      if (typeof updateJob[key] === "boolean") {
+        putObject[key] = updateJob[key];
+      } else if (updateJob[key]) {
+        putObject[key] = updateJob[key];
+      }
+    }
+  });
+
+  if (Object.keys(putObject).length) {
+    db("jobs")
+      .where({ id })
+      .update(putObject)
+      .then(response => {
+        if (response) {
+          res.status(200).json({ message: "Successfully updated job" });
         } else {
-          res.status(404).json({
-            message: `Job with specified ID ${id} is invalid.`
-          });
+          res
+            .status(400)
+            .json({ message: "Failed to update job. Verify id is correct." });
         }
       })
-      .then(updateJob => {
-        res.status(200).json(updateJob[0]);
-      })
       .catch(error => {
-        res.status(500).json({
-          errorMessage: "Job could not be updated.",
-          error: error
-        });
+        res.status(500).json({ message: "Error updating job" });
       });
   } else {
-    res.status(400).json({
-      errorMessage:
-        "Please provide the following: Category_Tag, Title, Salary, Top_Skills, Familiar_With, Description, Requirements, Active, Degree_Required for a job to be updated."
-    });
+    res.status(400).json({ message: "No valid updates" });
   }
 });
 
