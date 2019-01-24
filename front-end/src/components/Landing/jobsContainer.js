@@ -11,7 +11,7 @@ import Categories from "./categories";
 import Header from "./header";
 import LoadingBar from "../../images/loading-bars.svg";
 
-const url = process.env.REACT_APP_DB_URL;
+const url = process.env.REACT_APP_DB_URL_TEST;
 
 class JobsContainer extends Component {
   constructor(props) {

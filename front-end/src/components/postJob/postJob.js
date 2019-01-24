@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import JobForm from "./jobForm";
 import axios from "axios";
 
-const URL = process.env.REACT_APP_DB_URL;
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 class PostJob extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class PostJob extends Component {
       familiar: "",
       description: "",
       requirements: "",
+      category: "none",
       active: false,
       college_degree: false
     };
@@ -62,6 +63,10 @@ class PostJob extends Component {
     });
   };
 
+  categoryHandler = selected => {
+    this.setState({ category: selected.value });
+  };
+
   requiresDegreeToggle = () => {
     this.setState(prevState => {
       return { college_degree: !prevState.college_degree };
@@ -90,8 +95,10 @@ class PostJob extends Component {
           description={this.state.description}
           requirements={this.state.requirements}
           college_degree={this.state.college_degree}
+          category={this.state.category}
           jobActiveToggle={this.jobActiveToggle}
           requiresDegreeToggle={this.requiresDegreeToggle}
+          categoryHandler={this.categoryHandler}
           handleCancel={this.handleCancel}
         />
       </div>

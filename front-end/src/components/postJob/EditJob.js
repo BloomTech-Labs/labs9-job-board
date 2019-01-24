@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import JobForm from "./jobForm";
 import axios from "axios";
 
-const URL = process.env.REACT_APP_DB_URL;
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 class EditJob extends Component {
   constructor(props) {
@@ -38,7 +38,8 @@ class EditJob extends Component {
             description: response.data[0].description,
             requirements: response.data[0].requirements,
             active: response.data[0].active,
-            college_degree: response.data[0].college_degree
+            college_degree: response.data[0].college_degree,
+            category: response.data[0].category
           });
         }
       })
@@ -67,7 +68,9 @@ class EditJob extends Component {
       axios
         .put(`${URL}/api/jobs/${this.id}`, putObject)
         .then(response => {
-          console.log(response);
+          if (response.status === 200) {
+            this.props.history.push(`/jobs/${this.id}`);
+          }
         })
         .catch(error => {
           console.log(error);
@@ -87,6 +90,10 @@ class EditJob extends Component {
     this.setState(prevState => {
       return { college_degree: !prevState.college_degree };
     });
+  };
+
+  categoryHandler = selected => {
+    this.setState({ category: selected.value });
   };
 
   handleInput = event => {
@@ -112,10 +119,12 @@ class EditJob extends Component {
           description={this.state.description}
           requirements={this.state.requirements}
           college_degree={this.state.college_degree}
+          category={this.state.category}
           active={this.state.active}
           jobActiveToggle={this.jobActiveToggle}
           requiresDegreeToggle={this.requiresDegreeToggle}
           handleCancel={this.handleCancel}
+          categoryHandler={this.categoryHandler}
         />
       </div>
     );
