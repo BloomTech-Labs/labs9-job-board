@@ -85,7 +85,15 @@ class UpdateProfile extends Component {
       <div className="profile-container">
         <p onClick={this.clickHandler}>Edit Profile</p>
         {this.state.companyEditor ? (
-          <ProfileForm />
+          <ProfileForm
+            company={this.state.company}
+            editEmail={this.state.email}
+            editFirstname={this.state.firstName}
+            editLastName={this.state.lastName}
+            editCompanyName={this.state.companyName}
+            editCompanySummary={this.state.companySummary}
+            editApplicationInbox={this.state.applicationInbox}
+          />
         ) : (
           <h2>{this.state.company.company_name}</h2>
         )}
