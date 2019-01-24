@@ -22,7 +22,10 @@ const Header = props => {
           .
         </p> */}
         <div className="post-search-btns">
-          <Link to="/sign-up" className="post-search-job">
+          <Link
+            to={props.authUser ? "/post-job" : "/sign-in"}
+            className="post-search-job"
+          >
             Post a Job
           </Link>
           <Slide

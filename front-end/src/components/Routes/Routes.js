@@ -25,7 +25,13 @@ class Routes extends Component {
   render() {
     return (
       <div className="routes">
-        <Route exact path={ROUTES.LANDING} component={JobsContainer} />
+        <Route
+          exact
+          path={ROUTES.LANDING}
+          render={props => (
+            <JobsContainer {...props} authUser={this.props.authUser} />
+          )}
+        />
         <Route path={ROUTES.JOB} render={props => <SingleJob {...props} />} />
         <Route path={ROUTES.POST_JOB} component={PostJob} />
         {/* <Route path={ROUTES.COMPANY_PROFILE} component={Profile} /> */}
