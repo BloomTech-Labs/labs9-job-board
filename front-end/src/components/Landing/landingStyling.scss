@@ -1,0 +1,127 @@
+.jobs-container {
+  min-height: 1000px;
+  padding-bottom: 50px;
+
+  .header {
+    display: flex;
+
+    @media (max-width: 1000px) {
+      display: flex;
+    }
+
+    .left-side {
+      background-color: #e82f3a;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      padding-top: 50px;
+
+      @media (max-width: 1000px) {
+        width: 100%;
+        padding-bottom: 30px;
+        align-items: center;
+        padding-top: 20px;
+      }
+
+      h2 {
+        font-size: 7rem;
+        color: white;
+        margin: 5% 0 0 5%;
+        font-family: Merriweather;
+        font-weight: 900;
+        text-align: left;
+        line-height: 1.2;
+
+        @media (max-width: 1000px) {
+          text-align: center;
+          padding-top: 50px;
+          padding-bottom: 30px;
+        }
+      }
+
+      h4 {
+        font-size: 3rem;
+        color: white;
+        margin: 5% 0 0 5%;
+        font-family: Merriweather;
+        font-weight: 400;
+        text-align: left;
+        line-height: 1.4;
+
+        @media (max-width: 1000px) {
+          text-align: center;
+          padding: 20px;
+        }
+      }
+
+      p {
+        color: white;
+        font-family: Merriweather;
+        font-weight: 400;
+        font-size: 1.4rem;
+        margin-top: 40px;
+
+        @media (max-width: 1000px) {
+          padding: 20px;
+        }
+
+        span a {
+          font-family: Merriweather;
+          font-weight: 900;
+          text-decoration: none;
+          color: white;
+
+          &:hover {
+            font-family: Merriweather;
+            font-weight: 900;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .post-search-btns {
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+        width: 100%;
+        padding: 50px 1%;
+
+        a {
+          text-decoration: none;
+          font-size: 1.4rem;
+          color: #000018;
+        }
+
+        .post-search-job {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px solid #ccc;
+          background-color: white;
+          border-radius: 20px;
+          width: 40%;
+          height: 50px;
+          margin: 30px 1%;
+
+          &:hover {
+            border: 2px solid rgb(150, 148, 148);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .right-side {
+      width: 50%;
+
+      @media (max-width: 1000px) {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
