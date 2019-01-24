@@ -1,5 +1,4 @@
 import React from "react";
-import "./landingStyling.css";
 //import search from "../../images/search-image.png";
 
 const Search = props => {

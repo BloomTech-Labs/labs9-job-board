@@ -1,0 +1,23 @@
+$color-theme: #e82f3a;
+
+$laptop: 1200px;
+$tablet: 1000px;
+$phone: 800px;
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+}
