@@ -27,16 +27,42 @@ app.get('/charge', async (req, res) => {
 });
 
 app.post('/charge', async (req, res) => {
-	try {
-		let { status } = await stripe.charges.create({
-			amount: 9999,
-			currency: 'usd',
-			description: '50 credits charge',
-			source: req.body,
-		});
-		res.json({ status });
-	} catch (err) {
-		res.status(500).end();
+	if (req.body.option === '100 credits') {
+		try {
+			let { status } = await stripe.charges.create({
+				amount: 29999,
+				currency: 'usd',
+				description: '100 credits charge',
+				source: req.body,
+			});
+			res.json({ status });
+		} catch (err) {
+			res.status(500).end();
+		}
+	} else if (req.body.option === '50 credits') {
+		try {
+			let { status } = await stripe.charges.create({
+				amount: 9999,
+				currency: 'usd',
+				description: '50 credits charge',
+				source: req.body,
+			});
+			res.json({ status });
+		} catch (err) {
+			res.status(500).end();
+		}
+	} else {
+		try {
+			let { status } = await stripe.charges.create({
+				amount: 999,
+				currency: 'usd',
+				description: '1 credit charge',
+				source: req.body,
+			});
+			res.json({ status });
+		} catch (err) {
+			res.status(500).end();
+		}
 	}
 });
 
