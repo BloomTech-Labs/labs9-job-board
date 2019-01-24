@@ -18,7 +18,7 @@ class CheckoutForm extends Component {
 	//initiating the radio button
 	getInitialState = () => {
 		return {
-			selectedOption: '100 credits',
+			selectedOption: '',
 		};
 	};
 	//handle radio button
