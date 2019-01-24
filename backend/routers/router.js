@@ -222,12 +222,11 @@ router.get("/users/:id", (req, res) => {
 });
 
 //UPDATE user
-router.put("/users/:id", (req, res) => {
+router.put("/user", (req, res) => {
   const changes = req.body;
-  const { id } = req.params;
-
+  const user_uid = changes.user_uid;
   db("users")
-    .where({ id: id })
+    .where({ user_uid })
     .update(changes)
     .then(count => {
       if (count === 0) {
