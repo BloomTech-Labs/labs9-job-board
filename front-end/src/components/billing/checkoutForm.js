@@ -5,6 +5,7 @@ import {
 	CardCVCElement,
 	injectStripe,
 } from 'react-stripe-elements';
+import './checkoutForm.scss';
 
 class CheckoutForm extends Component {
 	constructor(props) {
@@ -46,46 +47,53 @@ class CheckoutForm extends Component {
 		}
 		return (
 			<div id="shop" className="checkout">
-				<p>KWC Billing</p>
-				<p>Would you like to complete your purchase?</p>
-				<CardNumberElement />
-				<CardExpiryElement />
-				<CardCVCElement />
-				<form className="options">
-					<label>
-						<input
-							type="radio"
-							name="100 credits - $299.99"
-							value="100 credits"
-							checked={this.state.selectedOption === '100 credits'}
-							onChange={this.handleOptionChange}
-						/>
-						100 credits - $299.99
-					</label>
-					<label>
-						<input
-							type="radio"
-							name="50 credits - $99.99"
-							value="50 credits"
-							checked={this.state.selectedOption === '50 credits'}
-							onChange={this.handleOptionChange}
-						/>
-						50 credits - $99.99
-					</label>
-					<label>
-						<input
-							type="radio"
-							name="1 credit - $9.99"
-							value="1 credit"
-							checked={this.state.selectedOption === '1 credit'}
-							onChange={this.handleOptionChange}
-						/>
-						1 credit - $9.99
-					</label>
-				</form>
-				<button id="buttonCheckout" onClick={this.submit}>
-					Buy Now
-				</button>
+				<div className = 'purchase-options'>
+					<p className = "billing-header">Billing</p>
+					<p className = 'billing-subheader'>Select number of job postings you would like to purchase</p>
+					<form className="options">
+						<label>
+							<input
+								type="radio"
+								name="100 credits - $299.99"
+								value="100 credits"
+								checked={this.state.selectedOption === '100 credits'}
+								onChange={this.handleOptionChange}
+							/>
+							100 Jobs - $299.99
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="50 credits - $99.99"
+								value="50 credits"
+								checked={this.state.selectedOption === '50 credits'}
+								onChange={this.handleOptionChange}
+							/>
+							50 Jobs - $99.99
+						</label>
+						<label>
+							<input
+								type="radio"
+								name="1 credit - $9.99"
+								value="1 credit"
+								checked={this.state.selectedOption === '1 credit'}
+								onChange={this.handleOptionChange}
+							/>
+							1 Job - $9.99
+						</label>
+					</form>
+				</div>
+				<div className ="card-info" >
+					<p className = 'card-info-labels'> Card Number</p>
+					<CardNumberElement className = 'card-info-placeholder'/>
+					<p className = 'card-info-labels'> Expiration Date</p>
+					<CardExpiryElement />
+					<p className = 'card-info-labels'> CVC </p>
+					<CardCVCElement />
+					<button className = 'buy-now-button' id="buttonCheckout" onClick={this.submit}>
+						Buy Now
+					</button>
+				</div>
 			</div>
 		);
 	}

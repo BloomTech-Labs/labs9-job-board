@@ -33,7 +33,6 @@ const ProfileForm = props => {
           value={props.editEmail}
           onChange={props.changeHandler}
         />
-        />
         <label>Company Name</label>
         <input
           id="companyName"
