@@ -1,3 +1,5 @@
+$break-small: 600px;
+
 .billing-container{
     width:100%;
 
@@ -9,12 +11,20 @@
         width: 100%;
         justify-content: space-around;
 
+        @media screen and (max-width: $break-small) {
+            flex-direction: column;
+        }
+
 
         .purchase-options {
             // border: 1px solid red;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            @media screen and (max-width: $break-small) {
+                align-items: center;
+            }
+            
             
 
             .billing-header{
@@ -31,6 +41,12 @@
                 flex-direction: column;
                 align-items: flex-start;
 
+                @media screen and (max-width: $break-small) {
+                    align-items: center;
+                }
+
+                
+
                 label{
                     font-size: 1.6rem;
                     padding: 20px 0px;
@@ -45,6 +61,11 @@
             width: 30%;
             margin-top: 80px;
             padding: 10px;
+            @media screen and (max-width: $break-small) {
+                width: 100%;
+                margin-top: 0px;
+                align-items: center;
+            }
 
             .card-info-labels {
                 display: flex;
@@ -59,7 +80,7 @@
             .buy-now-button {
                 margin:20px 0px;
                 background: rgba(6, 140, 158, 0.747);
-                padding: 10px 0px;
+                padding: 10px 20px;
                 font-size: 1.6rem;
                 color: white;
                 border: none;
