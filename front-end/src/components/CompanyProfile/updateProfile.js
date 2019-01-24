@@ -18,7 +18,7 @@ class UpdateProfile extends Component {
       companyName: "",
       companySummary: "",
       applicationInbox: "",
-      uid: "5555"
+      uid: ""
     };
   }
 
@@ -35,6 +35,16 @@ class UpdateProfile extends Component {
           this.setState(() => ({
             company: res.data
           }));
+        })
+        .then(() => {
+          this.setState({
+            email: this.state.company.email,
+            firstName: this.state.company.first_name,
+            lastName: this.state.company.last_name,
+            companyName: this.state.company.company_name,
+            companySummary: this.state.company.summary,
+            applicationInbox: this.state.company.application_method
+          });
         })
         .catch(err => {
           console.log(err);
@@ -56,36 +66,42 @@ class UpdateProfile extends Component {
       application_method: this.state.applicationInbox
     };
 
-    axios.put(`${url}/api/user`, updatedUser).then(res => {
-      console.log("response", res);
-      this.setState({ user: res.data }).catch(err => console.log(err));
-    });
+    axios
+      .put(`${url}/api/user`, updatedUser)
+      .then(res => {
+        console.log("response", res);
+        this.setState({ company: res.data });
+      })
+      .catch(err => console.log(err));
+    this.openEditor();
   };
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  //   componentDidUpdate() {
-  //     if (this.props.authUser.uid !== this.state.uid) {
-  //       this.setState({ uid: this.props.authUser.uid });
-  //     }
-  //   }
+  componentDidUpdate() {
+    if (this.props.authUser.uid !== this.state.uid) {
+      this.setState({ uid: this.props.authUser.uid });
+    }
+  }
 
-  clickHandler = () => {
+  openEditor = () => {
     this.setState({ companyEditor: !this.state.companyEditor });
   };
 
   render() {
-    console.log(this.state.company);
+    console.log(this.state);
     if (!this.state.company) {
       return <div>Loading.....</div>;
     }
     return (
       <div className="profile-container">
-        <p onClick={this.clickHandler}>Edit Profile</p>
+        <p onClick={this.openEditor}>Edit Profile</p>
         {this.state.companyEditor ? (
           <ProfileForm
+            updateUser={this.updateUser}
+            changeHandler={this.changeHandler}
             company={this.state.company}
             editEmail={this.state.email}
             editFirstName={this.state.firstName}
@@ -109,7 +125,6 @@ class UpdateProfile extends Component {
         {this.state.companyEditor ? null : (
           <p>{this.state.company.application_method}</p>
         )}
-        avatar_image
       </div>
     );
   }

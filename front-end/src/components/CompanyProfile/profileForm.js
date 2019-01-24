@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ProfileForm = props => {
   return (
     <div className="update-profile-page">
-      <form className="update-profile-form">
+      <form onSubmit={props.updateUser} className="update-profile-form">
         <label>First Name</label>
         <input
           id="firstName"
@@ -13,7 +13,7 @@ const ProfileForm = props => {
           name="firstName"
           type="text"
           value={props.editFirstName}
-          onChange=""
+          onChange={props.changeHandler}
         />
         <label>Last Name</label>
         <input
@@ -22,7 +22,7 @@ const ProfileForm = props => {
           name="lastName"
           type="text"
           value={props.editLastName}
-          onChange=""
+          onChange={props.changeHandler}
         />
         <label>Email</label>
         <input
@@ -31,7 +31,7 @@ const ProfileForm = props => {
           name="email"
           type="text"
           value={props.editEmail}
-          onChange=""
+          onChange={props.changeHandler}
         />
         />
         <label>Company Name</label>
@@ -41,7 +41,7 @@ const ProfileForm = props => {
           name="companyName"
           type="text"
           value={props.editCompanyName}
-          onChange=""
+          onChange={props.changeHandler}
         />
         <label>Company Summary</label>
         <textarea
@@ -50,7 +50,7 @@ const ProfileForm = props => {
           name="companySummary"
           type="text"
           value={props.editCompanySummary}
-          onChange=""
+          onChange={props.changeHandler}
         />
         <label>Applications Inbox</label>
         <input
@@ -59,9 +59,12 @@ const ProfileForm = props => {
           name="applicationInbox"
           type="text"
           value={props.editApplicationInbox}
-          onChange=""
+          onChange={props.changeHandler}
         />
-        <button type="submit"> Save </button>
+        <button type="submit" onClick={props.updateUser}>
+          {" "}
+          Save{" "}
+        </button>
       </form>
       <div className="right-sidebar">
         <ProfilePic />
