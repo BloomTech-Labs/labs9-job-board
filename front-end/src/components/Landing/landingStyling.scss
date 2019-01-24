@@ -153,12 +153,10 @@
         width: 70%;
         margin-bottom: 20px;
       }
-
       @media (max-width: 1000px) {
         width: 90%;
         margin-bottom: 20px;
       }
-
       @media (max-width: 780px) {
         display: none;
       }
@@ -228,6 +226,58 @@
 
         &:focus {
           width: 100%;
+        }
+      }
+    }
+  }
+
+  .job-links {
+    text-decoration: none;
+    color: black;
+
+    .each-job {
+      display: flex;
+      justify-content: space-between;
+      font-size: 2.5rem;
+      margin-top: 20px;
+      margin: 20px 1% 0;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      padding: 1% 1%;
+
+      &:hover {
+        border: 2px solid rgb(124, 124, 124);
+      }
+
+      .left-side {
+        display: flex;
+        width: 90%;
+
+        @media (max-width: 1250px) {
+          width: 75%;
+        }
+        @media (max-width: 780px) {
+          width: 70%;
+        }
+
+        #job-title {
+          font-weight: 600;
+        }
+
+        .spacing {
+          margin: 0 1.5%;
+        }
+      }
+
+      .right-side {
+        width: 10%;
+
+        @media (max-width: 1250px) {
+          width: 25%;
+        }
+        @media (max-width: 780px) {
+          width: 25%;
         }
       }
     }
