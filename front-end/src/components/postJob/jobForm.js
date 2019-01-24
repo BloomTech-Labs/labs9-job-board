@@ -104,7 +104,7 @@ class JobForm extends React.Component {
                   type="checkbox"
                   name="active"
                   className="degree-checkbox"
-                  onClick={this.props.jobActiveToggle}
+                  onChange={this.props.jobActiveToggle}
                   checked={this.props.active}
                   id="toggle-slider"
                 />
@@ -117,7 +117,7 @@ class JobForm extends React.Component {
                 type="checkbox"
                 name="college_degree"
                 className="degree-checkbox"
-                onClick={
+                onChange={
                   this.props.requiresDegreeToggle // value={this.props.requiresDegree}
                 }
                 id="checkbox-input"

@@ -64,7 +64,7 @@ class PostJob extends Component {
 
   requiresDegreeToggle = () => {
     this.setState(prevState => {
-      return { college_degree: !prevState.requiresDegree };
+      return { college_degree: !prevState.college_degree };
     });
   };
 
