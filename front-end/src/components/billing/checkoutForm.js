@@ -17,6 +17,11 @@ class CheckoutForm extends Component {
 		this.submit = this.submit.bind(this);
 	}
 
+	//handle radio button
+	chargeOption = event => {
+		this.setState({ chargeOption: event.target.value });
+	};
+
 	async submit(ev) {
 		let { token } = await this.props.stripe.createToken({ name: 'Name' });
 		let response = await fetch('http://localhost:9000/charge', {
