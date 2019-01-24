@@ -26,7 +26,7 @@ class UpdateProfile extends Component {
     setTimeout(() => {
       const user_uid = this.props.authUser.uid;
       this.fetchCompany(user_uid);
-    }, 700);
+    }, 800);
   }
 
   fetchCompany = user_uid => {
@@ -34,7 +34,6 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
-          console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -117,22 +116,6 @@ class UpdateProfile extends Component {
           />
         ) : (
           <ProfileInfo company={this.state.company} />
-          //   <h2>{this.state.company.company_name}</h2>
-          // )}
-          // {this.state.companyEditor ? null : <p>{this.state.company.email}</p>}
-          // {this.state.companyEditor ? null : <p>{this.state.company.balance}</p>}
-          // {this.state.companyEditor ? null : (
-          //   <p>{this.state.company.first_name}</p>
-          // )}
-          // {this.state.companyEditor ? null : (
-          //   <p>{this.state.company.last_name}</p>
-          // )}
-          // {this.state.companyEditor ? null : <p>{this.state.company.summary}</p>}
-          // {this.state.companyEditor ? null : (
-          //   <p>{this.state.company.application_method}</p>
-          // )}
-          // {this.state.companyEditor ? null : (
-          //   <img src={this.state.company.avatar_image} />
         )}
       </div>
     );
