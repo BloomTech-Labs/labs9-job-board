@@ -9,6 +9,8 @@ class UpdateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      company: null,
+      companyEditor: false,
       image: "",
       email: "",
       firstName: "",
@@ -17,9 +19,38 @@ class UpdateProfile extends Component {
       companySummary: "",
       applicationInbox: "",
       uid: ""
-
     };
   }
+
+  componentDidMount() {
+    const user_uid = this.state.uid;
+    this.fetchCompany(user_uid);
+  }
+
+  fetchCompany = user_uid => {
+    if (user_uid) {
+      axios
+        .get(`${url}/api/company/${user_uid}`)
+        .then(res => {
+          this.setState(() => ({
+            company: res.data
+          }));
+        })
+        .then(() => {
+          this.setState({
+            email: this.state.company.email,
+            firstName: this.state.company.first_name,
+            lastName: this.state.company.last_name,
+            companyName: this.state.company.company_name,
+            companySummary: this.state.company.summary,
+            applicationInbox: this.state.company.application_method
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
 
   updateUser = e => {
     e.preventDefault();
@@ -35,11 +66,14 @@ class UpdateProfile extends Component {
       application_method: this.state.applicationInbox
     };
 
-    axios.put(`${url}/api/user`, updatedUser).then(res => {
-
-      console.log("response", res);
-      this.setState({ user: res.data }).catch(err => console.log(err));
-    });
+    axios
+      .put(`${url}/api/user`, updatedUser)
+      .then(res => {
+        console.log("response", res);
+        this.setState({ company: res.data });
+      })
+      .catch(err => console.log(err));
+    this.openEditor();
   };
 
   changeHandler = event => {
@@ -52,11 +86,45 @@ class UpdateProfile extends Component {
     }
   }
 
+  openEditor = () => {
+    this.setState({ companyEditor: !this.state.companyEditor });
+  };
 
   render() {
+    console.log(this.state);
+    if (!this.state.company) {
+      return <div>Loading.....</div>;
+    }
     return (
       <div className="profile-container">
-        <ProfileForm />
+        <p onClick={this.openEditor}>Edit Profile</p>
+        {this.state.companyEditor ? (
+          <ProfileForm
+            updateUser={this.updateUser}
+            changeHandler={this.changeHandler}
+            company={this.state.company}
+            editEmail={this.state.email}
+            editFirstName={this.state.firstName}
+            editLastName={this.state.lastName}
+            editCompanyName={this.state.companyName}
+            editCompanySummary={this.state.companySummary}
+            editApplicationInbox={this.state.applicationInbox}
+          />
+        ) : (
+          <h2>{this.state.company.company_name}</h2>
+        )}
+        {this.state.companyEditor ? null : <p>{this.state.company.email}</p>}
+        {this.state.companyEditor ? null : <p>{this.state.company.balance}</p>}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.first_name}</p>
+        )}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.last_name}</p>
+        )}
+        {this.state.companyEditor ? null : <p>{this.state.company.summary}</p>}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.application_method}</p>
+        )}
       </div>
     );
   }
