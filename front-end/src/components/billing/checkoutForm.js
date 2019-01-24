@@ -38,6 +38,38 @@ class CheckoutForm extends Component {
 				<CardNumberElement />
 				<CardExpiryElement />
 				<CardCVCElement />
+				<form className="options">
+					<label>
+						<input
+							type="radio"
+							name="100 credits - $299.99"
+							value="unlimited jobs 1 month"
+							checked={this.state.chargeOption}
+							onChange={this.chargeHandler}
+						/>
+						100 credits - $299.99
+					</label>
+					<label>
+						<input
+							type="radio"
+							name="50 credits - $99.99"
+							value="post jobs 12"
+							checked={this.state.chargeption}
+							onChange={this.chargeHandler}
+						/>
+						50 credits - $99.99
+					</label>
+					<label>
+						<input
+							type="radio"
+							name="1 credit - $9.99"
+							value="post a job"
+							checked={this.state.chargeption}
+							onChange={this.chargeHandler}
+						/>
+						1 credit - $9.99
+					</label>
+				</form>
 				<button id="buttonCheckout" onClick={this.submit}>
 					Buy Now
 				</button>
