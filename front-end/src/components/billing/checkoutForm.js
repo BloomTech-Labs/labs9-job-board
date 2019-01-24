@@ -23,7 +23,7 @@ class CheckoutForm extends Component {
 	};
 	//handle radio button
 	handleOptionChange = event => {
-		this.setState({ chargeOption: event.target.value });
+		this.setState({ selectedOption: event.target.value });
 	};
 
 	async submit(ev) {
