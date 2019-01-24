@@ -10,7 +10,10 @@ class CheckoutForm extends Component {
 	constructor(props) {
 		super(props);
 		//render a message only if purchase is complete
-		this.state = { complete: false };
+		this.state = {
+			complete: false,
+			chargeOption: '',
+		};
 		this.submit = this.submit.bind(this);
 	}
 
