@@ -124,6 +124,26 @@ class JobForm extends React.Component {
                 checked={this.props.college_degree}
               />
               <h5>This job requires a degree</h5>
+
+              <label>
+                Category:
+                <select
+                  name="category"
+                  onChange={event => {
+                    this.props.categoryHandler(event.target);
+                  }}
+                  value={this.props.category}
+                >
+                  <option value="none">None</option>
+                  <option value="design">Design</option>
+                  <option value="uxui">UX/UI</option>
+                  <option value="programming">Programming</option>
+                  <option value="management">Management</option>
+                  <option value="devops">DevOps</option>
+                  <option value="writing">Writing</option>
+                  <option value="finance">Finance</option>
+                </select>
+              </label>
             </div>
             <div className="post-job-buttons-container">
               <button

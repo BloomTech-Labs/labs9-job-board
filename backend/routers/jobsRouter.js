@@ -13,7 +13,8 @@ const jobDataTypes = {
   top_skills: "string",
   add_skills: "string",
   familiar: "string",
-  requirements: "string"
+  requirements: "string",
+  category: "string"
 };
 
 // [GET] /api/jobs
