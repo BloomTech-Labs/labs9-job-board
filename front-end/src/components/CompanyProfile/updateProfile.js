@@ -88,7 +88,7 @@ class UpdateProfile extends Component {
           <ProfileForm
             company={this.state.company}
             editEmail={this.state.email}
-            editFirstname={this.state.firstName}
+            editFirstName={this.state.firstName}
             editLastName={this.state.lastName}
             editCompanyName={this.state.companyName}
             editCompanySummary={this.state.companySummary}
