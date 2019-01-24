@@ -12,6 +12,7 @@ class CheckoutForm extends Component {
 		//render a message only if purchase is complete
 		this.state = {
 			complete: false,
+			selectedOption: '',
 		};
 		this.submit = this.submit.bind(this);
 	}
@@ -55,7 +56,7 @@ class CheckoutForm extends Component {
 						<input
 							type="radio"
 							name="100 credits - $299.99"
-							value="unlimited jobs 1 month"
+							value="100 credits"
 							checked={this.state.selectedOption === '100 credits'}
 							onChange={this.handleOptionChange}
 						/>
@@ -65,7 +66,7 @@ class CheckoutForm extends Component {
 						<input
 							type="radio"
 							name="50 credits - $99.99"
-							value="post jobs 12"
+							value="50 credits"
 							checked={this.state.selectedOption === '50 credits'}
 							onChange={this.handleOptionChange}
 						/>
@@ -75,7 +76,7 @@ class CheckoutForm extends Component {
 						<input
 							type="radio"
 							name="1 credit - $9.99"
-							value="post a job"
+							value="1 credit"
 							checked={this.state.selectedOption === '1 credit'}
 							onChange={this.handleOptionChange}
 						/>
