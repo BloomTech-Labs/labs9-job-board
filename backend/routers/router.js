@@ -116,26 +116,41 @@ router.get("/jobs/:id", (req, res) => {
 });
 
 // Creating a new job
-router.post("/job", (req, res) => {
+router.post("/jobs", (req, res) => {
   const newJob = { ...req.body };
+  const insertObject = {};
 
-  if (newJob) {
-    db("jobs");
-    insert(newJob)
-      .then(addJob => {
-        res.status(201).json(addJob[0]);
+  if (newJob.title && newJob.salary && newJob.description && newJob.user_uid) {
+    db("users")
+      .select("id")
+      .where({ user_uid: newJob.user_uid })
+      .then(response => {
+        // response - [{ id: ## }]
+        if (response.length) {
+          insertObject.users_id = response[0].id;
+          Object.keys(newJob).forEach(key => {
+            if (key !== "user_uid") {
+              insertObject[key] = newJob[key];
+            }
+          });
+          return db("jobs").insert(insertObject);
+        } else {
+          throw "id not found";
+        }
+      })
+      .then(response => {
+        // response.rowCount
+        if (response.rowCount) {
+          res.status(201).json({ message: "Successfully created new job" });
+        } else {
+          res.status(400).json({ message: "Failed to add job" });
+        }
       })
       .catch(error => {
-        res.status(500).json({
-          errorMessage: "There was an error adding your job to the database.",
-          error: error
-        });
+        res.status(500).json({ error });
       });
   } else {
-    res.status(400).json({
-      errorMessage:
-        "Please provide the following: Category_Tag, Title, Salary, Top_Skills, Familiar_With, Description, Requirements, Active, Degree_Required for a job to be added."
-    });
+    res.status(400).json({ message: "Request not formatted correctly" });
   }
 });
 
