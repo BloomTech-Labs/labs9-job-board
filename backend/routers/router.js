@@ -66,6 +66,23 @@ router.get("/jobs/category/:category", (req, res) => {
     });
 });
 
+// [GET] /api/jobs/user/:id
+// returns all jobs for a user
+router.get("/jobs/user/:id", (req, res) => {
+  const user_uid = req.params.id;
+
+  db("jobs as j")
+    .select("j.*")
+    .innerJoin("users as u", "j.users_id", "u.id")
+    .where({ user_uid })
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(error => {
+      res.status(500).json({ message: "Error retrieving user's jobs" });
+    });
+});
+
 // Display one job
 router.get("/jobs/:id", (req, res) => {
   const { id } = req.params;
