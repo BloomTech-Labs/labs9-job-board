@@ -23,8 +23,10 @@ class UpdateProfile extends Component {
   }
 
   componentDidMount() {
-    const user_uid = this.state.uid;
-    this.fetchCompany(user_uid);
+    setTimeout(() => {
+      const user_uid = this.props.authUser.uid;
+      this.fetchCompany(user_uid);
+    }, 1000);
   }
 
   fetchCompany = user_uid => {
@@ -32,6 +34,7 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
+          console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -43,7 +46,8 @@ class UpdateProfile extends Component {
             lastName: this.state.company.last_name,
             companyName: this.state.company.company_name,
             companySummary: this.state.company.summary,
-            applicationInbox: this.state.company.application_method
+            applicationInbox: this.state.company.application_method,
+            uid: this.state.company.user_uid
           });
         })
         .catch(err => {
@@ -80,14 +84,12 @@ class UpdateProfile extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  componentDidUpdate() {
-    if (this.props.authUser.uid !== this.state.uid) {
-      this.setState({ uid: this.props.authUser.uid });
-    }
-  }
-
   openEditor = () => {
     this.setState({ companyEditor: !this.state.companyEditor });
+  };
+
+  setUrl = event => {
+    this.setState({ image: event.target.value });
   };
 
   render() {
@@ -100,6 +102,7 @@ class UpdateProfile extends Component {
         <p onClick={this.openEditor}>Edit Profile</p>
         {this.state.companyEditor ? (
           <ProfileForm
+            setUrl={this.state.setUrl}
             updateUser={this.updateUser}
             changeHandler={this.changeHandler}
             company={this.state.company}
