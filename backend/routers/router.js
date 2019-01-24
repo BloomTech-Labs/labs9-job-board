@@ -234,9 +234,7 @@ router.put("/user", (req, res) => {
           .status(404)
           .json({ message: "A user with that ID does not exist." });
       } else {
-        res
-          .status(201)
-          .json({ message: "updated the following amount of users:", count });
+        res.status(201).json(changes);
       }
     })
     .catch(err => {
