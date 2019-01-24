@@ -18,6 +18,19 @@
     flex-direction: column;
     text-align: center;
 
+    .profile-pic-button {
+      padding: 30px;
+      margin: 10px;
+      color: rgb(82, 82, 82);
+      background: white;
+      cursor: pointer;
+      font-size: 2.2rem;
+      border-radius: 50%;
+      height: 200px;
+      width: 200px;
+      border: 2px solid rgb(82, 82, 82);
+    }
+
     .profile-pic {
       border-radius: 50%;
     }
