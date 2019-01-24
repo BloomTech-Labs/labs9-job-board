@@ -12,7 +12,6 @@ class CheckoutForm extends Component {
 		//render a message only if purchase is complete
 		this.state = {
 			complete: false,
-			chargeOption: '',
 		};
 		this.submit = this.submit.bind(this);
 	}
@@ -23,7 +22,7 @@ class CheckoutForm extends Component {
 		};
 	};
 	//handle radio button
-	chargeOption = event => {
+	handleOptionChange = event => {
 		this.setState({ chargeOption: event.target.value });
 	};
 
@@ -57,8 +56,8 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="100 credits - $299.99"
 							value="unlimited jobs 1 month"
-							checked={this.state.chargeOption}
-							onChange={this.chargeHandler}
+							checked={this.state.selectedOption === '100 credits'}
+							onChange={this.handleOptionChange}
 						/>
 						100 credits - $299.99
 					</label>
@@ -67,8 +66,8 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="50 credits - $99.99"
 							value="post jobs 12"
-							checked={this.state.chargeption}
-							onChange={this.chargeHandler}
+							checked={this.state.selectedOption === '50 credits'}
+							onChange={this.handleOptionChange}
 						/>
 						50 credits - $99.99
 					</label>
@@ -77,8 +76,8 @@ class CheckoutForm extends Component {
 							type="radio"
 							name="1 credit - $9.99"
 							value="post a job"
-							checked={this.state.chargeption}
-							onChange={this.chargeHandler}
+							checked={this.state.selectedOption === '1 credit'}
+							onChange={this.handleOptionChange}
 						/>
 						1 credit - $9.99
 					</label>
