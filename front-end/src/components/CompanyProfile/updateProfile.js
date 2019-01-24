@@ -15,7 +15,9 @@ class UpdateProfile extends Component {
       lastName: "",
       companyName: "",
       companySummary: "",
-      applicationInbox: ""
+      applicationInbox: "",
+      uid: ""
+
     };
   }
 
@@ -33,7 +35,8 @@ class UpdateProfile extends Component {
       application_method: this.state.applicationInbox
     };
 
-    axios.put(`${url}/api/users/${id}`, updatedUser).then(res => {
+    axios.put(`${url}/api/user`, updatedUser).then(res => {
+
       console.log("response", res);
       this.setState({ user: res.data }).catch(err => console.log(err));
     });
@@ -42,6 +45,13 @@ class UpdateProfile extends Component {
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  componentDidUpdate() {
+    if (this.props.authUser.uid !== this.state.uid) {
+      this.setState({ uid: this.props.authUser.uid });
+    }
+  }
+
 
   render() {
     return (
