@@ -33,7 +33,12 @@ class Routes extends Component {
           )}
         />
         <Route path={ROUTES.JOB} render={props => <SingleJob {...props} />} />
-        <Route path={ROUTES.POST_JOB} component={PostJob} />
+        <Route
+          path={ROUTES.POST_JOB}
+          render={props => (
+            <PostJob {...props} authUser={this.props.authUser} />
+          )}
+        />
         {/* <Route path={ROUTES.COMPANY_PROFILE} component={Profile} /> */}
         <Route
           path={ROUTES.BILLING}

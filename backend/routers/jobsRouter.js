@@ -129,6 +129,7 @@ router.get("/:id", (req, res) => {
 router.post("", (req, res) => {
   const newJob = { ...req.body };
   const insertObject = {};
+  console.log("newJob", newJob);
 
   if (newJob.title && newJob.salary && newJob.description && newJob.user_uid) {
     db("users")
@@ -139,12 +140,16 @@ router.post("", (req, res) => {
         if (response.length) {
           Object.keys(newJob).forEach(key => {
             if (key !== "created_at") {
-              if (typeof newJob[key] === jobDataTypes[key]) {
+              if (
+                typeof newJob[key] === jobDataTypes[key] &&
+                key !== "user_uid"
+              ) {
                 insertObject[key] = newJob[key];
               }
             }
           });
           insertObject.users_id = response[0].id;
+          console.log("insertObject", insertObject);
           return db("jobs").insert(insertObject);
         } else {
           throw "id not found";
@@ -152,6 +157,7 @@ router.post("", (req, res) => {
       })
       .then(response => {
         // response.rowCount
+        console.log("insert response", response);
         if (response.rowCount) {
           res.status(201).json({ message: "Successfully created new job" });
         } else {
@@ -159,6 +165,7 @@ router.post("", (req, res) => {
         }
       })
       .catch(error => {
+        console.log(error);
         res.status(500).json({ error });
       });
   } else {

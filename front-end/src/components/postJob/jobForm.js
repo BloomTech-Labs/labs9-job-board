@@ -5,7 +5,7 @@ const JobForm = props => {
     <div className="post-job-container">
       <div className="post-job-title">Post a Job</div>
       <hr />
-      <form className="job-form" onSubmit={props.addJob}>
+      <form className="job-form" onSubmit={props.submitHandler}>
         <div className="post-job-top">
           <div className="title-container">
             <label
@@ -56,21 +56,21 @@ const JobForm = props => {
             <input
               id="top-skills"
               value={props.topSkills}
-              name="topSkills"
+              name="top_skills"
               onChange={props.handleInput}
               placeholder="Top 5 skills (largest on your posting) *separate with commas*"
             />
             <input
               id="additional-skills"
               value={props.additionalSkills}
-              name="additionalSkills"
+              name="add_skills"
               onChange={props.handleInput}
               placeholder="More skills (medium on your posting) *separate with commas*"
             />
             <input
               id="familiar-with"
               value={props.familiarWith}
-              name="familiarWith"
+              name="familiar"
               onChange={props.handleInput}
               placeholder="Remaining skills (small on your posting) *separate with commas*"
             />
@@ -106,7 +106,7 @@ const JobForm = props => {
           <div className="requires-degree">
             <input
               type="checkbox"
-              name="requiresDegree"
+              name="college_degree"
               className="degree-checkbox"
               value={props.requiresDegree}
               onClick={props.requiresDegreeToggle}
@@ -121,11 +121,7 @@ const JobForm = props => {
             >
               Cancel
             </button>
-            <button
-              className="post-job-buttons"
-              type="submit"
-              onClick={props.handleInput}
-            >
+            <button className="post-job-buttons" type="submit">
               Save
             </button>
           </div>
