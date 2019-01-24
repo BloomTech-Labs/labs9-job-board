@@ -9,6 +9,8 @@ class UpdateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      company: null,
+      companyEditor: false,
       image: "",
       email: "",
       firstName: "",
@@ -16,10 +18,29 @@ class UpdateProfile extends Component {
       companyName: "",
       companySummary: "",
       applicationInbox: "",
-      uid: ""
-
+      uid: "5555"
     };
   }
+
+  componentDidMount() {
+    const user_uid = this.state.uid;
+    this.fetchCompany(user_uid);
+  }
+
+  fetchCompany = user_uid => {
+    if (user_uid) {
+      axios
+        .get(`${url}/api/company/${user_uid}`)
+        .then(res => {
+          this.setState(() => ({
+            company: res.data
+          }));
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
 
   updateUser = e => {
     e.preventDefault();
@@ -36,7 +57,6 @@ class UpdateProfile extends Component {
     };
 
     axios.put(`${url}/api/user`, updatedUser).then(res => {
-
       console.log("response", res);
       this.setState({ user: res.data }).catch(err => console.log(err));
     });
@@ -46,17 +66,42 @@ class UpdateProfile extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  componentDidUpdate() {
-    if (this.props.authUser.uid !== this.state.uid) {
-      this.setState({ uid: this.props.authUser.uid });
-    }
-  }
+  //   componentDidUpdate() {
+  //     if (this.props.authUser.uid !== this.state.uid) {
+  //       this.setState({ uid: this.props.authUser.uid });
+  //     }
+  //   }
 
+  clickHandler = () => {
+    this.setState({ companyEditor: !this.state.companyEditor });
+  };
 
   render() {
+    console.log(this.state.company);
+    if (!this.state.company) {
+      return <div>Loading.....</div>;
+    }
     return (
       <div className="profile-container">
-        <ProfileForm />
+        <p onClick={this.clickHandler}>Edit Profile</p>
+        {this.state.companyEditor ? (
+          <ProfileForm />
+        ) : (
+          <h2>{this.state.company.company_name}</h2>
+        )}
+        {this.state.companyEditor ? null : <p>{this.state.company.email}</p>}
+        {this.state.companyEditor ? null : <p>{this.state.company.balance}</p>}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.first_name}</p>
+        )}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.last_name}</p>
+        )}
+        {this.state.companyEditor ? null : <p>{this.state.company.summary}</p>}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.application_method}</p>
+        )}
+        avatar_image
       </div>
     );
   }

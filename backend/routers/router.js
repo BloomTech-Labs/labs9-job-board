@@ -269,4 +269,25 @@ router.delete("/users/:id", (req, res) => {
     });
 });
 
+router.get("/company/:user_uid", (req, res) => {
+  const post = req.params;
+  const user_uid = post.user_uid;
+  console.log(req.params);
+  db("users")
+    .where({ user_uid })
+    .first()
+    .then(user => {
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({ errorMessage: `nope` });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        errorMessage: `something is wrong`
+      });
+    });
+});
+
 module.exports = router;
