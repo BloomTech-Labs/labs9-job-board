@@ -47,7 +47,8 @@ class UpdateProfile extends Component {
             companyName: this.state.company.company_name,
             companySummary: this.state.company.summary,
             applicationInbox: this.state.company.application_method,
-            uid: this.state.company.user_uid
+            uid: this.state.company.user_uid,
+            image: this.state.company.avatar_image
           });
         })
         .catch(err => {
@@ -127,6 +128,9 @@ class UpdateProfile extends Component {
         {this.state.companyEditor ? null : <p>{this.state.company.summary}</p>}
         {this.state.companyEditor ? null : (
           <p>{this.state.company.application_method}</p>
+        )}
+        {this.state.companyEditor ? null : (
+          <p>{this.state.company.avatar_image}</p>
         )}
       </div>
     );

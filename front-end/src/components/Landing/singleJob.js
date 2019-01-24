@@ -33,6 +33,15 @@ class SingleJob extends Component {
     window.location = `mailto:${this.state.job.application_method}`;
   }
 
+  shareHandler() {
+    window.location = "mailto:?subject=Check this Job!&body=" + window.location;
+  }
+
+  reportHandler() {
+    window.location =
+      "mailto:mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body=" +
+      window.location;
+  }
   render() {
     console.log("this.props", this.state.job);
     if (!this.state.job) {
@@ -44,12 +53,8 @@ class SingleJob extends Component {
           <button className="apply-btn" onClick={() => this.clickHandler()}>
             Apply
           </button>
-          <a href="javascript: window.location='mailto:?subject=Check this Job!&body= '+ window.location;">
-            Tell a Friend
-          </a>
-          <a href="javascript: window.location='mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body= '+ window.location;">
-            Report
-          </a>
+          <p onClick={this.shareHandler}>Tell a Friend</p>
+          <p onClick={this.reportHandler}>Report</p>
         </div>
         <div className="job-listing">
           <div className="job-company-summary">
