@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import JobForm from "./jobForm";
 import axios from "axios";
 
-const URL = process.env.REACT_APP_DB_URL_TEST;
+const URL = process.env.REACT_APP_DB_URL;
 
 class EditJob extends Component {
   constructor(props) {
