@@ -16,7 +16,12 @@ class CheckoutForm extends Component {
 		};
 		this.submit = this.submit.bind(this);
 	}
-
+	//initiating the radio button
+	getInitialState = () => {
+		return {
+			selectedOption: '100 credits',
+		};
+	};
 	//handle radio button
 	chargeOption = event => {
 		this.setState({ chargeOption: event.target.value });
