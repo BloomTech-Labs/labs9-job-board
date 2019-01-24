@@ -10,7 +10,7 @@
     }
 
     .left-side {
-      background-color: #e82f3a;
+      background-color: #{$color-theme};
       width: 50%;
       display: flex;
       flex-direction: column;
