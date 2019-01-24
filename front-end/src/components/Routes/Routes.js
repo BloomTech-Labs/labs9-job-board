@@ -4,7 +4,7 @@ import JobsContainer from "../Landing/jobsContainer";
 
 import SingleJob from "../Landing/singleJob";
 import PostJob from "../postJob/postJob";
-
+import EditJob from "../postJob/EditJob";
 //import Profile from "../CompanyProfile/profileForm.js";
 import UpdateProfile from "../CompanyProfile/updateProfile.js";
 import SignUp from "../SignUp/SignUp";
@@ -25,11 +25,33 @@ class Routes extends Component {
   render() {
     return (
       <div className="routes">
-        <Route exact path={ROUTES.LANDING} component={JobsContainer} />
+        <Route
+          exact
+          path={ROUTES.LANDING}
+          render={props => (
+            <JobsContainer {...props} authUser={this.props.authUser} />
+          )}
+        />
         <Route path={ROUTES.JOB} render={props => <SingleJob {...props} />} />
-        <Route path={ROUTES.POST_JOB} component={PostJob} />
+        <Route
+          path={ROUTES.POST_JOB}
+          render={props => (
+            <PostJob {...props} authUser={this.props.authUser} />
+          )}
+        />
+        <Route
+          path={ROUTES.EDIT_JOB}
+          render={props => (
+            <EditJob {...props} authUser={this.props.authUser} />
+          )}
+        />
         {/* <Route path={ROUTES.COMPANY_PROFILE} component={Profile} /> */}
-        <Route path={ROUTES.BILLING} component={Billing} />
+        <Route
+          path={ROUTES.BILLING}
+          render={props => (
+            <Billing {...props} authUser={this.props.authUser} />
+          )}
+        />
         <Route
           path={ROUTES.SIGN_UP}
           render={props => <SignUp {...props} authUser={this.props.authUser} />}

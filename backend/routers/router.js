@@ -17,14 +17,17 @@ router.get("/users", (req, res) => {
 
 //POST new user
 router.post("/users", (req, res) => {
+  console.log("in new user");
   const user = req.body;
 
   db("users")
     .insert(user)
     .then(ids => {
+      console.log("ids", ids);
       res.status(201).json(ids);
     })
     .catch(err => {
+      console.log("err", err);
       res.status(500).json({ message: "Error inserting user", err });
     });
 });

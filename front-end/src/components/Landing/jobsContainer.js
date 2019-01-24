@@ -83,7 +83,7 @@ class JobsContainer extends Component {
 
     return (
       <div className="jobs-container container">
-        <Header />
+        <Header authUser={this.props.authUser} />
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search

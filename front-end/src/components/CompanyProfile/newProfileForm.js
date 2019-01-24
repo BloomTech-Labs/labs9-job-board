@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import ProfilePic from "./profilePic";
 
@@ -44,6 +45,7 @@ class NewProfileForm extends Component {
       .post(`${url}/api/users`, newUser)
       .then(res => {
         console.log("ADDING USER", res);
+        this.props.history.push("");
       })
       .catch(error => {
         console.log("ERROR", error);
@@ -115,4 +117,4 @@ class NewProfileForm extends Component {
   }
 }
 
-export default NewProfileForm;
+export default withRouter(NewProfileForm);
