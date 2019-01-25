@@ -80,6 +80,7 @@ class UserJobs extends React.Component {
           this.state.jobs.map(job => {
             return (
               <div className="job-links">
+                <h3>Job Listings:</h3>
                 <Link to={`/jobs/${job.id}`} key={job.id}>
                   <div className="billing-job">{job.title}</div>
                 </Link>
