@@ -66,6 +66,7 @@ class NewProfileForm extends Component {
         <form className="new-user-form" onSubmit={this.addNew}>
           <h2> Tell us about you! </h2>
           <ProfilePic />
+          <p className = 'required-field'>* indicates required fields</p>
           <input
             type="text"
             onChange={this.handleInputChange}

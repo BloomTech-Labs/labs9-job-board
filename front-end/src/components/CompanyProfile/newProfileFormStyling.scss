@@ -18,6 +18,11 @@
     flex-direction: column;
     text-align: center;
 
+    .required-field{
+      font-size: 1.6rem;
+      color: white;
+    }
+
     .profile-pic-button {
       padding: 30px;
       margin: 10px;
