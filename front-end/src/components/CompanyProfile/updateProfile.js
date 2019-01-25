@@ -50,7 +50,7 @@ class UpdateProfile extends Component {
   }
 
   updateUser = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const id = this.props.match.params.id;
 
     const updatedUser = {
@@ -84,7 +84,6 @@ class UpdateProfile extends Component {
 
   setUrl = num => {
     this.setState({ image: num[0].url });
-    this.updateUser();
   };
 
   render() {
