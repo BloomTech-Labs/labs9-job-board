@@ -3,25 +3,32 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: gray;
+  background-color: #{$secondary-color};
   height: 70px;
 
   .navbar-navigation {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */ /* CONNECTED WITH BELOW*/
+    justify-content: space-between;
     height: 100%;
     padding: 0 1%;
 
     .navbar-logo {
       margin-left: 1%;
-      width: 100%;
       text-align: left;
 
       a {
         color: white;
         text-decoration: none;
         font-size: 4rem;
+        display: flex;
+        align-items: center;
+        font-family: Cinzel;
+
+        img {
+          width: 50px;
+          margin-left: 10px;
+        }
       }
     }
   }
@@ -94,7 +101,7 @@
 
     &:hover,
     &:active {
-      color: #e82f3a;
+      color: #{$color-theme};
       background-color: #afafaf;
     }
   }

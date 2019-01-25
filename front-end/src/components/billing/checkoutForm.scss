@@ -1,4 +1,4 @@
-$break-small: 600px;
+$break-small: 645px;
 
 .billing-container {
   width: 100%;
@@ -15,6 +15,11 @@ $break-small: 600px;
       flex-direction: column;
     }
 
+    .purchase-modal h1 {
+      display: flex;
+      align-items: center;
+      font-size: 36px;
+    }
     .purchase-options {
       // border: 1px solid red;
       display: flex;

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
-// import ProfilePic from './profilePic';
+import ProfileInfo from "./profileInfo";
+import LoadingBar from "../../images/loading-bars.svg";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -23,10 +24,15 @@ class UpdateProfile extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    if (this.props.authUser) {
       const user_uid = this.props.authUser.uid;
       this.fetchCompany(user_uid);
-    }, 700);
+    } else {
+      setTimeout(() => {
+        const user_uid = this.props.authUser.uid;
+        this.fetchCompany(user_uid);
+      }, 553);
+    }
   }
 
   fetchCompany = user_uid => {
@@ -39,6 +45,7 @@ class UpdateProfile extends Component {
             company: res.data
           }));
         })
+
         .then(() => {
           this.setState({
             email: this.state.company.email,
@@ -58,7 +65,7 @@ class UpdateProfile extends Component {
   };
 
   updateUser = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const id = this.props.match.params.id;
 
     const updatedUser = {
@@ -92,21 +99,20 @@ class UpdateProfile extends Component {
 
   setUrl = num => {
     this.setState({ image: num[0].url });
-    this.updateUser();
   };
 
   render() {
     console.log(this.state);
     if (!this.state.company) {
-      return <div>Loading.....</div>;
+      return <img src={LoadingBar} alt="loading bar" className="loading" />;
     }
     return (
       <div className="profile-container">
-        <p onClick={this.openEditor}>Edit Profile</p>
         {this.state.companyEditor ? (
           <ProfileForm
-            setUrl={this.setUrl}
+            openEditor={this.openEditor}
             updateUser={this.updateUser}
+            setUrl={this.setUrl}
             changeHandler={this.changeHandler}
             company={this.state.company}
             editEmail={this.state.email}
@@ -117,22 +123,10 @@ class UpdateProfile extends Component {
             editApplicationInbox={this.state.applicationInbox}
           />
         ) : (
-          <h2>{this.state.company.company_name}</h2>
-        )}
-        {this.state.companyEditor ? null : <p>{this.state.company.email}</p>}
-        {this.state.companyEditor ? null : <p>{this.state.company.balance}</p>}
-        {this.state.companyEditor ? null : (
-          <p>{this.state.company.first_name}</p>
-        )}
-        {this.state.companyEditor ? null : (
-          <p>{this.state.company.last_name}</p>
-        )}
-        {this.state.companyEditor ? null : <p>{this.state.company.summary}</p>}
-        {this.state.companyEditor ? null : (
-          <p>{this.state.company.application_method}</p>
-        )}
-        {this.state.companyEditor ? null : (
-          <img src={this.state.company.avatar_image} />
+          <ProfileInfo
+            company={this.state.company}
+            openEditor={this.openEditor}
+          />
         )}
       </div>
     );

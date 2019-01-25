@@ -1,9 +1,9 @@
 .single-job-container {
   display: flex;
   flex-direction: row-reverse;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   padding: 50px 1%;
+  margin: 0 10%;
 
   @media (max-width: 780px) {
     flex-direction: column-reverse;
@@ -33,9 +33,12 @@
       }
     }
 
-    a {
+    p {
       margin-top: 25px;
       font-size: 1.8rem;
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
     }
   }
 
@@ -102,7 +105,7 @@
 
   .company-logo {
     width: 20%;
-    margin-left: 8%;
+    margin: 0 8% 0 3%;
 
     @media (max-width: 780px) {
       width: 100%;
@@ -110,7 +113,7 @@
     }
 
     img {
-      height: 100px;
+      height: 125px;
       margin: 0 1%;
 
       @media (max-width: 780px) {

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const URL = process.env.REACT_APP_DB_URL_TEST;
+const URL = process.env.REACT_APP_DB_URL;
 
 class Balance extends React.Component {
   constructor(props) {

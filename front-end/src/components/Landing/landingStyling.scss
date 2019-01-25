@@ -141,10 +141,12 @@
     //   align-items: center;
     // }
 
+
     .categories {
       display: flex;
       justify-content: center;
       border: 2px solid #ccc;
+      border-radius: 25px;
       background-color: white;
       /* width: 49%; */
       height: 50px;
@@ -158,7 +160,11 @@
         margin-bottom: 20px;
       }
       @include phone {
-        display: none;
+        // display: none;
+        height: 170px;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
       }
 
       .categories-tab {
@@ -169,16 +175,24 @@
         padding: 0 10px;
 
         &:hover {
-          background: lightblue;
+          background: (rgba(85, 115, 179, 0.863));
+          color: white;
+          border-radius: 5px;
           cursor: pointer;
+        }
+
+        @include phone {
+          padding: 20px;
         }
       }
 
       .selected {
-        background: yellow;
+        background: (rgba(76, 103, 161, 0.966));
+        color: white;
+        border-radius: 5px;
 
         &:hover {
-          background: yellow;
+          background: (rgba(85, 115, 179, 0.863));
         }
       }
     }
@@ -189,7 +203,7 @@
       justify-content: center;
 
       @include phone {
-        width: 60%;
+        width: 70%;
       }
 
       .search-input {
@@ -219,7 +233,9 @@
         // transition: all 0.2s;
         // width: 200px;
         // ==========^^^ SEARCH BAR ICON ^^^==========
-
+        @include phone {
+          width: 90%;
+        }
         &:hover {
           border: 2px solid rgb(124, 124, 124);
         }
