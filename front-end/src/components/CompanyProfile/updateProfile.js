@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
-// import ProfilePic from './profilePic';
+import ProfileInfo from "./profileInfo";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -26,7 +26,7 @@ class UpdateProfile extends Component {
     setTimeout(() => {
       const user_uid = this.props.authUser.uid;
       this.fetchCompany(user_uid);
-    }, 700);
+    }, 800);
   }
 
   fetchCompany = user_uid => {
@@ -34,7 +34,6 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
-          console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -102,11 +101,12 @@ class UpdateProfile extends Component {
     }
     return (
       <div className="profile-container">
-        <p onClick={this.openEditor}>Edit Profile</p>
+        <button onClick={this.openEditor} className="editBtn">
+          Edit Profile
+        </button>
         {this.state.companyEditor ? (
           <ProfileForm
             setUrl={this.setUrl}
-            updateUser={this.updateUser}
             changeHandler={this.changeHandler}
             company={this.state.company}
             editEmail={this.state.email}
@@ -117,22 +117,7 @@ class UpdateProfile extends Component {
             editApplicationInbox={this.state.applicationInbox}
           />
         ) : (
-          <h2>{this.state.company.company_name}</h2>
-        )}
-        {this.state.companyEditor ? null : <p>{this.state.company.email}</p>}
-        {this.state.companyEditor ? null : <p>{this.state.company.balance}</p>}
-        {this.state.companyEditor ? null : (
-          <p>{this.state.company.first_name}</p>
-        )}
-        {this.state.companyEditor ? null : (
-          <p>{this.state.company.last_name}</p>
-        )}
-        {this.state.companyEditor ? null : <p>{this.state.company.summary}</p>}
-        {this.state.companyEditor ? null : (
-          <p>{this.state.company.application_method}</p>
-        )}
-        {this.state.companyEditor ? null : (
-          <img src={this.state.company.avatar_image} />
+          <ProfileInfo company={this.state.company} />
         )}
       </div>
     );
