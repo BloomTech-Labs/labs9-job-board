@@ -23,6 +23,7 @@ class UpdateProfile extends Component {
   }
 
   componentDidMount() {
+    if (this.props.authUser) {
       axios
         .get(`${url}/api/company/${this.props.authUser.uid}`)
         .then(res => {
