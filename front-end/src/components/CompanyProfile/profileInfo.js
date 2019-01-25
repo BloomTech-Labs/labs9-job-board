@@ -3,9 +3,12 @@ import React from "react";
 const ProfileInfo = props => {
   return (
     <div className="companyinfo">
-      <div className="pic-jobbalance">
+      <div className="pic-job-balance">
         <p>Job Postings: {props.company.balance}</p>
         <img src={props.company.avatar_image} className="avatar" />
+        <button onClick={props.openEditor} className="editBtn">
+          Edit Profile
+        </button>
       </div>
       <div className="all-company-info">
         <p className="company-text">{props.company.first_name}</p>
