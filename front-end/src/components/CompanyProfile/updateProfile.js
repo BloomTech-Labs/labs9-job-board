@@ -99,6 +99,7 @@ class UpdateProfile extends Component {
         </button>
         {this.state.companyEditor ? (
           <ProfileForm
+            updateUser={this.updateUser}
             setUrl={this.setUrl}
             changeHandler={this.changeHandler}
             company={this.state.company}
