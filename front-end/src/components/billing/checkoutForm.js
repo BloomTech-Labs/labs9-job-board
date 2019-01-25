@@ -47,9 +47,11 @@ class CheckoutForm extends Component {
 		}
 		return (
 			<div id="shop" className="checkout">
-				<div className = 'purchase-options'>
-					<p className = "billing-header">Billing</p>
-					<p className = 'billing-subheader'>Select number of job postings you would like to purchase</p>
+				<div className="purchase-options">
+					<p className="billing-header">Billing</p>
+					<p className="billing-subheader">
+						Select number of job postings you would like to purchase
+					</p>
 					<form className="options">
 						<label>
 							<input
@@ -59,7 +61,7 @@ class CheckoutForm extends Component {
 								checked={this.state.selectedOption === '100 credits'}
 								onChange={this.handleOptionChange}
 							/>
-							100 Jobs - $299.99
+							100 Credits/Unlimited - $299.99
 						</label>
 						<label>
 							<input
@@ -69,7 +71,7 @@ class CheckoutForm extends Component {
 								checked={this.state.selectedOption === '50 credits'}
 								onChange={this.handleOptionChange}
 							/>
-							50 Jobs - $99.99
+							50 Credits/Posting 12 Jobs - $99.99
 						</label>
 						<label>
 							<input
@@ -79,18 +81,22 @@ class CheckoutForm extends Component {
 								checked={this.state.selectedOption === '1 credit'}
 								onChange={this.handleOptionChange}
 							/>
-							1 Job - $9.99
+							1 Credit/Posting a Job - $9.99
 						</label>
 					</form>
 				</div>
-				<div className ="card-info" >
-					<p className = 'card-info-labels'> Card Number</p>
-					<CardNumberElement className = 'card-info-placeholder'/>
-					<p className = 'card-info-labels'> Expiration Date</p>
+				<div className="card-info">
+					<p className="card-info-labels"> Card Number</p>
+					<CardNumberElement className="card-info-placeholder" />
+					<p className="card-info-labels"> Expiration Date</p>
 					<CardExpiryElement />
-					<p className = 'card-info-labels'> CVC </p>
+					<p className="card-info-labels"> CVC </p>
 					<CardCVCElement />
-					<button className = 'buy-now-button' id="buttonCheckout" onClick={this.submit}>
+					<button
+						className="buy-now-button"
+						id="buttonCheckout"
+						onClick={this.submit}
+					>
 						Buy Now
 					</button>
 				</div>
