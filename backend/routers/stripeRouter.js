@@ -1,19 +1,50 @@
+require("dotenv").config();
+
+const stripeSecret = process.env.SECRET_KEY;
+
 const express = require("express");
-const stripe = require("stripe")("sk_test_W2k36bSR8IXQLEqa9IHJoCfz");
+const stripe = require("stripe")(stripeSecret);
 const router = express.Router();
 
+const billingOptions = {
+  job1: {
+    amount: 999,
+    currency: "usd",
+    description: "Increase account balance by 1 postable job"
+  },
+  job12: {
+    amount: 9999,
+    currency: "usd",
+    description: "Increase account balance by 12 postable jobs"
+  },
+  unlimited: {
+    amount: 29999,
+    currency: "usd",
+    description:
+      "Account can post unlimited jobs for 1 month from time of purchase"
+  }
+};
+
 router.post("/charge", async (req, res) => {
+  const { option, source } = req.body;
+
   try {
-    let { status } = await stripe.charges.create({
-      amount: 2000,
-      currency: "usd",
-      description: "An example cahrge",
-      source: req.body
-    });
-    res.json({ status });
+    const chargeObject = Object.assign(billingOptions[option], { source });
+
+    let status = await stripe.charges.create(chargeObject);
+
+    if (status.amount && status.status) {
+      res.status(200).json({ amount: status.amount, status: status.status });
+    } else {
+      throw new Error();
+    }
   } catch (err) {
-    res.status(500).end();
+    res.status(500).json({ message: "Error processing payment" });
   }
 });
+
+// router.get("/test", (req, res) => {
+//   res.status(200).json({ message: "test auth endpoint" });
+// });
 
 module.exports = router;
