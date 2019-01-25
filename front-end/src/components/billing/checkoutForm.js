@@ -9,6 +9,7 @@ import "./checkoutForm.scss";
 import axios from "axios";
 
 import StripeLogo from "../../images/powered_by_stripe.png";
+import LoadingCircle from "../../images/loading-circle.svg";
 
 const URL = process.env.REACT_APP_DB_URL_TEST;
 
@@ -17,10 +18,12 @@ class CheckoutForm extends Component {
     super(props);
     //render a message only if purchase is complete
     this.state = {
-      complete: false,
       selectedOption: "",
       selectionMessage: "",
-      paymentMessage: ""
+      paymentMessage: "",
+      processing: false,
+      successVisible: false,
+      failureVisible: false
     };
     this.submit = this.submit.bind(this);
   }
@@ -38,16 +41,15 @@ class CheckoutForm extends Component {
   async submit(ev) {
     ev.preventDefault();
     if (this.state.selectedOption) {
+      await this.setState({ processing: true });
       let createResponse = await this.props.stripe.createToken();
-      console.log(createResponse);
-      console.log(createResponse.token.id);
 
       if (!createResponse.error && createResponse.token.id) {
         const stripeResponse = await axios.post(`${URL}/api/stripe/charge`, {
           source: createResponse.token.id,
           option: this.state.selectedOption
         });
-        console.log(stripeResponse);
+        await this.setState({ processing: false });
       } else {
         if (createResponse.error) {
           if (createResponse.error.code === "incomplete_number") {
@@ -69,23 +71,12 @@ class CheckoutForm extends Component {
           });
         }
       }
-      //   let response = await fetch("http://localhost:9000/charge", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "text/plain" },
-      //     body: token.id
-      //   });
-      //   console.log(response);
-      //   // if checkout is complete then message will be displayed
-      //   if (response.ok) this.setState({ complete: true });
     } else {
       this.setState({ selectionMessage: "Please choose an option." });
     }
   }
 
   render() {
-    if (this.state.complete) {
-      return <h1>Purchase Complete!</h1>;
-    }
     return (
       <div id="shop" className="checkout">
         <div className="purchase-options">
@@ -139,7 +130,11 @@ class CheckoutForm extends Component {
             id="buttonCheckout"
             onClick={this.submit}
           >
-            Buy Now
+            {this.state.processing ? (
+              <img src={LoadingCircle} alt="loading" />
+            ) : (
+              "Buy Now"
+            )}
           </button>
           <span>{this.state.paymentMessage || null}</span>
           <a href="https://stripe.com/">
