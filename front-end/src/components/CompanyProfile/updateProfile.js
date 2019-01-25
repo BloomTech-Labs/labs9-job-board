@@ -23,21 +23,12 @@ class UpdateProfile extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      const user_uid = this.props.authUser.uid;
-      this.fetchCompany(user_uid);
-    }, 700);
-  }
-
-  fetchCompany = user_uid => {
-    if (user_uid) {
+    if (this.props.authUser) {
       axios
-        .get(`${url}/api/company/${user_uid}`)
+        .get(`${url}/api/company/${this.props.authUser.uid}`)
         .then(res => {
           console.log("get response", res);
-          this.setState(() => ({
-            company: res.data
-          }));
+          this.setState(() => ({ company: res.data }));
         })
         .then(() => {
           this.setState({
@@ -55,7 +46,7 @@ class UpdateProfile extends Component {
           console.log(err);
         });
     }
-  };
+  }
 
   updateUser = e => {
     // e.preventDefault();
