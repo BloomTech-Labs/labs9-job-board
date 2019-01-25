@@ -29,17 +29,32 @@
     .avatar {
       padding: 35px 0;
     }
+
+    @include phone {
+      margin: 0 0;
+    }
   }
 
   .all-company-info {
     padding-left: 3%;
     width: 70%;
     text-align: start;
-    margin: 30px 0 0 0;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include phone {
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   .company-text {
-    width: 60%;
+    width: 50%;
     min-height: 30px;
     height: 59px;
     border-radius: 25px;
@@ -51,8 +66,18 @@
     resize: none;
     line-height: 1.25;
     border: 2px solid rgb(82, 82, 82);
-    margin: 56px 0;
+    margin: 30px 0;
     background-color: #808080;
     color: white;
+
+    @include phone {
+      margin: 20px 0;
+    }
+  }
+
+  @include phone {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
   }
 }
