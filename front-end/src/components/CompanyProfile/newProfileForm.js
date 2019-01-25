@@ -69,42 +69,42 @@ class NewProfileForm extends Component {
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="First Name"
+            placeholder="*First Name"
             value={this.state.firstName}
             name="firstName"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Last Name"
+            placeholder="*Last Name"
             value={this.state.lastName}
             name="lastName"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Email"
+            placeholder="*Email"
             value={this.state.email}
             name="email"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Company Name"
+            placeholder="*Company Name"
             value={this.state.companyName}
             name="companyName"
           />
           <textarea
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Company Summary"
+            placeholder="*Company Summary"
             value={this.state.companySummary}
             name="companySummary"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Application Inbox"
+            placeholder="*Application Inbox"
             value={this.state.applicationInbox}
             name="applicationInbox"
           />
