@@ -101,7 +101,9 @@ class UpdateProfile extends Component {
     }
     return (
       <div className="profile-container">
-        <p onClick={this.openEditor}>Edit Profile</p>
+        <button onClick={this.openEditor} className="editBtn">
+          Edit Profile
+        </button>
         {this.state.companyEditor ? (
           <ProfileForm
             setUrl={this.setUrl}

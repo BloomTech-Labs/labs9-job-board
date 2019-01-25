@@ -2,15 +2,19 @@ import React from "react";
 
 const ProfileInfo = props => {
   return (
-    <div>
-      <p>{props.company.balance}</p>
-      <img src={props.company.avatar_image} />
-      <p>{props.company.first_name}</p>
-      <p>{props.company.last_name}</p>
-      <p>{props.company.email}</p>
-      <h2>{props.company.company_name}</h2>
-      <p>{props.company.summary}</p>
-      <p>{props.company.application_method}</p>
+    <div className="companyinfo">
+      <div className="pic-jobbalance">
+        <p>Job Postings: {props.company.balance}</p>
+        <img src={props.company.avatar_image} className="avatar" />
+      </div>
+      <div className="all-company-info">
+        <p className="company-text">{props.company.first_name}</p>
+        <p className="company-text">{props.company.last_name}</p>
+        <p className="company-text">{props.company.email}</p>
+        <p className="company-text">{props.company.company_name}</p>
+        <p className="company-text">{props.company.summary}</p>
+        <p className="company-text">{props.company.application_method}</p>
+      </div>
     </div>
   );
 };
