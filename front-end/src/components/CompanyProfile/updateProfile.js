@@ -26,7 +26,7 @@ class UpdateProfile extends Component {
     setTimeout(() => {
       const user_uid = this.props.authUser.uid;
       this.fetchCompany(user_uid);
-    }, 1000);
+    }, 700);
   }
 
   fetchCompany = user_uid => {
@@ -58,7 +58,7 @@ class UpdateProfile extends Component {
   };
 
   updateUser = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const id = this.props.match.params.id;
 
     const updatedUser = {
@@ -68,7 +68,8 @@ class UpdateProfile extends Component {
       last_name: this.state.lastName,
       company_name: this.state.companyName,
       summary: this.state.companySummary,
-      application_method: this.state.applicationInbox
+      application_method: this.state.applicationInbox,
+      avatar_image: this.state.image
     };
 
     axios
@@ -89,8 +90,9 @@ class UpdateProfile extends Component {
     this.setState({ companyEditor: !this.state.companyEditor });
   };
 
-  setUrl = event => {
-    this.setState({ image: event.target.value });
+  setUrl = num => {
+    this.setState({ image: num[0].url });
+    this.updateUser();
   };
 
   render() {
@@ -103,7 +105,7 @@ class UpdateProfile extends Component {
         <p onClick={this.openEditor}>Edit Profile</p>
         {this.state.companyEditor ? (
           <ProfileForm
-            setUrl={this.state.setUrl}
+            setUrl={this.setUrl}
             updateUser={this.updateUser}
             changeHandler={this.changeHandler}
             company={this.state.company}
@@ -130,7 +132,7 @@ class UpdateProfile extends Component {
           <p>{this.state.company.application_method}</p>
         )}
         {this.state.companyEditor ? null : (
-          <p>{this.state.company.avatar_image}</p>
+          <img src={this.state.company.avatar_image} />
         )}
       </div>
     );
