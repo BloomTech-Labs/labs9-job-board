@@ -1,4 +1,4 @@
-$break-small: 600px;
+$break-small: 645px;
 
 .billing-container{
     width:100%;
@@ -13,6 +13,7 @@ $break-small: 600px;
 
         @media screen and (max-width: $break-small) {
             flex-direction: column;
+            align-items: center;
         }
 
 
@@ -62,9 +63,9 @@ $break-small: 600px;
             margin-top: 80px;
             padding: 10px;
             @media screen and (max-width: $break-small) {
-                width: 100%;
                 margin-top: 0px;
-                align-items: center;
+                width: 50%;
+
             }
 
             .card-info-labels {
