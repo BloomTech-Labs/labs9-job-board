@@ -66,7 +66,7 @@ class SingleJob extends Component {
             <h4>Title:</h4>
             <h3>{this.state.job.title}</h3>
             <h4>Salary:</h4>
-            <h3>${this.state.job.salary}</h3>
+            <h3>{this.state.job.salary}</h3>
           </div>
           <div className="job-skills-desc-req">
             <h4>Skills:</h4>
@@ -84,8 +84,8 @@ class SingleJob extends Component {
             <h3>{this.state.job.requirements}</h3>
           </div>
           <div className="job-skills-desc-req college">
-            {this.state.job.collegeDegree === 0 ? (
-              <h4>No College required</h4>
+            {this.state.job.college_degree === false ? (
+              <h4>No degree required</h4>
             ) : (
               <h4>College degree required</h4>
             )}
