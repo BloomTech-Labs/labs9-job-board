@@ -25,7 +25,7 @@
       width: 90%;
       height: 35px;
       font-size: 1.9rem;
-      background-color: #e82f3a;
+      background-color: #{$color-theme};
 
       @include phone {
         width: 74%;
