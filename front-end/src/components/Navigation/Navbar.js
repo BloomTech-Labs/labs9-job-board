@@ -13,6 +13,7 @@ const Navbar = props => {
         </div>
         <div className="navbar-logo">
           <Link to="/">
+            <p>Knowledge Without College</p>
             <img src={logo} alt="knowledge without college" />
           </Link>
         </div>
