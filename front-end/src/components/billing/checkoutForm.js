@@ -8,31 +8,40 @@ import {
 import "./checkoutForm.scss";
 import axios from "axios";
 
+import PaymentModal from "./PaymentModal.js";
+
 import StripeLogo from "../../images/powered_by_stripe.png";
 import LoadingCircle from "../../images/loading-circle.svg";
 
 const URL = process.env.REACT_APP_DB_URL_TEST;
 
+const DEFAULT_STATE = {
+  selectedOption: "",
+  selectionMessage: "",
+  paymentMessage: "",
+  processing: false,
+  successVisible: false,
+  purchase: "",
+  failureVisible: false
+};
+
+const AMOUNT_TO_PURCHASE = {
+  999: "Job (1) - $9.99",
+  9999: "Jobs (12) - $99.99",
+  29999: "Unlimited Jobs, 1 Month - $299.99"
+};
+
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    //render a message only if purchase is complete
-    this.state = {
-      selectedOption: "",
-      selectionMessage: "",
-      paymentMessage: "",
-      processing: false,
-      successVisible: false,
-      failureVisible: false
-    };
+    this.state = { ...DEFAULT_STATE };
     this.submit = this.submit.bind(this);
   }
-  //initiating the radio button
-  getInitialState = () => {
-    return {
-      selectedOption: ""
-    };
+
+  setDefaultState = () => {
+    this.setState({ ...DEFAULT_STATE });
   };
+
   //handle radio button
   handleOptionChange = event => {
     this.setState({ selectedOption: event.target.value });
@@ -43,13 +52,51 @@ class CheckoutForm extends Component {
     if (this.state.selectedOption) {
       await this.setState({ processing: true });
       let createResponse = await this.props.stripe.createToken();
+      console.log(createResponse);
 
       if (!createResponse.error && createResponse.token.id) {
         const stripeResponse = await axios.post(`${URL}/api/stripe/charge`, {
           source: createResponse.token.id,
           option: this.state.selectedOption
         });
-        await this.setState({ processing: false });
+
+        if (stripeResponse.data.status && stripeResponse.data.amount) {
+          if (stripeResponse.data.status === "succeeded") {
+            this.setState(
+              {
+                processing: false,
+                successVisible: true,
+                purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
+              },
+              () => {
+                setTimeout(() => {
+                  this.setState({ ...DEFAULT_STATE });
+                  this.cardElement.clear();
+                  this.expiryElement.clear();
+                  this.cvcElement.clear();
+                }, 3000);
+              }
+            );
+          } else {
+            await this.setState(
+              {
+                processing: false,
+                failureVisible: true,
+                purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
+              },
+              () => {
+                setTimeout(() => {
+                  this.setState({ ...DEFAULT_STATE });
+                  this.cardElement.clear();
+                  this.expiryElement.clear();
+                  this.cvcElement.clear();
+                }, 3000);
+              }
+            );
+          }
+        } else {
+          await this.setState({ processing: false });
+        }
       } else {
         if (createResponse.error) {
           if (createResponse.error.code === "incomplete_number") {
@@ -120,11 +167,16 @@ class CheckoutForm extends Component {
         </div>
         <div className="card-info">
           <p className="card-info-labels"> Card Number</p>
-          <CardNumberElement className="card-info-placeholder" />
+          <CardNumberElement
+            className="card-info-placeholder"
+            onReady={element => (this.cardElement = element)}
+          />
           <p className="card-info-labels"> Expiration Date</p>
-          <CardExpiryElement />
+          <CardExpiryElement
+            onReady={element => (this.expiryElement = element)}
+          />
           <p className="card-info-labels"> CVC </p>
-          <CardCVCElement />
+          <CardCVCElement onReady={element => (this.cvcElement = element)} />
           <button
             className="buy-now-button"
             id="buttonCheckout"
@@ -145,6 +197,11 @@ class CheckoutForm extends Component {
             />
           </a>
         </div>
+        <PaymentModal
+          successVisible={this.state.successVisible}
+          failureVisible={this.state.failureVisible}
+          successPurchase={this.state.successPurchase}
+        />
       </div>
     );
   }

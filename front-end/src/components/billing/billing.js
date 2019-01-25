@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./checkoutForm";
 import UserJobs from "./UserJobs.js";
-import './checkoutForm.scss'
+import "./checkoutForm.scss";
 
 // const stripeurl = process.env.REACT_APP_STRIPE_TEST_KEY;
 

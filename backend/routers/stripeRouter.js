@@ -27,11 +27,13 @@ const billingOptions = {
 
 router.post("/charge", async (req, res) => {
   const { option, source } = req.body;
+  console.log(req.body);
 
   try {
     const chargeObject = Object.assign(billingOptions[option], { source });
 
     let status = await stripe.charges.create(chargeObject);
+    console.log(chargeObject);
 
     if (status.amount && status.status) {
       res.status(200).json({ amount: status.amount, status: status.status });
