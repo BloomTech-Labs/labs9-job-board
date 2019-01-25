@@ -15,7 +15,8 @@ class CheckoutForm extends Component {
     //render a message only if purchase is complete
     this.state = {
       complete: false,
-      selectedOption: ""
+      selectedOption: "",
+      message: ""
     };
     this.submit = this.submit.bind(this);
   }
@@ -31,16 +32,21 @@ class CheckoutForm extends Component {
   };
 
   async submit(ev) {
-    let { token } = await this.props.stripe.createToken({ name: "Name" });
-    let response = await fetch("http://localhost:9000/charge", {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: token.id
-    });
-    console.log(response);
-    // if checkout is complete then message will be displayed
-    if (response.ok) this.setState({ complete: true });
-    console.log("Purchase Complete");
+    if (this.state.selectedOption) {
+      let { token } = await this.props.stripe.createToken({ name: "Name" });
+      console.log(token);
+      let response = await fetch("http://localhost:9000/charge", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: token.id
+      });
+      console.log(response);
+      // if checkout is complete then message will be displayed
+      if (response.ok) this.setState({ complete: true });
+      console.log("Purchase Complete");
+    } else {
+      this.setState({ message: "Please choose an option." });
+    }
   }
 
   render() {
@@ -86,6 +92,7 @@ class CheckoutForm extends Component {
               1 Job - $9.99
             </label>
           </form>
+          <span>{this.state.message || null}</span>
         </div>
         <div className="card-info">
           <p className="card-info-labels"> Card Number</p>

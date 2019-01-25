@@ -57,8 +57,8 @@ class UserJobs extends React.Component {
         ) : this.state.jobs.length ? (
           this.state.jobs.map(job => {
             return (
-              <div className="job-links">
-                <Link to={`/jobs/${job.id}`} key={job.id}>
+              <div className="job-row" key={job.id}>
+                <Link to={`/jobs/${job.id}`}>
                   <div className="billing-job">{job.title}</div>
                 </Link>
                 <Link to={`/edit-job/${job.id}`}>Edit</Link>
