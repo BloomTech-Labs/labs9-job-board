@@ -66,45 +66,46 @@ class NewProfileForm extends Component {
         <form className="new-user-form" onSubmit={this.addNew}>
           <h2> Tell us about you! </h2>
           <ProfilePic />
+          <p className = 'required-field'>* indicates required fields</p>
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="First Name"
+            placeholder="*First Name"
             value={this.state.firstName}
             name="firstName"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Last Name"
+            placeholder="*Last Name"
             value={this.state.lastName}
             name="lastName"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Email"
+            placeholder="*Email"
             value={this.state.email}
             name="email"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Company Name"
+            placeholder="*Company Name"
             value={this.state.companyName}
             name="companyName"
           />
           <textarea
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Company Summary"
+            placeholder="*Company Summary"
             value={this.state.companySummary}
             name="companySummary"
           />
           <input
             type="text"
             onChange={this.handleInputChange}
-            placeholder="Application Inbox"
+            placeholder="*Application Inbox"
             value={this.state.applicationInbox}
             name="applicationInbox"
           />

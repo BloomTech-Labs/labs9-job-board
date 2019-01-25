@@ -145,6 +145,7 @@
       display: flex;
       justify-content: center;
       border: 2px solid #ccc;
+      border-radius: 25px;
       background-color: white;
       /* width: 49%; */
       height: 50px;
@@ -169,16 +170,20 @@
         padding: 0 10px;
 
         &:hover {
-          background: lightblue;
+          background: (rgba(85, 115, 179, 0.863));
+          color: white;
+          border-radius: 5px;
           cursor: pointer;
         }
       }
 
       .selected {
-        background: yellow;
+        background: (rgba(76, 103, 161, 0.966));
+        color: white;
+        border-radius: 5px;
 
         &:hover {
-          background: yellow;
+          background: (rgba(85, 115, 179, 0.863));
         }
       }
     }
