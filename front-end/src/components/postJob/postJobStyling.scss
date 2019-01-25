@@ -31,10 +31,10 @@
         text-align: left;
         width: 20%;
 
-        @media (max-width: 1000px) {
+        @include tablet {
           width: 25%;
         }
-        @media (max-width: 780px) {
+        @include phone {
           width: 30%;
         }
 
@@ -43,11 +43,11 @@
           font-size: 2.5rem;
           margin-top: 70px;
 
-          @media (max-width: 1000px) {
+          @include tablet {
             font-size: 2rem;
             margin-top: 73px;
           }
-          @media (max-width: 780px) {
+          @include phone {
             font-size: 1.95rem;
             margin-top: 73.5px;
           }
@@ -67,10 +67,10 @@
         flex-direction: column;
         width: 80%;
 
-        @media (max-width: 1000px) {
+        @include tablet {
           width: 75%;
         }
-        @media (max-width: 780px) {
+        @include phone {
           width: 70%;
         }
 
@@ -81,10 +81,10 @@
           margin-bottom: 50px;
           padding: 10px 0 10px 10px;
 
-          @media (max-width: 1000px) {
+          @include tablet {
             font-size: 1.6rem;
           }
-          @media (max-width: 780px) {
+          @include phone {
             font-size: 1.5rem;
           }
         }
@@ -101,10 +101,10 @@
           font-family: sans-serif;
           resize: none;
 
-          @media (max-width: 1000px) {
+          @include tablet {
             font-size: 1.6rem;
           }
-          @media (max-width: 780px) {
+          @include phone {
             font-size: 1.5rem;
           }
         }
@@ -118,7 +118,7 @@
       margin-bottom: 30px;
       width: 100%;
 
-      @media (max-width: 780px) {
+      @include phone {
         display: flex;
         flex-wrap: wrap;
       }
@@ -133,7 +133,7 @@
         align-items: center;
         width: 33%;
 
-        @media (max-width: 780px) {
+        @include phone {
           width: 50%;
         }
 
@@ -204,7 +204,7 @@
         align-items: center;
         width: 33%;
 
-        @media (max-width: 780px) {
+        @include phone {
           width: 50%;
         }
 
@@ -212,7 +212,7 @@
           width: 20px;
           height: 20px;
 
-          @media (max-width: 1000px) {
+          @include tablet {
             width: 20px;
             height: 20px;
           }
@@ -224,7 +224,7 @@
         justify-content: center;
         width: 33%;
 
-        @media (max-width: 780px) {
+        @include phone {
           justify-content: space-evenly;
           width: 100%;
         }
@@ -241,10 +241,10 @@
           transition: all 0.3s;
           font-size: 2rem;
 
-          @media (max-width: 1000px) {
+          @include tablet {
             font-size: 1.8rem;
           }
-          @media (max-width: 780px) {
+          @include phone {
             padding: 1rem 2.5rem;
             margin: 5% 0;
             border-radius: 0.12rem;

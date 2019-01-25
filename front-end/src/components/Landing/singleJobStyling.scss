@@ -1,0 +1,121 @@
+.single-job-container {
+  display: flex;
+  flex-direction: row-reverse;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 1%;
+
+  @media (max-width: 780px) {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .apply-share {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    @media (max-width: 780px) {
+      width: 100%;
+      align-items: center;
+    }
+
+    .apply-btn {
+      width: 90%;
+      height: 35px;
+      font-size: 1.9rem;
+      background-color: #e82f3a;
+
+      @media (max-width: 780px) {
+        width: 74%;
+        height: 50px;
+      }
+    }
+
+    a {
+      margin-top: 25px;
+      font-size: 1.8rem;
+    }
+  }
+
+  .job-listing {
+    width: 60%;
+    margin: 0 5% 30px 4%;
+    padding-right: 8%;
+
+    @media (max-width: 780px) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0 0;
+      padding: 20px 13%;
+    }
+
+    h4 {
+      font-weight: bold;
+      font-size: 2.6rem;
+      padding: 10px 0;
+    }
+
+    .job-company-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-bottom: 2px solid #ccc;
+
+      h2 {
+        font-size: 7rem;
+        padding-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 2.6rem;
+        text-align: left;
+        line-height: 1.25;
+        padding-bottom: 30px;
+      }
+    }
+
+    .job-title-salary {
+      display: flex;
+      flex-direction: column;
+      font-size: 3rem;
+      padding: 20px 0;
+      line-height: 1.5;
+      align-items: flex-start;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .job-skills-desc-req {
+      font-size: 2rem;
+      text-align: left;
+      line-height: 1.25;
+      padding: 20px 0;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .college {
+      border-bottom: none;
+    }
+  }
+
+  .company-logo {
+    width: 20%;
+    margin-left: 8%;
+
+    @media (max-width: 780px) {
+      width: 100%;
+      margin: 0 0 20px 0;
+    }
+
+    img {
+      height: 100px;
+      margin: 0 1%;
+
+      @media (max-width: 780px) {
+        height: 200px;
+      }
+    }
+  }
+}

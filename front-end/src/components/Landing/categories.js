@@ -1,5 +1,4 @@
 import React from "react";
-import "./landingStyling.css";
 
 const RESET_STATE = {
   all: false,
