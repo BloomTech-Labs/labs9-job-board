@@ -37,6 +37,7 @@ class Categories extends React.Component {
   render() {
     return (
       <div className="categories">
+      
         <div
           className={
             this.state.all ? "categories-tab selected" : "categories-tab"

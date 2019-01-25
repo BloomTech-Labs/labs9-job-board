@@ -141,6 +141,7 @@
     //   align-items: center;
     // }
 
+
     .categories {
       display: flex;
       justify-content: center;
@@ -159,7 +160,11 @@
         margin-bottom: 20px;
       }
       @include phone {
-        display: none;
+        // display: none;
+        height: 170px;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
       }
 
       .categories-tab {
@@ -174,6 +179,10 @@
           color: white;
           border-radius: 5px;
           cursor: pointer;
+        }
+
+        @include phone {
+          padding: 20px;
         }
       }
 
@@ -194,7 +203,7 @@
       justify-content: center;
 
       @include phone {
-        width: 60%;
+        width: 70%;
       }
 
       .search-input {
@@ -224,7 +233,9 @@
         // transition: all 0.2s;
         // width: 200px;
         // ==========^^^ SEARCH BAR ICON ^^^==========
-
+        @include phone {
+          width: 90%;
+        }
         &:hover {
           border: 2px solid rgb(124, 124, 124);
         }
