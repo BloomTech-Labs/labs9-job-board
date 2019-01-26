@@ -92,4 +92,29 @@ $break-small: 645px;
       }
     }
   }
+  .billing-jobs {
+    width: 100%;
+
+    .job-links {
+      display: flex;
+      margin: 0 10%;
+      font-size: 2rem;
+
+      .billing-job {
+        font-size: 2rem;
+        padding-right: 3%;
+        width: 80%;
+      }
+
+      @media screen and (max-width: $break-small) {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+    .job-links a {
+      width: 30%;
+      display: flex;
+      justify-content: start;
+    }
+  }
 }
