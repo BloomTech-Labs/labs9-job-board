@@ -120,4 +120,57 @@ router.get("/company/:user_uid", (req, res) => {
     });
 });
 
+// [GET] /api/users/:id/balance
+// returns either expiration date of unlimited job posting or balance
+router.get("/users/:id/balance", (req, res) => {
+  const user_uid = req.params.id;
+
+  if (user_uid) {
+    db("users")
+      .select("balance", "unlimited", "expiration")
+      .where({ user_uid })
+      .then(response => {
+        if (response.length) {
+          const user = response[0];
+          if (user.unlimited && user.expiration) {
+            console.log(user.expiration);
+            console.log(typeof user.expiration);
+            console.log(user.expiration instanceof Date);
+            if (unlimitedExpired(user.expiration)) {
+              // reset unlimited=false and expiration=null
+              res.status(200).json({ balance: user.balance, hello: "hello" });
+            } else {
+              res.status(200).json({ expiration: user.expiration });
+            }
+          } else {
+            res.status(200).json({ balance: user.balance });
+          }
+        } else {
+          res.status(404).json({ message: "User id does not exist" });
+        }
+      })
+      .catch(error => {
+        res.status(500).json({ message: "Failed to retrieve balance" });
+      });
+  } else {
+    res.status(400).json({ message: "Invalid id", user_uid });
+  }
+});
+
+// returns true if expiration date has passed
+function unlimitedExpired(date) {
+  const now = new Date();
+  let expiration = date;
+
+  if (!(date instanceof Date)) {
+    expiration = Date.parse(date);
+
+    if (!expiration) {
+      return "Invalid arguement";
+    }
+  }
+  
+  return expiration - now > 0 ? false : true;
+}
+
 module.exports = router;
