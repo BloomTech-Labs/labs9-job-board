@@ -6,7 +6,7 @@ const testRouter = require("../routers/testRouter.js");
 const router = require("../routers/router.js");
 const authRouter = require("../routers/authRouter.js");
 const jobsRouter = require("../routers/jobsRouter.js");
-const stripeRouter = require("../routers/stripeRouter.js");
+const billingRouter = require("../routers/billingRouter.js");
 
 module.exports = server => {
   // middleware
@@ -19,5 +19,5 @@ module.exports = server => {
   server.use("/api", router);
   server.use("/api/auth", authRouter);
   server.use("/api/jobs", jobsRouter);
-  server.use("/api/stripe", stripeRouter);
+  server.use("/api/billing", billingRouter);
 };

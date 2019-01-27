@@ -13,7 +13,7 @@ import PaymentModal from "./PaymentModal.js";
 import StripeLogo from "../../images/powered_by_stripe.png";
 import LoadingCircle from "../../images/loading-circle.svg";
 
-const URL = process.env.REACT_APP_DB_URL;
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 const DEFAULT_STATE = {
   selectedOption: "",
@@ -55,9 +55,10 @@ class CheckoutForm extends Component {
       console.log(createResponse);
 
       if (!createResponse.error && createResponse.token.id) {
-        const stripeResponse = await axios.post(`${URL}/api/stripe/charge`, {
+        const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
           source: createResponse.token.id,
-          option: this.state.selectedOption
+          option: this.state.selectedOption,
+          user_uid: this.props.authUser.uid
         });
 
         if (stripeResponse.data.status && stripeResponse.data.amount) {
@@ -145,9 +146,9 @@ class CheckoutForm extends Component {
             <label>
               <input
                 type="radio"
-                name="jobs12"
-                value="jobs12"
-                checked={this.state.selectedOption === "jobs12"}
+                name="job12"
+                value="job12"
+                checked={this.state.selectedOption === "job12"}
                 onChange={this.handleOptionChange}
               />
               {"Jobs (12) - $99.99"}
@@ -181,6 +182,7 @@ class CheckoutForm extends Component {
             className="buy-now-button"
             id="buttonCheckout"
             onClick={this.submit}
+            disabled={!this.props.authUser}
           >
             {this.state.processing ? (
               <img src={LoadingCircle} alt="loading" />

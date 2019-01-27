@@ -3,6 +3,10 @@ $break-small: 645px;
 .billing-container {
   width: 100%;
 
+  .strikethrough {
+    text-decoration: line-through;
+  }
+
   .checkout {
     display: flex;
     flex-direction: row;

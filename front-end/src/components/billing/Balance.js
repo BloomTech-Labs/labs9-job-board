@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const URL = process.env.REACT_APP_DB_URL;
+const URL = process.env.REACT_APP_DB_URL_TEST;
 
 class Balance extends React.Component {
   constructor(props) {
@@ -16,15 +16,13 @@ class Balance extends React.Component {
   fetchBalance() {
     this.setState({ fetching: true, attempted: true }, () => {
       axios
-        .get(`${URL}/api/users/${this.props.authUser.uid}/balance`)
+        .get(`${URL}/api/billing/balance/${this.props.authUser.uid}`)
         .then(response => {
           if (response.data.balance) {
-            this.setState({ balance: response.data.balance, fetching: false });
+            this.setState({ balance: response.data, fetching: false });
           } else {
             this.setState({
-              balance: `Unlimited until ${this.formatDate(
-                response.data.expiration
-              )}`,
+              balance: response.data,
               fetching: false
             });
           }
@@ -60,11 +58,18 @@ class Balance extends React.Component {
   }
 
   render() {
-    return (
+    return this.state.balance ? (
       <div className="balance-container">
         <span>Balance:</span>
-        <span>{this.state.balance}</span>
+        {this.state.balance.expiration
+          ? `Unlimited until ${this.formatDate(this.state.balance.expiration)}`
+          : ""}
+        <span className={this.state.balance.expiration ? "strikethrough" : ""}>
+          {`${this.state.balance.balance} postings`}
+        </span>
       </div>
+    ) : (
+      <div>Loading...</div>
     );
   }
 }
