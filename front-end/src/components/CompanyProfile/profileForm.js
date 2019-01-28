@@ -68,6 +68,9 @@ const ProfileForm = props => {
       </form>
       <div className="right-sidebar">
         <ProfilePic setUrl={props.setUrl} />
+        <button onClick={props.openEditor} className="right-button">
+          Close Edit
+        </button>
         <button className="update-password right-button">
           Change Password{" "}
         </button>

@@ -17,57 +17,35 @@ class UserJobs extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log("cdm props", this.props);
-    if (this.props.authUser) {
-      this.setState({ fetching: true, attempted: true }, () => {
-        axios
-          .get(`${URL}/api/jobs/user/${this.props.authUser.uid}`)
-          .then(response => {
-            console.log("component did mount", response);
-            if (response.data.length) {
-              this.setState({ jobs: response.data, fetching: false });
-            } else {
-              this.setState({ message: "No jobs posted", fetching: false });
-            }
-          })
-          .catch(error => {
-            this.setState({
-              message: "Error retrieving jobs",
-              fetching: false
-            });
-          });
-      });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.authUser && !this.state.attempted) {
+  fetchJobs() {
+    this.setState({ fetching: true, attempted: true }, () => {
       axios
         .get(`${URL}/api/jobs/user/${this.props.authUser.uid}`)
         .then(response => {
-          console.log(response);
           if (response.data.length) {
-            this.setState({
-              jobs: response.data,
-              fetching: false,
-              attempted: true
-            });
+            this.setState({ jobs: response.data, fetching: false });
           } else {
-            this.setState({
-              message: "No jobs posted",
-              fetching: false,
-              attempted: true
-            });
+            this.setState({ message: "No jobs posted", fetching: false });
           }
         })
         .catch(error => {
           this.setState({
             message: "Error retrieving jobs",
-            fetching: false,
-            attempted: true
+            fetching: false
           });
         });
+    });
+  }
+
+  componentDidMount() {
+    if (this.props.authUser) {
+      this.fetchJobs();
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.authUser && !this.state.attempted) {
+      this.fetchJobs();
     }
   }
 
@@ -79,8 +57,9 @@ class UserJobs extends React.Component {
         ) : this.state.jobs.length ? (
           this.state.jobs.map(job => {
             return (
-              <div className="job-links">
-                <Link to={`/jobs/${job.id}`} key={job.id}>
+              <div className="job-links" key={job.id}>
+                <h3>Job Listings:</h3>
+                <Link to={`/jobs/${job.id}`}>
                   <div className="billing-job">{job.title}</div>
                 </Link>
                 <Link to={`/edit-job/${job.id}`}>Edit</Link>

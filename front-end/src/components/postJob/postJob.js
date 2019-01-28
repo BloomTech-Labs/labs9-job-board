@@ -25,8 +25,6 @@ class PostJob extends Component {
   addJob = event => {
     event.preventDefault();
 
-    console.log(this.props.authUser);
-
     const postObject = {};
 
     Object.keys(this.state).forEach(key => {
@@ -36,7 +34,7 @@ class PostJob extends Component {
     });
 
     if (
-      postObject.title &&
+      // postObject.title &&
       postObject.salary &&
       postObject.description &&
       this.props.authUser
@@ -45,16 +43,17 @@ class PostJob extends Component {
       axios
         .post(`${URL}/api/jobs`, postObject)
         .then(response => {
+          console.log("response", response);
           if (response.status === 201) {
-            this.props.history.push("");
+            this.props.history.push(`/jobs/${response.data.id}`);
           }
         })
         .catch(error => {
-          console.log(error);
+          if (error.response.status === 400) {
+            alert(error.response.data.message);
+          }
         });
     }
-
-    console.log(postObject);
   };
 
   jobActiveToggle = () => {

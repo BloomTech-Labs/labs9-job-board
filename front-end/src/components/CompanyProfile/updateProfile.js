@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
+import LoadingBar from "../../images/loading-bars.svg";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -24,13 +25,27 @@ class UpdateProfile extends Component {
 
   componentDidMount() {
     if (this.props.authUser) {
+      const user_uid = this.props.authUser.uid;
+      this.fetchCompany(user_uid);
+    } else {
+      setTimeout(() => {
+        const user_uid = this.props.authUser.uid;
+        this.fetchCompany(user_uid);
+      }, 553);
+    }
+  }
+
+  fetchCompany = user_uid => {
+    if (user_uid) {
       axios
-        .get(`${url}/api/company/${this.props.authUser.uid}`)
+        .get(`${url}/api/company/${user_uid}`)
         .then(res => {
+          console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
         })
+
         .then(() => {
           this.setState({
             email: this.state.company.email,
@@ -47,10 +62,10 @@ class UpdateProfile extends Component {
           console.log(err);
         });
     }
-  }
+  };
 
   updateUser = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const id = this.props.match.params.id;
 
     const updatedUser = {
@@ -84,21 +99,19 @@ class UpdateProfile extends Component {
 
   setUrl = num => {
     this.setState({ image: num[0].url });
-    this.updateUser();
   };
 
   render() {
     console.log(this.state);
     if (!this.state.company) {
-      return <div>Loading.....</div>;
+      return <img src={LoadingBar} alt="loading bar" className="loading" />;
     }
     return (
       <div className="profile-container">
-        <button onClick={this.openEditor} className="editBtn">
-          Edit Profile
-        </button>
         {this.state.companyEditor ? (
           <ProfileForm
+            openEditor={this.openEditor}
+            updateUser={this.updateUser}
             setUrl={this.setUrl}
             changeHandler={this.changeHandler}
             company={this.state.company}
@@ -110,7 +123,10 @@ class UpdateProfile extends Component {
             editApplicationInbox={this.state.applicationInbox}
           />
         ) : (
-          <ProfileInfo company={this.state.company} />
+          <ProfileInfo
+            company={this.state.company}
+            openEditor={this.openEditor}
+          />
         )}
       </div>
     );

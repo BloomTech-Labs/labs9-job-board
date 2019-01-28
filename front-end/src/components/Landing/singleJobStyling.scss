@@ -5,7 +5,7 @@
   padding: 50px 1%;
   margin: 0 10%;
 
-  @media (max-width: 780px) {
+  @include phone {
     flex-direction: column-reverse;
     width: 100%;
   }
@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: end;
 
-    @media (max-width: 780px) {
+    @include phone {
       width: 100%;
       align-items: center;
     }
@@ -25,9 +25,9 @@
       width: 90%;
       height: 35px;
       font-size: 1.9rem;
-      background-color: #e82f3a;
+      background-color: #{$color-theme};
 
-      @media (max-width: 780px) {
+      @include phone {
         width: 74%;
         height: 50px;
       }
@@ -47,7 +47,7 @@
     margin: 0 5% 30px 4%;
     padding-right: 8%;
 
-    @media (max-width: 780px) {
+    @include phone {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -107,7 +107,7 @@
     width: 20%;
     margin: 0 8% 0 3%;
 
-    @media (max-width: 780px) {
+    @include phone {
       width: 100%;
       margin: 0 0 20px 0;
     }
@@ -115,9 +115,8 @@
     img {
       height: 125px;
       margin: 0 1%;
-      border-radius: 25%;
 
-      @media (max-width: 780px) {
+      @include phone {
         height: 200px;
       }
     }
