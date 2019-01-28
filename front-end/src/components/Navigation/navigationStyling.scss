@@ -67,6 +67,18 @@
   z-index: 200;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
+
+  @include laptop {
+    width: 30%;
+  }
+
+  @include tablet {
+    width: 35%;
+  }
+
+  @include phone {
+    width: 40%;
+  }
 }
 
 .open {
@@ -80,6 +92,18 @@
   z-index: 200;
   transform: translateX(0);
   transition: transform 0.3s ease-out;
+
+  @include laptop {
+    width: 30%;
+  }
+
+  @include tablet {
+    width: 35%;
+  }
+
+  @include phone {
+    width: 40%;
+  }
 }
 
 .side-menu-navigation-items {
