@@ -1,5 +1,22 @@
-$break-small: 645px;
+//Text Color
+$white: white;
+$dark: #646464;
+
+//NavBar Background:
+$Navbar: #444444;
+
+//Background:
+$background: #f5f5f5;
+
+//Accent Colors
+$orange: #e89980;
+$teal: #7fcdb8;
 $blue: #90b0ba;
+$yellow: #e5cb95;
+$light-gray: #cecece;
+
+//This needs to be removed when working on tablet
+$break-small: 645px;
 
 .billing-container {
 	width: 90%;
