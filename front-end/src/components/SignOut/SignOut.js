@@ -4,10 +4,12 @@ import { withFirebase } from "../Firebase";
 
 import * as ROUTES from "../../constants/routes";
 
+import "./SignOut.css";
+
 class SignOut extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   // Backlog: modal for sign out error
   clickHandler = async event => {

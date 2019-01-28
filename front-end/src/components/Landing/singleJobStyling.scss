@@ -1,0 +1,124 @@
+.single-job-container {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding: 50px 1%;
+  margin: 0 10%;
+
+  @include phone {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .apply-share {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    @include phone {
+      width: 100%;
+      align-items: center;
+    }
+
+    .apply-btn {
+      width: 90%;
+      height: 35px;
+      font-size: 1.9rem;
+      background-color: #{$color-theme};
+
+      @include phone {
+        width: 74%;
+        height: 50px;
+      }
+    }
+
+    p {
+      margin-top: 25px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+  }
+
+  .job-listing {
+    width: 60%;
+    margin: 0 5% 30px 4%;
+    padding-right: 8%;
+
+    @include phone {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0 0;
+      padding: 20px 13%;
+    }
+
+    h4 {
+      font-weight: bold;
+      font-size: 2.6rem;
+      padding: 10px 0;
+    }
+
+    .job-company-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-bottom: 2px solid #ccc;
+
+      h2 {
+        font-size: 7rem;
+        padding-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 2.6rem;
+        text-align: left;
+        line-height: 1.25;
+        padding-bottom: 30px;
+      }
+    }
+
+    .job-title-salary {
+      display: flex;
+      flex-direction: column;
+      font-size: 3rem;
+      padding: 20px 0;
+      line-height: 1.5;
+      align-items: flex-start;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .job-skills-desc-req {
+      font-size: 2rem;
+      text-align: left;
+      line-height: 1.25;
+      padding: 20px 0;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .college {
+      border-bottom: none;
+    }
+  }
+
+  .company-logo {
+    width: 20%;
+    margin: 0 8% 0 3%;
+
+    @include phone {
+      width: 100%;
+      margin: 0 0 20px 0;
+    }
+
+    img {
+      height: 125px;
+      margin: 0 1%;
+
+      @include phone {
+        height: 200px;
+      }
+    }
+  }
+}

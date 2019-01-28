@@ -1,43 +1,69 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./NavigationStyles.css";
+import SignOut from "../SignOut/SignOut.js";
 
-const sideMenu = props => {
-  let sideMenuClass = "side-menu";
+import LoadingBar from "../../images/loading-bars.svg";
 
-  if (props.show) {
-    sideMenuClass = "open";
+//import * as ROUTES from "../../constants/routes";
+
+class sideMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.state = { authUser: "" };
   }
-  return (
-    <nav className={sideMenuClass}>
-      <div className="side-menu-navigation-items">
-        <NavLink onClick={props.click} to="/">
-          Home
-        </NavLink>
-        <NavLink onClick={props.click} to="/jobs/:id">
-          Single Job
-        </NavLink>
-        <NavLink onClick={props.click} to="/post-job">
-          Post Job
-        </NavLink>
-        <NavLink onClick={props.click} to="/billing">
-          Billing
-        </NavLink>
-        <NavLink onClick={props.click} to="/account">
-          Account
-        </NavLink>
-        <NavLink onClick={props.click} to="/sign-up">
-          Sign Up
-        </NavLink>
-        <NavLink onClick={props.click} to="/sign-in">
-          Sign In
-        </NavLink>
-        <NavLink onClick={props.click} to="/reset-password">
-          Reset Password
-        </NavLink>
-      </div>
-    </nav>
-  );
-};
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.authUser !== this.props.authUser) {
+  //     this.setState({ authUser: this.props.authUser });
+  //   }
+  // }
+
+  render() {
+    let sideMenuClass = "side-menu";
+
+    if (this.props.show) {
+      sideMenuClass = "open";
+    }
+    return (
+      <nav className={sideMenuClass}>
+        {this.props.authUser ? (
+          <div className="side-menu-navigation-items">
+            <NavLink onClick={this.props.click} to="/">
+              Home
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/post-job">
+              Post Job
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/billing">
+              Billing
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/account">
+              Account
+            </NavLink>
+            <SignOut className="hamburger-button" />
+          </div>
+        ) : (
+          <div className="side-menu-navigation-items">
+            <NavLink onClick={this.props.click} to="/">
+              Home
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/jobs/:id">
+              Single Job
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/sign-up">
+              Sign Up
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/sign-in">
+              Sign In
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/reset-password">
+              Reset Password
+            </NavLink>
+          </div>
+        )}
+      </nav>
+    );
+  }
+}
 
 export default sideMenu;

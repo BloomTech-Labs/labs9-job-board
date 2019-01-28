@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -19,11 +18,10 @@ class SingleJob extends Component {
 
   fetchJob = id => {
     axios
-      .get(`${url}/api/job/${id}`)
-      .then(res => {
-        console.log(res);
-        this.setState(() => ({
-          job: res.data
+      .get(`${url}/api/jobs/${id}`)
+      .then(async res => {
+        await this.setState(() => ({
+          job: res.data[0]
         }));
       })
       .catch(err => {
@@ -31,34 +29,71 @@ class SingleJob extends Component {
       });
   };
 
+  clickHandler() {
+    window.location = `mailto:${this.state.job.application_method}`;
+  }
+
+  shareHandler() {
+    window.location = "mailto:?subject=Check this Job!&body=" + window.location;
+  }
+
+  reportHandler() {
+    window.location =
+      "mailto:mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body=" +
+      window.location;
+  }
   render() {
-    console.log("this.props", this.props);
+    console.log("this.props", this.state.job);
     if (!this.state.job) {
       return <div>Loading Job...</div>;
     }
     return (
-      <div>
-        <Link to="/">Back to Jobs</Link>
-        <div>
-          <button>apply</button>
-          <p>tell a friend</p>
-          <p>Report</p>
+      <div className="single-job-container">
+        <div className="apply-share">
+          <button className="apply-btn" onClick={() => this.clickHandler()}>
+            Apply
+          </button>
+          <p onClick={this.shareHandler}>Tell a Friend</p>
+          <p onClick={this.reportHandler}>Report</p>
         </div>
-        <img src={this.state.job.user.avatar_image} />
-        <h3>{this.state.job.user.company_name}</h3>
-        <h3>{this.state.job.user.summary}</h3>
-        <h3>{this.state.job.title}</h3>
-        <h3>{this.state.job.salary}</h3>
-        <h3>{this.state.job.addSkills}</h3>
-        <h3>{this.state.job.topSkills}</h3>
-        <h3>{this.state.job.familiar}</h3>
-        <h3>{this.state.job.description}</h3>
-        <h3>{this.state.job.requirements}</h3>
-        {this.state.job.collegeDegree === 0 ? (
-          <h4>No College required</h4>
-        ) : (
-          <h4>College degree required</h4>
-        )}
+        <div className="job-listing">
+          <div className="job-company-summary">
+            <h2>{this.state.job.company_name}</h2>
+            <h3>{this.state.job.summary}</h3>
+          </div>
+
+          <div className="job-title-salary">
+            <h4>Title:</h4>
+            <h3>{this.state.job.title}</h3>
+            <h4>Salary:</h4>
+            <h3>{this.state.job.salary}</h3>
+          </div>
+          <div className="job-skills-desc-req">
+            <h4>Skills:</h4>
+            <h3>
+              {this.state.job.add_skills}, {this.state.job.top_skills},{" "}
+              {this.state.job.familiar}
+            </h3>
+          </div>
+          <div className="job-skills-desc-req">
+            <h4>Job Description:</h4>
+            <h3>{this.state.job.description}</h3>
+          </div>
+          <div className="job-skills-desc-req">
+            <h4>Requirements:</h4>
+            <h3>{this.state.job.requirements}</h3>
+          </div>
+          <div className="job-skills-desc-req college">
+            {this.state.job.college_degree === false ? (
+              <h4>No degree required</h4>
+            ) : (
+              <h4>College degree required</h4>
+            )}
+          </div>
+        </div>
+        <div className="company-logo">
+          <img src={this.state.job.avatar_image} />
+        </div>
       </div>
     );
   }

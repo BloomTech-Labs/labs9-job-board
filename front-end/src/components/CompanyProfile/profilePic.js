@@ -4,13 +4,14 @@ class ProfilePic extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profilePic: []
+      profilePic: [],
+      url: ""
     };
   }
 
-  setUrl() {
-    console.log(this.state.profilePic[0].url);
-  }
+  // setUrl() {
+  //   this.setState({ url: this.state.profilePic[0].url });
+  // }
 
   uploadPhoto() {
     let _this = this;
@@ -20,7 +21,7 @@ class ProfilePic extends Component {
         console.log(result);
         if (result) {
           _this.setState({ profilePic: _this.state.profilePic.concat(result) });
-          _this.setUrl();
+          _this.props.setUrl(_this.state.profilePic);
         } else {
           console.log(error);
         }
@@ -29,12 +30,23 @@ class ProfilePic extends Component {
   }
 
   render() {
+    console.log("pic", this.state);
     return (
       <div>
-        <button onClick={this.uploadPhoto.bind(this)}>Add Image</button>
         {this.state.profilePic.length > 0 ? (
-          <img src={this.state.profilePic[0].url} />
-        ) : null}
+          <img
+            className="profile-pic"
+            src={this.state.profilePic[0].url}
+            alt="profile"
+          />
+        ) : (
+          <button
+            className="profile-pic-button"
+            onClick={this.uploadPhoto.bind(this)}
+          >
+            Add Image +
+          </button>
+        )}
       </div>
     );
   }

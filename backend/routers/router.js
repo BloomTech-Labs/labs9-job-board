@@ -3,167 +3,6 @@ const express = require("express");
 const db = require("../db/config");
 const router = express.Router();
 
-//-------------JOB ENDPOINTS-------------------
-// TODO: Need to display a list of all jobs (Get) and Get only one job -- ONCE COMPLETE DELETE THIS TODO
-
-// TODO: Test routes -- ONCE COMPLETE DELETE THIS TODO
-
-// Display all jobs
-
-router.get("/job", (req, res) => {
-  db("users")
-    .from("jobs")
-    .join("users", "jobs.users_id", "users.id")
-    .then(allJobs => {
-      res.status(200).json(allJobs);
-    })
-    .catch(error => {
-      res.status(501).json({
-        errorMessage: "The jobs information could not be retrieved.",
-        error: error
-      });
-    });
-});
-
-// Display one job
-router.get("/job/:id", (req, res) => {
-  const { id } = req.params;
-  db("jobs")
-    .where({ id })
-    .first()
-    .then(job => {
-      if (job) {
-        console.log(job);
-        db("users")
-          .where({ id })
-          .first()
-          .select(
-            "first_name",
-            "last_name",
-            "email",
-            "company_name",
-            "summary",
-            "application_method",
-            "avatar_image",
-            "balance",
-            "created_at",
-            "updated_at"
-          )
-          .then(user => {
-            job.user = user;
-            res.status(200).json(job);
-          });
-      } else {
-        res.status(404).json({
-          errorMessage: "The job with the specified ID does not exist.",
-          error: error
-        });
-      }
-    })
-    .catch(error => {
-      res.status(500).json({
-        errorMessage: "The job information could not be retrieved.",
-        error: error
-      });
-    });
-});
-
-router.get("/jobs/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const jobs = await db("jobs")
-      .where({ "jobs.id": id })
-      .join("users", "jobs.users_id", "=", "users.id");
-    // .select("last_name");
-    if (!jobs.length) {
-      return res.status(400).json({
-        errorMessage: "The job with the specified ID does not exis"
-      });
-    }
-    return res.status(200).json(jobs);
-  } catch (err) {
-    return res
-      .status(501)
-      .json({ errorMessage: "The job information could not be retrieved." });
-  }
-});
-
-// Creating a new job
-router.post("/job", (req, res) => {
-  const newJob = { ...req.body };
-
-  if (newJob) {
-    db("jobs");
-    insert(newJob)
-      .then(addJob => {
-        res.status(201).json(addJob[0]);
-      })
-      .catch(error => {
-        res.status(500).json({
-          errorMessage: "There was an error adding your job to the database.",
-          error: error
-        });
-      });
-  } else {
-    res.status(400).json({
-      errorMessage:
-        "Please provide the following: Category_Tag, Title, Salary, Top_Skills, Familiar_With, Description, Requirements, Active, Degree_Required for a job to be added."
-    });
-  }
-});
-
-// Delete a job
-router.delete("/job/:id", (req, res) => {
-  const id = req.params.id;
-  findById(Number(id))
-    .remove(id)
-    .then(jobDeleted => {
-      if (jobDeleted) {
-        res.status(200).json({ message: `Job with ID ${id} deleted.` });
-      } else {
-        res.status(404).json({ message: `Job with ID ${id} does not exist.` });
-      }
-    })
-    .catch(error => {
-      res.status(500).json({
-        errorMessage: "Job could not be deleted.",
-        error: error
-      });
-    });
-});
-
-// Update a job
-router.put("/job/:id", (req, res) => {
-  const updateJob = { ...req.body };
-  const id = req.params.id;
-  if (updateJob) {
-    update(`${id}`, updateJob)
-      .then(jobUpdated => {
-        if (jobUpdated) {
-          return findById(Number(`${id}`)); //change depending on what will be returned by db
-        } else {
-          res.status(404).json({
-            message: `Job with specified ID ${id} is invalid.`
-          });
-        }
-      })
-      .then(updateJob => {
-        res.status(200).json(updateJob[0]);
-      })
-      .catch(error => {
-        res.status(500).json({
-          errorMessage: "Job could not be updated.",
-          error: error
-        });
-      });
-  } else {
-    res.status(400).json({
-      errorMessage:
-        "Please provide the following: Category_Tag, Title, Salary, Top_Skills, Familiar_With, Description, Requirements, Active, Degree_Required for a job to be updated."
-    });
-  }
-});
-
 //-------------USER ENDPOINTS-------------------
 //GET all users
 router.get("/users", (req, res) => {
@@ -178,14 +17,17 @@ router.get("/users", (req, res) => {
 
 //POST new user
 router.post("/users", (req, res) => {
+  console.log("in new user");
   const user = req.body;
 
   db("users")
     .insert(user)
     .then(ids => {
+      console.log("ids", ids);
       res.status(201).json(ids);
     })
     .catch(err => {
+      console.log("err", err);
       res.status(500).json({ message: "Error inserting user", err });
     });
 });
@@ -212,12 +54,11 @@ router.get("/users/:id", (req, res) => {
 });
 
 //UPDATE user
-router.put("/users/:id", (req, res) => {
+router.put("/user", (req, res) => {
   const changes = req.body;
-  const { id } = req.params;
-
+  const user_uid = changes.user_uid;
   db("users")
-    .where({ id: id })
+    .where({ user_uid })
     .update(changes)
     .then(count => {
       if (count === 0) {
@@ -225,9 +66,7 @@ router.put("/users/:id", (req, res) => {
           .status(404)
           .json({ message: "A user with that ID does not exist." });
       } else {
-        res
-          .status(201)
-          .json({ message: "updated the following amount of users:", count });
+        res.status(201).json(changes);
       }
     })
     .catch(err => {
@@ -257,6 +96,27 @@ router.delete("/users/:id", (req, res) => {
       res
         .status(500)
         .json({ error: "There was an error deleting the user.", err });
+    });
+});
+
+router.get("/company/:user_uid", (req, res) => {
+  const post = req.params;
+  const user_uid = post.user_uid;
+  console.log(req.params);
+  db("users")
+    .where({ user_uid })
+    .first()
+    .then(user => {
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({ errorMessage: `nope` });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({
+        errorMessage: `something is wrong`
+      });
     });
 });
 

@@ -1,17 +1,21 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import "./NavigationStyles.css";
+import { Link } from "react-router-dom";
 import SideMenuToggleButton from "./SideMenuToggleButton";
+
+import logo from "../../images/logo.png";
 
 const Navbar = props => {
   return (
-    <header className="navbar">
+    <header className="navbar-container">
       <nav className="navbar-navigation">
         <div>
           <SideMenuToggleButton click={props.sideMenuToggleClickHandler} />
         </div>
         <div className="navbar-logo">
-          <Link to="/">Knowledge Without College!</Link>
+          <Link to="/">
+            <p>Knowledge Without College</p>
+            <img src={logo} alt="knowledge without college" />
+          </Link>
         </div>
         {/* <div className="navbar-navigation-items"> */}
         {/* <NavLink to="/">Home</NavLink>

@@ -1,6 +1,10 @@
 import app from "firebase/app";
 import "firebase/auth";
 
+import axios from "axios";
+
+const URL = process.env.REACT_APP_DB_URL;
+
 // configuration provided with Firebase account
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -19,9 +23,18 @@ class Firebase {
     // this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
+  redirectResult = () => {
+    return this.auth.getRedirectResult();
+  };
+
   // SIGN IN - Google OAuth
   doSignInWithGoogle = () => {
     return this.auth.signInWithRedirect(this.googleProvider);
+  };
+
+  doSignInWithGooglePopUp = () => {
+    console.log("in popup");
+    return this.auth.signInWithPopup(this.googleProvider);
   };
 
   // SIGN IN - Facebook OAuth
@@ -32,7 +45,18 @@ class Firebase {
   // REDIRECT RESULT
   // unsure if this will be needed
   doGetRedirectData = () => {
-    return this.auth.getRedirectResult();
+    this.auth
+      .getRedirectResult()
+      .then(result => {
+        return result;
+      })
+      .then(user => {
+        if (this.authRedirected) return; // Skip
+
+        // Do stuff.
+
+        this.authRedirected = true; // Mark redirected
+      });
   };
 
   // SIGN UP - email and password

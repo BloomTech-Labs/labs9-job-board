@@ -1,108 +1,212 @@
-// import React, { Component } from 'react';
-// import {
-// 	CardNumberElement,
-// 	CardExpiryElement,
-// 	CardCVCElement,
-// 	injectStripe,
-// } from 'react-stripe-elements';
+import React, { Component } from "react";
+import {
+  CardNumberElement,
+  CardExpiryElement,
+  CardCVCElement,
+  injectStripe
+} from "react-stripe-elements";
+import "./checkoutForm.scss";
+import axios from "axios";
 
-// class CheckoutForm extends Component {
-// 	state = {
-// 		errorMessage: '',
-// 	};
-// 	// initiating the radio button
-// 	getInitialState = () => {
-// 		return {
-// 			selectedOption: 'unlimited jobs',
-// 		};
-// 	};
-// 	// if error occurs, list the error that occured
-// 	handleChange = ({ error }) => {
-// 		if (error) {
-// 			this.setState({ errorMessage: error.message });
-// 		}
-// 	};
-// 	// if successfully submitted create a token
-// 	handleSubmit = formSubmitEvent => {
-// 		formSubmitEvent.preventDefault();
-// 		console.log('You have selected:', this.state.selectedOption);
-// 		if (this.props.stripe) {
-// 			this.props.stripe.createToken().then(this.props.handleResult);
-// 			console.log('Token was created');
-// 		} else {
-// 			console.log("Stripe.js hasn't loaded yet.");
-// 		}
-// 	};
-// 	// for handling radio buttons
-// 	handleOptionChange = changeEvent => {
-// 		this.setState({ selectedOption: changeEvent.target.value });
-// 	};
+import PaymentModal from "./PaymentModal.js";
 
-// 	render() {
-// 		return (
-// 			<form onSubmit={this.handleSubmit.bind(this)}>
-// 				<div className="split-form">
-// 					<label>
-// 						Card number
-// 						<CardNumberElement onChange={this.handleChange} />
-// 					</label>
-// 					<label>
-// 						Expiration date
-// 						<CardExpiryElement onChange={this.handleChange} />
-// 					</label>
-// 				</div>
-// 				<div className="split-form">
-// 					<label>
-// 						CVC
-// 						<CardCVCElement onChange={this.handleChange} />
-// 					</label>
-// 				</div>
-// 				<div className="form-check">
-// 					<label>
-// 						<input
-// 							type="radio"
-// 							name="react-tips"
-// 							value="unlimited jobs"
-// 							checked={this.state.selectedOption === 'unlimited jobs'}
-// 							onChange={this.handleOptionChange}
-// 							className="form-check-input"
-// 						/>
-// 						Unlimited Jobs, 1 Month $299.99
-// 					</label>
-// 				</div>
-// 				<div className="form-check">
-// 					<label>
-// 						<input
-// 							type="radio"
-// 							name="react-tips"
-// 							value="post job (12)"
-// 							checked={this.state.selectedOption === 'post job (12)'}
-// 							onChange={this.handleOptionChange}
-// 							className="form-check-input"
-// 						/>
-// 						Post Job (12) - $99.99
-// 					</label>
-// 				</div>
-// 				<div className="form-check">
-// 					<label>
-// 						<input
-// 							type="radio"
-// 							name="react-tips"
-// 							value="post job"
-// 							checked={this.state.selectedOption === 'post job'}
-// 							onChange={this.handleOptionChange}
-// 							className="form-check-input"
-// 						/>
-// 						Post Job - $9.99
-// 					</label>
-// 				</div>
-// 				<div className="error" role="alert">
-// 					{this.state.errorMessage}
-// 				</div>
-// 				<button type="submit">Buy Now</button>
-// 			</form>
-// 		);
-// 	}
-// }
+import StripeLogo from "../../images/powered_by_stripe.png";
+import LoadingCircle from "../../images/loading-circle.svg";
 
-// export default injectStripe(CheckoutForm);
+const URL = process.env.REACT_APP_DB_URL;
+
+const DEFAULT_STATE = {
+  selectedOption: "",
+  selectionMessage: "",
+  paymentMessage: "",
+  processing: false,
+  successVisible: false,
+  purchase: "",
+  failureVisible: false
+};
+
+const AMOUNT_TO_PURCHASE = {
+  999: "Job (1) - $9.99",
+  9999: "Jobs (12) - $99.99",
+  29999: "Unlimited Jobs, 1 Month - $299.99"
+};
+
+class CheckoutForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { ...DEFAULT_STATE };
+    this.submit = this.submit.bind(this);
+  }
+
+  setDefaultState = () => {
+    this.setState({ ...DEFAULT_STATE });
+  };
+
+  //handle radio button
+  handleOptionChange = event => {
+    this.setState({ selectedOption: event.target.value });
+  };
+
+  async submit(ev) {
+    ev.preventDefault();
+    if (this.state.selectedOption) {
+      await this.setState({ processing: true });
+      let createResponse = await this.props.stripe.createToken();
+      console.log(createResponse);
+
+      if (!createResponse.error && createResponse.token.id) {
+        const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
+          source: createResponse.token.id,
+          option: this.state.selectedOption,
+          user_uid: this.props.authUser.uid
+        });
+
+        if (stripeResponse.data.status && stripeResponse.data.amount) {
+          if (stripeResponse.data.status === "succeeded") {
+            this.setState(
+              {
+                processing: false,
+                successVisible: true,
+                purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
+              },
+              () => {
+                setTimeout(() => {
+                  this.setState({ ...DEFAULT_STATE });
+                  this.cardElement.clear();
+                  this.expiryElement.clear();
+                  this.cvcElement.clear();
+                }, 3000);
+              }
+            );
+          } else {
+            await this.setState(
+              {
+                processing: false,
+                failureVisible: true,
+                purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
+              },
+              () => {
+                setTimeout(() => {
+                  this.setState({ ...DEFAULT_STATE });
+                  this.cardElement.clear();
+                  this.expiryElement.clear();
+                  this.cvcElement.clear();
+                }, 3000);
+              }
+            );
+          }
+        } else {
+          await this.setState({ processing: false });
+        }
+      } else {
+        if (createResponse.error) {
+          if (createResponse.error.code === "incomplete_number") {
+            this.setState({
+              paymentMessage: "Form incomplete. Check card number."
+            });
+          } else if (createResponse.error.code === "incomplete_expiry") {
+            this.setState({
+              paymentMessage: "Form incomplete. Check expiration date."
+            });
+          } else if (createResponse.error.code === "incomplete_cvc") {
+            this.setState({
+              paymentMessage: "Form incomplete. Check CVC."
+            });
+          }
+        } else {
+          this.setState({
+            paymentMessage: "Error creating Stripe token."
+          });
+        }
+      }
+    } else {
+      this.setState({ selectionMessage: "Please choose an option." });
+    }
+  }
+
+  render() {
+    return (
+      <div id="shop" className="checkout">
+        <div className="purchase-options">
+          <p className="billing-header">Billing</p>
+          <p className="billing-subheader">
+            Select number of job postings you would like to purchase
+          </p>
+          <form className="options">
+            <label>
+              <input
+                type="radio"
+                name="unlimited"
+                value="unlimited"
+                checked={this.state.selectedOption === "unlimited"}
+                onChange={this.handleOptionChange}
+              />
+              {"Unlimited Jobs, 1 Month - $299.99"}
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="job12"
+                value="job12"
+                checked={this.state.selectedOption === "job12"}
+                onChange={this.handleOptionChange}
+              />
+              {"Jobs (12) - $99.99"}
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="job1"
+                value="job1"
+                checked={this.state.selectedOption === "job1"}
+                onChange={this.handleOptionChange}
+              />
+              {"Job (1) - $9.99"}
+            </label>
+          </form>
+          <span>{this.state.selectionMessage || null}</span>
+        </div>
+        <div className="card-info">
+          <p className="card-info-labels"> Card Number</p>
+          <CardNumberElement
+            className="card-info-placeholder"
+            onReady={element => (this.cardElement = element)}
+          />
+          <p className="card-info-labels"> Expiration Date</p>
+          <CardExpiryElement
+            onReady={element => (this.expiryElement = element)}
+          />
+          <p className="card-info-labels"> CVC </p>
+          <CardCVCElement onReady={element => (this.cvcElement = element)} />
+          <button
+            className="buy-now-button"
+            id="buttonCheckout"
+            onClick={this.submit}
+            disabled={!this.props.authUser}
+          >
+            {this.state.processing ? (
+              <img src={LoadingCircle} alt="loading" />
+            ) : (
+              "Buy Now"
+            )}
+          </button>
+          <span>{this.state.paymentMessage || null}</span>
+          <a href="https://stripe.com/">
+            <img
+              src={StripeLogo}
+              alt="Powered by Stripe"
+              className="powered-by-stripe"
+            />
+          </a>
+        </div>
+        <PaymentModal
+          successVisible={this.state.successVisible}
+          failureVisible={this.state.failureVisible}
+          successPurchase={this.state.successPurchase}
+        />
+      </div>
+    );
+  }
+}
+
+export default injectStripe(CheckoutForm);
