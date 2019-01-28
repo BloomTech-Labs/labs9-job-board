@@ -1,7 +1,7 @@
 $break-small: 645px;
 
 .billing-container {
-	width: 100%;
+	width: 90%;
 
 	.strikethrough {
 		text-decoration: line-through;
@@ -12,7 +12,7 @@ $break-small: 645px;
 		flex-direction: row;
 		padding: 20px;
 		// border: 1px solid green;
-		width: 100%;
+		width: 90%;
 		justify-content: space-around;
 
 		@media screen and (max-width: $break-small) {
