@@ -34,9 +34,16 @@ const AMOUNT_TO_PURCHASE = {
 class CheckoutForm extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { ...DEFAULT_STATE };
+		this.state = {
+			...DEFAULT_STATE,
+			inputValue: props.inputValue,
+		};
 		this.submit = this.submit.bind(this);
 	}
+	// reset the form to the DEFAULT_STATE
+	resetForm = () => {
+		this.setState({ ...DEFAULT_STATE });
+	};
 
 	setDefaultState = () => {
 		this.setState({ ...DEFAULT_STATE });
@@ -123,6 +130,11 @@ class CheckoutForm extends Component {
 			this.setState({ selectionMessage: 'Please choose an option.' });
 		}
 	}
+
+	//update the input value when the cancel button is clicked
+	updateInput = val => {
+		return this.setState({ inputValue: val });
+	};
 
 	render() {
 		return (
