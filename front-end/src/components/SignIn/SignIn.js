@@ -21,7 +21,6 @@ class SignIn extends React.Component {
   }
 
   render() {
-    console.log(this.props.authUser);
     return this.props.authUser ? (
       <Redirect to={ROUTES.LANDING} />
     ) : (
