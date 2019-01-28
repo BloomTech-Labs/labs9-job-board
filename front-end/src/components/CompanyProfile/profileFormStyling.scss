@@ -1,6 +1,5 @@
 .profile-container {
   width: 100%;
-  border: 1px solid blue;
   background-color: #{$background};
 
   .companyInfo {
@@ -20,9 +19,13 @@
       margin: 20px 0;
     }
 
+    .avatar {
+      border-radius: 50%;
+    }
+
     .all-company-info {
       background-color: white;
-      width: 60%;
+      width: 70%;
       border-radius: 30px;
       display: flex;
       flex-direction: row;
@@ -67,36 +70,28 @@
         text-align: start;
         padding: 3px 3%;
         border-radius: 7px;
-        margin-bottom: 20px;
-      }
-
-      .company-btns {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding-left: 3%;
-
-        .edit-btn {
-          margin: 5px 0;
-          padding: 10px 0;
-          border-radius: 10px;
-          border: none;
-          color: white;
-          font-size: 1.6rem;
-          cursor: pointer;
-        }
-        .edit {
-          background-color: #{$blue};
-        }
-
-        .bill {
-          background-color: #{$orange};
-        }
-
-        .pass {
-          background-color: #{$Navbar};
-        }
+        font-size: 2rem;
       }
     }
+
+    .update-profile-form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .edit-btn {
+    margin: 5px 0;
+    padding: 10px 2%;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  .edit {
+    background-color: #{$blue};
+    display: flex;
+    margin-right: 50%;
   }
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProfileForm = props => {
   return (
-    <div className="update-profile-page">
+    <div className="companyInfo">
       <form onSubmit={props.updateUser} className="update-profile-form">
         <label>First Name</label>
         <input
