@@ -17,27 +17,57 @@
 
     .all-company-info {
       background-color: white;
-      width: 80%;
-      border-radius: 4%;
+      width: 60%;
+      border-radius: 5%;
       display: flex;
       flex-direction: row;
+      padding: 16px 2%;
+      margin: 20px 0;
 
       .company-text {
-        border: 1px solid red;
         width: 50%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        border-right: 2px solid #{$background};
       }
 
       .company-text p {
         background-color: #{$background};
         width: 90%;
+        border-radius: 7%;
+        font-size: 2rem;
+        text-align: start;
+        padding: 3px 3%;
+      }
+
+      label {
+        padding: 15px 0 5px 3%;
+        font-weight: bold;
+        font-size: 2rem;
       }
 
       .summary-btns {
-        border: 1px solid blue;
         width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2%;
+      }
+      .summary-btns p {
+        background-color: #{$background};
+        width: 100%;
+        text-align: start;
+        padding: 3px 3%;
+        border-radius: 7%;
+        margin-bottom: 20px;
+      }
+
+      .company-btns {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 3%;
       }
     }
   }
