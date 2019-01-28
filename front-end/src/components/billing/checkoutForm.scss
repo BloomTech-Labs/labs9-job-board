@@ -1,4 +1,5 @@
 $break-small: 645px;
+$blue: #90b0ba;
 
 .billing-container {
 	width: 90%;
@@ -80,9 +81,9 @@ $break-small: 645px;
 				font-size: 1.6rem;
 			}
 
-			.buy-now-button {
+			.purchase {
 				margin: 20px 0px;
-				background: rgba(6, 140, 158, 0.747);
+				background: $blue;
 				padding: 10px 20px;
 				font-size: 1.6rem;
 				color: white;
