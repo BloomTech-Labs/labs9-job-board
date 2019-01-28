@@ -146,11 +146,6 @@ class CheckoutForm extends Component {
 						<span className="gotcha">game changer</span>
 					</p>
 					<form className="options">
-						<input
-							onChange={this.updateInput}
-							type="text"
-							value={this.state.inputValue}
-						/>
 						<label>
 							<input
 								type="radio"
