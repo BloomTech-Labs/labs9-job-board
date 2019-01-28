@@ -208,11 +208,7 @@ class CheckoutForm extends Component {
 							'Purchase'
 						)}
 					</button>
-					<button
-						className="cancel"
-						onClick={this.UNSAFE_componentWillMount.resetForm}
-						type="button"
-					>
+					<button className="cancel" onClick={this.resetForm} type="button">
 						Cancel
 					</button>
 					<span>{this.state.paymentMessage || null}</span>
