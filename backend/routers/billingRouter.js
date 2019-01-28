@@ -7,6 +7,7 @@ const express = require("express");
 const db = require("../db/config");
 const stripe = require("stripe")(stripeSecret);
 const router = express.Router();
+const knex = require("knex");
 
 const billingOptions = {
   job1: {
@@ -53,7 +54,27 @@ router.post("/charge", async (req, res) => {
               .increment("balance", 12);
             break;
           case 29999:
-            console.log("bought unlimited jobs for 1 month");
+            let unlimitedStatus = await db("users")
+              .select("unlimited", "expiration")
+              .where({ user_uid });
+            unlimitedStatus = unlimitedStatus[0];
+            if (
+              unlimitedStatus.unlimited &&
+              !unlimitedExpired(unlimitedStatus.expiration)
+            ) {
+              await db("users")
+                .where({ user_uid })
+                .update({
+                  expiration: addMonthToDate(unlimitedStatus.expiration)
+                });
+            } else {
+              await db("users")
+                .where({ user_uid })
+                .update({
+                  unlimited: true,
+                  expiration: addMonthToDate(new Date())
+                });
+            }
             break;
           default:
         }
@@ -62,6 +83,7 @@ router.post("/charge", async (req, res) => {
         throw new Error();
       }
     } catch (err) {
+      console.log(err);
       res.status(500).json({ message: "Error processing payment" });
     }
   } else {
@@ -82,9 +104,6 @@ router.get("/balance/:id", (req, res) => {
         if (response.length) {
           const user = response[0];
           if (user.unlimited && user.expiration) {
-            console.log(user.expiration);
-            console.log(typeof user.expiration);
-            console.log(user.expiration instanceof Date);
             if (unlimitedExpired(user.expiration)) {
               // reset unlimited=false and expiration=null
               // change if statement once unlimited is reset if expired
@@ -123,6 +142,22 @@ function unlimitedExpired(date) {
   }
 
   return expiration - now > 0 ? false : true;
+}
+
+function addMonthToDate(date) {
+  let expiration;
+
+  if (!(date instanceof Date)) {
+    expiration = Date.parse(date);
+
+    if (!expiration) {
+      return "Invalid arguement";
+    }
+  } else {
+    expiration = date.getTime();
+  }
+
+  return new Date(expiration + 2592000000);
 }
 
 module.exports = router;
