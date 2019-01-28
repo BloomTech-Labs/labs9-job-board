@@ -128,46 +128,84 @@ router.get("/:id", (req, res) => {
 // [POST] /api/jobs
 // Creating a new job
 router.post("", (req, res) => {
+  let id; // user id from 'users' table
   const newJob = { ...req.body };
-  const insertObject = {};
-  console.log("newJob", newJob);
+  const insertObject = {}; // used to build object that will be inserted
 
   if (newJob.title && newJob.salary && newJob.description && newJob.user_uid) {
     db("users")
-      .select("id")
+      .select("id", "balance", "unlimited", "expiration")
       .where({ user_uid: newJob.user_uid })
       .then(response => {
-        // response - [{ id: ## }]
-        if (response.length) {
-          Object.keys(newJob).forEach(key => {
-            if (key !== "created_at") {
-              if (
-                typeof newJob[key] === jobDataTypes[key] &&
-                key !== "user_uid"
-              ) {
-                insertObject[key] = newJob[key];
-              }
+        if (!response.length) {
+          throw "No user found";
+        }
+
+        response = response[0];
+        id = response.id;
+
+        if (response.unlimited && response.expiration) {
+          if (unlimitedExpired(response.expiration)) {
+            if (response.balance) {
+              return db("users")
+                .where({ user_uid: newJob.user_uid })
+                .decrement("balance", 1);
+            } else {
+              throw "Not unlimited, no balance";
             }
-          });
-          insertObject.users_id = response[0].id;
-          console.log("insertObject", insertObject);
-          return db("jobs").insert(insertObject);
+          } else {
+            return true;
+          }
         } else {
-          throw "id not found";
+          if (response.balance) {
+            return db("users")
+              .where({ user_uid: newJob.user_uid })
+              .decrement("balance", 1);
+          } else {
+            throw "Not unlimited, no balance";
+          }
         }
       })
       .then(response => {
-        // response.rowCount
-        console.log("insert response", response);
-        if (response.rowCount) {
-          res.status(201).json({ message: "Successfully created new job" });
+        if (!response) {
+          throw "Error decrementing account balance";
+        }
+
+        Object.keys(newJob).forEach(key => {
+          if (key !== "created_at") {
+            if (
+              typeof newJob[key] === jobDataTypes[key] &&
+              key !== "user_uid"
+            ) {
+              insertObject[key] = newJob[key];
+            }
+          }
+        });
+        insertObject.users_id = id;
+        console.log("insertObject", insertObject);
+        return db("jobs")
+          .insert(insertObject)
+          .returning("id");
+      })
+      .then(response => {
+        if (response[0]) {
+          res
+            .status(201)
+            .json({ message: "Successfully created new job", id: response[0] });
         } else {
           res.status(400).json({ message: "Failed to add job" });
         }
       })
       .catch(error => {
-        console.log(error);
-        res.status(500).json({ error });
+        if (error === "Error decrementing account balance") {
+          res
+            .status(500)
+            .json({ message: "Error decrementing account balance" });
+        } else if (error === "Not unlimited, no balance") {
+          res.status(400).json({ message: "No balance" });
+        } else {
+          res.status(500).json({ error });
+        }
       });
   } else {
     res.status(400).json({ message: "Request not formatted correctly" });
@@ -244,5 +282,23 @@ router.put("/:id", (req, res) => {
     res.status(400).json({ message: "No valid updates" });
   }
 });
+
+// returns true if expiration date has passed
+function unlimitedExpired(date) {
+  const now = new Date();
+  let expiration;
+
+  if (!(date instanceof Date)) {
+    expiration = Date.parse(date);
+
+    if (!expiration) {
+      return "Invalid arguement";
+    }
+  } else {
+    expiration = date.getTime();
+  }
+
+  return expiration - now > 0 ? false : true;
+}
 
 module.exports = router;

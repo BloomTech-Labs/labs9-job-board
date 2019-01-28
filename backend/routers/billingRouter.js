@@ -7,7 +7,6 @@ const express = require("express");
 const db = require("../db/config");
 const stripe = require("stripe")(stripeSecret);
 const router = express.Router();
-const knex = require("knex");
 
 const billingOptions = {
   job1: {
@@ -38,7 +37,6 @@ router.post("/charge", async (req, res) => {
       const chargeObject = Object.assign(billingOptions[option], { source });
 
       let status = await stripe.charges.create(chargeObject);
-      console.log(chargeObject);
 
       if (status.amount && status.status === "succeeded") {
         switch (status.amount) {
@@ -46,7 +44,6 @@ router.post("/charge", async (req, res) => {
             await db("users")
               .where({ user_uid })
               .increment("balance", 1);
-            console.log("in 999");
             break;
           case 9999:
             await db("users")
@@ -76,6 +73,7 @@ router.post("/charge", async (req, res) => {
                 });
             }
             break;
+          // default is if charge other than 999, 9999, 29999
           default:
         }
         res.status(200).json({ amount: status.amount, status: status.status });
@@ -131,7 +129,7 @@ router.get("/balance/:id", (req, res) => {
 // returns true if expiration date has passed
 function unlimitedExpired(date) {
   const now = new Date();
-  let expiration = date;
+  let expiration;
 
   if (!(date instanceof Date)) {
     expiration = Date.parse(date);
@@ -139,6 +137,8 @@ function unlimitedExpired(date) {
     if (!expiration) {
       return "Invalid arguement";
     }
+  } else {
+    expiration = date.getTime();
   }
 
   return expiration - now > 0 ? false : true;

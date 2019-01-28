@@ -13,7 +13,7 @@ import PaymentModal from "./PaymentModal.js";
 import StripeLogo from "../../images/powered_by_stripe.png";
 import LoadingCircle from "../../images/loading-circle.svg";
 
-const URL = process.env.REACT_APP_DB_URL_TEST;
+const URL = process.env.REACT_APP_DB_URL;
 
 const DEFAULT_STATE = {
   selectedOption: "",
