@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProfileInfo = props => {
   return (
@@ -9,6 +10,14 @@ const ProfileInfo = props => {
       <div className="pic-account">
         <img src={props.company.avatar_image} className="avatar" />
         <h2>Your Account</h2>
+      </div>
+      <div class="links-pass-bill">
+        <Link to="/billing" className="link-to-pass-bill">
+          Billing
+        </Link>
+        <Link to="/" className="link-to-pass-bill">
+          Change Password
+        </Link>
       </div>
       <div className="all-company-info">
         <div className="company-text">
