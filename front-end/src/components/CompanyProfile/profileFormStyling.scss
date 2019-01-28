@@ -15,10 +15,15 @@
       width: 30%;
     }
 
+    .pic-account h2 {
+      font-size: 3rem;
+      margin: 20px 0;
+    }
+
     .all-company-info {
       background-color: white;
       width: 60%;
-      border-radius: 5%;
+      border-radius: 30px;
       display: flex;
       flex-direction: row;
       padding: 16px 2%;
@@ -35,7 +40,7 @@
       .company-text p {
         background-color: #{$background};
         width: 90%;
-        border-radius: 7%;
+        border-radius: 7px;
         font-size: 2rem;
         text-align: start;
         padding: 3px 3%;
@@ -45,6 +50,8 @@
         padding: 15px 0 5px 3%;
         font-weight: bold;
         font-size: 2rem;
+        width: 100%;
+        text-align: left;
       }
 
       .summary-btns {
@@ -59,7 +66,7 @@
         width: 100%;
         text-align: start;
         padding: 3px 3%;
-        border-radius: 7%;
+        border-radius: 7px;
         margin-bottom: 20px;
       }
 
@@ -68,135 +75,28 @@
         flex-direction: column;
         width: 100%;
         padding-left: 3%;
+
+        .edit-btn {
+          margin: 5px 0;
+          padding: 10px 0;
+          border-radius: 10px;
+          border: none;
+          color: white;
+          font-size: 1.6rem;
+          cursor: pointer;
+        }
+        .edit {
+          background-color: #{$blue};
+        }
+
+        .bill {
+          background-color: #{$orange};
+        }
+
+        .pass {
+          background-color: #{$Navbar};
+        }
       }
     }
   }
 }
-
-// .profile-container {
-//   width: 100%;
-//   height: 100%;
-
-//   // .editBtn {
-//   //   display: flex;
-//   //   padding: 10px;
-//   //   line-height: 1;
-//   //   align-content: center;
-//   //   align-items: center;
-//   //   justify-content: center;
-//   //   width: 180px;
-//   //   height: 50px;
-//   //   margin: 30px 0px 10px 2.5%;
-//   //   color: whitesmoke;
-//   //   background: rgba(32, 122, 158, 0.788);
-//   //   border-radius: 25px;
-//   //   border: none;
-//   //   font-size: 1.8rem;
-//   //   font-weight: bold;
-//   //   cursor: pointer;
-//   //   text-decoration: none;
-//   // }
-
-//   // .update-profile-page {
-//   //   display: flex;
-//   //   flex-direction: row;
-//   //   width: 100%;
-//   //   height: 100%;
-
-//   //   .update-profile-form {
-//   //     display: flex;
-//   //     flex-direction: column;
-//   //     align-items: left;
-//   //     padding: 20px;
-//   //     width: 100%;
-
-//   //     label {
-//   //       font-size: 1.8rem;
-//   //       padding: 10px 12px;
-//   //       display: flex;
-//   //       width: 60%;
-//   //       margin-top: 10px;
-//   //     }
-
-//   //     input {
-//   //       width: 85%;
-//   //       font-size: 1.8rem;
-//   //       justify-content: center;
-//   //       margin-bottom: 10px;
-//   //       padding: 15px 0 15px 10px;
-//   //       border: 2px solid rgb(82, 82, 82);
-//   //       border-radius: 25px;
-//   //     }
-
-//   //     textarea {
-//   //       width: 85%;
-//   //       min-height: 30px;
-//   //       height: 150px;
-//   //       border-radius: 25px;
-//   //       padding: 15px 5px 15px 10px;
-//   //       text-align: top;
-//   //       line-height: 15px;
-//   //       font-size: 1.8rem;
-//   //       font-family: sans-serif;
-//   //       resize: none;
-//   //       line-height: 1.25;
-//   //       border: 2px solid rgb(82, 82, 82);
-//   //     }
-
-//   //     button {
-//   //       padding: 10px;
-//   //       margin-top: 10px;
-//   //       width: 85%;
-//   //       height: 50px;
-//   //       color: whitesmoke;
-//   //       background: rgba(192, 2, 2, 0.788);
-//   //       border-radius: 25px;
-//   //       border: none;
-//   //       font-size: 1.8rem;
-//   //       font-weight: bold;
-//   //       cursor: pointer;
-//   //     }
-//   //   }
-
-//   //   .right-sidebar {
-//   //     margin: 30px 50px 0px 0px;
-//   //     display: flex;
-//   //     flex-direction: column;
-//   //     align-content: center;
-//   //     align-items: center;
-
-//   //     .profile-pic-button {
-//   //       padding: 30px;
-//   //       margin: 10px;
-//   //       color: rgb(82, 82, 82);
-//   //       background: white;
-//   //       cursor: pointer;
-//   //       font-size: 2.2rem;
-//   //       border-radius: 50%;
-//   //       height: 200px;
-//   //       width: 200px;
-//   //       border: 2px solid rgb(82, 82, 82);
-//   //     }
-
-//   //     .right-button {
-//   //       display: flex;
-//   //       padding: 10px;
-//   //       line-height: 1;
-//   //       align-content: center;
-//   //       align-items: center;
-//   //       justify-content: center;
-//   //       width: 180px;
-//   //       height: 50px;
-//   //       margin: 20px 0px 10px 0px;
-//   //       color: whitesmoke;
-//   //       background: rgba(32, 122, 158, 0.788);
-//   //       border-radius: 25px;
-//   //       border: none;
-//   //       font-size: 1.8rem;
-//   //       font-weight: bold;
-//   //       cursor: pointer;
-//   //       text-decoration: none;
-//   //     }
-//   //   }
-//   // }
-// }
