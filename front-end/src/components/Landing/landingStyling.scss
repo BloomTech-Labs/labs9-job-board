@@ -18,9 +18,8 @@
 
       @include tablet {
         width: 100%;
-        padding-bottom: 30px;
         align-items: center;
-        padding-top: 20px;
+        padding-top: 0px;
       }
 
       h2 {
@@ -34,8 +33,6 @@
 
         @include tablet {
           text-align: center;
-          padding-top: 50px;
-          padding-bottom: 30px;
         }
       }
 
@@ -141,7 +138,6 @@
     //   align-items: center;
     // }
 
-
     .categories {
       display: flex;
       justify-content: center;
@@ -202,8 +198,16 @@
       display: flex;
       justify-content: center;
 
-      @include phone {
+      @include laptop {
         width: 70%;
+      }
+
+      @include tablet {
+        width: 90%;
+      }
+
+      @include phone {
+        width: 90%;
       }
 
       .search-input {
