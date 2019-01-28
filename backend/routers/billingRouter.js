@@ -112,7 +112,7 @@ router.get("/balance/:id", (req, res) => {
                 .json({ balance: user.balance, expiration: user.expiration });
             }
           } else {
-            res.status(200).json({ balance: user.balance });
+            res.status(200).json({ balance: user.balance, expiration: null });
           }
         } else {
           res.status(404).json({ message: "User id does not exist" });
