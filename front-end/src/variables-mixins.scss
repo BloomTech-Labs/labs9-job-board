@@ -1,17 +1,33 @@
+//Text Color
+$white: white;
+$dark: #646464;
+
+//NavBar Background:
+$Navbar: #444444;
+
+//Background:
+$background: #f5f5f5;
+
+//Accent Colors
+$orange: #e89980;
+$teal: #7fcdb8;
+$blue: #90b0ba;
+$yellow: #e5cb95;
+$light-gray: #cecece;
+
+
+
+
+//Old Color Scheme
 $color-theme: #4c67a1;
 $secondary-color: #283e4a;
 
 // lighter blue #0077B5
 
-$laptop: 1200px;
-$tablet: 1000px;
-$phone: 800px;
 
-@mixin laptop {
-  @media (max-width: #{$laptop}) {
-    @content;
-  }
-}
+$tablet: 800px;
+$phone: 500px;
+
 
 @mixin tablet {
   @media (max-width: #{$tablet}) {
