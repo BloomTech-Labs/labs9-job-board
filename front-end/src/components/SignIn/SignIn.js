@@ -7,7 +7,7 @@ import * as ROUTES from "../../constants/routes";
 //import { AuthenticatedUserContext } from "../Session";
 //import RedirectPage from "../RedirectPage/RedirectPage";
 
-import "./SignIn.css";
+import "./SignIn.scss";
 
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";

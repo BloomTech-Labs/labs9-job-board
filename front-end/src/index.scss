@@ -1,4 +1,7 @@
-@import "./variables-mixins.scss";
+@import "./reset.scss";
+@import "./default.scss";
+
+@import "./App.scss";
 @import "./components/postJob/postJobStyling.scss";
 @import "./components/Navigation/navigationStyling.scss";
 @import "./components/CompanyProfile/newProfileFormStyling.scss";
@@ -6,4 +9,3 @@
 @import "./components/CompanyProfile/updateProfileStyling.scss";
 @import "./components/Landing/landingStyling.scss";
 @import "./components/Landing/singleJobStyling.scss";
-

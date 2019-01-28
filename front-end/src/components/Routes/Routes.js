@@ -15,7 +15,7 @@ import Billing from "../billing/billing";
 import NewProfileForm from "../CompanyProfile/newProfileForm";
 
 import * as ROUTES from "../../constants/routes";
-import "./Routes.css";
+import "./Routes.scss";
 
 class Routes extends Component {
   constructor(props) {
