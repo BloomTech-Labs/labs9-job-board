@@ -146,6 +146,11 @@ class CheckoutForm extends Component {
 						<span className="gotcha">game changer</span>
 					</p>
 					<form className="options">
+						<input
+							onChange={this.updateInput}
+							type="text"
+							value={this.state.inputValue}
+						/>
 						<label>
 							<input
 								type="radio"
@@ -192,7 +197,7 @@ class CheckoutForm extends Component {
 					<p className="card-info-labels"> CVC </p>
 					<CardCVCElement onReady={element => (this.cvcElement = element)} />
 					<button
-						className="buy-now-button"
+						className="purchase"
 						id="buttonCheckout"
 						onClick={this.submit}
 						disabled={!this.props.authUser}
@@ -200,8 +205,15 @@ class CheckoutForm extends Component {
 						{this.state.processing ? (
 							<img src={LoadingCircle} alt="loading" />
 						) : (
-							'Buy Now'
+							'Purchase'
 						)}
+					</button>
+					<button
+						className="cancel"
+						onClick={this.UNSAFE_componentWillMount.resetForm}
+						type="button"
+					>
+						Cancel
 					</button>
 					<span>{this.state.paymentMessage || null}</span>
 					<a href="https://stripe.com/">
