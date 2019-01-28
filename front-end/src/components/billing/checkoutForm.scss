@@ -108,6 +108,16 @@ $break-small: 645px;
 				cursor: pointer;
 			}
 
+			.cancel {
+				margin: 20px 0px;
+				background: $orange;
+				padding: 10px 20px;
+				font-size: 1.6rem;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+
 			.powered-by-stripe {
 				align-self: center;
 			}
