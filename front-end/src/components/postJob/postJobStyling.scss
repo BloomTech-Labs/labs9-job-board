@@ -1,15 +1,15 @@
 .post-job-container {
-  .post-job-title {
+  .post-job-header {
     font-size: 5rem;
-    text-align: left;
+    text-align: center;
     margin: 15px 0 0 0;
     padding: 0 5% 0 5%;
+    color: #{$dark};
   }
 
   hr {
     border: 0;
-    margin: 0 0 30px 0;
-    height: 1px;
+    height: 3px;
     background-image: linear-gradient(
       to right,
       rgba(0, 0, 0, 0),
@@ -19,53 +19,18 @@
   }
 
   .job-form {
-    margin-top: 40px;
-    padding: 0 5% 0 5%;
+    margin: 40px 5% 0;
+    padding: 5%;
+    background-color: #{$white};
+    border-radius: 100px;
 
     .post-job-top {
       display: flex;
 
-      .title-container {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        width: 20%;
-
-        @include tablet {
-          width: 25%;
-        }
-        @include phone {
-          width: 30%;
-        }
-
-        .input-titles {
-          color: black;
-          font-size: 2.5rem;
-          margin-top: 70px;
-
-          @include tablet {
-            font-size: 2rem;
-            margin-top: 73px;
-          }
-          @include phone {
-            font-size: 1.95rem;
-            margin-top: 73.5px;
-          }
-        }
-
-        #job-title-input-title {
-          margin-top: 0;
-        }
-
-        #requirements-input-title {
-          margin-top: 303px;
-        }
-      }
-
       .input-container {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 100%;
 
         @include tablet {
           width: 75%;
@@ -75,11 +40,17 @@
         }
 
         input {
-          width: 100%;
+          width: 48%;
+          background-color: #{$background};
           font-size: 1.8rem;
-          justify-content: start;
           margin-bottom: 50px;
           padding: 10px 0 10px 10px;
+          border: none;
+          border-radius: 5px;
+
+          &::placeholder {
+            color: #{$dark};
+          }
 
           @include tablet {
             font-size: 1.6rem;
@@ -89,8 +60,28 @@
           }
         }
 
+        .top {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .middle {
+          display: flex;
+          flex-direction: column;
+
+          input {
+            width: 100%;
+          }
+        }
+
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+        }
+
         textarea {
-          width: 100%;
+          background-color: #{$background};
+          width: 48%;
           height: 280px;
           border-radius: 3px;
           margin-bottom: 50px;
@@ -100,6 +91,11 @@
           font-size: 1.8rem;
           font-family: sans-serif;
           resize: none;
+          border: none;
+
+          &::placeholder {
+            color: #{$dark};
+          }
 
           @include tablet {
             font-size: 1.6rem;
@@ -112,8 +108,6 @@
     }
 
     .post-job-bottom {
-      display: flex;
-      justify-content: space-between;
       font-size: 1.6rem;
       margin-bottom: 30px;
       width: 100%;
@@ -123,18 +117,90 @@
         flex-wrap: wrap;
       }
 
-      h5 {
-        margin-left: 3%;
-      }
-
-      .job-active {
+      .top {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        width: 33%;
 
-        @include phone {
-          width: 50%;
+        h5 {
+          margin-left: 3%;
+        }
+
+        .job-active {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 33%;
+
+          @include phone {
+            width: 50%;
+          }
+        }
+
+        .requires-degree {
+          display: flex;
+          align-items: center;
+          width: 33%;
+
+          @include phone {
+            width: 50%;
+          }
+
+          .degree-checkbox {
+            width: 20px;
+            height: 20px;
+
+            @include tablet {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        .bottom {
+          display: flex;
+          justify-content: space-around;
+
+          .post-job-buttons-container {
+            display: flex;
+            justify-content: center;
+            width: 33%;
+
+            @include phone {
+              justify-content: space-evenly;
+              width: 100%;
+            }
+
+            .post-job-buttons {
+              display: inline-block;
+              padding: 0.35rem 1.2rem;
+              border: 0.1em solid black;
+              margin: 0 10% 0 10%;
+              border-radius: 0.12rem;
+              background-color: rgb(95, 95, 95);
+              color: white;
+              text-align: center;
+              transition: all 0.3s;
+              font-size: 2rem;
+
+              @include tablet {
+                font-size: 1.8rem;
+              }
+              @include phone {
+                padding: 1rem 2.5rem;
+                margin: 5% 0;
+                border-radius: 0.12rem;
+                font-size: 2rem;
+              }
+
+              &:hover {
+                color: white;
+                background-color: black;
+                border: 0.1em solid white;
+                cursor: pointer;
+              }
+            }
+          }
         }
 
         /* ==========VVV ROUNDED SLIDER VVV========== */
@@ -176,11 +242,11 @@
         }
 
         input:checked + .slider {
-          background-color: #2196f3;
+          background-color: #{$orange};
         }
 
         input:focus + .slider {
-          box-shadow: 0 0 1px #2196f3;
+          box-shadow: 0 0 1px #{$orange};
         }
 
         input:checked + .slider:before {
@@ -197,67 +263,6 @@
           border-radius: 50%;
         }
         /* ==========^^^ ROUNDED SLIDER ^^^========== */
-      }
-
-      .requires-degree {
-        display: flex;
-        align-items: center;
-        width: 33%;
-
-        @include phone {
-          width: 50%;
-        }
-
-        .degree-checkbox {
-          width: 20px;
-          height: 20px;
-
-          @include tablet {
-            width: 20px;
-            height: 20px;
-          }
-        }
-      }
-
-      .post-job-buttons-container {
-        display: flex;
-        justify-content: center;
-        width: 33%;
-
-        @include phone {
-          justify-content: space-evenly;
-          width: 100%;
-        }
-
-        .post-job-buttons {
-          display: inline-block;
-          padding: 0.35rem 1.2rem;
-          border: 0.1em solid black;
-          margin: 0 10% 0 10%;
-          border-radius: 0.12rem;
-          background-color: rgb(95, 95, 95);
-          color: white;
-          text-align: center;
-          transition: all 0.3s;
-          font-size: 2rem;
-
-          @include tablet {
-            font-size: 1.8rem;
-          }
-          @include phone {
-            padding: 1rem 2.5rem;
-            margin: 5% 0;
-            border-radius: 0.12rem;
-            font-size: 2rem;
-          }
-
-          &:hover {
-            color: white;
-            background-color: black;
-            border: 0.1em solid white;
-            cursor: pointer;
-          }
-        }
       }
     }
   }
