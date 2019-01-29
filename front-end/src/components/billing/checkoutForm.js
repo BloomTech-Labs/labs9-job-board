@@ -195,25 +195,28 @@ class CheckoutForm extends Component {
 						className="card-info-placeholder"
 						onReady={element => (this.cvcElement = element)}
 					/>
-					<button
-						className="purchase-button"
-						id="buttonCheckout"
-						onClick={this.submit}
-						disabled={!this.props.authUser}
-					>
-						{this.state.processing ? (
-							<img src={LoadingCircle} alt="loading" />
-						) : (
-							'Purchase'
-						)}
-					</button>
-					<button
-						className="cancel-button"
-						onClick={this.resetForm}
-						type="button"
-					>
-						Cancel
-					</button>
+					<div className="button-section">
+						<button
+							className="purchase-button"
+							id="buttonCheckout"
+							onClick={this.submit}
+							disabled={!this.props.authUser}
+						>
+							{this.state.processing ? (
+								<img src={LoadingCircle} alt="loading" />
+							) : (
+								'Purchase'
+							)}
+						</button>
+						<button
+							className="cancel-button"
+							onClick={this.resetForm}
+							type="button"
+						>
+							Cancel
+						</button>
+					</div>
+
 					<span>{this.state.paymentMessage || null}</span>
 					<a href="https://stripe.com/">
 						<img
