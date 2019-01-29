@@ -5,28 +5,30 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	transition: background-color 1s ease 0s;
 	background-color: transparent;
 	height: 90px;
 
+	
 	.navbar-navigation {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		height: 100%;
 		padding: 0 2%;
-
+		
 		.navbar-logo {
 			margin-left: 1%;
 			text-align: left;
-
-				img {
-					width: 250px;
-					margin-left: 10px;
-				}
+			
+			img {
+				width: 250px;
+				margin-left: 10px;
+			}
 			
 		}
 	}
-
+	
 	.toggle-button {
 		display: flex;
 		flex-direction: column;
@@ -37,11 +39,11 @@
 		border: none;
 		cursor: pointer;
 		padding: 0;
-
+		
 		&:focus {
 			outline: none;
 		}
-
+		
 		.toggle-button-line {
 			width: 36px;
 			height: 2px;
@@ -49,6 +51,57 @@
 		}
 	}
 }
+
+.solid {
+	background-color: $Navbar;
+	transition: background-color 1s ease 0s;
+	box-shadow: 0 0 4px grey;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 90px;
+	.navbar-navigation {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 100%;
+		padding: 0 2%;
+		
+		.navbar-logo {
+			margin-left: 1%;
+			text-align: left;
+			
+			img {
+				width: 250px;
+				margin-left: 10px;
+			}
+			
+		}
+				.toggle-button {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					height: 30px;
+					width: 36px;
+					background: transparent;
+					border: none;
+					cursor: pointer;
+					padding: 0;
+					
+					&:focus {
+						outline: none;
+					}
+					
+					.toggle-button-line {
+						width: 36px;
+						height: 2px;
+						background-color: $white;
+					}
+				}
+	}
+}
+	
 
 .side-menu {
 	height: 100%;
