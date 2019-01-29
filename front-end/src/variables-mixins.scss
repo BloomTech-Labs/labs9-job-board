@@ -1,6 +1,8 @@
 //Text Color
 $white: white;
+$white-hover: darken($white, 10%);
 $dark: #646464;
+$black: #000000;
 
 //NavBar Background:
 $Navbar: #444444;
@@ -28,7 +30,7 @@ $phone: 500px;
 
 // App variables
 $app-background: $background;
-$navheight: 70px;
+$navheight: 90px;
 
 // Auth variables
 $auth-divider: $blue;
@@ -36,6 +38,8 @@ $auth-submit-bg: $orange;
 $auth-submit-bg-hover: $dark-orange;
 $auth-submit-text: $white;
 $auth-google-btn-bg: $white;
+$auth-google-btn-bg-hover: $white-hover;
+$auth-google-btn-text: $dark;
 $auth-change-view-bg: $teal;
 
 // @mixin laptop {

@@ -212,14 +212,12 @@ class SignUpFormUnconnected extends React.Component {
                 onClick={this.googleAuthSubmit}
                 className="google-auth-button"
               >
-                <span className="google-auth-button-">Sign up with Google</span>
+                Sign up with Google
               </button>
             </form>
             <div className="auth-footer sign-up-footer">
-              <span>
-                Already have an account?{" "}
-                <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-              </span>
+              <span>Already have an account?</span>
+              <Link to={ROUTES.SIGN_IN}>Sign In</Link>
             </div>
           </div>
         </div>

@@ -63,9 +63,12 @@
           border-radius: 5px;
           color: $auth-submit-text;
           font-size: 1.8rem;
+          transition: all 0.5s ease;
 
           &:hover {
             cursor: pointer;
+            background: $auth-submit-bg-hover;
+            transition: all 0.5s ease;
           }
         }
 
@@ -77,20 +80,19 @@
           background-size: auto 36px;
           background-position: 10px 5px;
           background-color: $auth-google-btn-bg;
+          color: $auth-google-btn-text;
+          font-size: 1.8rem;
           display: flex;
           align-items: center;
-          justify-content: flex-start;
+          justify-content: center;
           border: none;
           border-radius: 5px;
+          transition: all 0.5s ease-in-out;
 
           &:hover {
             cursor: pointer;
-          }
-
-          span {
-            font-size: 1.8rem;
-            color: $dark;
-            width: 100%;
+            background-color: $auth-google-btn-bg-hover;
+            transition: all 0.5s ease-in-out;
           }
         }
 
@@ -106,6 +108,10 @@
         display: flex;
         align-items: center;
         font-size: 1.4rem;
+
+        span {
+          margin-right: 5px;
+        }
       }
     }
   }
