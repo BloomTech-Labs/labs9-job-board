@@ -140,11 +140,16 @@ class CheckoutForm extends Component {
 		return (
 			<div className="checkout">
 				<div className="purchase-options">
-					<p className="billing-header">Billing</p>
-					<p className="billing-subheader">
-						This isn't your typical purchase, ths is going to be a
-						<em className="gotcha"> game changer</em>
-					</p>
+					<div className="b-header">
+						<p className="billing-header">Billing</p>
+					</div>
+					<div className="b-subheader">
+						<p className="billing-subheader">
+							This isn't your typical purchase, ths is going to be a
+							<em className="gotcha"> game changer</em>
+						</p>
+					</div>
+
 					<form className="options">
 						<label>
 							<input
