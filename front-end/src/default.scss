@@ -1,0 +1,29 @@
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+  color: $dark;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-size: 2.6rem;
+  line-height: 1.4;
+}
+
+.auth-divider {
+  width: 100%;
+  height: 4px;
+  background: $auth-divider;
+  margin: 15px 0;
+}

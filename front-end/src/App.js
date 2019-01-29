@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 import { withFirebase } from "./components/Firebase";
 
 import Routes from "./components/Routes/Routes.js";
