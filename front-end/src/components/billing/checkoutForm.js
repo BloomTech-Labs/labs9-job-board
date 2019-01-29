@@ -196,7 +196,7 @@ class CheckoutForm extends Component {
 						onReady={element => (this.cvcElement = element)}
 					/>
 					<button
-						className="purchase"
+						className="purchase-button"
 						id="buttonCheckout"
 						onClick={this.submit}
 						disabled={!this.props.authUser}
@@ -207,7 +207,11 @@ class CheckoutForm extends Component {
 							'Purchase'
 						)}
 					</button>
-					<button className="cancel" onClick={this.resetForm} type="button">
+					<button
+						className="cancel-button"
+						onClick={this.resetForm}
+						type="button"
+					>
 						Cancel
 					</button>
 					<span>{this.state.paymentMessage || null}</span>
