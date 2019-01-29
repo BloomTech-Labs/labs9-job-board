@@ -103,6 +103,11 @@ $break-small: 645px;
 				}
 			}
 
+			.card-info-flex {
+				display: flex;
+				justify-content: space-between;
+			}
+
 			.button-section {
 				display: flex;
 				justify-content: space-between;

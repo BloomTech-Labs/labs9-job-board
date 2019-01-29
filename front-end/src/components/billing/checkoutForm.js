@@ -188,12 +188,12 @@ class CheckoutForm extends Component {
 					<div className="card-info-flex">
 						<p className="card-info-labels"> Expiration Date</p>
 						<CardExpiryElement
-							className="card-info-placeholder"
+							className="card-info-placeholder-exp"
 							onReady={element => (this.expiryElement = element)}
 						/>
 						<p className="card-info-labels"> CVC </p>
 						<CardCVCElement
-							className="card-info-placeholder"
+							className="card-info-placeholder-cvc"
 							onReady={element => (this.cvcElement = element)}
 						/>
 					</div>
