@@ -13,6 +13,7 @@ const ProfileInfo = props => {
         </Link>
       </div>
       <button onClick={props.openEditor} className="edit-btn edit">
+        <i className="fa fa-pencil" />
         Edit Account
       </button>
       <div className="pic-account">

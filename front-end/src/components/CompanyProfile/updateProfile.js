@@ -31,7 +31,7 @@ class UpdateProfile extends Component {
       setTimeout(() => {
         const user_uid = this.props.authUser.uid;
         this.fetchCompany(user_uid);
-      }, 833);
+      }, 933);
     }
   }
 

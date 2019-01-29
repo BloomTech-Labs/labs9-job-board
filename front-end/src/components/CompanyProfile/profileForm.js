@@ -14,7 +14,7 @@ const ProfileForm = props => {
         </Link>
       </div>
       <button onClick={props.openEditor} className="edit-btn edit">
-        Edit Account
+        <i className="fa fa-pencil" /> Edit Account
       </button>
       <div className="pic-account">
         <ProfilePic setUrl={props.setUrl} />

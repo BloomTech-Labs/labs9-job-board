@@ -3,7 +3,6 @@
   flex-direction: row-reverse;
   width: 100%;
   padding: 50px 1%;
-  margin: 0 10%;
 
   @include phone {
     flex-direction: column-reverse;
