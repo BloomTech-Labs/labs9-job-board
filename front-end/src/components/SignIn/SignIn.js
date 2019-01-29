@@ -4,15 +4,8 @@ import axios from "axios";
 
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
-//import { AuthenticatedUserContext } from "../Session";
-//import RedirectPage from "../RedirectPage/RedirectPage";
 
-import "./SignIn.scss";
-
-import googleLogo from "../../images/g-logo.png";
-import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
-import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
-// import facebookButton from '../../images/facebook-login-btn.png';
+// import "./SignIn.scss";
 
 const URL = process.env.REACT_APP_DB_URL;
 
@@ -49,7 +42,6 @@ class SignInFormUnconnected extends React.Component {
 
   googleAuthSubmit = event => {
     event.preventDefault();
-    event.target.setAttribute("src", googleButtonPressed);
 
     let user_uid, email;
 
@@ -229,21 +221,15 @@ class SignInFormUnconnected extends React.Component {
                 disabled={isInvalid}
                 type="submit"
               >
-                Sign in with Email
+                Sign In
               </button>
               <div className="auth-or">OR</div>
               <button
                 onClick={this.googleAuthSubmit}
                 className="google-auth-button"
               >
-                {/* <img src={googleLogo} alt="Sign in with Google" /> */}
                 <span className="google-auth-button-">Sign in with Google</span>
               </button>
-              {/* <img
-            src={facebookButton}
-            alt="Sign in with Facebook"
-            onClick={this.facebookAuthSubmit}
-          /> */}
             </form>
             <div className="sign-in-footer">
               <span>
