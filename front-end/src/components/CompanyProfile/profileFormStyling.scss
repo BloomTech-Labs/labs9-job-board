@@ -1,6 +1,7 @@
 .profile-container {
   width: 100%;
   background-color: #{$background};
+  padding-bottom: 40px;
 
   .companyInfo {
     width: 100%;
@@ -93,5 +94,18 @@
     background-color: #{$blue};
     display: flex;
     margin-right: 50%;
+  }
+
+  .links-pass-bill {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 2rem;
+    padding: 20px 0;
+
+    a {
+      color: #{$blue};
+    }
   }
 }
