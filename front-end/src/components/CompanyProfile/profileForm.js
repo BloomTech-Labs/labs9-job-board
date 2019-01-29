@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 
 const ProfileForm = props => {
   return (
-    <div className="update-profile-page">
+    <div className="companyInfo">
+      <div classname="pic-account editHeader">
+        <ProfilePic setUrl={props.setUrl} />
+        <h2>Your Account</h2>
+      </div>
       <form onSubmit={props.updateUser} className="update-profile-form">
         <label>First Name</label>
         <input
@@ -65,19 +69,11 @@ const ProfileForm = props => {
           {" "}
           Save{" "}
         </button>
-      </form>
-      <div className="right-sidebar">
-        <ProfilePic setUrl={props.setUrl} />
         <button onClick={props.openEditor} className="right-button">
-          Close Edit
+          Cancel
         </button>
-        <button className="update-password right-button">
-          Change Password{" "}
-        </button>
-        <Link to="/billing" className="right-button">
-          Billing and Jobs
-        </Link>
-      </div>
+      </form>
+      <div className="right-sidebar" />
     </div>
   );
 };
