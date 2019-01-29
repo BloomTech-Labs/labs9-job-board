@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SideMenuToggleButton from "./SideMenuToggleButton";
 
-import logo from "../../images/logo.png";
+import logo from "../../images/design/png/logos/logo with owl to left.png";
+
 
 const Navbar = props => {
   return (
@@ -13,7 +14,6 @@ const Navbar = props => {
         </div>
         <div className="navbar-logo">
           <Link to="/">
-            <p>Knowledge Without College</p>
             <img src={logo} alt="knowledge without college" />
           </Link>
         </div>
