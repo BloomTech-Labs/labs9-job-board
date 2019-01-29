@@ -12,6 +12,7 @@ import PaymentModal from './PaymentModal.js';
 
 import StripeLogo from '../../images/powered_by_stripe.png';
 import LoadingCircle from '../../images/loading-circle.svg';
+import Balance from './Balance';
 
 const URL = process.env.REACT_APP_DB_URL;
 
@@ -139,106 +140,112 @@ class CheckoutForm extends Component {
 	render() {
 		return (
 			<div className="checkout">
-				<div className="purchase-options">
-					<div className="b-header">
-						<p className="billing-header">Billing</p>
-					</div>
-					<div className="b-subheader">
-						<p className="billing-subheader">
-							This isn't your typical purchase, ths is going to be a
-							<em className="gotcha"> game changer</em>
-						</p>
-					</div>
+				<div className="left-side">
+					<div className="purchase-options">
+						<div className="b-header">
+							<p className="billing-header">Billing</p>
+						</div>
+						<div className="b-subheader">
+							<p className="billing-subheader">
+								This isn't your typical purchase, ths is going to be a
+								<em className="gotcha"> game changer</em>
+							</p>
+						</div>
 
-					<form className="options">
-						<label>
-							<input
-								type="radio"
-								name="unlimited"
-								value="unlimited"
-								checked={this.state.selectedOption === 'unlimited'}
-								onChange={this.handleOptionChange}
+						<form className="options">
+							<label>
+								<input
+									type="radio"
+									name="unlimited"
+									value="unlimited"
+									checked={this.state.selectedOption === 'unlimited'}
+									onChange={this.handleOptionChange}
+								/>
+								{'Unlimited Jobs, 1 Month - $299.99'}
+							</label>
+							<label>
+								<input
+									type="radio"
+									name="job12"
+									value="job12"
+									checked={this.state.selectedOption === 'job12'}
+									onChange={this.handleOptionChange}
+								/>
+								{'Jobs (12) - $99.99'}
+							</label>
+							<label>
+								<input
+									type="radio"
+									name="job1"
+									value="job1"
+									checked={this.state.selectedOption === 'job1'}
+									onChange={this.handleOptionChange}
+								/>
+								{'Job (1) - $9.99'}
+							</label>
+						</form>
+						<span>{this.state.selectionMessage || null}</span>
+					</div>
+					<div className="card-info">
+						<p className="card-info-labels"> Card Number</p>
+						<CardNumberElement
+							className="card-info-placeholder-cnum"
+							onReady={element => (this.cardElement = element)}
+						/>
+						<div className="card-info-flex">
+							<p className="card-info-labels"> Expiration Date</p>
+							<CardExpiryElement
+								className="card-info-placeholder-exp"
+								onReady={element => (this.expiryElement = element)}
 							/>
-							{'Unlimited Jobs, 1 Month - $299.99'}
-						</label>
-						<label>
-							<input
-								type="radio"
-								name="job12"
-								value="job12"
-								checked={this.state.selectedOption === 'job12'}
-								onChange={this.handleOptionChange}
+							<p className="card-info-labels"> CVC </p>
+							<CardCVCElement
+								className="card-info-placeholder-cvc"
+								onReady={element => (this.cvcElement = element)}
 							/>
-							{'Jobs (12) - $99.99'}
-						</label>
-						<label>
-							<input
-								type="radio"
-								name="job1"
-								value="job1"
-								checked={this.state.selectedOption === 'job1'}
-								onChange={this.handleOptionChange}
+						</div>
+
+						<div className="button-section">
+							<button
+								className="purchase-button"
+								id="buttonCheckout"
+								onClick={this.submit}
+								disabled={!this.props.authUser}
+							>
+								{this.state.processing ? (
+									<img src={LoadingCircle} alt="loading" />
+								) : (
+									'Purchase'
+								)}
+							</button>
+							<button
+								className="cancel-button"
+								onClick={this.resetForm}
+								type="button"
+							>
+								Cancel
+							</button>
+						</div>
+
+						<span>{this.state.paymentMessage || null}</span>
+						<a href="https://stripe.com/">
+							<img
+								src={StripeLogo}
+								alt="Powered by Stripe"
+								className="powered-by-stripe"
 							/>
-							{'Job (1) - $9.99'}
-						</label>
-					</form>
-					<span>{this.state.selectionMessage || null}</span>
+						</a>
+					</div>
 				</div>
-				<div className="card-info">
-					<p className="card-info-labels"> Card Number</p>
-					<CardNumberElement
-						className="card-info-placeholder-cnum"
-						onReady={element => (this.cardElement = element)}
-					/>
-					<div className="card-info-flex">
-						<p className="card-info-labels"> Expiration Date</p>
-						<CardExpiryElement
-							className="card-info-placeholder-exp"
-							onReady={element => (this.expiryElement = element)}
-						/>
-						<p className="card-info-labels"> CVC </p>
-						<CardCVCElement
-							className="card-info-placeholder-cvc"
-							onReady={element => (this.cvcElement = element)}
-						/>
-					</div>
 
-					<div className="button-section">
-						<button
-							className="purchase-button"
-							id="buttonCheckout"
-							onClick={this.submit}
-							disabled={!this.props.authUser}
-						>
-							{this.state.processing ? (
-								<img src={LoadingCircle} alt="loading" />
-							) : (
-								'Purchase'
-							)}
-						</button>
-						<button
-							className="cancel-button"
-							onClick={this.resetForm}
-							type="button"
-						>
-							Cancel
-						</button>
-					</div>
-
-					<span>{this.state.paymentMessage || null}</span>
-					<a href="https://stripe.com/">
-						<img
-							src={StripeLogo}
-							alt="Powered by Stripe"
-							className="powered-by-stripe"
-						/>
-					</a>
-				</div>
 				<PaymentModal
 					successVisible={this.state.successVisible}
 					failureVisible={this.state.failureVisible}
 					successPurchase={this.state.successPurchase}
 				/>
+				<div className="billing-container">
+					<Balance authUser={this.props.authUser} />
+				</div>
 			</div>
 		);
 	}

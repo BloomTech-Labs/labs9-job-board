@@ -51,28 +51,20 @@ class UserJobs extends React.Component {
 
 	render() {
 		return (
-			<div className="billing-jobs">
-				{this.state.fetching ? (
-					<img src={LoadingBar} alt="loading bar" />
-				) : this.state.jobs.length ? (
-					this.state.jobs.map(job => {
-						return (
-							<div className="job-links">
-								{/* // key={job.id} */}
-								<h3>Job Listings:</h3>
-								<Link to={`/jobs/${job.id}`}>
-									<div className="billing-job">
-										{/* {job.title} */}
-										Junior Web Developer
-									</div>
-								</Link>
-								<Link to={`/edit-job/${job.id}`}>Edit</Link>
+			<div className="right-side">
+				<div className="billing-jobs">
+					<div className="job-links">
+						{/* // key={job.id} */}
+						<h3>Job Listings:</h3>
+						<Link to={`/jobs`}>
+							<div className="billing-job">
+								{/* {job.title} */}
+								Junior Web Developer
 							</div>
-						);
-					})
-				) : (
-					<div>{this.state.message}</div>
-				)}
+						</Link>
+						<Link to={`/edit-job/`}>Edit</Link>
+					</div>
+				</div>
 			</div>
 		);
 	}
