@@ -82,7 +82,7 @@ class PostJob extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <JobForm
           submitHandler={this.addJob}
           handleInput={this.handleInput}
