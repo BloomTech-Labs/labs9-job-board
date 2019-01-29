@@ -98,7 +98,7 @@ $break-small: 645px;
 				font-size: 1.6rem;
 				padding-top: 20px;
 
-				.card-info-placeholder {
+				.card-info-placeholder-cnum {
 					font-size: 1.4rem;
 				}
 			}
@@ -106,6 +106,14 @@ $break-small: 645px;
 			.card-info-flex {
 				display: flex;
 				justify-content: space-between;
+
+				.card-info-placeholder-exp {
+					font-size: 1.4rem;
+				}
+
+				.card-info-placeholder-cvc {
+					font-size: 1.4rem;
+				}
 			}
 
 			.button-section {
