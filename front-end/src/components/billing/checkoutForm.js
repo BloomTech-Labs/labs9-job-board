@@ -182,7 +182,7 @@ class CheckoutForm extends Component {
 				<div className="card-info">
 					<p className="card-info-labels"> Card Number</p>
 					<CardNumberElement
-						className="card-info-placeholder"
+						className="card-info-placeholder-cnum"
 						onReady={element => (this.cardElement = element)}
 					/>
 					<div className="card-info-flex">
