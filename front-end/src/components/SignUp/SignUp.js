@@ -6,11 +6,6 @@ import { withFirebase } from "../Firebase/index";
 
 import * as ROUTES from "../../constants/routes";
 
-// import "./SignUp.scss";
-import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
-import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
-// import facebookButton from '../../images/facebook-login-btn.png';
-
 const URL = process.env.REACT_APP_DB_URL;
 
 // initial state, form submission state reset
@@ -39,7 +34,6 @@ class SignUpFormUnconnected extends React.Component {
 
   googleAuthSubmit = event => {
     event.preventDefault();
-    event.target.setAttribute("src", googleButtonPressed);
 
     let user_uid, email;
 
