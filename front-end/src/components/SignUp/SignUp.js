@@ -159,19 +159,19 @@ class SignUpFormUnconnected extends React.Component {
 
     return (
       <div className="auth-view sign-up-view">
-        <div className="sign-up-container">
-          <div className="sign-up-content">
-            <h2 className="sign-up-heading">Sign Up</h2>
-            <span className="sign-up-tagline">
+        <div className="auth-container">
+          <div className="auth-content">
+            <h2 className="auth-heading">Sign Up</h2>
+            <span className="auth-tagline">
               Create a profile for your company and connect with talented job
               seekers.
             </span>
             <div className="auth-divider" />
-            <form className="sign-up-form" onSubmit={this.emailAuthSubmit}>
+            <form className="auth-form" onSubmit={this.emailAuthSubmit}>
               <input
                 type="text"
                 name="email"
-                className="sign-up-form-input"
+                className="auth-form-input"
                 onChange={this.changeHandler}
                 placeholder="Email"
                 value={this.state.email}
@@ -180,7 +180,7 @@ class SignUpFormUnconnected extends React.Component {
               <input
                 type="password"
                 name="password"
-                className="sign-up-form-input"
+                className="auth-form-input"
                 onChange={this.changeHandler}
                 placeholder="Password"
                 value={this.state.password}
@@ -189,7 +189,7 @@ class SignUpFormUnconnected extends React.Component {
               <input
                 type="password"
                 name="confirmPassword"
-                className="sign-up-form-input"
+                className="auth-form-input"
                 onChange={this.changeHandler}
                 placeholder="Confirm Password"
                 value={this.state.confirmPassword}
@@ -199,7 +199,7 @@ class SignUpFormUnconnected extends React.Component {
                 <span>{this.state.error.message}</span>
               ) : null}
               <button
-                className={`sign-up-form-button${
+                className={`auth-form-button${
                   isInvalid ? "" : " not-disabled"
                 }`}
                 disabled={isInvalid}
@@ -215,7 +215,7 @@ class SignUpFormUnconnected extends React.Component {
                 <span className="google-auth-button-">Sign up with Google</span>
               </button>
             </form>
-            <div className="sign-up-footer">
+            <div className="auth-footer sign-up-footer">
               <span>
                 Already have an account?{" "}
                 <Link to={ROUTES.SIGN_IN}>Sign In</Link>
