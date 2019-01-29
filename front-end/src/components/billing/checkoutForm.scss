@@ -55,13 +55,17 @@ $break-small: 645px;
 					margin-bottom: 20px;
 				}
 			}
+			.b-subheader {
+				display: flex;
+				justify-content: center;
 
-			.billing-subheader {
-				font-size: 1.8rem;
-				margin-bottom: 12px;
+				.billing-subheader {
+					font-size: 1.8rem;
+					margin-bottom: 12px;
 
-				.gotcha {
-					color: red;
+					.gotcha {
+						color: red;
+					}
 				}
 			}
 
