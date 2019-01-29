@@ -3,14 +3,8 @@ import { Link, withRouter, Redirect } from "react-router-dom";
 import axios from "axios";
 
 import { withFirebase } from "../Firebase/index";
-// import { AuthenticatedUserContext } from "../Session";
 
 import * as ROUTES from "../../constants/routes";
-
-import "./SignUp.css";
-import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
-import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
-// import facebookButton from '../../images/facebook-login-btn.png';
 
 const URL = process.env.REACT_APP_DB_URL;
 
@@ -40,7 +34,6 @@ class SignUpFormUnconnected extends React.Component {
 
   googleAuthSubmit = event => {
     event.preventDefault();
-    event.target.setAttribute("src", googleButtonPressed);
 
     let user_uid, email;
 
@@ -165,58 +158,69 @@ class SignUpFormUnconnected extends React.Component {
       this.state.email === "";
 
     return (
-      <div className="sign-up-container">
-        <div className="sign-up-header" />
-        <form className="sign-up-form" onSubmit={this.emailAuthSubmit}>
-          <input
-            type="text"
-            name="email"
-            className="sign-up-form-input"
-            onChange={this.changeHandler}
-            placeholder="Email"
-            value={this.state.email}
-            autoComplete="on"
-          />
-          <input
-            type="password"
-            name="password"
-            className="sign-up-form-input"
-            onChange={this.changeHandler}
-            placeholder="Password"
-            value={this.state.password}
-            autoComplete="off"
-          />
-          <input
-            type="password"
-            name="confirmPassword"
-            className="sign-up-form-input"
-            onChange={this.changeHandler}
-            placeholder="Confirm Password"
-            value={this.state.confirmPassword}
-            autoComplete="off"
-          />
-          <button
-            className={`sign-up-form-button${isInvalid ? "" : " not-disabled"}`}
-            disabled={isInvalid}
-            type="submit"
-          >
-            Sign Up
-          </button>
-          <img
-            src={googleButton}
-            alt="Sign in with Google"
-            onClick={this.googleAuthSubmit}
-          />
-          {/* <img
-            src={facebookButton}
-            alt="Sign in with Facebook"
-            onClick={this.facebookAuthSubmit}
-          /> */}
-          {this.state.error ? <span>{this.state.error.message}</span> : null}
-        </form>
-        <span>
-          Already have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-        </span>
+      <div className="auth-view sign-up-view">
+        <div className="auth-container">
+          <div className="auth-content">
+            <h2 className="auth-heading">Sign Up</h2>
+            <span className="auth-tagline">
+              Create a profile for your company and connect with talented job
+              seekers.
+            </span>
+            <div className="auth-divider" />
+            <form className="auth-form" onSubmit={this.emailAuthSubmit}>
+              <input
+                type="text"
+                name="email"
+                className="auth-form-input"
+                onChange={this.changeHandler}
+                placeholder="Email"
+                value={this.state.email}
+                autoComplete="on"
+              />
+              <input
+                type="password"
+                name="password"
+                className="auth-form-input"
+                onChange={this.changeHandler}
+                placeholder="Password"
+                value={this.state.password}
+                autoComplete="off"
+              />
+              <input
+                type="password"
+                name="confirmPassword"
+                className="auth-form-input"
+                onChange={this.changeHandler}
+                placeholder="Confirm Password"
+                value={this.state.confirmPassword}
+                autoComplete="off"
+              />
+              {this.state.error ? (
+                <span>{this.state.error.message}</span>
+              ) : null}
+              <button
+                className={`auth-form-button${
+                  isInvalid ? "" : " not-disabled"
+                }`}
+                disabled={isInvalid}
+                type="submit"
+              >
+                Sign Up
+              </button>
+              <div className="auth-or">OR</div>
+              <button
+                onClick={this.googleAuthSubmit}
+                className="google-auth-button"
+              >
+                Sign up with Google
+              </button>
+            </form>
+            <div className="auth-footer sign-up-footer">
+              <span>Already have an account?</span>
+              <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
