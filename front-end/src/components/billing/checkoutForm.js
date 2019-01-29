@@ -180,18 +180,18 @@ class CheckoutForm extends Component {
 					<span>{this.state.selectionMessage || null}</span>
 				</div>
 				<div className="card-info">
-					<p className="card-info-labels-card"> Card Number</p>
+					<p className="card-info-labels"> Card Number</p>
 					<CardNumberElement
 						className="card-info-placeholder-cnum"
 						onReady={element => (this.cardElement = element)}
 					/>
 					<div className="card-info-flex">
-						<p className="card-info-labels-exp"> Expiration Date</p>
+						<p className="card-info-labels"> Expiration Date</p>
 						<CardExpiryElement
 							className="card-info-placeholder-exp"
 							onReady={element => (this.expiryElement = element)}
 						/>
-						<p className="card-info-labels-cvs"> CVC </p>
+						<p className="card-info-labels"> CVC </p>
 						<CardCVCElement
 							className="card-info-placeholder-cvc"
 							onReady={element => (this.cvcElement = element)}
