@@ -23,19 +23,35 @@ $break-small: 645px;
 .strikethrough {
   text-decoration: line-through;
 }
+
+//Header
+.billing-contaner {
+  .header {
+    .billing-header {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .billing-subheader {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+
+      .gotcha {
+        color: red;
+      }
+    }
+  }
+}
+
 // Parent for all card and purchase container
 .checkout {
   display: flex;
-  flex-direction: column;
   padding: 20px;
   width: 100%;
-  justify-content: space-around;
   background: #f5f5f5;
-  @media screen and (max-width: $break-small) {
-    flex-direction: column;
-  }
 
   .left-side {
+    border: 1px solid red;
     // Purchase options starts
     .purchase-options {
       display: flex;
@@ -43,28 +59,6 @@ $break-small: 645px;
       @media screen and (max-width: $break-small) {
         align-items: center;
         padding: 10px;
-      }
-      .b-header {
-        display: flex;
-        justify-content: center;
-
-        .billing-header {
-          font-size: 2.8rem;
-          margin-bottom: 20px;
-        }
-      }
-      .b-subheader {
-        display: flex;
-        justify-content: center;
-
-        .billing-subheader {
-          font-size: 1.8rem;
-          margin-bottom: 12px;
-
-          .gotcha {
-            color: red;
-          }
-        }
       }
 
       .options {
@@ -152,10 +146,10 @@ $break-small: 645px;
   }
 
   .right-side {
+    border: 1px solid blue;
+
     //Balance of job credits
-    .billing-container {
-      .balance-container {
-      }
+    .balance-container {
     }
 
     //Jobs Purchased Postings

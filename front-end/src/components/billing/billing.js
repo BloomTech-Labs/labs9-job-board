@@ -16,7 +16,15 @@ class Billing extends Component {
     return (
       <div>
         <StripeProvider apiKey="pk_test_77iYkIzmRpuMiC1SxkCkMIBp">
-          <div className="container">
+          <div className="billing-container">
+            <div className="header">
+              <p className="billing-header">Billing</p>
+              <hr />
+              <p className="billing-subheader">
+                This isn't your typical purchase, ths is going to be a
+                <em className="gotcha"> game changer</em>
+              </p>
+            </div>
             <Elements>
               <CheckoutForm authUser={this.props.authUser} />
             </Elements>
