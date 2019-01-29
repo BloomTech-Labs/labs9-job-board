@@ -103,17 +103,12 @@ $break-small: 645px;
 				}
 			}
 
-			.card-info-flex {
-				display: flex;
-				justify-content: space-between;
+			.card-info-placeholder-exp {
+				font-size: 1.4rem;
+			}
 
-				.card-info-placeholder-exp {
-					font-size: 1.4rem;
-				}
-
-				.card-info-placeholder-cvc {
-					font-size: 1.4rem;
-				}
+			.card-info-placeholder-cvc {
+				font-size: 1.4rem;
 			}
 
 			.button-section {
@@ -145,6 +140,7 @@ $break-small: 645px;
 
 			.powered-by-stripe {
 				align-self: center;
+				margin: 10px;
 			}
 		}
 	}
