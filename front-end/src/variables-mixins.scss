@@ -39,13 +39,13 @@ $auth-submit-text: $white;
 $auth-google-btn-bg: $white;
 $auth-change-view-bg: $teal;
 
-@mixin laptop {
-  $tablet: 800px;
-  @media (max-width: #{$laptop}) {
-    $phone: 500px;
-    @content;
-  }
-}
+// @mixin laptop {
+//   $tablet: 800px;
+//   @media (max-width: #{$laptop}) {
+//     $phone: 500px;
+//     @content;
+//   }
+// }
 
 @mixin tablet {
   @media (max-width: #{$tablet}) {
