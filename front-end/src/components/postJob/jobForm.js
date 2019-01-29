@@ -9,8 +9,13 @@ class JobForm extends React.Component {
     return (
       <div className="post-job-container">
         <div className="post-job-header">
-          {this.props.pageTitle ? "Edit Job" : "Post a Job"}
+          <div className="main-header">
+            {this.props.pageTitle ? "Edit Job" : "Post a Job"}
+          </div>
           <hr />
+          <div className="sub-header">
+            Find the employee that fits your needs.
+          </div>
         </div>
         <form className="job-form" onSubmit={this.props.submitHandler}>
           <div className="post-job-top">

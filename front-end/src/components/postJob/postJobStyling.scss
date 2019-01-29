@@ -2,22 +2,33 @@
   color: black;
 
   .post-job-header {
-    font-size: 5rem;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    margin: 15px 0 0 0;
-    padding: 0 5% 0 5%;
+    justify-content: center;
     color: #{$dark};
-  }
 
-  hr {
-    border: 0;
-    height: 3px;
-    background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      rgba(76, 103, 161, 0.75),
-      rgba(0, 0, 0, 0)
-    );
+    .main-header {
+      font-size: 5rem;
+    }
+
+    hr {
+      border: 0;
+      height: 3px;
+      width: 30%;
+      margin: 20px auto;
+      background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(76, 103, 161, 0.75),
+        rgba(0, 0, 0, 0)
+      );
+    }
+
+    .sub-header {
+      font-size: 3rem;
+    }
   }
 
   .job-form {
@@ -144,7 +155,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 33%;
+          width: 40%;
 
           @include phone {
             width: 50%;
@@ -154,7 +165,7 @@
         .requires-degree {
           display: flex;
           align-items: center;
-          width: 33%;
+          width: 40%;
 
           @include phone {
             width: 50%;
@@ -172,15 +183,21 @@
         }
 
         .categories {
-          width: 33%;
+          width: 20%;
           display: flex;
-          justify-content: center;
+          justify-content: start;
 
           select {
             background-color: #{$background};
-            width: 50%;
+            width: 80%;
             height: 30px;
             font-size: 1.5rem;
+
+            // option {
+            //   :hover {
+            //     background-color: #{$blue};
+            //   }
+            // }
           }
         }
       }
