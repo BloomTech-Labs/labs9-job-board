@@ -38,137 +38,153 @@ $break-small: 645px;
 			flex-direction: column;
 		}
 
-		// Purchase options starts
-		.purchase-options {
-			display: flex;
-			flex-direction: column;
-			@media screen and (max-width: $break-small) {
-				align-items: center;
-				padding: 10px;
-			}
+		.left-side {
+			// Purchase options starts
+			.purchase-options {
+				display: flex;
+				flex-direction: column;
+				@media screen and (max-width: $break-small) {
+					align-items: center;
+					padding: 10px;
+				}
+				.b-header {
+					display: flex;
+					justify-content: center;
 
-			.billing-header {
-				font-size: 2.8rem;
-				margin-bottom: 20px;
-				align-content: center;
-			}
+					.billing-header {
+						font-size: 2.8rem;
+						margin-bottom: 20px;
+					}
+				}
+				.b-subheader {
+					display: flex;
+					justify-content: center;
 
-			.billing-subheader {
-				font-size: 1.8rem;
-				margin-bottom: 12px;
+					.billing-subheader {
+						font-size: 1.8rem;
+						margin-bottom: 12px;
 
-				.gotcha {
-					color: red;
+						.gotcha {
+							color: red;
+						}
+					}
+				}
+
+				.options {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					margin: 18px;
+					padding: 12px;
+
+					@media screen and (max-width: $break-small) {
+						align-items: center;
+					}
+
+					label {
+						font-size: 1.6rem;
+						padding: 5px;
+						margin: 5px;
+					}
 				}
 			}
 
-			.options {
+			// Card Info begins
+			.card-info {
 				display: flex;
 				flex-direction: column;
-				align-items: flex-start;
-				margin: 20px;
-				padding: 12px;
-
+				width: 17%;
+				margin: 25px;
+				padding: 17px;
 				@media screen and (max-width: $break-small) {
+					width: 100%;
+					margin-top: 0px;
 					align-items: center;
 				}
 
-				label {
+				.card-info-labels {
+					display: flex;
 					font-size: 1.6rem;
-					padding: 10px 0px;
+					padding-top: 20px;
+
+					.card-info-placeholder-cnum {
+						font-size: 1.4rem;
+					}
 				}
-			}
-		}
 
-		// Card Info begins
-		.card-info {
-			display: flex;
-			flex-direction: inherit;
-			width: 17%;
-			margin: 20px;
-			padding: 12px;
-			@media screen and (max-width: $break-small) {
-				width: 100%;
-				margin-top: 0px;
-				align-items: center;
-			}
-
-			.card-info-labels {
-				display: flex;
-				font-size: 1.6rem;
-				padding-top: 20px;
-
-				.card-info-placeholder-cnum {
+				.card-info-placeholder-exp {
 					font-size: 1.4rem;
 				}
-			}
 
-			.card-info-placeholder-exp {
-				font-size: 1.4rem;
-			}
-
-			.card-info-placeholder-cvc {
-				font-size: 1.4rem;
-			}
-
-			.button-section {
-				display: flex;
-				justify-content: space-between;
-
-				.purchase-button {
-					margin: 20px;
-					background: $blue;
-					padding: 10px 20px;
-					font-size: 1.6rem;
-					color: $white;
-					border: none;
-					border-radius: 10px;
-					cursor: pointer;
+				.card-info-placeholder-cvc {
+					font-size: 1.4rem;
 				}
 
-				.cancel-button {
-					margin: 20px 0px;
-					background: $orange;
-					padding: 10px 20px;
-					font-size: 1.6rem;
-					color: $white;
-					border: none;
-					border-radius: 10px;
-					cursor: pointer;
+				.button-section {
+					display: flex;
+					justify-content: space-between;
+
+					.purchase-button {
+						margin: 20px;
+						background: $blue;
+						padding: 10px 20px;
+						font-size: 1.6rem;
+						color: $white;
+						border: none;
+						border-radius: 10px;
+						cursor: pointer;
+					}
+
+					.cancel-button {
+						margin: 20px 0px;
+						background: $orange;
+						padding: 10px 20px;
+						font-size: 1.6rem;
+						color: $white;
+						border: none;
+						border-radius: 10px;
+						cursor: pointer;
+					}
+				}
+
+				.powered-by-stripe {
+					align-self: center;
+					margin: 10px;
 				}
 			}
-
-			.powered-by-stripe {
-				align-self: center;
-				margin: 10px;
-			}
 		}
-	}
 
-	//Jobs Purchased Postings
-	.billing-jobs {
-		width: 100%;
-
-		.job-links {
-			display: flex;
-			margin: 0 10%;
-			font-size: 2rem;
-
-			.billing-job {
-				font-size: 2rem;
-				padding-right: 3%;
-				width: 80%;
+		.right-side {
+			//Balance of job credits
+			.balance-container {
 			}
 
-			@media screen and (max-width: $break-small) {
-				flex-direction: row;
-				justify-content: center;
+			//Jobs Purchased Postings
+			.billing-jobs {
+				width: 100%;
+
+				.job-links {
+					display: flex;
+					margin: 0 10%;
+					font-size: 2rem;
+
+					.billing-job {
+						font-size: 2rem;
+						padding-right: 3%;
+						width: 80%;
+					}
+
+					@media screen and (max-width: $break-small) {
+						flex-direction: row;
+						justify-content: center;
+					}
+				}
+				.job-links a {
+					width: 30%;
+					display: flex;
+					justify-content: start;
+				}
 			}
-		}
-		.job-links a {
-			width: 30%;
-			display: flex;
-			justify-content: start;
 		}
 	}
 }
