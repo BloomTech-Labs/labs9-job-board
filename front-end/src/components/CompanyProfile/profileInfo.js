@@ -11,7 +11,7 @@ const ProfileInfo = props => {
         <img src={props.company.avatar_image} className="avatar" />
         <h2>Your Account</h2>
       </div>
-      <div class="links-pass-bill">
+      <div className="links-pass-bill">
         <Link to="/billing" className="link-to-pass-bill">
           Billing
         </Link>
