@@ -9,6 +9,7 @@ import * as ROUTES from "../../constants/routes";
 
 import "./SignIn.scss";
 
+import googleLogo from "../../images/g-logo.png";
 import googleButton from "../../images/btn_google_signin_dark_normal_web.png";
 import googleButtonPressed from "../../images/btn_google_signin_dark_pressed_web.png";
 // import facebookButton from '../../images/facebook-login-btn.png';
@@ -191,54 +192,65 @@ class SignInFormUnconnected extends React.Component {
     const isInvalid = this.state.password === "" || this.state.email === "";
 
     return (
-      <div className="sign-in-container">
-        <div className="sign-in-header" />
-        <form className="sign-in-form" onSubmit={this.emailAuthSubmit}>
-          <input
-            type="text"
-            name="email"
-            className="sign-in-form-input"
-            onChange={this.changeHandler}
-            placeholder="Email"
-            value={this.state.email}
-            autoComplete="on"
-          />
-          <input
-            type="password"
-            name="password"
-            className="sign-in-form-input"
-            onChange={this.changeHandler}
-            placeholder="Password"
-            value={this.state.password}
-            autoComplete="off"
-          />
-          {this.state.error ? <span>{this.state.error.message}</span> : null}
-          <button
-            className={`sign-in-form-button${isInvalid ? "" : " not-disabled"}`}
-            disabled={isInvalid}
-            type="submit"
-          >
-            Sign In
-          </button>
-          <img
-            src={googleButton}
-            alt="Sign in with Google"
-            onClick={this.googleAuthSubmit}
-            name="google"
-          />
-          {/* <img
+      <div className="sign-in-view">
+        <div className="sign-in-container">
+          <div className="sign-in-content">
+            <h2 className="sign-in-heading">Sign In</h2>
+            <div className="auth-divider" />
+            <form className="sign-in-form" onSubmit={this.emailAuthSubmit}>
+              <input
+                type="text"
+                name="email"
+                className="sign-in-form-input"
+                onChange={this.changeHandler}
+                placeholder="Email"
+                value={this.state.email}
+                autoComplete="on"
+              />
+              <input
+                type="password"
+                name="password"
+                className="sign-in-form-input"
+                onChange={this.changeHandler}
+                placeholder="Password"
+                value={this.state.password}
+                autoComplete="off"
+              />
+              {this.state.error ? (
+                <span>{this.state.error.message}</span>
+              ) : null}
+              <button
+                className={`sign-in-form-button${
+                  isInvalid ? "" : " not-disabled"
+                }`}
+                disabled={isInvalid}
+                type="submit"
+              >
+                Sign in with Email
+              </button>
+              <div className="auth-or">OR</div>
+              <button
+                onClick={this.googleAuthSubmit}
+                className="google-auth-button"
+              >
+                {/* <img src={googleLogo} alt="Sign in with Google" /> */}
+                <span className="google-auth-button-">Sign in with Google</span>
+              </button>
+              {/* <img
             src={facebookButton}
             alt="Sign in with Facebook"
             onClick={this.facebookAuthSubmit}
           /> */}
-        </form>
-        <div className="sign-in-footer">
-          <span>
-            <Link to={ROUTES.RESET_PASSWORD}>Forgot Password?</Link>
-          </span>
-          <span>
-            New user? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-          </span>
+            </form>
+            <div className="sign-in-footer">
+              <span>
+                <Link to={ROUTES.RESET_PASSWORD}>Forgot Password?</Link>
+              </span>
+              <span>
+                New user? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     );
