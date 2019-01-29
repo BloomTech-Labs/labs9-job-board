@@ -184,19 +184,19 @@ class SignInFormUnconnected extends React.Component {
     const isInvalid = this.state.password === "" || this.state.email === "";
 
     return (
-      <div className="sign-in-view">
-        <div className="sign-in-container">
-          <div className="sign-in-content">
-            <h2 className="sign-in-heading">Sign In</h2>
-            <span className="sign-in-tagline">
+      <div className="auth-view sign-in-view">
+        <div className="auth-container">
+          <div className="auth-content">
+            <h2 className="auth-heading">Sign In</h2>
+            <span className="auth-tagline">
               Discover top talent. Meet your future employees.
             </span>
             <div className="auth-divider" />
-            <form className="sign-in-form" onSubmit={this.emailAuthSubmit}>
+            <form className="auth-form" onSubmit={this.emailAuthSubmit}>
               <input
                 type="text"
                 name="email"
-                className="sign-in-form-input"
+                className="auth-form-input"
                 onChange={this.changeHandler}
                 placeholder="Email"
                 value={this.state.email}
@@ -205,7 +205,7 @@ class SignInFormUnconnected extends React.Component {
               <input
                 type="password"
                 name="password"
-                className="sign-in-form-input"
+                className="auth-form-input"
                 onChange={this.changeHandler}
                 placeholder="Password"
                 value={this.state.password}
@@ -215,7 +215,7 @@ class SignInFormUnconnected extends React.Component {
                 <span>{this.state.error.message}</span>
               ) : null}
               <button
-                className={`sign-in-form-button${
+                className={`auth-form-button${
                   isInvalid ? "" : " not-disabled"
                 }`}
                 disabled={isInvalid}
@@ -231,7 +231,7 @@ class SignInFormUnconnected extends React.Component {
                 <span className="google-auth-button-">Sign in with Google</span>
               </button>
             </form>
-            <div className="sign-in-footer">
+            <div className="auth-footer sign-in-footer">
               <span>
                 <Link to={ROUTES.RESET_PASSWORD}>Forgot Password?</Link>
               </span>
