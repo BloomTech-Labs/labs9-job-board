@@ -11,23 +11,38 @@ $background: #f5f5f5;
 //Accent Colors
 $orange: #e89980;
 $teal: #7fcdb8;
+$dark-teal: #89b1bc;
 $blue: #90b0ba;
 $yellow: #e5cb95;
 $light-gray: #cecece;
 
-
-
-
-//Old Color Scheme
+// Old color scheme
 $color-theme: #4c67a1;
 $secondary-color: #283e4a;
 
 // lighter blue #0077B5
-
-
+$laptop: 1200px;
 $tablet: 800px;
 $phone: 500px;
 
+// App variables
+$app-background: $background;
+$navheight: 70px;
+
+// Auth variables
+$auth-divider: $blue;
+$auth-submit-bg: $orange;
+$auth-submit-text: $white;
+$auth-google-btn-bg: $white;
+$auth-change-view-bg: $teal;
+
+@mixin laptop {
+  $tablet: 800px;
+  @media (max-width: #{$laptop}) {
+    $phone: 500px;
+    @content;
+  }
+}
 
 @mixin tablet {
   @media (max-width: #{$tablet}) {
@@ -38,5 +53,13 @@ $phone: 500px;
 @mixin phone {
   @media (max-width: #{$phone}) {
     @content;
+  }
+}
+
+@mixin background-size($height) {
+  @if (calc(#{$height} - 0px) - 1024px) > 0px {
+    background-size: auto 100%;
+  } @else {
+    background-size: 100% auto;
   }
 }
