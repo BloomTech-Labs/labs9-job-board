@@ -196,6 +196,9 @@ class SignInFormUnconnected extends React.Component {
         <div className="sign-in-container">
           <div className="sign-in-content">
             <h2 className="sign-in-heading">Sign In</h2>
+            <span className="sign-in-tagline">
+              Discover top talent. Meet your future employees.
+            </span>
             <div className="auth-divider" />
             <form className="sign-in-form" onSubmit={this.emailAuthSubmit}>
               <input

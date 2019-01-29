@@ -9,21 +9,42 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: 0px -75px;
+  background-position: 0px 0px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+
+  @include tablet {
+    justify-content: center;
+  }
 
   .sign-in-container {
     width: 50%;
-    padding: 75px 0;
+    padding: 10px;
     display: flex;
     justify-content: center;
 
+    @include tablet {
+      width: 100%;
+    }
+
     .sign-in-content {
+      padding: 20px;
       width: 500px;
+      background: rgba(245, 245, 245, 0.8);
+      border-radius: 5px;
 
       h2.sign-in-heading {
         font-size: 3.6rem;
+        margin-bottom: 15px;
+
+        @include tablet {
+          color: $dark;
+        }
+      }
+
+      .sign-in-tagline {
+        font-size: 1.4rem;
       }
 
       .sign-in-form {
