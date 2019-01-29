@@ -28,9 +28,9 @@ $break-small: 645px;
 	// Parent for all card and purchase container
 	.checkout {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		padding: 20px;
-		width: 90%;
+		width: 100%;
 		justify-content: space-around;
 		background: #f5f5f5;
 		@media screen and (max-width: $break-small) {
@@ -43,6 +43,7 @@ $break-small: 645px;
 			flex-direction: column;
 			@media screen and (max-width: $break-small) {
 				align-items: center;
+				padding: 10px;
 			}
 
 			.billing-header {
