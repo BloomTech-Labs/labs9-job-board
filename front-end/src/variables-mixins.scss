@@ -16,11 +16,24 @@ $blue: #90b0ba;
 $yellow: #e5cb95;
 $light-gray: #cecece;
 
+<<<<<<< HEAD
+//Old Color Scheme
+=======
 // Old color scheme
+>>>>>>> 5776e4dcc53c9a8852782f84769b6de4a18b3539
 $color-theme: #4c67a1;
 $secondary-color: #283e4a;
 
 // lighter blue #0077B5
+<<<<<<< HEAD
+
+$laptop: 1000px;
+$tablet: 800px;
+$phone: 500px;
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+=======
 $laptop: 1200px;
 $tablet: 800px;
 $phone: 500px;
@@ -40,6 +53,7 @@ $auth-change-view-bg: $teal;
   $tablet: 800px;
   @media (max-width: #{$laptop}) {
     $phone: 500px;
+>>>>>>> 5776e4dcc53c9a8852782f84769b6de4a18b3539
     @content;
   }
 }
