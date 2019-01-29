@@ -15,19 +15,21 @@ $blue: #90b0ba;
 $yellow: #e5cb95;
 $light-gray: #cecece;
 
-
-
-
 //Old Color Scheme
 $color-theme: #4c67a1;
 $secondary-color: #283e4a;
 
 // lighter blue #0077B5
 
-
+$laptop: 1000px;
 $tablet: 800px;
 $phone: 500px;
 
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
 
 @mixin tablet {
   @media (max-width: #{$tablet}) {

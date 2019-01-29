@@ -16,20 +16,38 @@ class JobForm extends React.Component {
           <div className="post-job-top">
             <div className="input-container">
               <div className="top">
-                <input
-                  id="title"
-                  value={this.props.title}
-                  name="title"
-                  onChange={this.props.handleInput}
-                  placeholder="Job Title"
-                />
-                <input
-                  id="salary"
-                  value={this.props.salary}
-                  name="salary"
-                  onChange={this.props.handleInput}
-                  placeholder="Salary range"
-                />
+                <div className="title-and-input">
+                  <label
+                    className="input-titles"
+                    id="job-title-input-title"
+                    for="title"
+                  >
+                    Title
+                  </label>
+                  <input
+                    id="title"
+                    value={this.props.title}
+                    name="title"
+                    onChange={this.props.handleInput}
+                    placeholder="Job Title"
+                  />
+                </div>
+                <div className="title-and-input">
+                  <label
+                    className="input-titles"
+                    id="job-title-input-title"
+                    for="title"
+                  >
+                    Salary
+                  </label>
+                  <input
+                    id="salary"
+                    value={this.props.salary}
+                    name="salary"
+                    onChange={this.props.handleInput}
+                    placeholder="Salary range"
+                  />
+                </div>
               </div>
 
               <div className="middle">
@@ -90,21 +108,23 @@ class JobForm extends React.Component {
                 <h5>Active</h5>
               </div>
               <div className="requires-degree">
-                <input
-                  type="checkbox"
-                  name="college_degree"
-                  className="degree-checkbox"
-                  onChange={
-                    this.props.requiresDegreeToggle // value={this.props.requiresDegree}
-                  }
-                  id="checkbox-input"
-                  checked={this.props.college_degree}
-                />
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    name="college_degree"
+                    className="degree-checkbox"
+                    onChange={
+                      this.props.requiresDegreeToggle // value={this.props.requiresDegree}
+                    }
+                    id="checkbox-input"
+                    checked={this.props.college_degree}
+                  />
+                  <span class="slider round" />
+                </label>
                 <h5>This job requires a degree</h5>
               </div>
               <div className="categories">
                 <label>
-                  Category:
                   <select
                     name="category"
                     onChange={event => {
@@ -112,7 +132,7 @@ class JobForm extends React.Component {
                     }}
                     value={this.props.category}
                   >
-                    <option value="none">None</option>
+                    <option value="none">Category</option>
                     <option value="design">Design</option>
                     <option value="uxui">UX/UI</option>
                     <option value="programming">Programming</option>
