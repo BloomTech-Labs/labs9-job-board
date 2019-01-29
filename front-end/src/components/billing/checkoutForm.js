@@ -142,8 +142,8 @@ class CheckoutForm extends Component {
 				<div className="purchase-options">
 					<p className="billing-header">Billing</p>
 					<p className="billing-subheader">
-						This isn't your typical purchase, ths is going to be a{' '}
-						<span className="gotcha">game changer</span>
+						This isn't your typical purchase, ths is going to be a
+						<em className="gotcha">game changer</em>
 					</p>
 					<form className="options">
 						<label>
