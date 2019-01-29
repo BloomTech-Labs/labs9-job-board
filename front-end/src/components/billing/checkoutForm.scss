@@ -46,11 +46,14 @@ $break-small: 645px;
 				align-items: center;
 				padding: 10px;
 			}
+			.b-header {
+				display: flex;
+				justify-content: center;
 
-			.billing-header {
-				font-size: 2.8rem;
-				margin-bottom: 20px;
-				align-content: center;
+				.billing-header {
+					font-size: 2.8rem;
+					margin-bottom: 20px;
+				}
 			}
 
 			.billing-subheader {
