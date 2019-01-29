@@ -102,26 +102,31 @@ $break-small: 645px;
 				}
 			}
 
-			.purchase-button {
-				margin: 20px 0px;
-				background: $blue;
-				padding: 10px 20px;
-				font-size: 1.6rem;
-				color: $white;
-				border: none;
-				border-radius: 10px;
-				cursor: pointer;
-			}
+			.button-section {
+				display: flex;
+				justify-content: space-between;
 
-			.cancel-button {
-				margin: 20px 0px;
-				background: $orange;
-				padding: 10px 20px;
-				font-size: 1.6rem;
-				color: $white;
-				border: none;
-				border-radius: 10px;
-				cursor: pointer;
+				.purchase-button {
+					margin: 20px 0px;
+					background: $blue;
+					padding: 10px 20px;
+					font-size: 1.6rem;
+					color: $white;
+					border: none;
+					border-radius: 10px;
+					cursor: pointer;
+				}
+
+				.cancel-button {
+					margin: 20px 0px;
+					background: $orange;
+					padding: 10px 20px;
+					font-size: 1.6rem;
+					color: $white;
+					border: none;
+					border-radius: 10px;
+					cursor: pointer;
+				}
 			}
 
 			.powered-by-stripe {
