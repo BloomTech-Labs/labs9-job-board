@@ -138,7 +138,7 @@ class CheckoutForm extends Component {
 
 	render() {
 		return (
-			<div id="shop" className="checkout">
+			<div className="checkout">
 				<div className="purchase-options">
 					<p className="billing-header">Billing</p>
 					<p className="billing-subheader">
