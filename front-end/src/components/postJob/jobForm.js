@@ -17,11 +17,7 @@ class JobForm extends React.Component {
             <div className="input-container">
               <div className="top">
                 <div className="title-and-input">
-                  <label
-                    className="input-titles"
-                    id="job-title-input-title"
-                    for="title"
-                  >
+                  <label className="input-titles" for="title">
                     Title
                   </label>
                   <input
@@ -29,15 +25,11 @@ class JobForm extends React.Component {
                     value={this.props.title}
                     name="title"
                     onChange={this.props.handleInput}
-                    placeholder="Junior Civil Engineer"
+                    placeholder="Junior Web Developer"
                   />
                 </div>
                 <div className="title-and-input">
-                  <label
-                    className="input-titles"
-                    id="job-title-input-title"
-                    for="salary"
-                  >
+                  <label className="input-titles" for="salary">
                     Salary
                   </label>
                   <input
@@ -51,11 +43,7 @@ class JobForm extends React.Component {
               </div>
               <div className="bottom">
                 <div className="title-and-input">
-                  <label
-                    className="input-titles"
-                    id="job-title-input-title"
-                    for="top-skills"
-                  >
+                  <label className="input-titles" for="top-skills">
                     Top 5 Skills (largest on your posting) *separate with
                     commas*
                   </label>
@@ -68,11 +56,7 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label
-                    className="input-titles"
-                    id="job-title-input-title"
-                    for="additional-skills"
-                  >
+                  <label className="input-titles" for="additional-skills">
                     More Skills (medium on your posting) *separate with commas*
                   </label>
                   <input
@@ -84,37 +68,40 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label
-                    className="input-titles"
-                    id="job-title-input-title"
-                    for="familiar-with"
-                  >
-                    Familiar With
+                  <label className="input-titles" for="familiar-with">
+                    Remaining Skills (small on your posting) *separate with
+                    commas*
                   </label>
                   <input
                     id="familiar-with"
                     value={this.props.familiar}
                     name="familiar"
                     onChange={this.props.handleInput}
-                    placeholder="Remaining Skills (small on your posting) *separate with commas*"
+                    placeholder="Python, C, C++"
                   />
                 </div>
                 <div className="title-and-input">
+                  <label className="input-titles" for="description">
+                    Description
+                  </label>
                   <textarea
                     id="description"
                     value={this.props.description}
                     name="description"
                     onChange={this.props.handleInput}
-                    placeholder="Job Description"
+                    placeholder="We are looking for a Junior Developer."
                   />
                 </div>
                 <div className="title-and-input">
+                  <label className="input-titles" for="requirements">
+                    Requirements
+                  </label>
                   <textarea
                     id="requirements"
                     value={this.props.requirements}
                     name="requirements"
                     onChange={this.props.handleInput}
-                    placeholder="Job Requirements"
+                    placeholder="You must know how to..."
                   />
                 </div>
               </div>

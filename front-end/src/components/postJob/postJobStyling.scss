@@ -56,6 +56,11 @@
           font-size: 2rem;
         }
 
+        .input-titles {
+          color: black;
+          margin-bottom: 5px;
+        }
+
         .top {
           display: flex;
           justify-content: space-between;
@@ -85,24 +90,24 @@
           input {
             width: 100%;
           }
-        }
 
-        textarea {
-          background-color: #{$background};
-          width: 48%;
-          height: 280px;
-          border-radius: 3px;
-          margin-bottom: 50px;
-          padding: 10px 0 10px 10px;
-          text-align: top;
-          line-height: 15px;
-          font-size: 1.8rem;
-          font-family: sans-serif;
-          resize: none;
-          border: none;
+          textarea {
+            background-color: #{$background};
+            width: 100%;
+            height: 300px;
+            border-radius: 3px;
+            margin-bottom: 50px;
+            padding: 10px 0 10px 10px;
+            text-align: top;
+            line-height: 2.5rem;
+            font-size: 1.8rem;
+            font-family: sans-serif;
+            resize: none;
+            border: none;
 
-          &::placeholder {
-            color: #{$dark};
+            &::placeholder {
+              color: #{$dark};
+            }
           }
 
           @include tablet {
