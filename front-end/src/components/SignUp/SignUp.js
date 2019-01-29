@@ -158,7 +158,7 @@ class SignUpFormUnconnected extends React.Component {
       this.state.email === "";
 
     return (
-      <div className="sign-up-view">
+      <div className="auth-view sign-up-view">
         <div className="sign-up-container">
           <div className="sign-up-content">
             <h2 className="sign-up-heading">Sign Up</h2>

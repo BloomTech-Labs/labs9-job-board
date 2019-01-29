@@ -61,26 +61,26 @@ class ResetPasswordFormUnconnected extends React.Component {
     const invalidInput = this.state.email === "";
 
     return (
-      <div className="reset-view">
-        <div className="reset-container">
-          <div className="reset-content">
-            <h2 className="reset-heading">Reset Password</h2>
-            <span className="reset-tagline">
+      <div className="auth-view reset-view">
+        <div className="auth-container">
+          <div className="auth-content">
+            <h2 className="auth-heading">Reset Password</h2>
+            <span className="auth-tagline">
               Check your email after you submit the form.
             </span>
             <div className="auth-divider" />
-            <form className="reset-form" onSubmit={this.submitHandler}>
+            <form className="auth-form" onSubmit={this.submitHandler}>
               <input
                 type="text"
                 name="email"
-                className="reset-form-input"
+                className="auth-form-input"
                 onChange={this.changeHandler}
                 placeholder="Email"
                 value={this.state.email}
                 autoComplete="on"
               />
               <button
-                className={`reset-form-button${
+                className={`auth-form-button${
                   invalidInput ? "" : " not-disabled"
                 }`}
                 disabled={invalidInput}
@@ -91,7 +91,7 @@ class ResetPasswordFormUnconnected extends React.Component {
                 <span>{this.state.error.message}</span>
               ) : null}
             </form>
-            <div className="reset-footer">
+            <div className="auth-footer reset-footer">
               <span>
                 Remember your password? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
               </span>
