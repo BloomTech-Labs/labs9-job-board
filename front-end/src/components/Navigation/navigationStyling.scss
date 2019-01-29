@@ -5,7 +5,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	transition: background-color 1s ease 0s;
+	transition: background-color .5s ease 0s;
 	background-color: transparent;
 	height: 90px;
 
@@ -54,8 +54,8 @@
 
 .solid {
 	background-color: $Navbar;
-	transition: background-color 1s ease 0s;
-	box-shadow: 0 0 4px grey;
+	transition: background-color .5s ease 0s;
+	
 	width: 100%;
 	position: fixed;
 	top: 0;
