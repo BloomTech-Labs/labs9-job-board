@@ -1,5 +1,6 @@
 .post-job-container {
   color: black;
+  height: auto;
 
   .post-job-header {
     margin: 20px;
@@ -32,10 +33,10 @@
   }
 
   .job-form {
-    margin: 40px 5% 0;
-    padding: 5%;
+    margin: 40px 5% 40px;
+    padding: 2%;
     background-color: #{$white};
-    border-radius: 100px;
+    border-radius: 50px;
 
     .post-job-top {
       display: flex;
