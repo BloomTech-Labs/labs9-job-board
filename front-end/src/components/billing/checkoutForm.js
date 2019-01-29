@@ -187,10 +187,14 @@ class CheckoutForm extends Component {
 					/>
 					<p className="card-info-labels"> Expiration Date</p>
 					<CardExpiryElement
+						className="card-info-placeholder"
 						onReady={element => (this.expiryElement = element)}
 					/>
 					<p className="card-info-labels"> CVC </p>
-					<CardCVCElement onReady={element => (this.cvcElement = element)} />
+					<CardCVCElement
+						className="card-info-placeholder"
+						onReady={element => (this.cvcElement = element)}
+					/>
 					<button
 						className="purchase"
 						id="buttonCheckout"
