@@ -4,6 +4,14 @@ import { Link } from "react-router-dom";
 const ProfileInfo = props => {
   return (
     <div className="companyInfo">
+      <div className="menu-pass-bill">
+        <Link to="/billing" className="link-bill">
+          Billing
+        </Link>
+        <Link to="/" className="link-pass">
+          Change Password
+        </Link>
+      </div>
       <button onClick={props.openEditor} className="edit-btn edit">
         Edit Account
       </button>
@@ -11,14 +19,14 @@ const ProfileInfo = props => {
         <img src={props.company.avatar_image} className="avatar" />
         <h2>Your Account</h2>
       </div>
-      <div className="links-pass-bill">
+      {/* <div className="links-pass-bill">
         <Link to="/billing" className="link-to-pass-bill">
           Billing
         </Link>
         <Link to="/" className="link-to-pass-bill">
           Change Password
         </Link>
-      </div>
+      </div> */}
       <div className="all-company-info">
         <div className="company-text">
           <label>First Name</label>

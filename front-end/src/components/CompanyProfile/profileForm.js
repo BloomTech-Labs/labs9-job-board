@@ -5,6 +5,14 @@ import { Link } from "react-router-dom";
 const ProfileForm = props => {
   return (
     <div className="companyInfo">
+      <div className="menu-pass-bill">
+        <Link to="/billing" className="link-bill">
+          Billing
+        </Link>
+        <Link to="/" className="link-pass">
+          Change Password
+        </Link>
+      </div>
       <button onClick={props.openEditor} className="edit-btn edit">
         Edit Account
       </button>
@@ -71,11 +79,14 @@ const ProfileForm = props => {
             onChange={props.changeHandler}
           />
           <div className="btns-save-cancel">
-            <button type="submit" onClick={props.updateUser}>
-              {" "}
-              Save{" "}
+            <button
+              type="submit"
+              onClick={props.updateUser}
+              className="edit-btn save"
+            >
+              Save
             </button>
-            <button onClick={props.openEditor} className="right-button">
+            <button onClick={props.openEditor} className="edit-btn cancel">
               Cancel
             </button>
           </div>
