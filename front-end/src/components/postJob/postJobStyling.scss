@@ -1,4 +1,6 @@
 .post-job-container {
+  color: black;
+
   .post-job-header {
     font-size: 5rem;
     text-align: center;
@@ -121,8 +123,7 @@
     }
 
     .post-job-bottom {
-      font-size: 1.6rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
       width: 100%;
 
       @include phone {
@@ -132,6 +133,8 @@
 
       .top {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         h5 {
           margin-left: 3%;
@@ -168,113 +171,132 @@
           }
         }
 
-        .bottom {
+        .categories {
+          width: 33%;
           display: flex;
-          justify-content: space-around;
+          justify-content: center;
 
-          .post-job-buttons-container {
-            display: flex;
-            justify-content: center;
-            width: 33%;
+          select {
+            background-color: #{$background};
+            width: 50%;
+            height: 30px;
+            font-size: 1.5rem;
+          }
+        }
+      }
 
+      .bottom {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+
+        .post-job-buttons-container {
+          display: flex;
+          justify-content: space-evenly;
+          width: 100%;
+
+          @include phone {
+            justify-content: space-evenly;
+            width: 100%;
+          }
+
+          #cancel-button {
+            background-color: #{$orange};
+          }
+
+          #save-button {
+            background-color: #{$blue};
+          }
+
+          .post-job-buttons {
+            display: inline-block;
+            padding: 10px 5rem;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            transition: all 0.3s;
+            font-size: 2rem;
+
+            @include tablet {
+              font-size: 1.8rem;
+            }
             @include phone {
-              justify-content: space-evenly;
-              width: 100%;
+              padding: 1rem 2.5rem;
+              margin: 5% 0;
+              border-radius: 0.12rem;
+              font-size: 2rem;
             }
 
-            .post-job-buttons {
-              display: inline-block;
-              padding: 0.35rem 1.2rem;
-              border: 0.1em solid black;
-              margin: 0 10% 0 10%;
-              border-radius: 0.12rem;
-              background-color: rgb(95, 95, 95);
+            &:hover {
               color: white;
-              text-align: center;
-              transition: all 0.3s;
-              font-size: 2rem;
-
-              @include tablet {
-                font-size: 1.8rem;
-              }
-              @include phone {
-                padding: 1rem 2.5rem;
-                margin: 5% 0;
-                border-radius: 0.12rem;
-                font-size: 2rem;
-              }
-
-              &:hover {
-                color: white;
-                background-color: black;
-                border: 0.1em solid white;
-                cursor: pointer;
-              }
+              background-color: black;
+              cursor: pointer;
             }
           }
         }
-
-        /* ==========VVV ROUNDED SLIDER VVV========== */
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 60px;
-          height: 34px;
-        }
-
-        .switch input {
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgb(95, 95, 95);
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          -webkit-transition: 0.4s;
-          transition: 0.4s;
-        }
-
-        input:checked + .slider {
-          background-color: #{$orange};
-        }
-
-        input:focus + .slider {
-          box-shadow: 0 0 1px #{$orange};
-        }
-
-        input:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-        }
-
-        .slider.round {
-          border-radius: 34px;
-        }
-
-        .slider.round:before {
-          border-radius: 50%;
-        }
-        /* ==========^^^ ROUNDED SLIDER ^^^========== */
       }
+
+      /* ==========VVV ROUNDED SLIDER VVV========== */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(95, 95, 95);
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #{$orange};
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #{$orange};
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      /* ==========^^^ ROUNDED SLIDER ^^^========== */
     }
   }
 }

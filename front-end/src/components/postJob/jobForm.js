@@ -140,36 +140,39 @@ class JobForm extends React.Component {
                 <h5>This job requires a degree</h5>
               </div>
               <div className="categories">
-                <label>
-                  <select
-                    name="category"
-                    onChange={event => {
-                      this.props.categoryHandler(event.target);
-                    }}
-                    value={this.props.category}
-                  >
-                    <option value="none">Category</option>
-                    <option value="design">Design</option>
-                    <option value="uxui">UX/UI</option>
-                    <option value="programming">Programming</option>
-                    <option value="management">Management</option>
-                    <option value="devops">DevOps</option>
-                    <option value="writing">Writing</option>
-                    <option value="finance">Finance</option>
-                  </select>
-                </label>
+                <select
+                  name="category"
+                  onChange={event => {
+                    this.props.categoryHandler(event.target);
+                  }}
+                  value={this.props.category}
+                >
+                  <option value="none">Category</option>
+                  <option value="design">Design</option>
+                  <option value="uxui">UX/UI</option>
+                  <option value="programming">Programming</option>
+                  <option value="management">Management</option>
+                  <option value="devops">DevOps</option>
+                  <option value="writing">Writing</option>
+                  <option value="finance">Finance</option>
+                </select>
               </div>
             </div>
             <div className="bottom">
               <div className="post-job-buttons-container">
                 <button
                   className="post-job-buttons"
+                  id="cancel-button"
                   type="reset"
                   onClick={this.props.handleCancel}
                 >
                   Cancel
                 </button>
-                <button className="post-job-buttons" type="submit">
+                <button
+                  className="post-job-buttons"
+                  id="save-button"
+                  type="submit"
+                >
                   Save
                 </button>
               </div>
