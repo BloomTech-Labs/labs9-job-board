@@ -52,6 +52,10 @@
           }
         }
 
+        label {
+          font-size: 2rem;
+        }
+
         .top {
           display: flex;
           justify-content: space-between;
@@ -68,18 +72,19 @@
           }
         }
 
-        .middle {
+        .bottom {
           display: flex;
           flex-direction: column;
+
+          .title-and-input {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
 
           input {
             width: 100%;
           }
-        }
-
-        .bottom {
-          display: flex;
-          justify-content: space-between;
         }
 
         textarea {

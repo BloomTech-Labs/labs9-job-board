@@ -29,14 +29,14 @@ class JobForm extends React.Component {
                     value={this.props.title}
                     name="title"
                     onChange={this.props.handleInput}
-                    placeholder="Job Title"
+                    placeholder="Junior Civil Engineer"
                   />
                 </div>
                 <div className="title-and-input">
                   <label
                     className="input-titles"
                     id="job-title-input-title"
-                    for="title"
+                    for="salary"
                   >
                     Salary
                   </label>
@@ -45,49 +45,78 @@ class JobForm extends React.Component {
                     value={this.props.salary}
                     name="salary"
                     onChange={this.props.handleInput}
-                    placeholder="Salary range"
+                    placeholder="$85,000"
                   />
                 </div>
               </div>
-
-              <div className="middle">
-                <input
-                  id="top-skills"
-                  value={this.props.top_skills}
-                  name="top_skills"
-                  onChange={this.props.handleInput}
-                  placeholder="Top 5 Skills (largest on your posting) *separate with commas*"
-                />
-                <input
-                  id="additional-skills"
-                  value={this.props.add_skills}
-                  name="add_skills"
-                  onChange={this.props.handleInput}
-                  placeholder="More Skills (medium on your posting) *separate with commas*"
-                />
-                <input
-                  id="familiar-with"
-                  value={this.props.familiar}
-                  name="familiar"
-                  onChange={this.props.handleInput}
-                  placeholder="Remaining Skills (small on your posting) *separate with commas*"
-                />
-              </div>
               <div className="bottom">
-                <textarea
-                  id="description"
-                  value={this.props.description}
-                  name="description"
-                  onChange={this.props.handleInput}
-                  placeholder="Job Description"
-                />
-                <textarea
-                  id="requirements"
-                  value={this.props.requirements}
-                  name="requirements"
-                  onChange={this.props.handleInput}
-                  placeholder="Job Requirements"
-                />
+                <div className="title-and-input">
+                  <label
+                    className="input-titles"
+                    id="job-title-input-title"
+                    for="top-skills"
+                  >
+                    Top 5 Skills (largest on your posting) *separate with
+                    commas*
+                  </label>
+                  <input
+                    id="top-skills"
+                    value={this.props.top_skills}
+                    name="top_skills"
+                    onChange={this.props.handleInput}
+                    placeholder="HTML, CSS, JavaScript"
+                  />
+                </div>
+                <div className="title-and-input">
+                  <label
+                    className="input-titles"
+                    id="job-title-input-title"
+                    for="additional-skills"
+                  >
+                    More Skills (medium on your posting) *separate with commas*
+                  </label>
+                  <input
+                    id="additional-skills"
+                    value={this.props.add_skills}
+                    name="add_skills"
+                    onChange={this.props.handleInput}
+                    placeholder="React, JSON, JSX"
+                  />
+                </div>
+                <div className="title-and-input">
+                  <label
+                    className="input-titles"
+                    id="job-title-input-title"
+                    for="familiar-with"
+                  >
+                    Familiar With
+                  </label>
+                  <input
+                    id="familiar-with"
+                    value={this.props.familiar}
+                    name="familiar"
+                    onChange={this.props.handleInput}
+                    placeholder="Remaining Skills (small on your posting) *separate with commas*"
+                  />
+                </div>
+                <div className="title-and-input">
+                  <textarea
+                    id="description"
+                    value={this.props.description}
+                    name="description"
+                    onChange={this.props.handleInput}
+                    placeholder="Job Description"
+                  />
+                </div>
+                <div className="title-and-input">
+                  <textarea
+                    id="requirements"
+                    value={this.props.requirements}
+                    name="requirements"
+                    onChange={this.props.handleInput}
+                    placeholder="Job Requirements"
+                  />
+                </div>
               </div>
             </div>
           </div>
