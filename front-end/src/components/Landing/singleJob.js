@@ -75,16 +75,15 @@ class SingleJob extends Component {
             <div className="job-column two">
               <label>Job Description:</label>
               <p>{this.state.job.description}</p>
-              {this.state.job.college_degree === false ? (
-                <p>No degree required</p>
-              ) : (
-                <p>College degree required</p>
-              )}
+              <label>Degree Required:</label>
+              {this.state.job.college_degree === false ? <p>No</p> : <p>Yes</p>}
               <button className="apply-btn" onClick={() => this.clickHandler()}>
                 Apply
               </button>
-              <i className="fa fa-envelope-o" onClick={this.shareHandler} />
-              <p onClick={this.reportHandler}>Report</p>
+              <div className="share">
+                <i className="fa fa-envelope-o" onClick={this.shareHandler} />
+                <h3 onClick={this.reportHandler}>Report</h3>
+              </div>
             </div>
           </div>
         </div>
