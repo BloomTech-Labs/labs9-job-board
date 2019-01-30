@@ -21,170 +21,170 @@ $light-gray: #cecece;
 $break-small: 645px;
 
 .strikethrough {
-  text-decoration: line-through;
+	text-decoration: line-through;
 }
 
 //Header
 .billing-contaner {
-  .header {
-    .main-header {
-      .billing-header {
-        font-size: 2.8rem;
-        margin-bottom: 20px;
-      }
-    }
-    .sub-header {
-      display: flex;
-      justify-content: center;
+	.header {
+		.main-header {
+			.billing-header {
+				font-size: 2.8rem;
+				margin-bottom: 20px;
+			}
+		}
+		.sub-header {
+			display: flex;
+			justify-content: center;
 
-      .billing-subheader {
-        font-size: 1.8rem;
-        margin-bottom: 12px;
+			.billing-subheader {
+				font-size: 1.8rem;
+				margin-bottom: 12px;
 
-        .gotcha {
-          color: red;
-        }
-      }
-    }
-  }
+				.gotcha {
+					color: red;
+				}
+			}
+		}
+	}
 }
 
 // Parent for all card and purchase container
 .checkout {
-  display: flex;
-  padding: 20px;
-  border-radius: 50px;
-  width: 100%;
-  background: #{$white};
-  justify-content: space-evenly;
+	display: flex;
+	padding: 20px;
+	border-radius: 50px;
+	width: 100%;
+	background: #{$white};
+	//   justify-content: space-evenly;
 
-  .left-side {
-    border: 1px solid red;
-    // Purchase options starts
-    .purchase-options {
-      display: flex;
-      flex-direction: column;
-      @media screen and (max-width: $break-small) {
-        align-items: center;
-        padding: 10px;
-      }
+	.left-side {
+		border: 1px solid red;
+		// Purchase options starts
+		.purchase-options {
+			display: flex;
+			flex-direction: column;
+			@media screen and (max-width: $break-small) {
+				align-items: center;
+				padding: 10px;
+			}
 
-      .options {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 18px;
-        padding: 12px;
+			.options {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				margin: 18px;
+				padding: 12px;
 
-        @media screen and (max-width: $break-small) {
-          align-items: center;
-        }
+				@media screen and (max-width: $break-small) {
+					align-items: center;
+				}
 
-        label {
-          font-size: 1.6rem;
-          padding: 5px;
-          margin: 5px;
-        }
-      }
-    }
+				label {
+					font-size: 1.6rem;
+					padding: 5px;
+					margin: 5px;
+				}
+			}
+		}
 
-    // Card Info begins
-    .card-info {
-      display: flex;
-      flex-direction: column;
-      width: 17%;
-      margin: 25px;
-      padding: 17px;
-      @media screen and (max-width: $break-small) {
-        width: 100%;
-        margin-top: 0px;
-        align-items: center;
-      }
+		// Card Info begins
+		.card-info {
+			display: flex;
+			flex-direction: column;
+			width: 17%;
+			margin: 25px;
+			padding: 17px;
+			@media screen and (max-width: $break-small) {
+				width: 100%;
+				margin-top: 0px;
+				align-items: center;
+			}
 
-      .card-info-labels {
-        display: flex;
-        font-size: 1.6rem;
-        padding-top: 20px;
+			.card-info-labels {
+				display: flex;
+				font-size: 1.6rem;
+				padding-top: 20px;
 
-        .card-info-placeholder-cnum {
-          font-size: 1.4rem;
-        }
-      }
+				.card-info-placeholder-cnum {
+					font-size: 1.4rem;
+				}
+			}
 
-      .card-info-placeholder-exp {
-        font-size: 1.4rem;
-      }
+			.card-info-placeholder-exp {
+				font-size: 1.4rem;
+			}
 
-      .card-info-placeholder-cvc {
-        font-size: 1.4rem;
-      }
+			.card-info-placeholder-cvc {
+				font-size: 1.4rem;
+			}
 
-      .button-section {
-        display: flex;
-        justify-content: space-between;
+			.button-section {
+				display: flex;
+				justify-content: space-between;
 
-        .purchase-button {
-          margin: 20px;
-          background: $blue;
-          padding: 10px 20px;
-          font-size: 1.6rem;
-          color: $white;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-        }
+				.purchase-button {
+					margin: 20px;
+					background: $blue;
+					padding: 10px 20px;
+					font-size: 1.6rem;
+					color: $white;
+					border: none;
+					border-radius: 10px;
+					cursor: pointer;
+				}
 
-        .cancel-button {
-          margin: 20px 0px;
-          background: $orange;
-          padding: 10px 20px;
-          font-size: 1.6rem;
-          color: $white;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-        }
-      }
+				.cancel-button {
+					margin: 20px 0px;
+					background: $orange;
+					padding: 10px 20px;
+					font-size: 1.6rem;
+					color: $white;
+					border: none;
+					border-radius: 10px;
+					cursor: pointer;
+				}
+			}
 
-      .powered-by-stripe {
-        align-self: center;
-        margin: 10px;
-      }
-    }
-  }
+			.powered-by-stripe {
+				align-self: center;
+				margin: 10px;
+			}
+		}
+	}
 
-  .right-side {
-    border: 1px solid blue;
+	.right-side {
+		border: 1px solid blue;
 
-    //Balance of job credits
-    .balance-container {
-    }
+		//Balance of job credits
+		.balance-container {
+		}
 
-    //Jobs Purchased Postings
-    .billing-jobs {
-      width: 100%;
+		//Jobs Purchased Postings
+		.billing-jobs {
+			width: 100%;
 
-      .job-links {
-        display: flex;
-        margin: 0 10%;
-        font-size: 2rem;
+			.job-links {
+				display: flex;
+				margin: 0 10%;
+				font-size: 2rem;
 
-        .billing-job {
-          font-size: 2rem;
-          padding-right: 3%;
-          width: 80%;
-        }
+				.billing-job {
+					font-size: 2rem;
+					padding-right: 3%;
+					width: 80%;
+				}
 
-        @media screen and (max-width: $break-small) {
-          flex-direction: row;
-          justify-content: center;
-        }
-      }
-      .job-links a {
-        width: 30%;
-        display: flex;
-        justify-content: start;
-      }
-    }
-  }
+				@media screen and (max-width: $break-small) {
+					flex-direction: row;
+					justify-content: center;
+				}
+			}
+			.job-links a {
+				width: 30%;
+				display: flex;
+				justify-content: start;
+			}
+		}
+	}
 }
