@@ -44,7 +44,9 @@ class ProfilePic extends Component {
             className="profile-pic-button"
             onClick={this.uploadPhoto.bind(this)}
           >
-            Add Image +
+            <span>Add Image</span>
+            <span className="optional">(optional)</span>
+            <span>+</span>
           </button>
         )}
       </div>
