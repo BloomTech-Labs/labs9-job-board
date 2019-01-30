@@ -134,31 +134,31 @@ $break-small: 645px;
 					justify-content: space-between;
 
 					.purchase-button {
-						margin: 20px;
+						margin: 20px 25px;
 						background: #{$orange};
-						padding: 10px 20px;
-						font-size: 1.6rem;
+						padding: 10px 5rem;
+						font-size: 1.8rem;
 						color: $white;
 						border: none;
-						border-radius: 10px;
+						border-radius: 5px;
 						cursor: pointer;
 					}
 
 					.cancel-button {
-						margin: 20px 0px;
+						margin: 20px 25px;
 						background: #{$blue};
-						padding: 10px 20px;
-						font-size: 1.6rem;
+						padding: 10px 5rem;
+						font-size: 1.8rem;
 						color: $white;
 						border: none;
-						border-radius: 10px;
+						border-radius: 5px;
 						cursor: pointer;
 					}
 				}
 
 				.powered-by-stripe {
 					align-self: center;
-					margin: 10px;
+					margin: 20px;
 				}
 			}
 		}
