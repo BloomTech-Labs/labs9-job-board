@@ -23,6 +23,7 @@
     }
     .pic-account h1 {
       font-size: 5rem;
+      color: #{$dark};
     }
 
     .avatar {
@@ -53,6 +54,7 @@
         font-size: 1.8rem;
         text-align: start;
         padding: 10px 3%;
+        color: #{$dark};
       }
 
       label {
@@ -61,6 +63,7 @@
         font-size: 2rem;
         width: 100%;
         text-align: left;
+        color: #{$dark};
       }
 
       .company-border {
@@ -74,10 +77,11 @@
         font-size: 1.8rem;
         text-align: start;
         padding: 10px 3%;
-        color: #{$dark};
+        color: #{$light-gray};
 
         &:focus {
           outline-color: #{$blue};
+          color: #{$dark};
         }
       }
 
@@ -88,10 +92,35 @@
         text-align: start;
         padding: 10px 3%;
         font-family: "Roboto", sans-serif;
-        color: #{$dark};
+        color: #{$light-gray};
 
         &:focus {
           outline-color: #{$blue};
+          color: #{$dark};
+        }
+      }
+
+      .btns-save-cancel {
+        margin: 50px 10px 0 10px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-size: 1.6rem;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .save {
+          width: 45%;
+          background-color: #{$auth-submit-bg};
+
+          &:hover {
+            background-color: #{$auth-submit-bg-hover};
+          }
+        }
+        .cancel {
+          width: 45%;
+          background-color: #{$Navbar};
         }
       }
     }
@@ -101,112 +130,12 @@
       border: none;
       cursor: pointer;
     }
-
-    // .update-profile-form {
-    //   background-color: white;
-    //   width: 70%;
-    //   border-radius: 30px;
-    //   display: flex;
-    //   flex-direction: row;
-    //   padding: 16px 2%;
-    //   margin: 80px 0 20px 0;
-
-    //   .edit-profile-info {
-    //     width: 50%;
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: flex-start;
-    //     border-right: 2px solid #{$background};
-
-    //     input {
-    //       background-color: #{$background};
-    //       width: 90%;
-    //       text-align: start;
-    //       padding: 3px 3%;
-    //       border-radius: 7px;
-    //       font-size: 1.8rem;
-
-    //       &:focus {
-    //         background-color: #{$blue};
-    //         color: white;
-    //       }
-    //     }
-    //   }
-
-    //   // .edit-company-info {
-    //   //   width: 50%;
-    //   //   display: flex;
-    //   //   flex-direction: column;
-    //   //   align-items: flex-start;
-    //   //   padding-left: 2%;
-
-    //   //   input {
-    //   //     background-color: #{$background};
-    //   //     width: 100%;
-    //   //     text-align: start;
-    //   //     padding: 3px 3%;
-    //   //     border-radius: 7px;
-    //   //     font-size: 3rem;
-
-    //   //     &:focus {
-    //   //       background-color: #{$blue};
-    //   //       color: white;
-    //   //     }
-    //   //   }
-
-    //   //   textarea {
-    //   //     background-color: #{$background};
-    //   //     width: 100%;
-    //   //     text-align: start;
-    //   //     border-radius: 7px;
-    //   //     font-size: 1.8rem;
-    //   //     color: #{$dark};
-
-    //   //     &:focus {
-    //   //       background-color: #{$blue};
-    //   //       color: white;
-    //   //     }
-    //   //   }
-
-    //   //   .btns-save-cancel {
-    //   //     display: flex;
-    //   //     width: 100%;
-    //   //     justify-content: space-around;
-
-    //   //     .edit-btn {
-    //   //       margin: 90px 0 0 0;
-    //   //       border-radius: 10px;
-    //   //       border: none;
-    //   //       color: white;
-    //   //       font-size: 1.8rem;
-    //   //       cursor: pointer;
-    //   //     }
-    //   //     .save {
-    //   //       background-color: #{$auth-submit-bg};
-    //   //       width: 40%;
-    //   //     }
-
-    //   //     .cancel {
-    //   //       background-color: #{$Navbar};
-    //   //       width: 40%;
-    //   //     }
-    //   //   }
-    //   // }
-
-    //   label {
-    //     padding: 15px 0 5px 3%;
-    //     font-weight: bold;
-    //     font-size: 2rem;
-    //     width: 100%;
-    //     text-align: left;
-    //   }
-    // }
   }
 
   .edit-btn {
     margin: 5px 0;
     padding: 10px 5rem;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     color: white;
     font-size: 1.6rem;
