@@ -57,11 +57,21 @@
           border-radius: 5px;
           font-size: 1.8rem;
           outline-color: $blue;
+          background-color: $white;
           color: $dark;
+          position: relative;
 
           &::placeholder {
             color: $light-gray;
           }
+        }
+
+        .match {
+          color: $teal;
+        }
+
+        .noMatch {
+          color: $orange;
         }
 
         .auth-error {
@@ -75,12 +85,17 @@
           width: 100%;
           padding: 10px;
           margin: 10px 0;
-          background: $auth-submit-bg;
+          background: $disabled-orange;
           border: none;
           border-radius: 5px;
           color: $auth-submit-text;
           outline-color: $blue;
           font-size: 1.8rem;
+          transition: all 0.5s ease;
+        }
+
+        .active {
+          background: $auth-submit-bg;
           transition: all 0.5s ease;
 
           &:hover {

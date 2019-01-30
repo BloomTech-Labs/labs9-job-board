@@ -111,6 +111,13 @@ class SignUpFormUnconnected extends React.Component {
       this.state.password === "" ||
       this.state.email === "";
 
+    const passwordMatch =
+      this.state.password === this.state.confirmPassword &&
+      this.state.password !== "";
+
+    const passwordNotEmpty =
+      this.state.password !== "" && this.state.confirmPassword !== "";
+
     return (
       <div className="auth-view sign-up-view">
         <div className="auth-container">
@@ -143,7 +150,13 @@ class SignUpFormUnconnected extends React.Component {
               <input
                 type="password"
                 name="confirmPassword"
-                className="auth-form-input"
+                className={`auth-form-input${
+                  passwordNotEmpty
+                    ? passwordMatch
+                      ? " match"
+                      : " noMatch"
+                    : ""
+                }`}
                 onChange={this.changeHandler}
                 placeholder="Confirm Password"
                 value={this.state.confirmPassword}
@@ -153,9 +166,7 @@ class SignUpFormUnconnected extends React.Component {
                 <span className="auth-error">{this.state.error.message}</span>
               ) : null}
               <button
-                className={`auth-form-button${
-                  isInvalid ? "" : " not-disabled"
-                }`}
+                className={`auth-form-button${isInvalid ? "" : " active"}`}
                 disabled={isInvalid}
                 type="submit"
               >

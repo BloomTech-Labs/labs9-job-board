@@ -147,9 +147,7 @@ class SignInFormUnconnected extends React.Component {
                 <span className="auth-error">{this.state.error.message}</span>
               ) : null}
               <button
-                className={`auth-form-button${
-                  isInvalid ? "" : " not-disabled"
-                }`}
+                className={`auth-form-button${isInvalid ? "" : " active"}`}
                 disabled={isInvalid}
                 type="submit"
               >

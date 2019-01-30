@@ -5,7 +5,7 @@ $dark: #646464;
 $black: #000000;
 
 //Font
-$font: 'Roboto', sans-serif;
+$font: "Roboto", sans-serif;
 
 //NavBar Background:
 $Navbar: #444444;
@@ -23,6 +23,7 @@ $blue: #90b0ba;
 $dark-blue: darken($blue, 10%);
 $yellow: #e5cb95;
 $light-gray: #cecece;
+$disabled-orange: $light-gray;
 
 // Old color scheme
 $color-theme: #4c67a1;
