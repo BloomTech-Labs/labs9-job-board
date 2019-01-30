@@ -5,7 +5,7 @@ import "./App.scss";
 import { withFirebase } from "./components/Firebase";
 
 import Routes from "./components/Routes/Routes.js";
-// import Navigation from "./components/Navigation/Navigation";
+
 
 class App extends Component {
   constructor(props) {
@@ -34,7 +34,6 @@ class App extends Component {
         <div className="App">
           {/* <Navigation authUser={this.state.authUser} /> */}
           <Routes className="routes" authUser={this.state.authUser} />
-          {/* <Footer /> */}
         </div>
       </Router>
     );
