@@ -45,9 +45,6 @@
         flex-direction: column;
         width: 100%;
 
-        @include tablet {
-          width: 75%;
-        }
         @include phone {
           width: 70%;
         }
@@ -124,9 +121,6 @@
             }
           }
 
-          @include tablet {
-            font-size: 1.6rem;
-          }
           @include phone {
             font-size: 1.5rem;
           }
@@ -175,11 +169,6 @@
           .degree-checkbox {
             width: 20px;
             height: 20px;
-
-            @include tablet {
-              width: 20px;
-              height: 20px;
-            }
           }
         }
 
@@ -236,9 +225,6 @@
             transition: all 0.3s;
             font-size: 2rem;
 
-            @include tablet {
-              font-size: 1.8rem;
-            }
             @include phone {
               padding: 1rem 2.5rem;
               margin: 5% 0;
