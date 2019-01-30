@@ -35,59 +35,16 @@ class SignUpFormUnconnected extends React.Component {
   googleAuthSubmit = event => {
     event.preventDefault();
 
-    let user_uid, email;
-
-    this.props.firebase
-      .doSignInWithGooglePopUp()
-      .then(authUser => {
-        console.log("authUser", authUser);
-        if (authUser.user && authUser.user.uid && authUser.user.email) {
-          user_uid = authUser.user.uid;
-          email = authUser.user.email;
-
-          // checks if in login table
-          return axios.post(`${URL}/api/auth/login`, {
-            user_uid,
-            email
-          });
-        } else {
-          this.props.history.push(ROUTES.LANDING);
-          throw "break promise";
-        }
-      })
-      .then(response => {
-        console.log("firstlogin", response);
-        if (response.data.action === "check user table") {
-          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
-            user_uid,
-            email
-          });
-        } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
-          throw "break promise";
-        }
-      })
-      .then(response => {
-        console.log("users table", response);
-        if (response.data.action === "redirect to landing") {
-          this.props.history.push(ROUTES.LANDING);
-        } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.firebase.doSignInWithGooglePopUp().then(authUser => {
+      console.log("authUser", authUser);
+      if (authUser.user && authUser.user.uid && authUser.user.email) {
+        this.props.history.push(ROUTES.LANDING);
+      } else {
+        this.setState({
+          error: "Error authenticating through Google. Please try again."
+        });
+      }
+    });
   };
 
   emailAuthSubmit = async event => {

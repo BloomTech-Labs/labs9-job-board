@@ -45,12 +45,15 @@ class NewProfileForm extends Component {
 
     axios
       .post(`${url}/api/users`, newUser)
-      .then(res => {
-        console.log("ADDING USER", res);
-        this.props.history.push("");
+      .then(response => {
+        if (response) {
+          this.props.closeNewProfileModal();
+        } else {
+          throw new Error();
+        }
       })
       .catch(error => {
-        console.log("ERROR", error);
+        alert("Error adding user to database");
       });
   };
 
@@ -63,62 +66,83 @@ class NewProfileForm extends Component {
   };
 
   render() {
-    if (this.props.authUser) {
-      console.log(this.state.uid);
-    }
+    // if (this.props.authUser) {
+    //   console.log(this.state.uid);
+    // }
 
     return (
-      <div className="full-page">
-        <form className="new-user-form" onSubmit={this.addNew}>
-          <h2> Tell us about you! </h2>
+      <div className="new-profile-view">
+        <div className="new-profile-container">
+          <div
+            className="close-button"
+            onClick={() => this.props.closeNewProfileModal()}
+          >
+            x
+          </div>
+          <h2>New Account Info</h2>
+          <h4>Tell us about you.</h4>
+          <div className="header-divider" />
           <ProfilePic setUrl={this.setUrl} />
-          <p className="required-field">* indicates required fields</p>
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            placeholder="*First Name"
-            value={this.state.firstName}
-            name="firstName"
-          />
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            placeholder="*Last Name"
-            value={this.state.lastName}
-            name="lastName"
-          />
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            placeholder="*Email"
-            value={this.state.email}
-            name="email"
-          />
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            placeholder="*Company Name"
-            value={this.state.companyName}
-            name="companyName"
-          />
-          <textarea
-            type="text"
-            onChange={this.handleInputChange}
-            placeholder="*Company Summary"
-            value={this.state.companySummary}
-            name="companySummary"
-          />
-          <input
-            type="text"
-            onChange={this.handleInputChange}
-            placeholder="*Application Inbox"
-            value={this.state.applicationInbox}
-            name="applicationInbox"
-          />
-          <button className="save-button" type="submit">
-            Save
-          </button>
-        </form>
+
+          <form className="new-user-form" onSubmit={this.addNew}>
+            <input
+              type="text"
+              onChange={this.handleInputChange}
+              placeholder="First Name"
+              value={this.state.firstName}
+              name="firstName"
+              className="new-user-input-half"
+            />
+            <input
+              type="text"
+              onChange={this.handleInputChange}
+              placeholder="Last Name"
+              value={this.state.lastName}
+              name="lastName"
+              className="new-user-input-half"
+            />
+            <input
+              type="text"
+              onChange={this.handleInputChange}
+              placeholder="Email"
+              value={this.state.email}
+              name="email"
+            />
+            <input
+              type="text"
+              onChange={this.handleInputChange}
+              placeholder="Company Name"
+              value={this.state.companyName}
+              name="companyName"
+            />
+            <textarea
+              type="text"
+              onChange={this.handleInputChange}
+              placeholder="Company Summary"
+              value={this.state.companySummary}
+              name="companySummary"
+            />
+            <input
+              type="text"
+              onChange={this.handleInputChange}
+              placeholder="Application Inbox"
+              value={this.state.applicationInbox}
+              name="applicationInbox"
+            />
+            <div className="button-container">
+              <button className="new-profile-button save-button" type="submit">
+                Save
+              </button>
+              <button
+                className="new-profile-button cancel-button"
+                type="button"
+                onClick={() => this.props.closeNewProfileModal()}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

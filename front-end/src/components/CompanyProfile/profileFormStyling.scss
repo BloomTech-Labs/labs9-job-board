@@ -93,6 +93,10 @@
       padding: 100px 80px;
       border: none;
       cursor: pointer;
+
+      span {
+        display: block;
+      }
     }
 
     .update-profile-form {
@@ -237,13 +241,5 @@
       width: 20%;
       text-align: end;
     }
-
-    // .link-bill {
-    //   width: 16%;
-    // }
-    // .link-pass {
-    //   width: 16%;
-    //   margin-left: 2%;
-    // }
   }
 }

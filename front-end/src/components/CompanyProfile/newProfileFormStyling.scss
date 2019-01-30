@@ -1,89 +1,162 @@
-.full-page {
+.new-profile-view {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
-  background-color: rgba(82, 82, 82, 0.836);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  background-color: $modal-bg;
 
-  .new-user-form {
-    height: 100%;
+  .new-profile-container {
+    background: rgba(245, 245, 245, 0.9);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 30px 10px;
+    padding: 20px;
     display: flex;
     align-items: center;
-    margin-top: 5%;
-    padding: 0 5% 0 5%;
-    flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
 
-    .required-field{
-      font-size: 1.6rem;
-      color: white;
+    .close-button {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      z-index: 2000;
+      font-size: 2.4rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    h2 {
+      font-size: 3.6rem;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    h4 {
+      font-size: 1.4rem;
+      width: 100%;
+    }
+
+    .header-divider {
+      width: 100%;
+      height: 4px;
+      background: $auth-divider;
+      margin: 15px 0;
     }
 
     .profile-pic-button {
       padding: 30px;
       margin: 10px;
-      color: rgb(82, 82, 82);
+      color: $dark;
       background: white;
       cursor: pointer;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       border-radius: 50%;
       height: 170px;
       width: 170px;
-      border: 2px solid rgb(82, 82, 82);
+      border: none;
+      position: relative;
+
+      span {
+        display: block;
+      }
+
+      .optional {
+        font-size: 1.2rem;
+      }
     }
 
     .profile-pic {
+      height: 170px;
+      width: 170px;
+      object-fit: cover;
       border-radius: 50%;
     }
+  }
 
-    h2 {
-      font-size: 2.8rem;
-      padding-bottom: 20px;
-      color: whitesmoke;
-      font-weight: bold;
-      width: 100%;
+  .new-user-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .required-field {
+      font-size: 1.6rem;
+      color: white;
     }
 
     input {
-      width: 50%;
-      font-size: 1.8rem;
-      justify-content: center;
-      margin-bottom: 10px;
-      padding: 10px 0 10px 10px;
-      border: 2px solid rgb(82, 82, 82);
-      border-radius: 25px;
+      width: 100%;
+      padding: 15px 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.4rem;
     }
 
     textarea {
-      width: 50%;
+      width: 100%;
       min-height: 30px;
       height: 150px;
-      border-radius: 25px;
-      padding: 15px 5px 15px 10px;
+      border-radius: 5px;
+      border: none;
+      padding: 15px 10px;
       text-align: top;
-      line-height: 15px;
-      font-size: 1.8rem;
-      font-family: sans-serif;
+      font-size: 1.4rem;
+      margin: 10px 0;
       resize: none;
-      line-height: 1.25;
-      border: 2px solid rgb(82, 82, 82);
     }
 
-    .save-button {
-      padding: 10px;
-      width: 150px;
-      height: 50px;
-      color: whitesmoke;
-      background: rgba(192, 2, 2, 0.788);
-      border-radius: 25px;
-      border: none;
-      font-size: 1.8rem;
-      font-weight: bold;
-      cursor: pointer;
+    .button-container {
+      width: 100%;
+      display: flex;
+
+      .new-profile-button {
+        margin-top: 10px;
+        padding: 10px;
+        color: $white;
+        width: 100%;
+        border-radius: 5px;
+        border: none;
+        font-size: 1.8rem;
+      }
+
+      .save-button {
+        background: $orange;
+        margin-right: 10px;
+        transition: all 0.5s ease;
+
+        &:hover {
+          background: $dark-orange;
+          transition: all 0.5s ease;
+        }
+      }
+
+      .cancel-button {
+        background: $blue;
+        margin-left: 10px;
+        transition: all 0.5s ease;
+
+        &:hover {
+          background: $dark-blue;
+          transition: all 0.5s ease;
+        }
+      }
     }
   }
 }
