@@ -92,9 +92,9 @@ $break-small: 645px;
 		.card-info {
 			display: flex;
 			flex-direction: column;
-			width: 17%;
+			width: 55%;
 			margin: 25px;
-			padding: 17px;
+			padding: 36px;
 			@media screen and (max-width: $break-small) {
 				width: 100%;
 				margin-top: 0px;
