@@ -9,7 +9,7 @@ import Search from "./search";
 
 import Categories from "./categories";
 import Header from "./header";
-import LoadingBar from "../../images/loading-bars.svg";
+import LoadingBar from "../../images/design/png/loading-bar.svg";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -102,7 +102,7 @@ class JobsContainer extends Component {
           />
         </div>
         {this.state.fetching ? (
-          <img src={LoadingBar} alt="loading" />
+          <img  className = 'loading-bar' src={LoadingBar} alt="loading" />
         ) : this.state.jobs.length ? (
           <JobList
             jobs={this.state.search ? this.state.searchJobs : this.state.jobs}
@@ -110,7 +110,7 @@ class JobsContainer extends Component {
         ) : this.state.error ? (
           <div>Error retrieving jobs</div>
         ) : (
-          <div>No results found</div>
+          <div className = 'no-results'>No results found</div>
         )}
       </div>
     );
