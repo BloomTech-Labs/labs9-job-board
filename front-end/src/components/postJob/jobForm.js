@@ -49,8 +49,7 @@ class JobForm extends React.Component {
               <div className="bottom">
                 <div className="title-and-input">
                   <label className="input-titles" for="top-skills">
-                    Top 5 Skills (largest on your posting) *separate with
-                    commas*
+                    Top 5 Skills *separate with commas*
                   </label>
                   <input
                     id="top-skills"
@@ -62,7 +61,7 @@ class JobForm extends React.Component {
                 </div>
                 <div className="title-and-input">
                   <label className="input-titles" for="additional-skills">
-                    More Skills (medium on your posting) *separate with commas*
+                    More Skills *separate with commas*
                   </label>
                   <input
                     id="additional-skills"
@@ -74,8 +73,7 @@ class JobForm extends React.Component {
                 </div>
                 <div className="title-and-input">
                   <label className="input-titles" for="familiar-with">
-                    Remaining Skills (small on your posting) *separate with
-                    commas*
+                    Remaining Skills *separate with commas*
                   </label>
                   <input
                     id="familiar-with"
