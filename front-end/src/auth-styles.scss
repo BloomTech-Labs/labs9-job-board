@@ -79,6 +79,7 @@
           border: none;
           border-radius: 5px;
           color: $auth-submit-text;
+          outline-color: $blue;
           font-size: 1.8rem;
           transition: all 0.5s ease;
 
@@ -98,6 +99,7 @@
           background-position: 10px 5px;
           background-color: $auth-google-btn-bg;
           color: $auth-google-btn-text;
+          outline-color: $blue;
           font-size: 1.8rem;
           display: flex;
           align-items: center;
