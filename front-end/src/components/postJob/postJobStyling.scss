@@ -1,9 +1,12 @@
 .post-job-container {
   color: black;
   height: auto;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
 
   .post-job-header {
-    margin: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -15,28 +18,23 @@
     }
 
     hr {
-      border: 0;
-      height: 3px;
       width: 30%;
-      margin: 20px auto;
-      background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0),
-        rgba(76, 103, 161, 0.75),
-        rgba(0, 0, 0, 0)
-      );
+      height: 4px;
+      background: $auth-divider;
+      border: none;
+      margin: 15px auto;
     }
 
     .sub-header {
-      font-size: 3rem;
+      font-size: 2.8rem;
     }
   }
 
   .job-form {
-    margin: 40px 5% 40px;
-    padding: 2%;
+    margin: 40px 0;
+    padding: 40px;
     background-color: #{$white};
-    border-radius: 50px;
+    border-radius: 20px;
 
     .post-job-top {
       display: flex;
@@ -50,17 +48,21 @@
           width: 48%;
           background-color: #{$background};
           font-size: 1.8rem;
-          margin-bottom: 50px;
-          padding: 10px 0 10px 10px;
+          margin-bottom: 30px;
+          padding: 10px;
           border: none;
           border-radius: 5px;
 
+          &:focus {
+            outline-color: #{$blue};
+          }
+
           &::placeholder {
-            color: #{$dark};
+            color: #{$light-gray};
           }
 
           @include phone {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
           }
         }
 
@@ -69,8 +71,8 @@
         }
 
         .input-titles {
-          color: black;
-          margin-bottom: 5px;
+          color: #{$dark};
+          margin-bottom: 7px;
         }
 
         .top {
@@ -89,9 +91,6 @@
 
             @include phone {
               width: 100%;
-            }
-
-            @include phone {
             }
 
             input {
@@ -118,11 +117,10 @@
             background-color: #{$background};
             width: 100%;
             height: 300px;
-            border-radius: 3px;
-            margin-bottom: 50px;
-            padding: 10px 0 10px 10px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            padding: 10px;
             text-align: top;
-            line-height: 2.5rem;
             font-size: 1.8rem;
             font-family: sans-serif;
             resize: none;
@@ -133,7 +131,7 @@
             }
 
             @include phone {
-              margin-bottom: 20px;
+              margin-bottom: 30px;
             }
           }
         }
@@ -141,7 +139,7 @@
     }
 
     .post-job-bottom {
-      font-size: 2rem;
+      font-size: 1.8rem;
       width: 100%;
 
       .top {
@@ -149,8 +147,17 @@
         align-items: center;
         justify-content: space-between;
 
+        @include phone {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
         h5 {
           margin-left: 3%;
+
+          @include phone {
+            font-size: 1.5rem;
+          }
         }
 
         .job-active {
@@ -158,12 +165,20 @@
           justify-content: center;
           align-items: center;
           width: 40%;
+
+          @include phone {
+            width: 50%;
+          }
         }
 
         .requires-degree {
           display: flex;
           align-items: center;
           width: 40%;
+
+          @include phone {
+            width: 50%;
+          }
 
           .degree-checkbox {
             width: 20px;
@@ -176,11 +191,19 @@
           display: flex;
           justify-content: start;
 
+          @include phone {
+            width: 100%;
+            justify-content: center;
+            margin-top: 30px;
+          }
+
           select {
             background-color: #{$background};
             width: 80%;
             height: 30px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 5px;
 
             // option {
             //   :hover {
@@ -196,17 +219,21 @@
         justify-content: space-around;
         margin-top: 40px;
 
+        @include phone {
+          margin-top: 30px;
+        }
+
         .post-job-buttons-container {
           display: flex;
           justify-content: space-evenly;
           width: 100%;
 
           #cancel-button {
-            background-color: #{$orange};
+            background-color: #{$blue};
           }
 
           #save-button {
-            background-color: #{$blue};
+            background-color: #{$orange};
           }
 
           .post-job-buttons {
@@ -217,7 +244,7 @@
             color: white;
             text-align: center;
             transition: all 0.3s;
-            font-size: 2rem;
+            font-size: 1.8rem;
 
             &:hover {
               color: white;

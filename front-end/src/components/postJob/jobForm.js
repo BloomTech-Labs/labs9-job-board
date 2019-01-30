@@ -9,13 +9,13 @@ class JobForm extends React.Component {
     return (
       <div className="post-job-container">
         <div className="post-job-header">
-          <div className="main-header">
+          <h1 className="main-header">
             {this.props.pageTitle ? "Edit Job" : "Post a Job"}
-          </div>
+          </h1>
           <hr />
-          <div className="sub-header">
+          <h2 className="sub-header">
             Find the employee that fits your needs.
-          </div>
+          </h2>
         </div>
         <form className="job-form" onSubmit={this.props.submitHandler}>
           <div className="post-job-top">
@@ -165,18 +165,18 @@ class JobForm extends React.Component {
               <div className="post-job-buttons-container">
                 <button
                   className="post-job-buttons"
+                  id="save-button"
+                  type="submit"
+                >
+                  Save
+                </button>
+                <button
+                  className="post-job-buttons"
                   id="cancel-button"
                   type="reset"
                   onClick={this.props.handleCancel}
                 >
                   Cancel
-                </button>
-                <button
-                  className="post-job-buttons"
-                  id="save-button"
-                  type="submit"
-                >
-                  Save
                 </button>
               </div>
             </div>
