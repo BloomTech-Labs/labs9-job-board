@@ -9,13 +9,13 @@ class JobForm extends React.Component {
     return (
       <div className="post-job-container">
         <div className="post-job-header">
-          <div className="main-header">
+          <h1 className="main-header">
             {this.props.pageTitle ? "Edit Job" : "Post a Job"}
-          </div>
+          </h1>
           <hr />
-          <div className="sub-header">
+          <h2 className="sub-header">
             Find the employee that fits your needs.
-          </div>
+          </h2>
         </div>
         <form className="job-form" onSubmit={this.props.submitHandler}>
           <div className="post-job-top">
@@ -49,40 +49,38 @@ class JobForm extends React.Component {
               <div className="bottom">
                 <div className="title-and-input">
                   <label className="input-titles" for="top-skills">
-                    Top 5 Skills (largest on your posting) *separate with
-                    commas*
+                    Top 5 Skills (separate with commas)
                   </label>
                   <input
                     id="top-skills"
                     value={this.props.top_skills}
                     name="top_skills"
                     onChange={this.props.handleInput}
-                    placeholder="HTML, CSS, JavaScript"
+                    placeholder="HTML, CSS, JavaScript, React, SEO"
                   />
                 </div>
                 <div className="title-and-input">
                   <label className="input-titles" for="additional-skills">
-                    More Skills (medium on your posting) *separate with commas*
+                    More Skills (separate with commas)
                   </label>
                   <input
                     id="additional-skills"
                     value={this.props.add_skills}
                     name="add_skills"
                     onChange={this.props.handleInput}
-                    placeholder="React, JSON, JSX"
+                    placeholder="WordPress, JSX, Node.js, SQL, jQuery"
                   />
                 </div>
                 <div className="title-and-input">
                   <label className="input-titles" for="familiar-with">
-                    Remaining Skills (small on your posting) *separate with
-                    commas*
+                    Remaining Skills (separate with commas)
                   </label>
                   <input
                     id="familiar-with"
                     value={this.props.familiar}
                     name="familiar"
                     onChange={this.props.handleInput}
-                    placeholder="Python, C, C++"
+                    placeholder="Python, C, C++, Bootstrap, AngularJS"
                   />
                 </div>
                 <div className="title-and-input">
@@ -167,18 +165,18 @@ class JobForm extends React.Component {
               <div className="post-job-buttons-container">
                 <button
                   className="post-job-buttons"
+                  id="save-button"
+                  type="submit"
+                >
+                  Save
+                </button>
+                <button
+                  className="post-job-buttons"
                   id="cancel-button"
                   type="reset"
                   onClick={this.props.handleCancel}
                 >
                   Cancel
-                </button>
-                <button
-                  className="post-job-buttons"
-                  id="save-button"
-                  type="submit"
-                >
-                  Save
                 </button>
               </div>
             </div>
