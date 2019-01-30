@@ -6,13 +6,13 @@ const Jobs = props => {
     <div className="job-links" to="/">
       <div className="each-job">
         <div className="left-side">
-          <h3 id="job-title">{props.job.title}</h3>
-          <h3 className="spacing"> - </h3>
-          <h3>{props.job.company_name}</h3>
-          <h3 className="spacing"> - </h3>
-          <h3>{props.job.salary}</h3>
+          <h3 className = 'job'>{props.job.title}</h3>
+          
+          <h3 className = 'company'>{props.job.company_name}</h3>
+          
+          <h3 className = 'salary'>{props.job.salary}</h3>
         </div>
-        <div className="right-side">
+        <div className="date">
           <h3>{formatDate(props.job.created_at)}</h3>
         </div>
       </div>
