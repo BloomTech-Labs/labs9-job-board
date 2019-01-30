@@ -169,8 +169,6 @@ $break-small: 645px;
 				display: flex;
 				font-size: 1.8rem;
 				justify-content: flex-end;
-				margin: 25px;
-				padding: 25px;
 			}
 
 			//Jobs Purchased Postings
@@ -182,13 +180,16 @@ $break-small: 645px;
 
 				.job-links h3 {
 					display: flex;
-					margin: 62px;
-					font-size: 1.8rem;
+					font-size: 2rem;
+					align-content: center;
+					margin-bottom: 30px;
+					padding: 25px;
 
 					.billing-job {
-						font-size: 2rem;
-						padding-right: 3%;
-						width: 80%;
+						display: flex;
+						justify-content: flex-start;
+						font-size: 1.8rem;
+						width: 100%;
 					}
 
 					@media screen and (max-width: $break-small) {
@@ -197,9 +198,7 @@ $break-small: 645px;
 					}
 				}
 				.job-links a {
-					width: 50%;
-					// display: flex;
-					// justify-content: start;
+					width: 100%;
 					font-size: 1.6rem;
 				}
 			}
