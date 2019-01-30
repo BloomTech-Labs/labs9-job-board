@@ -46,6 +46,9 @@
         width: 100%;
 
         @include phone {
+        }
+
+        @include phone {
           width: 70%;
         }
 
@@ -120,10 +123,6 @@
               color: #{$dark};
             }
           }
-
-          @include phone {
-            font-size: 1.5rem;
-          }
         }
       }
     }
@@ -131,11 +130,6 @@
     .post-job-bottom {
       font-size: 2rem;
       width: 100%;
-
-      @include phone {
-        display: flex;
-        flex-wrap: wrap;
-      }
 
       .top {
         display: flex;
@@ -151,20 +145,12 @@
           justify-content: center;
           align-items: center;
           width: 40%;
-
-          @include phone {
-            width: 50%;
-          }
         }
 
         .requires-degree {
           display: flex;
           align-items: center;
           width: 40%;
-
-          @include phone {
-            width: 50%;
-          }
 
           .degree-checkbox {
             width: 20px;
@@ -202,11 +188,6 @@
           justify-content: space-evenly;
           width: 100%;
 
-          @include phone {
-            justify-content: space-evenly;
-            width: 100%;
-          }
-
           #cancel-button {
             background-color: #{$orange};
           }
@@ -224,13 +205,6 @@
             text-align: center;
             transition: all 0.3s;
             font-size: 2rem;
-
-            @include phone {
-              padding: 1rem 2.5rem;
-              margin: 5% 0;
-              border-radius: 0.12rem;
-              font-size: 2rem;
-            }
 
             &:hover {
               color: white;
