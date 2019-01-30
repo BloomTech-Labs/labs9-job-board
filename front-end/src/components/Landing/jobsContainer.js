@@ -124,7 +124,7 @@ class JobsContainer extends Component {
 
   onEnter = event => {
     window.scroll({
-      top: 440,
+      top: 380,
       left: 100,
       behavior: 'smooth'
     });

@@ -30,7 +30,7 @@ class Navbar extends Component {
     let myNav = document.getElementById('mynav');
     let url = window.location.pathname;
       
-      if (document.scrollingElement.scrollTop <500 && url ==='/') {
+      if (document.scrollingElement.scrollTop <100 && url ==='/') {
         myNav.classList.add("navbar-container");
         myNav.classList.remove("solid");
         
