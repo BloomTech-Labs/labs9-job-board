@@ -173,7 +173,7 @@ class SignUpFormUnconnected extends React.Component {
               </button>
             </form>
             <div className="auth-footer sign-up-footer">
-              <span>Already have an account?</span>
+              <span className="left-item">Already have an account?</span>
               <Link to={ROUTES.SIGN_IN}>Sign In</Link>
             </div>
           </div>
