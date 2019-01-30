@@ -49,18 +49,15 @@ class SingleJob extends Component {
     }
     return (
       <div className="single-job-container">
-        <div className="apply-share">
-          <button className="apply-btn" onClick={() => this.clickHandler()}>
-            Apply
-          </button>
-          <i className="fa fa-envelope-o" onClick={this.shareHandler} />
-          <p onClick={this.reportHandler}>Report</p>
-        </div>
         <div className="job-listing">
           <div className="job-pic-summary">
             <img src={this.state.job.avatar_image} />
-            <h2>{this.state.job.company_name}</h2>
-            <p>{this.state.job.summary}</p>
+            <h1>{this.state.job.company_name}</h1>
+            <div className="border" />
+            <h2>{this.state.job.summary}</h2>
+            <button className="apply-btn" onClick={() => this.clickHandler()}>
+              Apply
+            </button>
           </div>
           <div className="joint-columns">
             <div className="job-column one">
@@ -74,6 +71,7 @@ class SingleJob extends Component {
               <label>Requirements:</label>
               <p>{this.state.job.requirements}</p>
             </div>
+            <div className="job-border" />
             <div className="job-column two">
               <label>Job Description:</label>
               <p>{this.state.job.description}</p>
@@ -85,6 +83,8 @@ class SingleJob extends Component {
               <button className="apply-btn" onClick={() => this.clickHandler()}>
                 Apply
               </button>
+              <i className="fa fa-envelope-o" onClick={this.shareHandler} />
+              <p onClick={this.reportHandler}>Report</p>
             </div>
           </div>
         </div>

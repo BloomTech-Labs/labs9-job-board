@@ -2,7 +2,7 @@
   max-width: 1024px;
   margin: auto;
   background-color: #{$background};
-  padding: 40px;
+  padding: 30px 0;
 
   .companyInfo {
     width: 100%;
@@ -53,7 +53,7 @@
         border-radius: 5px;
         font-size: 1.8rem;
         text-align: start;
-        padding: 10px 3%;
+        padding: 10px;
         color: #{$dark};
       }
 
@@ -76,7 +76,7 @@
         border-radius: 5px;
         font-size: 1.8rem;
         text-align: start;
-        padding: 10px 3%;
+        padding: 10px;
         color: #{$light-gray};
 
         &:focus {
@@ -90,7 +90,7 @@
         border-radius: 5px;
         font-size: 1.8rem;
         text-align: start;
-        padding: 10px 3%;
+        padding: 10px;
         font-family: "Roboto", sans-serif;
         color: #{$light-gray};
 
@@ -133,7 +133,6 @@
   }
 
   .edit-btn {
-    margin: 5px 0;
     padding: 10px 5rem;
     border-radius: 5px;
     border: none;
