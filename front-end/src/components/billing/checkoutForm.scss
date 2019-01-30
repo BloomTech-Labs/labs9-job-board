@@ -40,6 +40,12 @@ $break-small: 645px;
 				padding: 30px 0;
 			}
 		}
+		hr {
+			height: 4px;
+			color: #{$blue};
+			width: 50rem;
+			margin: 15px 0;
+		}
 		.sub-header {
 			display: flex;
 			justify-content: center;
