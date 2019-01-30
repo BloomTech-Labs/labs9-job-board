@@ -39,6 +39,10 @@
 
     .sub-header {
       font-size: 2.8rem;
+
+      @include phone {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -153,16 +157,10 @@
 
       .top {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-around;
 
         @include tablet {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        @include phone {
           display: flex;
           flex-wrap: wrap;
         }
@@ -174,11 +172,11 @@
         .job-active {
           display: flex;
           align-items: center;
-          width: 40%;
+          width: 20%;
 
           @include tablet {
+            width: 100%;
             margin-bottom: 20px;
-            width: 50%;
           }
 
           @include phone {
@@ -190,11 +188,11 @@
         .requires-degree {
           display: flex;
           align-items: center;
-          width: 40%;
+          width: 45%;
 
           @include tablet {
+            width: 100%;
             margin-bottom: 20px;
-            width: 50%;
           }
 
           @include phone {
@@ -209,14 +207,13 @@
         }
 
         .categories {
-          width: 100%;
+          width: 35%;
           display: flex;
           justify-content: start;
-          margin-top: 30px;
 
           @include tablet {
             width: 100%;
-            justify-content: center;
+            justify-content: flex-start;
           }
 
           select {
@@ -226,6 +223,10 @@
             font-size: 1.8rem;
             border: none;
             border-radius: 5px;
+
+            @include tablet {
+              width: 30rem;
+            }
 
             // option {
             //   :hover {
@@ -239,11 +240,7 @@
       .bottom {
         display: flex;
         justify-content: space-around;
-        margin-top: 40px;
-
-        @include phone {
-          margin-top: 30px;
-        }
+        margin-top: 30px;
 
         .post-job-buttons-container {
           display: flex;
