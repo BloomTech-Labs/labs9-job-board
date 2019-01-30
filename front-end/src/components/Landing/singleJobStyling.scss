@@ -4,11 +4,12 @@
   padding-bottom: 40px;
   margin-top: 30px;
   display: flex;
+  flex-direction: row-reverse;
 
   .apply-share {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     width: 13%;
 
     button {
