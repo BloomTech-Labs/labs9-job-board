@@ -93,6 +93,10 @@
       padding: 100px 80px;
       border: none;
       cursor: pointer;
+
+      span {
+        display: block;
+      }
     }
 
     .update-profile-form {
