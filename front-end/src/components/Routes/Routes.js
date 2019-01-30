@@ -12,7 +12,7 @@ import SignIn from "../SignIn/SignIn";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
 //import RedirectPage from "../RedirectPage/RedirectPage";
-import NewProfileForm from "../CompanyProfile/newProfileForm";
+// import NewProfileForm from "../CompanyProfile/newProfileForm";
 
 import * as ROUTES from "../../constants/routes";
 import "./Routes.scss";
@@ -70,12 +70,12 @@ class Routes extends Component {
             <UpdateProfile {...props} authUser={this.props.authUser} />
           )}
         />
-        <Route
+        {/* <Route
           path={ROUTES.NEW_PROFILE}
           render={props => (
             <NewProfileForm {...props} authUser={this.props.authUser} />
           )}
-        />
+        /> */}
       </div>
     );
   }

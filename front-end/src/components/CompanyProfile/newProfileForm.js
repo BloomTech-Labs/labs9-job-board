@@ -45,12 +45,15 @@ class NewProfileForm extends Component {
 
     axios
       .post(`${url}/api/users`, newUser)
-      .then(res => {
-        console.log("ADDING USER", res);
-        this.props.history.push("");
+      .then(response => {
+        if (response) {
+          this.props.closeNewProfileModal();
+        } else {
+          throw new Error();
+        }
       })
       .catch(error => {
-        console.log("ERROR", error);
+        alert("Error adding user to database");
       });
   };
 
@@ -63,13 +66,19 @@ class NewProfileForm extends Component {
   };
 
   render() {
-    if (this.props.authUser) {
-      console.log(this.state.uid);
-    }
+    // if (this.props.authUser) {
+    //   console.log(this.state.uid);
+    // }
 
     return (
       <div className="new-profile-view">
         <div className="new-profile-container">
+          <div
+            className="close-button"
+            onClick={() => this.props.closeNewProfileModal()}
+          >
+            x
+          </div>
           <h2>New Account Info</h2>
           <h4>Tell us about you.</h4>
           <div className="header-divider" />
@@ -124,7 +133,11 @@ class NewProfileForm extends Component {
               <button className="new-profile-button save-button" type="submit">
                 Save
               </button>
-              <button className="new-profile-button cancel-button">
+              <button
+                className="new-profile-button cancel-button"
+                type="button"
+                onClick={() => this.props.closeNewProfileModal()}
+              >
                 Cancel
               </button>
             </div>

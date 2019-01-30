@@ -30,7 +30,7 @@ class ProfilePic extends Component {
   }
 
   render() {
-    console.log("pic", this.state);
+    // console.log("pic", this.state);
     return (
       <div>
         {this.state.profilePic.length > 0 ? (
