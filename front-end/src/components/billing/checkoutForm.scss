@@ -25,19 +25,25 @@ $break-small: 645px;
 }
 
 //Header
-.billing-contaner {
+.billing-container {
+	border: 1px solid green;
 	.header {
+		border: 1px solid orange;
 		.main-header {
+			border: 1px solid orchid;
 			.billing-header {
+				border: 1px solid blueviolet;
 				font-size: 5rem;
 				margin-bottom: 20px;
 			}
 		}
 		.sub-header {
+			border: 1px solid red;
 			display: flex;
 			justify-content: center;
 
 			.billing-subheader {
+				border: 1px solid black;
 				font-size: 2.8rem;
 				margin-bottom: 12px;
 
@@ -51,6 +57,7 @@ $break-small: 645px;
 
 // Parent for all card and purchase container
 .checkout {
+	border: 1px solid purple;
 	display: flex;
 	padding: 20px;
 	border-radius: 50px;
