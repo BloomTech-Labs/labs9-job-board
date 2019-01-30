@@ -3,15 +3,16 @@
   background-color: #{$background};
   padding-bottom: 40px;
   margin-top: 30px;
+  display: flex;
 
   .apply-share {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 85%;
+    width: 13%;
 
     button {
-      padding: 10px 5%;
+      padding: 10px 0;
       border-radius: 10px;
       border: none;
       color: white;
@@ -19,6 +20,7 @@
       cursor: pointer;
       background-color: #{$auth-submit-bg};
       margin-bottom: 13px;
+      width: 80%;
     }
 
     .fa {
@@ -47,9 +49,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 85%;
+    margin-right: 10px;
 
     .job-pic-summary {
-      width: 70%;
+      width: 100%;
       flex-direction: column;
       align-items: center;
       display: flex;
@@ -70,7 +74,7 @@
 
     .joint-columns {
       background-color: white;
-      width: 70%;
+      width: 80%;
       border-radius: 30px;
       display: flex;
       flex-direction: row;
