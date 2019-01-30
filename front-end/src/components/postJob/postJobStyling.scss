@@ -18,7 +18,7 @@
     }
 
     hr {
-      width: 30%;
+      width: 30rem;
       height: 4px;
       background: $auth-divider;
       border: none;
@@ -31,7 +31,7 @@
   }
 
   .job-form {
-    margin: 40px 0;
+    margin: 40px 5%;
     padding: 40px;
     background-color: #{$white};
     border-radius: 20px;
