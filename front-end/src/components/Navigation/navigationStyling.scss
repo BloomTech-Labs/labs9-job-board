@@ -55,7 +55,7 @@
 .solid {
 	background-color: $Navbar;
 	transition: background-color .5s ease 0s;
-	
+	z-index: 100;
 	width: 100%;
 	position: fixed;
 	top: 0;
