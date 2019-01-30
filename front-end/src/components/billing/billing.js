@@ -1,34 +1,42 @@
-import React, { Component } from 'react';
-import { Elements, StripeProvider } from 'react-stripe-elements';
+import React, { Component } from "react";
+import { Elements, StripeProvider } from "react-stripe-elements";
 
-import CheckoutForm from './checkoutForm';
-import UserJobs from './UserJobs.js';
-import Balance from './Balance.js';
+import CheckoutForm from "./checkoutForm";
 
-import './checkoutForm.scss';
+import "./checkoutForm.scss";
 
 // const stripeurl = process.env.REACT_APP_STRIPE_TEST_KEY;
 
 class Billing extends Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	render() {
-		return (
-			<div>
-				{/* <Balance authUser={this.props.authUser} /> */}
-				<StripeProvider apiKey="pk_test_77iYkIzmRpuMiC1SxkCkMIBp">
-					<div className="example">
-						<Elements>
-							<CheckoutForm authUser={this.props.authUser} />
-						</Elements>
-					</div>
-				</StripeProvider>
-				<UserJobs authUser={this.props.authUser} />
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <StripeProvider apiKey="pk_test_77iYkIzmRpuMiC1SxkCkMIBp">
+          <div className="billing-container">
+            <div className="header">
+              <div className="main-header">
+                <p className="billing-header">Billing</p>
+              </div>
+              <hr />
+              <div className="sub-header">
+                <p className="billing-subheader">
+                  This isn't your typical purchase, ths is going to be a
+                  <em className="gotcha"> game changer</em>
+                </p>
+              </div>
+            </div>
+            <Elements>
+              <CheckoutForm authUser={this.props.authUser} />
+            </Elements>
+          </div>
+        </StripeProvider>
+      </div>
+    );
+  }
 }
 
 export default Billing;

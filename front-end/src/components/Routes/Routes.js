@@ -13,6 +13,8 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
 //import RedirectPage from "../RedirectPage/RedirectPage";
 // import NewProfileForm from "../CompanyProfile/newProfileForm";
+import Navigation from "../Navigation/Navigation";
+import Footer from "../Navigation/Footer";
 
 import * as ROUTES from "../../constants/routes";
 import "./Routes.scss";
@@ -25,6 +27,7 @@ class Routes extends Component {
   render() {
     return (
       <div className="routes">
+        <Navigation authUser={this.props.authUser} />
         <Route
           exact
           path={ROUTES.LANDING}
@@ -76,6 +79,7 @@ class Routes extends Component {
             <NewProfileForm {...props} authUser={this.props.authUser} />
           )}
         /> */}
+        <Footer />
       </div>
     );
   }

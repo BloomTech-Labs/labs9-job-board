@@ -5,7 +5,7 @@ import "./App.scss";
 import { withFirebase } from "./components/Firebase";
 
 import Routes from "./components/Routes/Routes.js";
-import Navigation from "./components/Navigation/Navigation";
+
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class App extends Component {
     };
   }
 
+  
   componentDidMount() {
     this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
       authUser
@@ -31,9 +32,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navigation authUser={this.state.authUser} />
+          {/* <Navigation authUser={this.state.authUser} /> */}
           <Routes className="routes" authUser={this.state.authUser} />
-          {/* <Footer /> */}
         </div>
       </Router>
     );

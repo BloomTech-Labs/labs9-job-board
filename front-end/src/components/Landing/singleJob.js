@@ -53,46 +53,40 @@ class SingleJob extends Component {
           <button className="apply-btn" onClick={() => this.clickHandler()}>
             Apply
           </button>
-          <p onClick={this.shareHandler}>Tell a Friend</p>
+          <i className="fa fa-envelope-o" onClick={this.shareHandler} />
           <p onClick={this.reportHandler}>Report</p>
         </div>
         <div className="job-listing">
-          <div className="job-company-summary">
+          <div className="job-pic-summary">
+            <img src={this.state.job.avatar_image} />
             <h2>{this.state.job.company_name}</h2>
-            <h3>{this.state.job.summary}</h3>
+            <p>{this.state.job.summary}</p>
           </div>
-
-          <div className="job-title-salary">
-            <h4>Title:</h4>
-            <h3>{this.state.job.title}</h3>
-            <h4>Salary:</h4>
-            <h3>{this.state.job.salary}</h3>
+          <div className="joint-columns">
+            <div className="job-column one">
+              <p className="title">{this.state.job.title}</p>
+              <p>{this.state.job.salary}</p>
+              <label>Skills:</label>
+              <p>
+                {this.state.job.add_skills}, {this.state.job.top_skills},
+                {this.state.job.familiar}
+              </p>
+              <label>Requirements:</label>
+              <p>{this.state.job.requirements}</p>
+            </div>
+            <div className="job-column two">
+              <label>Job Description:</label>
+              <p>{this.state.job.description}</p>
+              {this.state.job.college_degree === false ? (
+                <p>No degree required</p>
+              ) : (
+                <p>College degree required</p>
+              )}
+              <button className="apply-btn" onClick={() => this.clickHandler()}>
+                Apply
+              </button>
+            </div>
           </div>
-          <div className="job-skills-desc-req">
-            <h4>Skills:</h4>
-            <h3>
-              {this.state.job.add_skills}, {this.state.job.top_skills},{" "}
-              {this.state.job.familiar}
-            </h3>
-          </div>
-          <div className="job-skills-desc-req">
-            <h4>Job Description:</h4>
-            <h3>{this.state.job.description}</h3>
-          </div>
-          <div className="job-skills-desc-req">
-            <h4>Requirements:</h4>
-            <h3>{this.state.job.requirements}</h3>
-          </div>
-          <div className="job-skills-desc-req college">
-            {this.state.job.college_degree === false ? (
-              <h4>No degree required</h4>
-            ) : (
-              <h4>College degree required</h4>
-            )}
-          </div>
-        </div>
-        <div className="company-logo">
-          <img src={this.state.job.avatar_image} />
         </div>
       </div>
     );
