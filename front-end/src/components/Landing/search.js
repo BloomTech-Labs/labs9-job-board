@@ -1,4 +1,5 @@
 import React from "react";
+import searchIcon from '../../images/design/png/search-icon-white.png'
 //import search from "../../images/search-image.png";
 
 const Search = props => {
@@ -13,6 +14,7 @@ const Search = props => {
         className="search-input"
         onSubmit = {props.searchResults}
       />
+      <img  onClick = {props.searchResults} src = {searchIcon} className = 'search-icon'></img>
     </form>
   );
 };

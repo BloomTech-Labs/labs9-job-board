@@ -12,20 +12,25 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
+    
     window.addEventListener('scroll', this.handleScroll);
+    
   }
 
  
 
   componentWillUnmount() {
+    
     window.removeEventListener('scroll', this.handleScroll);
-  };
+  }
+  
+  
 
   handleScroll(event) {
     let myNav = document.getElementById('mynav');
     let url = window.location.pathname;
       
-      if (document.scrollingElement.scrollTop <570 && url ==='/') {
+      if (document.scrollingElement.scrollTop <500 && url ==='/') {
         myNav.classList.add("navbar-container");
         myNav.classList.remove("solid");
         
