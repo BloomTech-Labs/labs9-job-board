@@ -228,6 +228,7 @@ class CheckoutForm extends Component {
             </a>
           </div>
         </div>
+        <hr className="left-right"/>
         <div className="right-side">
           <UserJobs authUser={this.props.authUser} />
           <Balance authUser={this.props.authUser} />
