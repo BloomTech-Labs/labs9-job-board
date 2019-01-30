@@ -11,7 +11,7 @@
     align-items: center;
 
     .pic-account {
-      width: 40%;
+      width: 50rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -50,7 +50,7 @@
         background-color: #{$background};
         width: 100%;
         border-radius: 5px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: start;
         padding: 10px 3%;
       }
@@ -65,20 +65,36 @@
 
       .company-border {
         border: 4px solid #{$background};
-        margin: 10px 0;
+        margin: 10px 10px;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.8rem;
+        text-align: start;
+        padding: 10px 3%;
+        color: #{$dark};
+
+        &:focus {
+          outline-color: #{$blue};
+        }
+      }
+
+      textarea {
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.8rem;
+        text-align: start;
+        padding: 10px 3%;
+        font-family: "Roboto", sans-serif;
+        color: #{$dark};
+
+        &:focus {
+          outline-color: #{$blue};
+        }
       }
     }
-
-    .update-profile-form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .editHeader {
-      border-bottom: 2px solid #{$blue};
-      width: 30%;
-    }
-
     .profile-pic-button {
       border-radius: 50%;
       padding: 100px 80px;
@@ -86,105 +102,105 @@
       cursor: pointer;
     }
 
-    .update-profile-form {
-      background-color: white;
-      width: 70%;
-      border-radius: 30px;
-      display: flex;
-      flex-direction: row;
-      padding: 16px 2%;
-      margin: 80px 0 20px 0;
+    // .update-profile-form {
+    //   background-color: white;
+    //   width: 70%;
+    //   border-radius: 30px;
+    //   display: flex;
+    //   flex-direction: row;
+    //   padding: 16px 2%;
+    //   margin: 80px 0 20px 0;
 
-      .edit-profile-info {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        border-right: 2px solid #{$background};
+    //   .edit-profile-info {
+    //     width: 50%;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: flex-start;
+    //     border-right: 2px solid #{$background};
 
-        input {
-          background-color: #{$background};
-          width: 90%;
-          text-align: start;
-          padding: 3px 3%;
-          border-radius: 7px;
-          font-size: 2rem;
+    //     input {
+    //       background-color: #{$background};
+    //       width: 90%;
+    //       text-align: start;
+    //       padding: 3px 3%;
+    //       border-radius: 7px;
+    //       font-size: 1.8rem;
 
-          &:focus {
-            background-color: #{$blue};
-            color: white;
-          }
-        }
-      }
+    //       &:focus {
+    //         background-color: #{$blue};
+    //         color: white;
+    //       }
+    //     }
+    //   }
 
-      .edit-company-info {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 2%;
+    //   // .edit-company-info {
+    //   //   width: 50%;
+    //   //   display: flex;
+    //   //   flex-direction: column;
+    //   //   align-items: flex-start;
+    //   //   padding-left: 2%;
 
-        input {
-          background-color: #{$background};
-          width: 100%;
-          text-align: start;
-          padding: 3px 3%;
-          border-radius: 7px;
-          font-size: 2rem;
+    //   //   input {
+    //   //     background-color: #{$background};
+    //   //     width: 100%;
+    //   //     text-align: start;
+    //   //     padding: 3px 3%;
+    //   //     border-radius: 7px;
+    //   //     font-size: 3rem;
 
-          &:focus {
-            background-color: #{$blue};
-            color: white;
-          }
-        }
+    //   //     &:focus {
+    //   //       background-color: #{$blue};
+    //   //       color: white;
+    //   //     }
+    //   //   }
 
-        textarea {
-          background-color: #{$background};
-          width: 100%;
-          text-align: start;
-          padding: 3px 3%;
-          border-radius: 7px;
-          font-size: 2rem;
+    //   //   textarea {
+    //   //     background-color: #{$background};
+    //   //     width: 100%;
+    //   //     text-align: start;
+    //   //     border-radius: 7px;
+    //   //     font-size: 1.8rem;
+    //   //     color: #{$dark};
 
-          &:focus {
-            background-color: #{$blue};
-            color: white;
-          }
-        }
+    //   //     &:focus {
+    //   //       background-color: #{$blue};
+    //   //       color: white;
+    //   //     }
+    //   //   }
 
-        .btns-save-cancel {
-          display: flex;
-          width: 100%;
-          justify-content: space-around;
+    //   //   .btns-save-cancel {
+    //   //     display: flex;
+    //   //     width: 100%;
+    //   //     justify-content: space-around;
 
-          .edit-btn {
-            margin: 90px 0 0 0;
-            border-radius: 10px;
-            border: none;
-            color: white;
-            font-size: 1.6rem;
-            cursor: pointer;
-          }
-          .save {
-            background-color: #{$auth-submit-bg};
-            width: 40%;
-          }
+    //   //     .edit-btn {
+    //   //       margin: 90px 0 0 0;
+    //   //       border-radius: 10px;
+    //   //       border: none;
+    //   //       color: white;
+    //   //       font-size: 1.8rem;
+    //   //       cursor: pointer;
+    //   //     }
+    //   //     .save {
+    //   //       background-color: #{$auth-submit-bg};
+    //   //       width: 40%;
+    //   //     }
 
-          .cancel {
-            background-color: #{$Navbar};
-            width: 40%;
-          }
-        }
-      }
+    //   //     .cancel {
+    //   //       background-color: #{$Navbar};
+    //   //       width: 40%;
+    //   //     }
+    //   //   }
+    //   // }
 
-      label {
-        padding: 15px 0 5px 3%;
-        font-weight: bold;
-        font-size: 2rem;
-        width: 100%;
-        text-align: left;
-      }
-    }
+    //   label {
+    //     padding: 15px 0 5px 3%;
+    //     font-weight: bold;
+    //     font-size: 2rem;
+    //     width: 100%;
+    //     text-align: left;
+    //   }
+    // }
   }
 
   .edit-btn {
@@ -200,19 +216,6 @@
     background-color: #{$blue};
   }
 
-  .links-pass-bill {
-    width: 30%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    font-size: 2rem;
-    padding: 20px 0;
-
-    a {
-      color: #{$blue};
-    }
-  }
-
   .menu-pass-bill {
     width: 100%;
     display: flex;
@@ -223,7 +226,7 @@
 
     a {
       color: #{$blue};
-      width: 20%;
+      width: 20rem;
       text-align: end;
     }
   }
