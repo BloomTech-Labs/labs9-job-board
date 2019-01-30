@@ -168,6 +168,9 @@ $break-small: 645px;
 		//Jobs Purchased Postings
 		.billing-jobs {
 			width: 100%;
+			display: flex;
+			flex-direction: row;
+			margin: 88px;
 
 			.job-links {
 				display: flex;
