@@ -64,6 +64,13 @@
           }
         }
 
+        .auth-error {
+          display: block;
+          font-size: 1.4rem;
+          margin: 5px 0;
+          text-align: center;
+        }
+
         .auth-form-button {
           width: 100%;
           padding: 10px;

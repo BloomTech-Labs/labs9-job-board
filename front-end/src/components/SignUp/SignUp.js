@@ -35,16 +35,36 @@ class SignUpFormUnconnected extends React.Component {
   googleAuthSubmit = event => {
     event.preventDefault();
 
-    this.props.firebase.doSignInWithGooglePopUp().then(authUser => {
-      console.log("authUser", authUser);
-      if (authUser.user && authUser.user.uid && authUser.user.email) {
-        this.props.history.push(ROUTES.LANDING);
-      } else {
-        this.setState({
-          error: "Error authenticating through Google. Please try again."
-        });
-      }
-    });
+    let user_uid, email;
+
+    this.props.firebase
+      .doSignInWithGooglePopUp()
+      .then(authUser => {
+        if (authUser.user && authUser.user.uid && authUser.user.email) {
+          user_uid = authUser.user.uid;
+          email = authUser.user.email;
+
+          // checks if in login table
+          return axios.post(`${URL}/api/auth/login`, {
+            user_uid,
+            email
+          });
+        } else {
+          throw { message: "Error authenticating. Please try again." };
+        }
+      })
+      .then(response => {
+        if (response.status === 200 || response.status === 201) {
+          this.props.history.push(ROUTES.LANDING);
+        } else {
+          throw { message: "Error verifying login, please try again." };
+        }
+      })
+      .catch(async error => {
+        if (error.message) {
+          await this.setState({ error });
+        }
+      });
   };
 
   emailAuthSubmit = async event => {
@@ -57,53 +77,30 @@ class SignUpFormUnconnected extends React.Component {
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then(authUser => {
-        console.log("authUser", authUser);
         if (authUser.user && authUser.user.uid && authUser.user.email) {
           user_uid = authUser.user.uid;
           firebase_email = authUser.user.email;
 
-          // checks if in login table
+          // checks if in login table, creates new row if it isn't
           return axios.post(`${URL}/api/auth/login`, {
             user_uid,
             email: firebase_email
           });
         } else {
-          this.props.history.push(ROUTES.LANDING);
-          throw "break promise";
+          throw { message: "Error creating user. Please try again." };
         }
       })
       .then(response => {
-        console.log("firstlogin", response);
-        if (response.data.action === "check user table") {
-          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
-            user_uid,
-            email: firebase_email
-          });
-        } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
-          throw "break promise";
-        }
-      })
-      .then(response => {
-        console.log("users table", response);
-        if (response.data.action === "redirect to landing") {
+        if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
+          throw { message: "Error verifying login, please try again." };
         }
       })
-      .catch(error => {
-        console.log(error);
+      .catch(async error => {
+        if (error.message) {
+          await this.setState({ error });
+        }
       });
   };
 
@@ -153,7 +150,7 @@ class SignUpFormUnconnected extends React.Component {
                 autoComplete="off"
               />
               {this.state.error ? (
-                <span>{this.state.error.message}</span>
+                <span className="auth-error">{this.state.error.message}</span>
               ) : null}
               <button
                 className={`auth-form-button${

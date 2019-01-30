@@ -48,7 +48,6 @@ class SignInFormUnconnected extends React.Component {
     this.props.firebase
       .doSignInWithGooglePopUp()
       .then(authUser => {
-        console.log("authUser", authUser);
         if (authUser.user && authUser.user.uid && authUser.user.email) {
           user_uid = authUser.user.uid;
           email = authUser.user.email;
@@ -59,42 +58,20 @@ class SignInFormUnconnected extends React.Component {
             email
           });
         } else {
-          this.props.history.push(ROUTES.LANDING);
-          throw "break promise";
+          throw { message: "Error authenticating. Please try again." };
         }
       })
       .then(response => {
-        console.log("firstlogin", response);
-        if (response.data.action === "check user table") {
-          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
-            user_uid,
-            email
-          });
-        } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
-          throw "break promise";
-        }
-      })
-      .then(response => {
-        console.log("users table", response);
-        if (response.data.action === "redirect to landing") {
+        if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
+          throw { message: "Error verifying login, please try again." };
         }
       })
-      .catch(error => {
-        console.log(error);
+      .catch(async error => {
+        if (error.message) {
+          await this.setState({ error });
+        }
       });
   };
 
@@ -108,76 +85,31 @@ class SignInFormUnconnected extends React.Component {
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
-        console.log("authUser", authUser);
         if (authUser.user && authUser.user.uid && authUser.user.email) {
           user_uid = authUser.user.uid;
           firebase_email = authUser.user.email;
 
-          // checks if in login table
+          // checks if in login table, creates new row if it isn't
           return axios.post(`${URL}/api/auth/login`, {
             user_uid,
             email: firebase_email
           });
         } else {
-          this.props.history.push(ROUTES.LANDING);
-          throw "break promise";
+          throw { message: "Error creating user. Please try again." };
         }
       })
       .then(response => {
-        console.log("firstlogin", response);
-        if (response.data.action === "check user table") {
-          return axios.post(`${URL}/api/auth/hasAccountInfo`, {
-            user_uid,
-            email: firebase_email
-          });
-        } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
-          throw "break promise";
-        }
-      })
-      .then(response => {
-        console.log("users table", response);
-        if (response.data.action === "redirect to landing") {
+        if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          this.props.history.push({
-            pathname: ROUTES.NEW_PROFILE,
-            state: {
-              uid: user_uid
-            }
-          });
+          throw { message: "Error verifying login, please try again." };
         }
       })
-      .catch(error => {
-        console.log(error);
+      .catch(async error => {
+        if (error.message) {
+          await this.setState({ error });
+        }
       });
-
-    try {
-      const createEmailUser = await this.props.firebase.doSignInWithEmailAndPassword(
-        email,
-        password
-      );
-
-      if (createEmailUser.user) {
-        this.props.history.push({
-          pathname: ROUTES.NEW_PROFILE,
-          state: {
-            user_uid: createEmailUser.user.uid
-          }
-        });
-      } else {
-        await this.setState({
-          error: "Error signing up new user. Please try again."
-        });
-      }
-    } catch (error) {
-      await this.setState({ error });
-    }
   };
 
   render() {
@@ -212,7 +144,7 @@ class SignInFormUnconnected extends React.Component {
                 autoComplete="off"
               />
               {this.state.error ? (
-                <span>{this.state.error.message}</span>
+                <span className="auth-error">{this.state.error.message}</span>
               ) : null}
               <button
                 className={`auth-form-button${
