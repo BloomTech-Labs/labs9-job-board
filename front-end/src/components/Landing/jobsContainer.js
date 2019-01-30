@@ -13,6 +13,7 @@ import Header from "./header";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
 
 import NewProfileForm from "../CompanyProfile/newProfileForm.js";
+import bigLogo from '../../images/design/png/logos/logo with white text.png'
 
 
 
@@ -149,6 +150,8 @@ class JobsContainer extends Component {
       <div className="jobs-container container">
       
         <Header authUser={this.props.authUser} />
+        <img className ='header-logo' alt = 'logo'src = {bigLogo}></img>
+        <div className = 'white-box'></div>
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search
