@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import JobList from "./jobList";
-
+import { Link } from "react-scroll";
 //import Jobs from "./job";
 
 import Search from "./search";
@@ -66,6 +66,14 @@ class JobsContainer extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  onEnter = event => {
+    window.scroll({
+      top: 425,
+      left: 100,
+      behavior: 'smooth'
+    });
+  }
+
   searchResults = event => {
     this.handleInput(event);
     this.setState(preState => {
@@ -83,12 +91,14 @@ class JobsContainer extends Component {
 
     return (
       <div className="jobs-container container">
+      
         <Header authUser={this.props.authUser} />
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search
             searchResults={this.searchResults}
             search={this.state.search}
+            onEnter = {this.onEnter}
           />
         </div>
         {this.state.fetching ? (

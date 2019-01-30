@@ -32,33 +32,34 @@ class sideMenu extends React.Component {
               Home
             </NavLink>
             <NavLink onClick={this.props.click} to="/post-job">
-              Post Job
+              Post A Job
             </NavLink>
             <NavLink onClick={this.props.click} to="/billing">
-              Billing
+              Billing 
+            </NavLink>
+            <NavLink onClick={this.props.click} to="/billing">
+              Your Job Postings 
             </NavLink>
             <NavLink onClick={this.props.click} to="/account">
-              Account
+              Account Settings
             </NavLink>
-            <SignOut className="hamburger-button" />
+            <SignOut className="sign-out" />
           </div>
         ) : (
           <div className="side-menu-navigation-items">
             <NavLink onClick={this.props.click} to="/">
               Home
             </NavLink>
-            <NavLink onClick={this.props.click} to="/jobs/:id">
-              Single Job
+            <NavLink onClick={this.props.click} to="/post-job">
+              Post A Job
             </NavLink>
             <NavLink onClick={this.props.click} to="/sign-up">
-              Sign Up
+              Employer Sign Up
             </NavLink>
             <NavLink onClick={this.props.click} to="/sign-in">
-              Sign In
+              Employer Sign In
             </NavLink>
-            <NavLink onClick={this.props.click} to="/reset-password">
-              Reset Password
-            </NavLink>
+            
           </div>
         )}
       </nav>

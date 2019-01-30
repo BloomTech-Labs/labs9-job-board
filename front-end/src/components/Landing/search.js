@@ -3,7 +3,7 @@ import React from "react";
 
 const Search = props => {
   return (
-    <form className="search-bar">
+    <form className="search-bar" onClick = {props.onEnter}>
       <input
         placeholder="Search jobs..."
         type="text"
@@ -11,6 +11,7 @@ const Search = props => {
         onChange={props.searchResults}
         value={props.search}
         className="search-input"
+        onSubmit = {props.searchResults}
       />
     </form>
   );
