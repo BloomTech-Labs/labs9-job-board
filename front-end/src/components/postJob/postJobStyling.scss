@@ -15,14 +15,26 @@
 
     .main-header {
       font-size: 5rem;
+
+      @include phone {
+        font-size: 4rem;
+      }
     }
 
     hr {
-      width: 30rem;
+      width: 50rem;
       height: 4px;
       background: $auth-divider;
       border: none;
       margin: 15px auto;
+
+      @include tablet {
+        width: 90%;
+      }
+
+      @include phone {
+        width: 90%;
+      }
     }
 
     .sub-header {
@@ -59,10 +71,6 @@
 
           &::placeholder {
             color: #{$light-gray};
-          }
-
-          @include phone {
-            margin-bottom: 30px;
           }
         }
 
@@ -125,9 +133,10 @@
             font-family: sans-serif;
             resize: none;
             border: none;
+            color: #{$dark};
 
             &::placeholder {
-              color: #{$dark};
+              color: #{$light-gray};
             }
 
             @include phone {
@@ -144,8 +153,14 @@
 
       .top {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
+
+        @include tablet {
+          display: flex;
+          flex-wrap: wrap;
+        }
 
         @include phone {
           display: flex;
@@ -154,20 +169,21 @@
 
         h5 {
           margin-left: 3%;
-
-          @include phone {
-            font-size: 1.5rem;
-          }
         }
 
         .job-active {
           display: flex;
-          justify-content: center;
           align-items: center;
           width: 40%;
 
-          @include phone {
+          @include tablet {
+            margin-bottom: 20px;
             width: 50%;
+          }
+
+          @include phone {
+            width: 100%;
+            margin-bottom: 20px;
           }
         }
 
@@ -176,8 +192,14 @@
           align-items: center;
           width: 40%;
 
-          @include phone {
+          @include tablet {
+            margin-bottom: 20px;
             width: 50%;
+          }
+
+          @include phone {
+            width: 100%;
+            margin-bottom: 20px;
           }
 
           .degree-checkbox {
@@ -187,19 +209,19 @@
         }
 
         .categories {
-          width: 20%;
+          width: 100%;
           display: flex;
           justify-content: start;
+          margin-top: 30px;
 
-          @include phone {
+          @include tablet {
             width: 100%;
             justify-content: center;
-            margin-top: 30px;
           }
 
           select {
             background-color: #{$background};
-            width: 80%;
+            width: 100%;
             height: 30px;
             font-size: 1.8rem;
             border: none;

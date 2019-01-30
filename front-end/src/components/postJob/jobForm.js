@@ -49,38 +49,38 @@ class JobForm extends React.Component {
               <div className="bottom">
                 <div className="title-and-input">
                   <label className="input-titles" for="top-skills">
-                    Top 5 Skills *separate with commas*
+                    Top 5 Skills (separate with commas)
                   </label>
                   <input
                     id="top-skills"
                     value={this.props.top_skills}
                     name="top_skills"
                     onChange={this.props.handleInput}
-                    placeholder="HTML, CSS, JavaScript"
+                    placeholder="HTML, CSS, JavaScript, React, SEO"
                   />
                 </div>
                 <div className="title-and-input">
                   <label className="input-titles" for="additional-skills">
-                    More Skills *separate with commas*
+                    More Skills (separate with commas)
                   </label>
                   <input
                     id="additional-skills"
                     value={this.props.add_skills}
                     name="add_skills"
                     onChange={this.props.handleInput}
-                    placeholder="React, JSON, JSX"
+                    placeholder="WordPress, JSX, Node.js, SQL, jQuery"
                   />
                 </div>
                 <div className="title-and-input">
                   <label className="input-titles" for="familiar-with">
-                    Remaining Skills *separate with commas*
+                    Remaining Skills (separate with commas)
                   </label>
                   <input
                     id="familiar-with"
                     value={this.props.familiar}
                     name="familiar"
                     onChange={this.props.handleInput}
-                    placeholder="Python, C, C++"
+                    placeholder="Python, C, C++, Bootstrap, AngularJS"
                   />
                 </div>
                 <div className="title-and-input">
