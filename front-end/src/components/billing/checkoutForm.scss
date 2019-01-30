@@ -158,6 +158,9 @@ $break-small: 645px;
 
 		//Balance of job credits
 		.balance-container {
+			display: flex;
+			font-size: 1.6em;
+			justify-content: flex-end;
 		}
 
 		//Jobs Purchased Postings
