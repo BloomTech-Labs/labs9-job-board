@@ -231,10 +231,16 @@
 					}
 					
 					.categories-hide {
-						display: none;
-					}
-					.categories {
 						display: flex;
+						flex-wrap: wrap;
+						height: 10px;
+						width: 100px;
+						color: transparent;
+						margin: auto;
+						margin-bottom: 90px;
+					}
+		.categories {
+			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			border: 2px solid #ccc;
@@ -252,8 +258,8 @@
 			@include phone {
 				// display: none;
 				height: auto;
-				align-items: center;
-				flex-wrap: wrap;
+				margin: 125px auto 5px auto;
+				width: 100%;
 			}
 
 			
@@ -277,6 +283,7 @@
 
 				@include phone {
 					padding: 20px;
+					font-size: 1.4rem;
 				}
 			}
 
@@ -392,6 +399,9 @@
 
 		@include tablet {
 			width: 90%;
+		}
+		@include phone {
+
 		}
 		.job-list-headers {
 			display: flex;

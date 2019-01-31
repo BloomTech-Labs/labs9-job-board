@@ -76,7 +76,7 @@ toggleSetter() {
         onClick = {this.toggleHandler}
         ></img>
         <p className = 'catagory-label'>Search Catagories</p>
-        <div id = 'hideCategories' className={ this.state.toggleDisplay ? "categories" : " categories-hide" }>
+        <div className={ this.state.toggleDisplay ? "categories" : " categories-hide" }>
         
           <div
             className={
