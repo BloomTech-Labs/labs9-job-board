@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import seachFilter from '../../images/design/png/filter-button.png'
 import JobList from "./jobList";
 import { Link } from "react-scroll";
 //import Jobs from "./job";
@@ -34,7 +35,7 @@ class JobsContainer extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.conditionalScroll);
+    // window.addEventListener("resize", this.conditionalScroll);
     this.setState(
       { fetching: true },
       () => {
@@ -92,9 +93,9 @@ class JobsContainer extends Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.conditionalScroll);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.conditionalScroll);
+  // }
 
   closeNewProfileModal = async () => {
     await this.setState({ newProfileModalVisible: false });
@@ -149,7 +150,7 @@ class JobsContainer extends Component {
   onEnter = event => {
     window.scroll({
       top: 380,
-      left: 100,
+      left: 90,
       behavior: 'smooth'
     });
   }
@@ -175,6 +176,7 @@ class JobsContainer extends Component {
         <Header authUser={this.props.authUser} />
         <img className ='header-logo' alt = 'logo'src = {bigLogo}></img>
         <div className = 'white-box'></div>
+        <img className = 'filter-button' alt = 'search filter button'src = {seachFilter}></img>
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search

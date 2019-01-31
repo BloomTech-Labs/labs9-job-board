@@ -6,6 +6,20 @@
 	padding-bottom: 50px;
 	background: $background;
 
+	@include phone {
+		width: 100%;
+	}
+
+	.filter-button {
+		display: none;
+		@include phone {
+		display: flex;
+		position: absolute;
+		top: 343px;
+		left: 84%;
+		height: 35px;
+		}
+	}
 	.white-box{
 		display:none;
 
@@ -25,7 +39,6 @@
 		}
 
 		@include phone {
-			border: 1px solid red;
 			height: 185px;
 			width: 92%;
 			left: 4%;
@@ -120,9 +133,22 @@
 				@include phone {
 					font-size: 2.4rem;
 					left: 52%;
-					top: 280px;
+					top: 288px;
+					padding: 0px;
+					width: 94%;
 				}
 
+				.attention-catcher-underline{
+					display: none;
+
+					@include phone{
+						display: flex;
+						width: 300px;
+						height: 1.3px;
+						margin: 10px auto 0px auto;
+						background-color: $dark;
+					}
+				}
 				.attention-catcher-text {
 					color: $orange;
 					font-weight: bold;
@@ -151,6 +177,7 @@
 
 					@include phone {
 						font-size: 1.6rem;
+						padding: 15px 0px;
 					}
 					
 					
@@ -278,7 +305,7 @@
 			}
 
 			@include phone {
-				width: 80%;
+				width: 70%;
 				left: 10%;
 				top: 340px;
 				height: 40px;
@@ -297,13 +324,15 @@
 					width: 60px;
 				}
 				@include phone {
-					padding: 15px;
+					padding: 12px;
 					width: 40px;
 					height: 40px;
 				}
 				
 			}
-
+			::placeholder{
+				color: $light-gray;
+			}
 			.search-input {
 				width: 60%;
 				border: 2px solid #ccc;
@@ -315,6 +344,9 @@
 				-webkit-transition: width 0.4s ease-in-out;
 				transition: width 0.4s ease-in-out;
 				outline-color: $blue;
+				outline-width: .25px;
+				color: $dark;
+			
 
 				@include tablet {
 					font-size: 1.8rem;
@@ -324,15 +356,24 @@
 				@include phone {
 					width: 90%;
 					height: 40px;
+					font-size: 1.4rem;
+
 				}
 				&:hover {
 					border: 2px  solid rgb(124, 124, 124);
 					border-right: 0px;
 					border-radius: 5px 0px 0px 5px;
+					@include phone {
+						border: 1px solid rgb(124, 124, 124);
+					}
 				}
 
 				&:focus {
 					width: 67%;
+					@include phone {
+						width: 100%;
+						outline-width: .25px;
+					}
 				}
 			}
 		}
