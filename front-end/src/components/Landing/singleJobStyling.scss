@@ -1,74 +1,67 @@
 .single-job-container {
-  width: 100%;
+  max-width: 1024px;
+  margin: auto;
   background-color: #{$background};
-  padding-bottom: 40px;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: row-reverse;
-
-  .apply-share {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 20%;
-
-    button {
-      padding: 10px 0;
-      border-radius: 10px;
-      border: none;
-      color: white;
-      font-size: 1.6rem;
-      cursor: pointer;
-      background-color: #{$auth-submit-bg};
-      margin-bottom: 13px;
-      width: 65%;
-    }
-
-    .fa {
-      font-size: 5rem;
-      margin-bottom: 13px;
-      color: #{$blue};
-
-      &:hover {
-        cursor: pointer;
-        color: #{$auth-submit-bg};
-      }
-    }
-
-    p {
-      color: #{$blue};
-      text-decoration: underline;
-
-      &:hover {
-        cursor: pointer;
-        color: #{$auth-submit-bg};
-      }
-    }
-  }
+  padding: 30px 0;
 
   .job-listing {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 100%;
 
     .job-pic-summary {
-      width: 100%;
+      width: 50rem;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      display: flex;
 
       img {
         border-radius: 50%;
+        margin-bottom: 15px;
+      }
+
+      h1 {
+        font-size: 5rem;
+        color: #{$dark};
+
+        @include tablet {
+          font-size: 4rem;
+        }
+      }
+
+      .border {
+        border-bottom: 4px solid #{$blue};
+        width: 100%;
+        margin: 15px 0;
       }
 
       h2 {
-        font-size: 3rem;
-        margin: 20px 0;
-        border-bottom: 2px solid #{$blue};
-        width: 30%;
-        text-align: center;
-        padding-bottom: 20px;
+        font-size: 2.8rem;
+        color: #{$dark};
+        margin-bottom: 15px;
+
+        @include tablet {
+          font-size: 2rem;
+        }
+      }
+
+      .apply-btn {
+        padding: 10px 6rem;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-size: 1.6rem;
+        cursor: pointer;
+        background-color: #{$auth-submit-bg};
+
+        &:hover {
+          background-color: #{$auth-submit-bg-hover};
+        }
+      }
+
+      @include tablet {
+        width: 90%;
       }
 
       p {
@@ -79,64 +72,146 @@
 
     .joint-columns {
       background-color: white;
-      width: 80%;
-      border-radius: 30px;
+      width: 100%;
+      border-radius: 20px;
       display: flex;
       flex-direction: row;
-      padding: 16px 2%;
-      margin: 30px 0 20px 0;
+      padding: 10px 40px 40px 40px;
+      margin: 40px 5%;
 
+      .job-border {
+        border: 4px solid #{$background};
+        margin: 0 40px;
+      }
       .job-column {
-        width: 50%;
+        width: 49%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+
+        .title-salary {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+
+          .title {
+            margin: 30px 0;
+
+            @include tablet {
+              width: 48%;
+              margin: 30px 0 0 0;
+            }
+
+            @include phone {
+              font-size: 2.8rem;
+              font-weight: bold;
+            }
+          }
+
+          @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+
+            p {
+              margin-top: 30px;
+              width: 48%;
+
+              @include phone {
+                margin-top: 0;
+                text-align: center;
+                padding: 0 0;
+              }
+            }
+          }
+
+          @include phone {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
 
         p {
           background-color: #{$background};
-          width: 90%;
-          border-radius: 7px;
-          font-size: 2rem;
+          width: 100%;
+          border-radius: 5px;
+          font-size: 1.8rem;
           text-align: start;
-          padding: 3px 3%;
-        }
+          padding: 10px;
+          color: #{$dark};
 
-        .title {
-          margin-bottom: 15px;
+          @include phone {
+            background-color: white;
+          }
         }
 
         label {
-          padding: 15px 0 5px 3%;
+          padding: 30px 0 7px 10px;
           font-weight: bold;
           font-size: 2rem;
           width: 100%;
           text-align: left;
+          color: #{$dark};
+        }
+
+        .apply-btn {
+          padding: 10px 0;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          font-size: 1.6rem;
+          cursor: pointer;
+          background-color: #{$auth-submit-bg};
+          margin: 30px 0;
+          width: 100%;
+
+          &:hover {
+            background-color: #{$auth-submit-bg-hover};
+          }
+        }
+
+        .share {
+          margin: 30px 0 0 0;
+          font-size: 1.6rem;
+          cursor: pointer;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+
+          i {
+            font-size: 3rem;
+            width: 50%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: #{$blue};
+
+            &:hover {
+              color: #{$auth-submit-bg};
+            }
+          }
+
+          h3 {
+            width: 50%;
+            background-color: none;
+            font-size: 2rem;
+            align-items: flex-end;
+            display: flex;
+            justify-content: center;
+            text-decoration: underline;
+            color: #{$blue};
+
+            &:hover {
+              color: #{$auth-submit-bg};
+            }
+          }
+        }
+        @include tablet {
+          width: 100%;
         }
       }
-
-      .one {
-        border-right: 2px solid #{$background};
-      }
-
-      .two {
-        padding: 3px 0 0 3%;
-
-        p {
-          width: 95%;
-          margin-bottom: 15px;
-        }
-      }
-
-      .apply-btn {
-        padding: 10px 0;
-        border-radius: 10px;
-        border: none;
-        color: white;
-        font-size: 1.6rem;
-        cursor: pointer;
-        background-color: #{$auth-submit-bg};
-        margin-top: 30px;
-        width: 95%;
+      @include tablet {
+        flex-direction: column;
+        align-items: center;
       }
     }
   }

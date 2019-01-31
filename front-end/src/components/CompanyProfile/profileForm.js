@@ -13,15 +13,16 @@ const ProfileForm = props => {
           Change Password
         </Link>
       </div>
-      <button onClick={props.openEditor} className="edit-btn edit">
-        <i className="fa fa-pencil" /> Edit Account
-      </button>
       <div className="pic-account">
         <ProfilePic setUrl={props.setUrl} />
-        <h2>Edit Your Account</h2>
+        <h1>Edit Your Account</h1>
+        <div className="border" />
+        <button onClick={props.openEditor} className="edit-btn edit">
+          Edit Account
+        </button>
       </div>
-      <form onSubmit={props.updateUser} className="update-profile-form">
-        <div className="edit-profile-info">
+      <form onSubmit={props.updateUser} className="all-company-info">
+        <div className="company-text">
           <label>First Name</label>
           <input
             id="firstName"
@@ -59,7 +60,8 @@ const ProfileForm = props => {
             onChange={props.changeHandler}
           />
         </div>
-        <div className="edit-company-info">
+        <div className="company-border" />
+        <div className="company-text">
           <label>Company Name</label>
           <input
             id="companyName"

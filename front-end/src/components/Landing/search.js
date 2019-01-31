@@ -4,7 +4,7 @@ import searchIcon from '../../images/design/png/search-icon-white.png'
 
 const Search = props => {
   return (
-    <form className="search-bar" onClick = {props.onEnter}>
+    <form className="search-bar" onClick = {props.conditionalScroll}>
       <input
         placeholder="Search jobs..."
         type="text"

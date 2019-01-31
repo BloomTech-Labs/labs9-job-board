@@ -6,13 +6,19 @@
 	padding-bottom: 50px;
 	background: $background;
 
+	@include phone {
+		width: 100%;
+		min-height: 1000px;
+	}
+
+	
 	.white-box{
 		display:none;
 
 		@include tablet{
 			display: flex;
 			position: absolute;
-			top: 38%;
+			top: 330px;
 			left: 8%;
 			height: 275px;
 			width: 83%;
@@ -23,17 +29,35 @@
 
 
 		}
+
+		@include phone {
+			height: 185px;
+			width: 92%;
+			left: 4%;
+			top: 220px;
+		}
 	}
 
 	.header-logo {
 		display: none;
 
+		
 		@include tablet {
 			display: flex;
 			position: absolute;
-			top: 3%;
+			top: 10px;
 			left: 30%;
 			width: 43%;
+			// min-width: 280px;
+			margin: auto;
+		}
+		
+		@include phone{
+			display: flex;
+			position: absolute;
+			top: 1%;
+			left: 28%;
+			width: 49%;
 			// min-width: 280px;
 			margin: auto;
 		}
@@ -63,14 +87,19 @@
 		.header-photo {
 			width: 100%;
 			height: 700px;
+			overflow: hidden;
+			// filter: blur(3px);
 
 			@include tablet {
 				height: 475px;
 			}
+			@include phone {
+				height: 260px;
+			}
 
 			img {
 				width: 100%;
-				height: 100%;
+				height: auto;
 			}
 
 			.attention-catcher{
@@ -87,14 +116,32 @@
 				padding: 0px 20px;
 
 				@include tablet{
-					top: 49%;
+					top: 410px;
 					z-index: 40;
 					font-size: 3rem;
 					color: $dark;
 
 				}
-				
 
+				@include phone {
+					font-size: 2.4rem;
+					left: 52%;
+					top: 288px;
+					padding: 0px;
+					width: 94%;
+				}
+
+				.attention-catcher-underline{
+					display: none;
+
+					@include phone{
+						display: flex;
+						width: 300px;
+						height: 1.3px;
+						margin: 10px auto 0px auto;
+						background-color: $dark;
+					}
+				}
 				.attention-catcher-text {
 					color: $orange;
 					font-weight: bold;
@@ -102,6 +149,9 @@
 
 					@include tablet {
 						color: $blue;
+					}
+					@include phone {
+						font-weight: normal;
 					}
 				}
 
@@ -116,6 +166,11 @@
 						flex-wrap: wrap;
 						font-size: 2rem;
 						padding-top: 25px;
+					}
+
+					@include phone {
+						font-size: 1.6rem;
+						padding: 15px 0px;
 					}
 					
 					
@@ -133,39 +188,59 @@
 		// padding: 0 1%;
 		margin: 35px auto;
 		max-width: 1024px;
-
+		
 		// @include laptop {
-		//   flex-direction: column;
-		//   align-items: center;
-		// }
-
-		// @include tablet {
-		//   flex-direction: column;
-		//   align-items: center;
-		// }
-
+			//   flex-direction: column;
+			//   align-items: center;
+			// }
 			
-
-	.catagory-container {	
-		display: flex;
-		flex-direction: row;
-		max-width: 1024px;
-		width: 94%;
-
-		.catagory-label {
-			padding: 6px 0px 0px 0px;
-			font-size: 2rem;
-			font-weight: bold;
-			min-width: 180px;
-			font-family: $font;
-			margin: auto;
-
-			@include tablet {
-				display: none;
-			}
-
-		}
-
+			// @include tablet {
+				//   flex-direction: column;
+				//   align-items: center;
+				// }
+				
+				
+				
+				.catagory-container {	
+					display: flex;
+					flex-direction: row;
+					max-width: 1024px;
+					width: 94%;
+					
+					.catagory-label {
+						padding: 6px 0px 0px 0px;
+						font-size: 2rem;
+						font-weight: bold;
+						min-width: 180px;
+						font-family: $font;
+						margin: auto;
+						
+						@include tablet {
+							display: none;
+						}
+						
+					}
+					
+					.filter-button {
+						display: none;
+						@include phone {
+							display: flex;
+							position: absolute;
+							top: 343px;
+							left: 84%;
+							height: 35px;
+						}
+					}
+					
+					.categories-hide {
+						display: flex;
+						flex-wrap: wrap;
+						height: 10px;
+						width: 100px;
+						color: transparent;
+						margin: auto;
+						margin-bottom: 90px;
+					}
 		.categories {
 			display: flex;
 			justify-content: center;
@@ -179,16 +254,17 @@
 
 			@include tablet {
 				width: 90%;
-				margin: 130px auto 20px auto;
+				margin: 110px auto 10px auto;
 				padding: 0px;
 			}
 			@include phone {
 				// display: none;
 				height: auto;
-				align-items: center;
-				flex-wrap: wrap;
+				margin: 125px auto 5px auto;
+				width: 100%;
 			}
 
+			
 			.categories-tab {
 				display: flex;
 				align-items: center;
@@ -209,6 +285,7 @@
 
 				@include phone {
 					padding: 20px;
+					font-size: 1.4rem;
 				}
 			}
 
@@ -236,14 +313,17 @@
 			@include tablet {
 				width: 90%;
 				position: absolute;
-				top: 58%;
+				top: 500px;
 				left: 6%;
 				margin: auto;
 				height: 60px;
 			}
 
 			@include phone {
-				width: 90%;
+				width: 70%;
+				left: 10%;
+				top: 340px;
+				height: 40px;
 			}
 
 			.search-icon {
@@ -258,9 +338,16 @@
 				@include tablet {
 					width: 60px;
 				}
+				@include phone {
+					padding: 12px;
+					width: 40px;
+					height: 40px;
+				}
 				
 			}
-
+			::placeholder{
+				color: $light-gray;
+			}
 			.search-input {
 				width: 60%;
 				border: 2px solid #ccc;
@@ -272,6 +359,9 @@
 				-webkit-transition: width 0.4s ease-in-out;
 				transition: width 0.4s ease-in-out;
 				outline-color: $blue;
+				outline-width: .25px;
+				color: $dark;
+			
 
 				@include tablet {
 					font-size: 1.8rem;
@@ -280,15 +370,25 @@
 				
 				@include phone {
 					width: 90%;
+					height: 40px;
+					font-size: 1.4rem;
+
 				}
 				&:hover {
 					border: 2px  solid rgb(124, 124, 124);
 					border-right: 0px;
 					border-radius: 5px 0px 0px 5px;
+					@include phone {
+						border: 1px solid rgb(124, 124, 124);
+					}
 				}
 
 				&:focus {
 					width: 67%;
+					@include phone {
+						width: 100%;
+						outline-width: .25px;
+					}
 				}
 			}
 		}
@@ -301,6 +401,9 @@
 
 		@include tablet {
 			width: 90%;
+		}
+		@include phone {
+			width: 98%;
 		}
 		.job-list-headers {
 			display: flex;
@@ -325,6 +428,11 @@
 				@include tablet {
 					padding-left:20px;
 				}
+
+				@include phone {
+					font-size: 1.6rem;
+					padding: 0px 5px 0px 12px;
+				}
 			}
 			.company-title {
 				font-size: 2rem;
@@ -332,6 +440,11 @@
 				color: $dark;
 				font-weight: bold;
 				width: 29%;
+
+				@include phone {
+					font-size: 1.6rem;
+					padding: 0px 5px;
+				}
 				// border-bottom: 2px solid $blue;
 			}
 			.salary-title {
@@ -340,6 +453,10 @@
 				color: $dark;
 				font-weight: bold;
 				width: 26%;
+				@include phone {
+					font-size: 1.6rem;
+					padding: 0px 5px;
+				}
 				// border-bottom: 2px solid $blue;
 			}
 			.date-posted-title {
@@ -348,6 +465,10 @@
 				color: $dark;
 				font-weight: bold;
 				width: 150px;
+				@include phone {
+					font-size: 1.6rem;
+					padding: 0px 5px;
+				}
 				// border-bottom: 2px solid $blue;
 			}
 		}
@@ -385,10 +506,14 @@
 					
 				}
 
+				@include phone {
+					justify-content: flex-start;
+				}
+
 				.left-side {
 					display: flex;
 					width: 95%;
-					justify-content: flex-start;
+					
 
 					@include tablet {
 						width: 85%;
@@ -397,19 +522,26 @@
 						width: 75%;
 					}
 					@include phone {
-						width: 70%;
+						width: 80%;
+						font-size: 1.4rem;
 					}
 
 					.job {
 						width: 33%;
 						font-weight: bold;
 						padding-right: 10px;
+						@include phone {
+							width: 31%;
+						}
 					}
 
 					.company {
 						width: 38%;
 						@include tablet {
 							width: 30%;
+						}
+						@include phone {
+							width: 32%;
 						}
 					}
 
@@ -419,6 +551,10 @@
 						@include tablet {
 							width: 30%;
 						}
+						@include phone {
+							width: 35%;
+						}
+						
 						// color:$blue;
 					}
 				}
@@ -431,7 +567,8 @@
 					// 	width: 25%;
 					// }
 					@include phone {
-						width: 30%;
+						width: 13%;
+						font-size: 1.4rem;
 					}
 				}
 			}

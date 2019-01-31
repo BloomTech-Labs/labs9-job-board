@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import seachFilter from '../../images/design/png/filter-button.png'
 import JobList from "./jobList";
 import { Link } from "react-scroll";
 //import Jobs from "./job";
@@ -34,6 +35,7 @@ class JobsContainer extends Component {
   }
 
   componentDidMount() {
+    // window.addEventListener("resize", this.conditionalScroll);
     this.setState(
       { fetching: true },
       () => {
@@ -91,6 +93,10 @@ class JobsContainer extends Component {
     }
   }
 
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.conditionalScroll);
+  // }
+
   closeNewProfileModal = async () => {
     await this.setState({ newProfileModalVisible: false });
   };
@@ -123,10 +129,28 @@ class JobsContainer extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  conditionalScroll = event => {
+    let windowSize = (window.innerWidth);
+
+    if (windowSize<=500) {
+      this.onEnterMobile()
+    }  else {
+      this.onEnter()
+    }
+  }
+
+  onEnterMobile = event => {
+    window.scroll({
+      top: 120,
+      left: 100,
+      behavior: 'smooth'
+    });
+  }
+
   onEnter = event => {
     window.scroll({
       top: 380,
-      left: 100,
+      left: 90,
       behavior: 'smooth'
     });
   }
@@ -152,12 +176,13 @@ class JobsContainer extends Component {
         <Header authUser={this.props.authUser} />
         <img className ='header-logo' alt = 'logo'src = {bigLogo}></img>
         <div className = 'white-box'></div>
+        
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search
             searchResults={this.searchResults}
             search={this.state.search}
-            onEnter = {this.onEnter}
+            conditionalScroll = {this.conditionalScroll}
           />
         </div>
         {this.state.fetching ? (
