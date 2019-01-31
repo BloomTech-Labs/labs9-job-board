@@ -47,6 +47,7 @@ const Header = props => {
       
         <div className = 'attention-catcher' >
           <span className = 'attention-catcher-text'>No Degree?  </span>  No Problem.
+          <div className = 'attention-catcher-underline'></div>
           <p className = 'tagline'>Matching brilliant minds with the world's most <br></br> prominent companies</p>
         </div>
       
