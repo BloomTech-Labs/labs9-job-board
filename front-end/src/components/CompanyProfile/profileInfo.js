@@ -12,29 +12,30 @@ const ProfileInfo = props => {
           Change Password
         </Link>
       </div>
-      <button onClick={props.openEditor} className="edit-btn edit">
-        <i className="fa fa-pencil" />
-        Edit Account
-      </button>
       <div className="pic-account">
         <img src={props.company.avatar_image} className="avatar" />
-        <h2>Your Account</h2>
+        <h1>Your Account:</h1>
+        <div className="border" />
+        <button onClick={props.openEditor} className="edit-btn edit">
+          Edit Account:
+        </button>
       </div>
       <div className="all-company-info">
         <div className="company-text">
-          <label>First Name</label>
+          <label>First Name:</label>
           <p>{props.company.first_name}</p>
-          <label>Last Name</label>
+          <label>Last Name:</label>
           <p>{props.company.last_name}</p>
-          <label>Email</label>
+          <label>Email:</label>
           <p>{props.company.email}</p>
         </div>
-        <div className="summary-btns">
-          <label>Company name</label>
+        <div className="company-border" />
+        <div className="company-text">
+          <label>Company name:</label>
           <p>{props.company.company_name}</p>
-          <label>Company Summary</label>
+          <label>Company Summary:</label>
           <p>{props.company.summary}</p>
-          <label>Email for Incoming Applications</label>
+          <label>Application Email:</label>
           <p>{props.company.application_method}</p>
         </div>
       </div>

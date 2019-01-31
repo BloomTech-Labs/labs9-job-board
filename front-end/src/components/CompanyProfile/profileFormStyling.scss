@@ -1,209 +1,170 @@
 .profile-container {
-  width: 100%;
+  max-width: 1024px;
+  margin: auto;
   background-color: #{$background};
-  padding-bottom: 40px;
+  padding: 30px 0;
 
   .companyInfo {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
 
     .pic-account {
-      border-bottom: 2px solid #{$blue};
-      width: 30%;
+      width: 50rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
 
-    .pic-account h2 {
-      font-size: 3rem;
-      margin: 20px 0;
+      @include tablet {
+        width: 90%;
+      }
+    }
+    .border {
+      border-bottom: 4px solid #{$blue};
+      width: 100%;
+      margin: 15px 0;
+    }
+    .pic-account h1 {
+      font-size: 5rem;
+      color: #{$dark};
+
+      @include tablet {
+        font-size: 4rem;
+      }
     }
 
     .avatar {
       border-radius: 50%;
+      margin-bottom: 15px;
     }
 
     .all-company-info {
       background-color: white;
-      width: 70%;
-      border-radius: 30px;
+      width: 100%;
+      border-radius: 20px;
       display: flex;
       flex-direction: row;
-      padding: 16px 2%;
-      margin: 80px 0 20px 0;
+      padding: 10px 40px 40px 40px;
+      margin: 40px 5%;
 
       .company-text {
-        width: 50%;
+        width: 49%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        border-right: 2px solid #{$background};
+        align-items: center;
+
+        @include tablet {
+          width: 100%;
+        }
       }
 
       .company-text p {
         background-color: #{$background};
-        width: 90%;
-        border-radius: 7px;
-        font-size: 2rem;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.8rem;
         text-align: start;
-        padding: 3px 3%;
+        padding: 10px;
+        color: #{$dark};
       }
 
       label {
-        padding: 15px 0 5px 3%;
+        padding: 30px 0 7px 10px;
         font-weight: bold;
         font-size: 2rem;
         width: 100%;
         text-align: left;
+        color: #{$dark};
       }
 
-      .summary-btns {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 2%;
+      .company-border {
+        border: 4px solid #{$background};
+        margin: 0px 40px;
       }
-      .summary-btns p {
-        background-color: #{$background};
+
+      input {
         width: 100%;
+        border-radius: 5px;
+        font-size: 1.8rem;
         text-align: start;
-        padding: 3px 3%;
-        border-radius: 7px;
-        font-size: 2rem;
+        padding: 10px;
+        color: #{$light-gray};
+
+        &:focus {
+          outline-color: #{$blue};
+          color: #{$dark};
+        }
+      }
+
+      textarea {
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1.8rem;
+        text-align: start;
+        padding: 10px;
+        font-family: "Roboto", sans-serif;
+        color: #{$light-gray};
+
+        &:focus {
+          outline-color: #{$blue};
+          color: #{$dark};
+        }
+      }
+
+      .btns-save-cancel {
+        margin: 50px 10px 0 10px;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        font-size: 1.6rem;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .save {
+          width: 45%;
+          background-color: #{$auth-submit-bg};
+
+          &:hover {
+            background-color: #{$auth-submit-bg-hover};
+          }
+
+          @include phone {
+            width: 100%;
+            margin-bottom: 30px;
+          }
+        }
+        .cancel {
+          width: 45%;
+          background-color: #{$Navbar};
+
+          @include phone {
+            width: 100%;
+          }
+        }
+
+        @include phone {
+          flex-direction: column;
+        }
+      }
+
+      @include tablet {
+        flex-direction: column;
+        align-items: center;
       }
     }
-
-    .update-profile-form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .editHeader {
-      border-bottom: 2px solid #{$blue};
-      width: 30%;
-    }
-
     .profile-pic-button {
       border-radius: 50%;
       padding: 100px 80px;
       border: none;
       cursor: pointer;
-
-      span {
-        display: block;
-      }
-    }
-
-    .update-profile-form {
-      background-color: white;
-      width: 70%;
-      border-radius: 30px;
-      display: flex;
-      flex-direction: row;
-      padding: 16px 2%;
-      margin: 80px 0 20px 0;
-
-      .edit-profile-info {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        border-right: 2px solid #{$background};
-
-        input {
-          background-color: #{$background};
-          width: 90%;
-          text-align: start;
-          padding: 3px 3%;
-          border-radius: 7px;
-          font-size: 2rem;
-
-          &:focus {
-            background-color: #{$blue};
-            color: white;
-          }
-        }
-      }
-
-      .edit-company-info {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 2%;
-
-        input {
-          background-color: #{$background};
-          width: 100%;
-          text-align: start;
-          padding: 3px 3%;
-          border-radius: 7px;
-          font-size: 2rem;
-
-          &:focus {
-            background-color: #{$blue};
-            color: white;
-          }
-        }
-
-        textarea {
-          background-color: #{$background};
-          width: 100%;
-          text-align: start;
-          padding: 3px 3%;
-          border-radius: 7px;
-          font-size: 2rem;
-
-          &:focus {
-            background-color: #{$blue};
-            color: white;
-          }
-        }
-
-        .btns-save-cancel {
-          display: flex;
-          width: 100%;
-          justify-content: space-around;
-
-          .edit-btn {
-            margin: 90px 0 0 0;
-            border-radius: 10px;
-            border: none;
-            color: white;
-            font-size: 1.6rem;
-            cursor: pointer;
-          }
-          .save {
-            background-color: #{$auth-submit-bg};
-            width: 40%;
-          }
-
-          .cancel {
-            background-color: #{$Navbar};
-            width: 40%;
-          }
-        }
-      }
-
-      label {
-        padding: 15px 0 5px 3%;
-        font-weight: bold;
-        font-size: 2rem;
-        width: 100%;
-        text-align: left;
-      }
     }
   }
 
   .edit-btn {
-    margin: 5px 0;
-    padding: 10px 2%;
-    border-radius: 10px;
+    padding: 10px 5rem;
+    border-radius: 5px;
     border: none;
     color: white;
     font-size: 1.6rem;
@@ -211,35 +172,37 @@
   }
   .edit {
     background-color: #{$blue};
-    display: flex;
-    margin-right: 50%;
-  }
-
-  .links-pass-bill {
-    width: 30%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    font-size: 2rem;
-    padding: 20px 0;
-
-    a {
-      color: #{$blue};
-    }
   }
 
   .menu-pass-bill {
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     font-size: 2rem;
-    padding: 20px 0;
+    padding: 0 1%;
+
+    .link-pass {
+      @include tablet {
+        text-align: end;
+      }
+    }
+
+    .link-bill {
+      @include tablet {
+        text-align: start;
+        padding: 0 3%;
+      }
+    }
 
     a {
       color: #{$blue};
-      width: 20%;
+      width: 20rem;
       text-align: end;
+    }
+
+    @include tablet {
+      justify-content: space-between;
     }
   }
 }
