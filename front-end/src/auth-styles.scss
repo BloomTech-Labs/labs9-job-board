@@ -19,10 +19,14 @@
     }
 
     .auth-content {
-      padding: 20px;
+      padding: 40px;
       width: 500px;
       background: rgba(245, 245, 245, 0.8);
-      border-radius: 5px;
+      border-radius: 20px;
+
+      @include tablet {
+        padding: 20px;
+      }
 
       h2.auth-heading {
         font-size: 3.6rem;
@@ -34,7 +38,7 @@
       }
 
       .auth-tagline {
-        font-size: 1.4rem;
+        font-size: 2rem;
       }
 
       .auth-divider {
@@ -47,22 +51,51 @@
       .auth-form {
         .auth-form-input {
           width: 100%;
-          padding: 15px 10px;
+          padding: 10px;
           margin: 10px 0;
           border: none;
           border-radius: 5px;
-          font-size: 1.6rem;
+          font-size: 1.8rem;
+          outline-color: $blue;
+          background-color: $white;
+          color: $dark;
+          position: relative;
+
+          &::placeholder {
+            color: $light-gray;
+          }
+        }
+
+        .match {
+          color: $teal;
+        }
+
+        .noMatch {
+          color: $orange;
+        }
+
+        .auth-error {
+          display: block;
+          font-size: 1.4rem;
+          margin: 5px 0;
+          text-align: center;
         }
 
         .auth-form-button {
           width: 100%;
-          padding: 15px 10px;
+          padding: 10px;
           margin: 10px 0;
-          background: $auth-submit-bg;
+          background: $disabled-orange;
           border: none;
           border-radius: 5px;
           color: $auth-submit-text;
+          outline-color: $blue;
           font-size: 1.8rem;
+          transition: all 0.5s ease;
+        }
+
+        .active {
+          background: $auth-submit-bg;
           transition: all 0.5s ease;
 
           &:hover {
@@ -81,6 +114,7 @@
           background-position: 10px 5px;
           background-color: $auth-google-btn-bg;
           color: $auth-google-btn-text;
+          outline-color: $blue;
           font-size: 1.8rem;
           display: flex;
           align-items: center;
@@ -104,13 +138,15 @@
       }
 
       .auth-footer {
-        margin-top: 20px;
+        width: 100%;
+        margin-top: 30px;
         display: flex;
         align-items: center;
-        font-size: 1.4rem;
+        flex-wrap: wrap;
+        font-size: 1.8rem;
 
-        span {
-          margin-right: 5px;
+        span.left-item {
+          margin-right: 10px;
         }
       }
     }

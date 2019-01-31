@@ -80,7 +80,7 @@ class NewProfileForm extends Component {
             x
           </div>
           <h2>New Account Info</h2>
-          <h4>Tell us about you.</h4>
+          <h4>Tell us about your company.</h4>
           <div className="header-divider" />
           <ProfilePic setUrl={this.setUrl} />
 

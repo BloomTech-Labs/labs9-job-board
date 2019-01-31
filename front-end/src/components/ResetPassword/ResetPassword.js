@@ -88,7 +88,7 @@ class ResetPasswordFormUnconnected extends React.Component {
                 Reset Password
               </button>
               {this.state.error ? (
-                <span>{this.state.error.message}</span>
+                <span className="auth-error">{this.state.error.message}</span>
               ) : null}
             </form>
             <div className="auth-footer reset-footer">
