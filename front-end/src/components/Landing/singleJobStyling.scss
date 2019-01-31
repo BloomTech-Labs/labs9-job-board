@@ -19,6 +19,10 @@
       img {
         border-radius: 50%;
         margin-bottom: 15px;
+        height: 200px;
+        max-height: 100%;
+        width: 200px;
+        object-fit: cover;
       }
 
       h1 {
