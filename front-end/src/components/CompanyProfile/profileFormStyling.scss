@@ -152,13 +152,16 @@
       @include tablet {
         flex-direction: column;
         align-items: center;
+        width: 90%;
       }
     }
     .profile-pic-button {
       border-radius: 50%;
-      padding: 100px 80px;
+      padding: 90px 40px;
       border: none;
       cursor: pointer;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
     }
   }
 
@@ -180,7 +183,7 @@
     flex-direction: row;
     justify-content: flex-end;
     font-size: 2rem;
-    padding: 0 1%;
+    padding: 0 1% 10px 1%;
 
     .link-pass {
       @include tablet {

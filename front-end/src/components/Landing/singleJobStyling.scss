@@ -177,19 +177,6 @@
           display: flex;
           justify-content: center;
 
-          i {
-            font-size: 3rem;
-            width: 50%;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            color: #{$blue};
-
-            &:hover {
-              color: #{$auth-submit-bg};
-            }
-          }
-
           h3 {
             width: 50%;
             background-color: none;
@@ -212,6 +199,7 @@
       @include tablet {
         flex-direction: column;
         align-items: center;
+        width: 90%;
       }
     }
   }

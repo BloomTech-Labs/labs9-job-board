@@ -83,7 +83,7 @@ class SingleJob extends Component {
                 Apply
               </button>
               <div className="share">
-                <i className="fa fa-envelope-o" onClick={this.shareHandler} />
+                <h3 onClick={this.shareHandler}> Share</h3>
                 <h3 onClick={this.reportHandler}>Report</h3>
               </div>
             </div>
