@@ -80,9 +80,7 @@ class ResetPasswordFormUnconnected extends React.Component {
                 autoComplete="on"
               />
               <button
-                className={`auth-form-button${
-                  invalidInput ? "" : " not-disabled"
-                }`}
+                className={`auth-form-button${invalidInput ? "" : " active"}`}
                 disabled={invalidInput}
               >
                 Reset Password
