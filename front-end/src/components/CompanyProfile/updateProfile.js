@@ -109,7 +109,9 @@ class UpdateProfile extends Component {
     return (
       <div className="profile-container">
         {!this.state.company ? (
-          <img src={LoadingBar} alt="loading bar" className="loading" />
+          <div className="loading-container">
+            <img src={LoadingBar} alt="loading bar" className="loading" />
+          </div>
         ) : this.state.companyEditor ? (
           <ProfileForm
             openEditor={this.openEditor}
