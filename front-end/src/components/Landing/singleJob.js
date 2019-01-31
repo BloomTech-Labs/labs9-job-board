@@ -61,8 +61,10 @@ class SingleJob extends Component {
           </div>
           <div className="joint-columns">
             <div className="job-column one">
-              <p className="title">{this.state.job.title}</p>
-              <p>{this.state.job.salary}</p>
+              <div className="title-salary">
+                <p className="title">{this.state.job.title}</p>
+                <p>{this.state.job.salary}</p>
+              </div>
               <label>Skills:</label>
               <p>
                 {this.state.job.add_skills}, {this.state.job.top_skills},

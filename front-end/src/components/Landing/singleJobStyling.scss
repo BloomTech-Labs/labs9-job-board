@@ -40,6 +40,10 @@
         font-size: 2.8rem;
         color: #{$dark};
         margin-bottom: 15px;
+
+        @include tablet {
+          font-size: 2rem;
+        }
       }
 
       .apply-btn {
@@ -80,6 +84,46 @@
         flex-direction: column;
         align-items: center;
 
+        .title-salary {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+
+          .title {
+            margin: 30px 0;
+
+            @include tablet {
+              width: 48%;
+              margin: 30px 0 0 0;
+            }
+
+            @include phone {
+              font-size: 2.8rem;
+              font-weight: bold;
+            }
+          }
+
+          @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+
+            p {
+              margin-top: 30px;
+              width: 48%;
+
+              @include phone {
+                margin-top: 0;
+                text-align: center;
+              }
+            }
+          }
+
+          @include phone {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+
         p {
           background-color: #{$background};
           width: 100%;
@@ -88,6 +132,10 @@
           text-align: start;
           padding: 10px;
           color: #{$dark};
+
+          @include phone {
+            background-color: white;
+          }
         }
 
         label {
@@ -97,10 +145,6 @@
           width: 100%;
           text-align: left;
           color: #{$dark};
-        }
-
-        .title {
-          margin: 30px;
         }
 
         .apply-btn {
@@ -158,6 +202,12 @@
           width: 100%;
         }
       }
+
+      // .title-salary {
+      //   display: flex;
+      //   width: 100%;
+      // }
+
       @include tablet {
         flex-direction: column;
         align-items: center;
