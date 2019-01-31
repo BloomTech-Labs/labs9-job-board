@@ -178,12 +178,12 @@ class CheckoutForm extends Component {
           <span>{this.state.selectionMessage || null}</span>
 
           <div className="card-info">
-            <p className="card-info-labels"> Card Number</p>
-            <CardNumberElement
-              className="card-info-placeholder-cnum"
-              onReady={element => (this.cardElement = element)}
-            />
             <div className="card-info-flex">
+              <p className="card-info-labels"> Card Number</p>
+              <CardNumberElement
+                className="card-info-placeholder-cnum"
+                onReady={element => (this.cardElement = element)}
+              />
               <p className="card-info-labels"> Expiration Date</p>
               <CardExpiryElement
                 className="card-info-placeholder-exp"
