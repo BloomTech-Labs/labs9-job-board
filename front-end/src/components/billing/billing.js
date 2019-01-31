@@ -19,7 +19,7 @@ class Billing extends Component {
               <div className="main-header">Billing</div>
               <hr />
               <div className="sub-header">
-                This isn't your typical purchase, this is going to be a
+                This isn't your typical purchase. <br /> This is going to be a
                 <em className="gotcha"> game changer.</em>
               </div>
             </div>

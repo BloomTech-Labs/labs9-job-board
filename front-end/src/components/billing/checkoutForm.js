@@ -29,7 +29,7 @@ const DEFAULT_STATE = {
 const AMOUNT_TO_PURCHASE = {
   999: "Job (1) - $9.99",
   9999: "Jobs (12) - $99.99",
-  29999: "Unlimited Jobs, 1 Month - $299.99"
+  29999: "1 Month Unlimited - $299.99"
 };
 
 class CheckoutForm extends Component {
@@ -151,7 +151,7 @@ class CheckoutForm extends Component {
                   checked={this.state.selectedOption === "unlimited"}
                   onChange={this.handleOptionChange}
                 />
-                {"Unlimited Jobs, 1 Month - $299.99"}
+                {"1 Month Unlimited - $299.99"}
               </label>
               <label>
                 <input
@@ -174,8 +174,9 @@ class CheckoutForm extends Component {
                 {"Job (1) - $9.99"}
               </label>
             </form>
-            <span>{this.state.selectionMessage || null}</span>
           </div>
+          <span>{this.state.selectionMessage || null}</span>
+
           <div className="card-info">
             <p className="card-info-labels"> Card Number</p>
             <CardNumberElement
@@ -218,16 +219,18 @@ class CheckoutForm extends Component {
             </div>
 
             <span>{this.state.paymentMessage || null}</span>
-            <a href="https://stripe.com/">
-              <img
-                src={StripeLogo}
-                alt="Powered by Stripe"
-                className="powered-by-stripe"
-              />
-            </a>
+            <p>
+              <a href="https://stripe.com/">
+                <img
+                  src={StripeLogo}
+                  alt="Powered by Stripe"
+                  className="powered-by-stripe"
+                />
+              </a>
+            </p>
           </div>
         </div>
-        <hr />
+        <hr className="line" />
         <div className="right-side">
           <UserJobs authUser={this.props.authUser} />
           <Balance authUser={this.props.authUser} />

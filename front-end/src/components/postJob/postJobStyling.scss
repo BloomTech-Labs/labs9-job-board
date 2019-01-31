@@ -48,6 +48,10 @@
     background-color: #{$white};
     border-radius: 20px;
 
+    @include phone {
+      padding: 20px;
+    }
+
     .post-job-top {
       display: flex;
 
