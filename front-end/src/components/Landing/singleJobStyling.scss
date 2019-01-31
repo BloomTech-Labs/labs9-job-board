@@ -5,6 +5,12 @@
   padding: 30px 0;
   min-height: 100vh;
 
+  .loading-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .job-listing {
     display: flex;
     flex-direction: column;
