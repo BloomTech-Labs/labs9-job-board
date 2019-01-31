@@ -28,12 +28,23 @@
 	.header-logo {
 		display: none;
 
+		
 		@include tablet {
 			display: flex;
 			position: absolute;
 			top: 3%;
 			left: 30%;
 			width: 43%;
+			// min-width: 280px;
+			margin: auto;
+		}
+		
+		@include phone{
+			display: flex;
+			position: absolute;
+			top: 1%;
+			left: 28%;
+			width: 49%;
 			// min-width: 280px;
 			margin: auto;
 		}
@@ -66,6 +77,9 @@
 
 			@include tablet {
 				height: 475px;
+			}
+			@include phone {
+				height: 260px;
 			}
 
 			img {
