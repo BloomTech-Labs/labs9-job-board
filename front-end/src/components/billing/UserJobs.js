@@ -52,16 +52,48 @@ class UserJobs extends React.Component {
   render() {
     return (
       <div className="billing-jobs">
+        <h3>Your Job Postings:</h3>
         <div className="job-links">
           {/* // key={job.id} */}
-          <h3>Your Job Postings:</h3>
-          <Link to={`/jobs`}>
-            <div className="billing-job">
-              {/* {job.title} */}
-              Junior Web Developer
-            </div>
-          </Link>
-          <Link to={`/edit-job/`}>Edit</Link>
+          <div className="each-job">
+            <p>
+              <Link to={`/jobs`}>
+                {/* {job.title} */}
+                1. Junior Web Developer
+              </Link>
+            </p>
+            <p>
+              <Link to={`/edit-job/`}>
+                <i class="fas fa-edit" />
+              </Link>
+            </p>
+          </div>
+          <div className="each-job">
+            <p>
+              <Link to={`/jobs`}>
+                {/* {job.title} */}
+                2. Senior Web Developer
+              </Link>
+            </p>
+            <p>
+              <Link to={`/edit-job/`}>
+                <i class="fas fa-edit" />
+              </Link>
+            </p>
+          </div>
+          <div className="each-job">
+            <p>
+              <Link to={`/jobs`}>
+                {/* {job.title} */}
+                3. Junior UX Developer
+              </Link>
+            </p>
+            <p>
+              <Link to={`/edit-job/`}>
+                <i class="fas fa-edit" />
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     );
