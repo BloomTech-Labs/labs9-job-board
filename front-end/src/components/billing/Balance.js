@@ -59,17 +59,19 @@ class Balance extends React.Component {
 
 	render() {
 		return this.props.authUser ? (
-			<div className="balance-balance">
+			<div className="billing-balance">
 				<h3>
 					Your Balance:
-					<p>{`${this.state.balance.balance} postings`}</p>
+					<p className={this.state.balance.expiration ? 'strikethrough' : ''}>
+						{`${this.state.balance.balance} postings`}
+					</p>
 				</h3>
 				{this.state.balance.expiration
 					? `Unlimited until ${this.formatDate(this.state.balance.expiration)}`
 					: ''}
-				<span className={this.state.balance.expiration ? 'strikethrough' : ''}>
+				{/* <p className={this.state.balance.expiration ? 'strikethrough' : ''}>
 					{`${this.state.balance.balance} postings`}
-				</span>
+				</p> */}
 			</div>
 		) : (
 			<div>Loading...</div>

@@ -195,6 +195,7 @@
 			h3 {
 				font-size: 2rem;
 				font-weight: 600;
+				margin-bottom: 5px;
 			}
 
 			//Jobs Purchased Postings
@@ -204,14 +205,14 @@
 						font-size: 1.8rem;
 						text-align: center;
 						display: flex;
-						justify-content: space-between;
+						justify-content: flex-start;
 						align-items: center;
 						margin-bottom: 10px;
 
 						a {
 							text-decoration: none;
 							color: #{$dark};
-							width: 1.8rem;
+							text-align: left;
 
 							&:hover {
 								color: #{$blue};
@@ -220,6 +221,14 @@
 							i {
 								font-size: 2rem;
 							}
+						}
+
+						.job-name {
+							width: 90%;
+						}
+
+						.edit-icon {
+							width: 10%;
 						}
 					}
 				}
@@ -238,10 +247,12 @@
 					margin-top: 20px;
 				}
 
-				p {
-					margin-top: 5px;
-					font-size: 1.8rem;
-					font-weight: 400;
+				h3 {
+					p {
+						margin-top: 5px;
+						font-size: 1.8rem;
+						font-weight: 400;
+					}
 				}
 			}
 		}

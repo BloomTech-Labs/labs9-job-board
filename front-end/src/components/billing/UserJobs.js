@@ -51,10 +51,8 @@ class UserJobs extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<div className="billing-jobs">
-					<h3>Your Job Postings:</h3>
-				</div>
+			<div className="billing-jobs">
+				<h3>Your Job Postings:</h3>
 				<div className="job-links">
 					{/* MAP HERE TO CREATE A NEW .each-job DIV FOR EACH JOB*/}
 					{this.state.fetching ? (
@@ -63,10 +61,16 @@ class UserJobs extends React.Component {
 						this.state.jobs.map(job => {
 							return (
 								<div className="each-job">
-									<Link to={`/jobs/${job.id}`} key={job.id}>
-										<div className="each-job">{job.title}</div>
+									<Link
+										className="job-name"
+										to={`/jobs/${job.id}`}
+										key={job.id}
+									>
+										{job.title}
 									</Link>
-									<Link to={`/edit-job/${job.id}`}>Edit</Link>
+									<Link className="edit-icon" to={`/edit-job/${job.id}`}>
+										<i class="fas fa-edit" />
+									</Link>
 								</div>
 							);
 						})
