@@ -1,72 +1,80 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
 const URL = process.env.REACT_APP_DB_URL;
 
 class Balance extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      balance: "",
-      fetching: false,
-      attempted: false
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			balance: '',
+			fetching: false,
+			attempted: false,
+		};
+	}
 
-  fetchBalance() {
-    this.setState({ fetching: true, attempted: true }, () => {
-      axios
-        .get(`${URL}/api/billing/balance/${this.props.authUser.uid}`)
-        .then(response => {
-          if (response.data.balance) {
-            this.setState({ balance: response.data, fetching: false });
-          } else {
-            this.setState({
-              balance: response.data,
-              fetching: false
-            });
-          }
-        })
-        .catch(error => {
-          this.setState({
-            message: "Error retrieving jobs",
-            fetching: false
-          });
-        });
-    });
-  }
+	fetchBalance() {
+		this.setState({ fetching: true, attempted: true }, () => {
+			axios
+				.get(`${URL}/api/billing/balance/${this.props.authUser.uid}`)
+				.then(response => {
+					if (response.data.balance) {
+						this.setState({ balance: response.data, fetching: false });
+					} else {
+						this.setState({
+							balance: response.data,
+							fetching: false,
+						});
+					}
+				})
+				.catch(error => {
+					this.setState({
+						message: 'Error retrieving jobs',
+						fetching: false,
+					});
+				});
+		});
+	}
 
-  formatDate(date) {
-    const newDate = new Date(date);
-    let month = newDate.getMonth() + 1;
-    let day = newDate.getDate();
-    let year = newDate.getFullYear();
+	formatDate(date) {
+		const newDate = new Date(date);
+		let month = newDate.getMonth() + 1;
+		let day = newDate.getDate();
+		let year = newDate.getFullYear();
 
-    return `${month}/${day}/${year}`;
-  }
+		return `${month}/${day}/${year}`;
+	}
 
-  componentDidMount() {
-    if (this.props.authUser) {
-      this.fetchBalance();
-    }
-  }
+	componentDidMount() {
+		if (this.props.authUser) {
+			this.fetchBalance();
+		}
+	}
 
-  componentDidUpdate() {
-    if (this.props.authUser && !this.state.attempted) {
-      this.fetchBalance();
-    }
-  }
+	componentDidUpdate() {
+		if (this.props.authUser && !this.state.attempted) {
+			this.fetchBalance();
+		}
+	}
 
-  render() {
-    return (
-      <div className="billing-balance">
-        <h3>
-          Your Balance:
-          <p>10 postings</p>
-        </h3>
-      </div>
-    );
-  }
+	render() {
+		return this.props.authUser ? (
+			<div className="balance-balance">
+				<h3>
+					Your Balance:
+					<p>{`${this.state.balance.balance} postings`}</p>
+				</h3>
+				{this.state.balance.expiration
+					? `Unlimited until ${this.formatDate(this.state.balance.expiration)}`
+					: ''}
+				<span className={this.state.balance.expiration ? 'strikethrough' : ''}>
+					{`${this.state.balance.balance} postings`}
+				</span>
+			</div>
+		) : (
+			<div>Loading...</div>
+		);
+	}
 }
 
 export default Balance;
