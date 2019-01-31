@@ -3,6 +3,7 @@
   margin: auto;
   background-color: #{$background};
   padding: 30px 0;
+  min-height: 100vh;
 
   .job-listing {
     display: flex;
@@ -19,6 +20,10 @@
       img {
         border-radius: 50%;
         margin-bottom: 15px;
+        height: 200px;
+        max-height: 100%;
+        width: 200px;
+        object-fit: cover;
       }
 
       h1 {
@@ -94,33 +99,22 @@
           width: 100%;
           flex-direction: column;
 
-          .title {
-            margin: 30px 0;
-
-            @include tablet {
-              width: 48%;
-              margin: 30px 0 0 0;
-            }
-
-            @include phone {
-              font-size: 2.8rem;
-              font-weight: bold;
-            }
+          p {
+            width: 100%;
+            font-size: 2rem;
+            margin: 0 0;
+            padding: 0 0;
+            text-align: center;
           }
 
-          @include tablet {
-            flex-direction: row;
-            justify-content: space-between;
+          .title {
+            margin: 30px 0 5px 0;
+            font-weight: bold;
+            font-size: 2.8rem;
+            width: 100%;
 
-            p {
-              margin-top: 30px;
-              width: 48%;
-
-              @include phone {
-                margin-top: 0;
-                text-align: center;
-                padding: 0 0;
-              }
+            @include phone {
+              margin: 20px 0 5px 0;
             }
           }
 
@@ -131,7 +125,6 @@
         }
 
         p {
-          background-color: #{$background};
           width: 100%;
           border-radius: 5px;
           font-size: 1.8rem;
@@ -145,8 +138,7 @@
         }
 
         label {
-          padding: 30px 0 7px 10px;
-          font-weight: bold;
+          padding: 30px 0 7px 0px;
           font-size: 2rem;
           width: 100%;
           text-align: left;
@@ -169,6 +161,37 @@
           }
         }
 
+        .apply-college {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 20px;
+
+          @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .apply-btn {
+              width: 50%;
+            }
+
+            .degree {
+              width: 50%;
+            }
+          }
+          @include phone {
+            flex-direction: column;
+
+            .degree {
+              width: 100%;
+            }
+
+            .apply-btn {
+              width: 100%;
+            }
+          }
+        }
+
         .share {
           margin: 30px 0 0 0;
           font-size: 1.6rem;
@@ -176,19 +199,6 @@
           width: 100%;
           display: flex;
           justify-content: center;
-
-          i {
-            font-size: 3rem;
-            width: 50%;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            color: #{$blue};
-
-            &:hover {
-              color: #{$auth-submit-bg};
-            }
-          }
 
           h3 {
             width: 50%;
@@ -212,6 +222,11 @@
       @include tablet {
         flex-direction: column;
         align-items: center;
+        width: 90%;
+      }
+
+      @include phone {
+        padding: 0px 20px 20px 20px;
       }
     }
   }

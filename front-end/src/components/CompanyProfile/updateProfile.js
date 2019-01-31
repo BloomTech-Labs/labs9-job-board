@@ -103,12 +103,16 @@ class UpdateProfile extends Component {
 
   render() {
     console.log(this.state);
-    if (!this.state.company) {
-      return <img src={LoadingBar} alt="loading bar" className="loading" />;
-    }
+    // if (!this.state.company) {
+    //   return <img src={LoadingBar} alt="loading bar" className="loading" />;
+    // }
     return (
       <div className="profile-container">
-        {this.state.companyEditor ? (
+        {!this.state.company ? (
+          <div className="loading-container">
+            <img src={LoadingBar} alt="loading bar" className="loading" />
+          </div>
+        ) : this.state.companyEditor ? (
           <ProfileForm
             openEditor={this.openEditor}
             updateUser={this.updateUser}

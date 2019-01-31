@@ -3,6 +3,13 @@
   margin: auto;
   background-color: #{$background};
   padding: 30px 0;
+  min-height: 100vh;
+
+  .loading-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
   .companyInfo {
     width: 100%;
@@ -37,6 +44,10 @@
     .avatar {
       border-radius: 50%;
       margin-bottom: 15px;
+      height: 200px;
+      max-height: 100%;
+      width: 200px;
+      object-fit: cover;
     }
 
     .all-company-info {
@@ -45,7 +56,7 @@
       border-radius: 20px;
       display: flex;
       flex-direction: row;
-      padding: 10px 40px 40px 40px;
+      padding: 40px 40px 10px 40px;
       margin: 40px 5%;
 
       .company-text {
@@ -60,18 +71,17 @@
       }
 
       .company-text p {
-        background-color: #{$background};
         width: 100%;
-        border-radius: 5px;
+        // border-radius: 5px;
         font-size: 1.8rem;
         text-align: start;
         padding: 10px;
         color: #{$dark};
+        margin-bottom: 30px;
       }
 
       label {
-        padding: 30px 0 7px 10px;
-        font-weight: bold;
+        padding: 0 0 7px 0;
         font-size: 2rem;
         width: 100%;
         text-align: left;
@@ -90,6 +100,10 @@
         text-align: start;
         padding: 10px;
         color: #{$light-gray};
+        border: none;
+        background-color: #{$background};
+        border: none;
+        margin-bottom: 30px;
 
         &:focus {
           outline-color: #{$blue};
@@ -105,6 +119,10 @@
         padding: 10px;
         font-family: "Roboto", sans-serif;
         color: #{$light-gray};
+        resize: none;
+        line-height: 2.5rem;
+        background-color: #{$background};
+        border: none;
 
         &:focus {
           outline-color: #{$blue};
@@ -141,6 +159,7 @@
 
           @include phone {
             width: 100%;
+            margin-bottom: 20px;
           }
         }
 
@@ -149,16 +168,24 @@
         }
       }
 
+      @include phone {
+        padding: 20px 20px 0 20px;
+      }
+
       @include tablet {
         flex-direction: column;
         align-items: center;
+        width: 90%;
       }
     }
     .profile-pic-button {
       border-radius: 50%;
-      padding: 100px 80px;
+      height: 200px;
+      width: 200px;
       border: none;
       cursor: pointer;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
     }
   }
 
@@ -180,7 +207,7 @@
     flex-direction: row;
     justify-content: flex-end;
     font-size: 2rem;
-    padding: 0 1%;
+    padding: 0 1% 10px 1%;
 
     .link-pass {
       @include tablet {
