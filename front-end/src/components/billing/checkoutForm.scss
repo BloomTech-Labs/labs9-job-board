@@ -1,210 +1,212 @@
-//Once I figure out how to import the file variable mix-ins remove these hardcoded variables
-
-//Text Color
-$white: white;
-$dark: #646464;
-
-//NavBar Background:
-$Navbar: #444444;
-
-//Background:
-$background: #f5f5f5;
-
-//Accent Colors
-$orange: #e89980;
-$teal: #7fcdb8;
-$blue: #90b0ba;
-$yellow: #e5cb95;
-$light-gray: #cecece;
-
-//This needs to be removed when working on tablet
-$break-small: 645px;
+// fix clicking issue for stripe button
 
 .strikethrough {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 //Header
 .billing-container {
-	width: 100%;
-	max-width: 1024px;
-	margin: auto;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
 
-	.header {
-		.main-header {
-			padding: 30px 0;
-			.billing-header {
-				font-size: 5rem;
-				margin-bottom: 20px;
-				display: flex;
-				justify-content: center;
-			}
-		}
-		hr {
-			height: 4px;
-			color: #{$blue};
-			width: 50rem;
-			margin: 15px 0;
-		}
-		.sub-header {
-			display: flex;
-			justify-content: center;
+  .header {
+    text-align: center;
 
-			.billing-subheader {
-				font-size: 2.8rem;
-				margin-bottom: 20px;
+    .main-header {
+      margin-top: 30px;
+      color: #{$dark};
+      font-size: 5rem;
+    }
+    hr {
+      width: 50rem;
+      height: 4px;
+      background: #{$auth-divider};
+      border: none;
+      margin: 15px auto;
 
-				.gotcha {
-					color: red;
-				}
-			}
-		}
-	}
-	// Parent for all card and purchase container
-	.checkout {
-		display: flex;
-		padding: 40px;
-		border-radius: 20px;
-		width: 100%;
-		background: #{$white};
-		justify-content: space-around;
+      @include tablet {
+        width: 90%;
+      }
+    }
+    .sub-header {
+      font-size: 2.8rem;
 
-		.left-side {
-			// Purchase options starts
-			.purchase-options {
-				display: flex;
-				flex-direction: column;
-				@media screen and (max-width: $break-small) {
-					align-items: center;
-					padding: 10px;
-				}
+      @include phone {
+        font-size: 2rem;
+      }
 
-				.options {
-					display: flex;
-					flex-direction: column;
-					align-items: flex-start;
-					margin: 50px 25px;
-					padding: 3px 25px;
+      .gotcha {
+        color: red;
+      }
+    }
+  }
+  // Parent for all card and purchase container
+  .checkout {
+    display: flex;
+    padding: 40px;
+    border-radius: 20px;
+    background: #{$white};
+    justify-content: space-around;
+    margin: 40px 5%;
 
-					@media screen and (max-width: $break-small) {
-						align-items: center;
-					}
+    .left-side {
+      width: 50%;
 
-					label {
-						font-size: 1.8rem;
-						padding: 10px;
-						margin: 10px;
-					}
-				}
-			}
+      // Purchase options starts
+      .purchase-options {
+        display: flex;
+        flex-direction: column;
 
-			// Card Info begins
-			.card-info {
-				display: flex;
-				flex-direction: column;
-				width: 55%;
-				margin: 0px 70px;
-				@media screen and (max-width: $break-small) {
-					width: 100%;
-					margin-top: 0px;
-					align-items: center;
-				}
+        @include tablet {
+          align-items: center;
+          padding: 10px;
+        }
 
-				.card-info-labels {
-					display: flex;
-					font-size: 2rem;
-					padding-top: 20px;
-					margin-bottom: 7px;
+        .options {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
 
-					.card-info-placeholder-cnum {
-						font-size: 1.8rem;
-					}
-				}
+          @include tablet {
+            align-items: center;
+          }
 
-				.card-info-placeholder-exp {
-					font-size: 1.8rem;
-				}
+          label {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
 
-				.card-info-placeholder-cvc {
-					font-size: 1.8rem;
-				}
+            input {
+              margin: 0 7px 0 0;
+            }
+          }
+        }
+        span {
+          margin-top: 20px;
+        }
+      }
 
-				.button-section {
-					display: flex;
-					justify-content: space-between;
+      // Card Info begins
+      .card-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
-					.purchase-button {
-						margin: 20px 25px;
-						background: #{$orange};
-						padding: 10px 5rem;
-						font-size: 1.8rem;
-						color: $white;
-						border: none;
-						border-radius: 5px;
-						cursor: pointer;
-					}
+        @include tablet {
+          width: 100%;
+          margin-top: 0px;
+          align-items: center;
+        }
 
-					.cancel-button {
-						margin: 20px 25px;
-						background: #{$blue};
-						padding: 10px 5rem;
-						font-size: 1.8rem;
-						color: $white;
-						border: none;
-						border-radius: 5px;
-						cursor: pointer;
-					}
-				}
+        .card-info-labels {
+          display: flex;
+          font-size: 2rem;
+          margin: 20px 0 7px 0;
 
-				.powered-by-stripe {
-					align-self: center;
-					margin: 20px;
-				}
-			}
-		}
+          .__PrivateStripeElement {
+            margin: 50px;
+          }
 
-		.right-side {
-			//Balance of job credits
-			.balance-container {
-				display: flex;
-				font-size: 1.8rem;
-				justify-content: flex-end;
-			}
+          .card-info-placeholder-cnum {
+            font-size: 1.8rem;
+          }
+        }
 
-			//Jobs Purchased Postings
-			.billing-jobs {
-				width: 100%;
-				display: flex;
-				flex-direction: row;
-				margin: 88px;
+        .card-info-placeholder-exp {
+          font-size: 1.8rem;
+        }
 
-				.job-links h3 {
-					display: flex;
-					font-size: 2rem;
-					align-content: center;
-					margin-bottom: 30px;
-					padding: 25px;
+        .card-info-placeholder-cvc {
+          font-size: 1.8rem;
+        }
 
-					.billing-job {
-						display: flex;
-						justify-content: flex-start;
-						font-size: 1.8rem;
-						width: 100%;
-					}
+        .button-section {
+          margin-top: 20px;
+          display: flex;
+          justify-content: space-evenly;
+          width: 100%;
 
-					@media screen and (max-width: $break-small) {
-						flex-direction: row;
-						justify-content: center;
-					}
-				}
-				.job-links a {
-					width: 100%;
-					font-size: 1.6rem;
-				}
-			}
-		}
-		footer {
-			padding: 30px 0;
-		}
-	}
+          .purchase-button {
+            background: #{$orange};
+            padding: 10px 5rem;
+            font-size: 1.8rem;
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          .cancel-button {
+            background: #{$blue};
+            padding: 10px 5rem;
+            font-size: 1.8rem;
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+
+        a {
+          width: 119px;
+          height: 26px;
+
+          img {
+            margin: 0;
+          }
+        }
+
+        .powered-by-stripe {
+          align-self: center;
+          margin: 20px;
+        }
+      }
+    }
+
+    .right-side {
+      width: 50%;
+
+      //Balance of job credits
+      .balance-container {
+        display: flex;
+        font-size: 1.8rem;
+        justify-content: flex-end;
+      }
+
+      //Jobs Purchased Postings
+      .billing-jobs {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin: 88px;
+
+        .job-links h3 {
+          display: flex;
+          font-size: 2rem;
+          align-content: center;
+          margin-bottom: 30px;
+          padding: 25px;
+
+          .billing-job {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 1.8rem;
+            width: 100%;
+          }
+
+          @include tablet {
+            flex-direction: row;
+            justify-content: center;
+          }
+        }
+        .job-links a {
+          width: 100%;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    footer {
+      padding: 30px 0;
+    }
+  }
 }

@@ -24,15 +24,11 @@
     hr {
       width: 50rem;
       height: 4px;
-      background: $auth-divider;
+      background: #{$auth-divider};
       border: none;
       margin: 15px auto;
 
       @include tablet {
-        width: 90%;
-      }
-
-      @include phone {
         width: 90%;
       }
     }
