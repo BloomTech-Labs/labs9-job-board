@@ -37,9 +37,6 @@ class sideMenu extends React.Component {
             <NavLink onClick={this.props.click} to="/billing">
               Billing 
             </NavLink>
-            <NavLink onClick={this.props.click} to="/billing">
-              Your Job Postings 
-            </NavLink>
             <NavLink onClick={this.props.click} to="/account">
               Account Settings
             </NavLink>
