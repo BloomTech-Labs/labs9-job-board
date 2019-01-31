@@ -14,28 +14,28 @@ const ProfileInfo = props => {
       </div>
       <div className="pic-account">
         <img src={props.company.avatar_image} className="avatar" />
-        <h1>Your Account:</h1>
+        <h1>Your Account</h1>
         <div className="border" />
         <button onClick={props.openEditor} className="edit-btn edit">
-          Edit Account:
+          Edit Account
         </button>
       </div>
       <div className="all-company-info">
         <div className="company-text">
-          <label>First Name:</label>
+          <label>First Name</label>
           <p>{props.company.first_name}</p>
-          <label>Last Name:</label>
+          <label>Last Name</label>
           <p>{props.company.last_name}</p>
-          <label>Email:</label>
+          <label>Email</label>
           <p>{props.company.email}</p>
         </div>
         <div className="company-border" />
         <div className="company-text">
-          <label>Company name:</label>
+          <label>Company Name</label>
           <p>{props.company.company_name}</p>
-          <label>Company Summary:</label>
+          <label>Company Summary</label>
           <p>{props.company.summary}</p>
-          <label>Application Email:</label>
+          <label>Application Email</label>
           <p>{props.company.application_method}</p>
         </div>
       </div>
