@@ -34,6 +34,7 @@ class JobsContainer extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.conditionalScroll);
     this.setState(
       { fetching: true },
       () => {
@@ -91,6 +92,10 @@ class JobsContainer extends Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.conditionalScroll);
+  }
+
   closeNewProfileModal = async () => {
     await this.setState({ newProfileModalVisible: false });
   };
@@ -122,6 +127,24 @@ class JobsContainer extends Component {
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  conditionalScroll = event => {
+    let windowSize = (window.innerWidth);
+
+    if (windowSize<=500) {
+      this.onEnterMobile()
+    }  else {
+      this.onEnter()
+    }
+  }
+
+  onEnterMobile = event => {
+    window.scroll({
+      top: 120,
+      left: 100,
+      behavior: 'smooth'
+    });
+  }
 
   onEnter = event => {
     window.scroll({
@@ -157,7 +180,7 @@ class JobsContainer extends Component {
           <Search
             searchResults={this.searchResults}
             search={this.state.search}
-            onEnter = {this.onEnter}
+            conditionalScroll = {this.conditionalScroll}
           />
         </div>
         {this.state.fetching ? (
