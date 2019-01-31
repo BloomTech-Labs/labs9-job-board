@@ -114,6 +114,7 @@
               @include phone {
                 margin-top: 0;
                 text-align: center;
+                padding: 0 0;
               }
             }
           }
@@ -162,6 +163,7 @@
             background-color: #{$auth-submit-bg-hover};
           }
         }
+
         .share {
           margin: 30px 0 0 0;
           font-size: 1.6rem;
@@ -202,12 +204,6 @@
           width: 100%;
         }
       }
-
-      // .title-salary {
-      //   display: flex;
-      //   width: 100%;
-      // }
-
       @include tablet {
         flex-direction: column;
         align-items: center;
