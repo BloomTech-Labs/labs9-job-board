@@ -9,14 +9,34 @@ import logo from "../../images/design/png/logos/logo with owl to left.png";
 class Navbar extends Component {
   constructor(props) {
     super(props);
+      
   }
 
   componentDidMount() {
-    
+    let url = window.location.pathname;
+    let myNav =  document.getElementById('mynav');
+
+    if (url === '/') {
     window.addEventListener('scroll', this.handleScroll);
-    
+    } else {
+      myNav.classList.add("solid");
+      myNav.classList.remove("navbar-container");
+    }
   }
 
+  componentDidUpdate () {
+    let url = window.location.pathname;
+    let myNav =  document.getElementById('mynav');
+
+    if (url === '/') {
+      myNav.classList.add("navbar-container")
+      myNav.classList.remove("solid");
+    window.addEventListener('scroll', this.handleScroll);
+    } else {
+      myNav.classList.add("solid");
+      myNav.classList.remove("navbar-container");
+    }
+  }
  
 
   componentWillUnmount() {
