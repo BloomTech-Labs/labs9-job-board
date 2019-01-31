@@ -3,8 +3,6 @@ import { Elements, StripeProvider } from "react-stripe-elements";
 
 import CheckoutForm from "./checkoutForm";
 
-import "./checkoutForm.scss";
-
 // const stripeurl = process.env.REACT_APP_STRIPE_TEST_KEY;
 
 class Billing extends Component {
@@ -18,15 +16,11 @@ class Billing extends Component {
         <StripeProvider apiKey="pk_test_77iYkIzmRpuMiC1SxkCkMIBp">
           <div className="billing-container">
             <div className="header">
-              <div className="main-header">
-                <p className="billing-header">Billing</p>
-              </div>
+              <div className="main-header">Billing</div>
               <hr />
               <div className="sub-header">
-                <p className="billing-subheader">
-                  This isn't your typical purchase, ths is going to be a
-                  <em className="gotcha"> game changer</em>
-                </p>
+                This isn't your typical purchase. <br /> This is going to be a
+                <em className="gotcha"> game changer.</em>
               </div>
             </div>
             <Elements>

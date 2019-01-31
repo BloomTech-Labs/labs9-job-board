@@ -24,15 +24,11 @@
     hr {
       width: 50rem;
       height: 4px;
-      background: $auth-divider;
+      background: #{$auth-divider};
       border: none;
       margin: 15px auto;
 
       @include tablet {
-        width: 90%;
-      }
-
-      @include phone {
         width: 90%;
       }
     }
@@ -51,6 +47,10 @@
     padding: 40px;
     background-color: #{$white};
     border-radius: 20px;
+
+    @include phone {
+      padding: 20px;
+    }
 
     .post-job-top {
       display: flex;
@@ -133,6 +133,7 @@
             margin-bottom: 30px;
             padding: 10px;
             text-align: top;
+            line-height: 2.5rem;
             font-size: 1.8rem;
             font-family: sans-serif;
             resize: none;

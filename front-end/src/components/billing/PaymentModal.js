@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./PaymentModal.scss";
-
 const PaymentModal = props => {
   return (
     <div
