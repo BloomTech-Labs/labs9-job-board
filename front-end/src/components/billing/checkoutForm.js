@@ -229,8 +229,8 @@ class CheckoutForm extends Component {
         </div>
         <hr />
         <div className="right-side">
-          <Balance authUser={this.props.authUser} />
           <UserJobs authUser={this.props.authUser} />
+          <Balance authUser={this.props.authUser} />
         </div>
         <PaymentModal
           successVisible={this.state.successVisible}

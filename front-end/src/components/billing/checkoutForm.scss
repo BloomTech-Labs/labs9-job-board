@@ -166,22 +166,15 @@
 
     .right-side {
       width: 50%;
+      padding-left: 4rem;
 
-      //Balance of job credits
-      .balance-container {
-        font-size: 1.8rem;
+      h3 {
+        font-size: 2rem;
+        font-weight: 600;
       }
 
       //Jobs Purchased Postings
       .billing-jobs {
-        color: #{$dark};
-
-        h3 {
-          font-size: 2rem;
-          text-align: center;
-          font-weight: 600;
-        }
-
         .job-links {
           .each-job {
             font-size: 1.8rem;
@@ -189,7 +182,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 0 0 5px 4rem;
+            margin-bottom: 10px;
 
             a {
               text-decoration: none;
@@ -219,9 +212,17 @@
           font-size: 1.6rem;
         }
       }
-    }
-    footer {
-      padding: 30px 0;
+
+      //Balance of job credits
+      .billing-balance {
+        margin-top: 50px;
+        font-size: 1.8rem;
+
+        p {
+          font-size: 1.8rem;
+          font-weight: 400;
+        }
+      }
     }
   }
 }

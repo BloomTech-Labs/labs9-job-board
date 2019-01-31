@@ -58,10 +58,13 @@ class Balance extends React.Component {
   }
 
   render() {
-    return this.props.authUser ? (
-      <div className="balance-container">Balance: 10 postings</div>
-    ) : (
-      <div>Loading...</div>
+    return (
+      <div className="billing-balance">
+        <h3>
+          Your Balance:
+          <p>10 postings</p>
+        </h3>
+      </div>
     );
   }
 }
