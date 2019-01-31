@@ -10,16 +10,7 @@
 		width: 100%;
 	}
 
-	.filter-button {
-		display: none;
-		@include phone {
-		display: flex;
-		position: absolute;
-		top: 343px;
-		left: 84%;
-		height: 35px;
-		}
-	}
+	
 	.white-box{
 		display:none;
 
@@ -195,41 +186,55 @@
 		// padding: 0 1%;
 		margin: 35px auto;
 		max-width: 1024px;
-
+		
 		// @include laptop {
-		//   flex-direction: column;
-		//   align-items: center;
-		// }
-
-		// @include tablet {
-		//   flex-direction: column;
-		//   align-items: center;
-		// }
-
+			//   flex-direction: column;
+			//   align-items: center;
+			// }
 			
-
-	.catagory-container {	
-		display: flex;
-		flex-direction: row;
-		max-width: 1024px;
-		width: 94%;
-
-		.catagory-label {
-			padding: 6px 0px 0px 0px;
-			font-size: 2rem;
-			font-weight: bold;
-			min-width: 180px;
-			font-family: $font;
-			margin: auto;
-
-			@include tablet {
-				display: none;
-			}
-
-		}
-
-		.categories {
-			display: flex;
+			// @include tablet {
+				//   flex-direction: column;
+				//   align-items: center;
+				// }
+				
+				
+				
+				.catagory-container {	
+					display: flex;
+					flex-direction: row;
+					max-width: 1024px;
+					width: 94%;
+					
+					.catagory-label {
+						padding: 6px 0px 0px 0px;
+						font-size: 2rem;
+						font-weight: bold;
+						min-width: 180px;
+						font-family: $font;
+						margin: auto;
+						
+						@include tablet {
+							display: none;
+						}
+						
+					}
+					
+					.filter-button {
+						display: none;
+						@include phone {
+							display: flex;
+							position: absolute;
+							top: 343px;
+							left: 84%;
+							height: 35px;
+						}
+					}
+					
+					.categories-hide {
+						display: none;
+					}
+					.categories {
+						display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			border: 2px solid #ccc;
@@ -251,6 +256,7 @@
 				flex-wrap: wrap;
 			}
 
+			
 			.categories-tab {
 				display: flex;
 				align-items: center;

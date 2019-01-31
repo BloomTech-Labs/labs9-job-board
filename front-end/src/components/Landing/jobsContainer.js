@@ -176,7 +176,7 @@ class JobsContainer extends Component {
         <Header authUser={this.props.authUser} />
         <img className ='header-logo' alt = 'logo'src = {bigLogo}></img>
         <div className = 'white-box'></div>
-        <img className = 'filter-button' alt = 'search filter button'src = {seachFilter}></img>
+        
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search
