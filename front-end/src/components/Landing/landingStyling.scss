@@ -12,7 +12,7 @@
 		@include tablet{
 			display: flex;
 			position: absolute;
-			top: 38%;
+			top: 330px;
 			left: 8%;
 			height: 275px;
 			width: 83%;
@@ -23,6 +23,14 @@
 
 
 		}
+
+		@include phone {
+			border: 1px solid red;
+			height: 185px;
+			width: 92%;
+			left: 4%;
+			top: 220px;
+		}
 	}
 
 	.header-logo {
@@ -32,7 +40,7 @@
 		@include tablet {
 			display: flex;
 			position: absolute;
-			top: 3%;
+			top: 10px;
 			left: 30%;
 			width: 43%;
 			// min-width: 280px;
@@ -74,6 +82,7 @@
 		.header-photo {
 			width: 100%;
 			height: 700px;
+			// filter: blur(3px);
 
 			@include tablet {
 				height: 475px;
@@ -101,13 +110,18 @@
 				padding: 0px 20px;
 
 				@include tablet{
-					top: 49%;
+					top: 410px;
 					z-index: 40;
 					font-size: 3rem;
 					color: $dark;
 
 				}
-				
+
+				@include phone {
+					font-size: 2.4rem;
+					left: 52%;
+					top: 280px;
+				}
 
 				.attention-catcher-text {
 					color: $orange;
@@ -116,6 +130,9 @@
 
 					@include tablet {
 						color: $blue;
+					}
+					@include phone {
+						font-weight: normal;
 					}
 				}
 
@@ -130,6 +147,10 @@
 						flex-wrap: wrap;
 						font-size: 2rem;
 						padding-top: 25px;
+					}
+
+					@include phone {
+						font-size: 1.6rem;
 					}
 					
 					
@@ -250,14 +271,17 @@
 			@include tablet {
 				width: 90%;
 				position: absolute;
-				top: 58%;
+				top: 500px;
 				left: 6%;
 				margin: auto;
 				height: 60px;
 			}
 
 			@include phone {
-				width: 90%;
+				width: 80%;
+				left: 10%;
+				top: 340px;
+				height: 40px;
 			}
 
 			.search-icon {
@@ -271,6 +295,11 @@
 				}
 				@include tablet {
 					width: 60px;
+				}
+				@include phone {
+					padding: 15px;
+					width: 40px;
+					height: 40px;
 				}
 				
 			}
@@ -294,6 +323,7 @@
 				
 				@include phone {
 					width: 90%;
+					height: 40px;
 				}
 				&:hover {
 					border: 2px  solid rgb(124, 124, 124);
