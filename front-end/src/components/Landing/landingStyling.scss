@@ -2,9 +2,42 @@
 
 .jobs-container {
 	margin-top:-90px;
-	min-height: 1000px;
+	min-height: 1350px;
 	padding-bottom: 50px;
 	background: $background;
+
+	.white-box{
+		display:none;
+
+		@include tablet{
+			display: flex;
+			position: absolute;
+			top: 38%;
+			left: 8%;
+			height: 275px;
+			width: 83%;
+			background: white;
+			margin: auto;
+			border-radius: 20px;
+			padding: 20px;
+
+
+		}
+	}
+
+	.header-logo {
+		display: none;
+
+		@include tablet {
+			display: flex;
+			position: absolute;
+			top: 3%;
+			left: 30%;
+			width: 43%;
+			// min-width: 280px;
+			margin: auto;
+		}
+	}
 
 	.no-results {
 		text-align: center;
@@ -15,6 +48,7 @@
 	.loading-bar{
 		display: flex;
 		justify-content: center;
+		margin: auto;
 	}
 
 	.header {
@@ -30,9 +64,9 @@
 			width: 100%;
 			height: 700px;
 
-			// @include tablet {
-			// 	display: none;
-			// }
+			@include tablet {
+				height: 475px;
+			}
 
 			img {
 				width: 100%;
@@ -48,26 +82,41 @@
 				transform: translate(-50%, -50%);
 				font-family: 'Roboto', sans-serif;
 				color: $white;
+				margin: auto;
+				width: 100%;
+				padding: 0px 20px;
 
-				@media screen and (max-width: 1490px ) {
-					width: 55%;
+				@include tablet{
+					top: 49%;
+					z-index: 40;
+					font-size: 3rem;
+					color: $dark;
+
 				}
-				@media screen and (max-width: 1350px ) {
-					width: 65%;
-				}
-				@media screen and (max-width: 1145px ) {
-					width: 80%;
-				}
+				
 
 				.attention-catcher-text {
 					color: $orange;
 					font-weight: bold;
+					text-align: center;
+
+					@include tablet {
+						color: $blue;
+					}
 				}
 
 				.tagline {
 					font-size: 2.6rem;
 					padding-top: 50px;
 					text-align: center;
+
+					@include tablet {
+						display: flex;
+						justify-content: center;
+						flex-wrap: wrap;
+						font-size: 2rem;
+						padding-top: 25px;
+					}
 					
 					
 					
@@ -81,8 +130,9 @@
 	.search-categories-container {
 		display: flex;
 		justify-content: center;
-		padding: 0 1%;
-		margin: 35px 0;
+		// padding: 0 1%;
+		margin: 35px auto;
+		max-width: 1024px;
 
 		// @include laptop {
 		//   flex-direction: column;
@@ -99,15 +149,19 @@
 	.catagory-container {	
 		display: flex;
 		flex-direction: row;
+		max-width: 1024px;
+		width: 94%;
 
 		.catagory-label {
-			padding: 12px 10px 0px 0px;
+			padding: 6px 0px 0px 0px;
 			font-size: 2rem;
 			font-weight: bold;
+			min-width: 180px;
 			font-family: $font;
+			margin: auto;
 
-			@media screen and (max-width: 1110px) {
-				font-size: 1.8rem;
+			@include tablet {
+				display: none;
 			}
 
 		}
@@ -115,24 +169,22 @@
 		.categories {
 			display: flex;
 			justify-content: center;
+			flex-wrap: wrap;
 			border: 2px solid #ccc;
 			border-radius: 25px;
 			background-color: white;
 			/* width: 49%; */
-			height: 50px;
+			height: auto;
+			padding: 10px 0px;
 
-			// @include laptop {
-			// 	width: 70%;
-			// 	margin-bottom: 20px;
-			// }
 			@include tablet {
 				width: 90%;
-				margin-bottom: 20px;
+				margin: 130px auto 20px auto;
+				padding: 0px;
 			}
 			@include phone {
 				// display: none;
-				height: 170px;
-				flex-direction: column;
+				height: auto;
 				align-items: center;
 				flex-wrap: wrap;
 			}
@@ -142,13 +194,17 @@
 				align-items: center;
 				font-size: 1.8rem;
 				text-align: center;
-				padding: 0 15px;
+				padding: 5px 15px;
 
 				&:hover {
 					
 					color: $blue;
 					border-radius: 5px;
 					cursor: pointer;
+				}
+				@include tablet {
+					padding:20px 10px;
+					font-size: 1.6rem;
 				}
 
 				@include phone {
@@ -176,42 +232,51 @@
 			top: 58%;
 			left:17%;
 
-			
-
-			// @include laptop {
-			// 	width: 70%;
-			// }
 
 			@include tablet {
 				width: 90%;
+				position: absolute;
+				top: 58%;
+				left: 6%;
+				margin: auto;
+				height: 60px;
 			}
 
 			@include phone {
 				width: 90%;
 			}
+
 			.search-icon {
 				padding: 20px;
 				background: $orange;
-				border: 2px x solid #ccc;
+				// border: 2px solid #ccc;
 				border-left:0px;
-				border-radius: 0px 4px 4px 0px;	
+				border-radius: 0px 5px 5px 0px;	
 				&:hover {
 					cursor: pointer;
 				}
-		
+				@include tablet {
+					width: 60px;
+				}
+				
 			}
 
 			.search-input {
 				width: 60%;
 				border: 2px solid #ccc;
 				border-right: 0px;
-				border-radius: 4px 0px 0px 4px;
+				border-radius: 5px 0px 0px 5px;
 				font-size: 2rem;
 				background-color: white;
 				padding: 12px 0 12px 3%;
 				-webkit-transition: width 0.4s ease-in-out;
 				transition: width 0.4s ease-in-out;
+				outline-color: $blue;
 
+				@include tablet {
+					font-size: 1.8rem;
+					height: 60px;
+				}
 				
 				@include phone {
 					width: 90%;
@@ -219,6 +284,7 @@
 				&:hover {
 					border: 2px  solid rgb(124, 124, 124);
 					border-right: 0px;
+					border-radius: 5px 0px 0px 5px;
 				}
 
 				&:focus {
@@ -229,39 +295,59 @@
 	}
 
 	.all-jobs{
+		max-width: 1024px;
+		margin: auto;
+		width: 100%;
+
+		@include tablet {
+			width: 90%;
+		}
 		.job-list-headers {
 			display: flex;
 			flex-direction: row;
-			justify-content: space-around;
+			// justify-content: space-around;
+			width: 100%;
+			max-width: 1024px;
+			margin: auto;
+
 			
 			
 			.job-title {
-				font-size: 2.4rem;
+				font-size: 2rem;
 				font-family: $font;
 				color: $dark;
 				font-weight: bold;
 				line-height: 1.1;
+				width: 29%;
+				padding-left:40px;
 				// border-bottom: 2px solid $blue;
+
+				@include tablet {
+					padding-left:20px;
+				}
 			}
 			.company-title {
-				font-size: 2.4rem;
+				font-size: 2rem;
 				font-family: $font;
 				color: $dark;
 				font-weight: bold;
+				width: 29%;
 				// border-bottom: 2px solid $blue;
 			}
 			.salary-title {
-				font-size: 2.4rem;
+				font-size: 2rem;
 				font-family: $font;
 				color: $dark;
 				font-weight: bold;
+				width: 26%;
 				// border-bottom: 2px solid $blue;
 			}
 			.date-posted-title {
-				font-size: 2.4rem;
+				font-size: 2rem;
 				font-family: $font;
 				color: $dark;
 				font-weight: bold;
+				width: 150px;
 				// border-bottom: 2px solid $blue;
 			}
 		}
@@ -269,9 +355,10 @@
 		.job-links {
 			text-decoration: none;
 			color: black;
-			width: 95%;
+			width: 98%;
 			display: flex;
-			margin: 0px 40px;
+			margin: auto;
+			max-width: 1024px;
 			
 			justify-content: center;
 			
@@ -281,9 +368,9 @@
 				
 				display: flex;
 				justify-content: center;
-				font-size: 2.4rem;
+				font-size: 1.8rem;
 				margin-top: 20px;
-				margin: 20px 1% 0;
+				margin: 15px 1% 0;
 				background-color: white;
 				border: 2px solid $light-gray;
 				color: $dark;
@@ -301,10 +388,14 @@
 				.left-side {
 					display: flex;
 					width: 95%;
+					justify-content: flex-start;
 
-					// @include laptop {
-					// 	width: 75%;
-					// }
+					@include tablet {
+						width: 85%;
+					}
+					@media screen and (max-width : 670px ) {
+						width: 75%;
+					}
 					@include phone {
 						width: 70%;
 					}
@@ -312,15 +403,22 @@
 					.job {
 						width: 33%;
 						font-weight: bold;
+						padding-right: 10px;
 					}
 
 					.company {
 						width: 38%;
+						@include tablet {
+							width: 30%;
+						}
 					}
 
 					.salary {
 						// padding-left: 60px;
 						width: 35%;
+						@include tablet {
+							width: 30%;
+						}
 						// color:$blue;
 					}
 				}
@@ -333,7 +431,7 @@
 					// 	width: 25%;
 					// }
 					@include phone {
-						width: 15%;
+						width: 30%;
 					}
 				}
 			}

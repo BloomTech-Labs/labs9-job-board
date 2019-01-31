@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
-import LoadingBar from "../../images/loading-bars.svg";
+import LoadingBar from "../../images/design/png/loading-bar.svg";
 
 const url = process.env.REACT_APP_DB_URL;
 
