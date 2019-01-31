@@ -2,8 +2,54 @@
 
 .jobs-container {
 	margin-top:-90px;
-	min-height: 1000px;
+	min-height: 1350px;
 	padding-bottom: 50px;
+	background: $background;
+
+	.white-box{
+		display:none;
+
+		@include tablet{
+			display: flex;
+			position: absolute;
+			top: 38%;
+			left: 8%;
+			height: 275px;
+			width: 83%;
+			background: white;
+			margin: auto;
+			border-radius: 20px;
+			padding: 20px;
+
+
+		}
+	}
+
+	.header-logo {
+		display: none;
+
+		@include tablet {
+			display: flex;
+			position: absolute;
+			top: 3%;
+			left: 30%;
+			width: 43%;
+			// min-width: 280px;
+			margin: auto;
+		}
+	}
+
+	.no-results {
+		text-align: center;
+		font-size: 2rem;
+		padding-top: 20px;
+	}
+
+	.loading-bar{
+		display: flex;
+		justify-content: center;
+		margin: auto;
+	}
 
 	.header {
 		display: flex;
@@ -18,9 +64,9 @@
 			width: 100%;
 			height: 700px;
 
-			// @include tablet {
-			// 	display: none;
-			// }
+			@include tablet {
+				height: 475px;
+			}
 
 			img {
 				width: 100%;
@@ -36,139 +82,57 @@
 				transform: translate(-50%, -50%);
 				font-family: 'Roboto', sans-serif;
 				color: $white;
+				margin: auto;
+				width: 100%;
+				padding: 0px 20px;
 
-				@media screen and (max-width: 1490px ) {
-					width: 55%;
+				@include tablet{
+					top: 49%;
+					z-index: 40;
+					font-size: 3rem;
+					color: $dark;
+
 				}
-				@media screen and (max-width: 1350px ) {
-					width: 65%;
-				}
-				@media screen and (max-width: 1145px ) {
-					width: 80%;
-				}
+				
 
 				.attention-catcher-text {
 					color: $orange;
 					font-weight: bold;
+					text-align: center;
+
+					@include tablet {
+						color: $blue;
+					}
 				}
 
 				.tagline {
 					font-size: 2.6rem;
 					padding-top: 50px;
 					text-align: center;
+
+					@include tablet {
+						display: flex;
+						justify-content: center;
+						flex-wrap: wrap;
+						font-size: 2rem;
+						padding-top: 25px;
+					}
 					
 					
 					
 				}
 			}
 		}
-		// .left-side {
-		// 	background-color: #{$color-theme};
-		// 	width: 50%;
-		// 	display: flex;
-		// 	flex-direction: column;
-		// 	padding-top: 50px;
-
-		// 	@include tablet {
-		// 		width: 100%;
-		// 		align-items: center;
-		// 		padding-top: 0px;
-		// 	}
-
-		// 	h2 {
-		// 		font-size: 7rem;
-		// 		color: white;
-		// 		margin: 5% 0 0 5%;
-		// 		font-family: Merriweather;
-		// 		font-weight: 900;
-		// 		text-align: left;
-		// 		line-height: 1.2;
-
-		// 		@include tablet {
-		// 			text-align: center;
-		// 		}
-		// 	}
-
-		// 	h4 {
-		// 		font-size: 3rem;
-		// 		color: white;
-		// 		margin: 5% 0 0 5%;
-		// 		font-family: Merriweather;
-		// 		font-weight: 400;
-		// 		text-align: left;
-		// 		line-height: 1.4;
-
-		// 		@include tablet {
-		// 			text-align: center;
-		// 			padding: 20px;
-		// 		}
-		// 	}
-
-		// 	p {
-		// 		color: white;
-		// 		font-family: Merriweather;
-		// 		font-weight: 400;
-		// 		font-size: 1.4rem;
-		// 		margin-top: 40px;
-
-		// 		@include tablet {
-		// 			padding: 20px;
-		// 		}
-
-		// 		span a {
-		// 			font-family: Merriweather;
-		// 			font-weight: 900;
-		// 			text-decoration: none;
-		// 			color: white;
-
-		// 			&:hover {
-		// 				font-family: Merriweather;
-		// 				font-weight: 900;
-		// 				text-decoration: underline;
-		// 			}
-		// 		}
-		// 	}
-
-		// 	.post-search-btns {
-		// 		display: flex;
-		// 		justify-content: center;
-		// 		justify-content: space-around;
-		// 		width: 100%;
-		// 		padding: 50px 1%;
-
-		// 		a {
-		// 			text-decoration: none;
-		// 			font-size: 1.4rem;
-		// 			color: #000018;
-		// 		}
-
-		// 		.post-search-job {
-		// 			display: flex;
-		// 			justify-content: center;
-		// 			align-items: center;
-		// 			border: 2px solid #ccc;
-		// 			background-color: white;
-		// 			border-radius: 20px;
-		// 			width: 40%;
-		// 			height: 50px;
-		// 			margin: 30px 1%;
-
-		// 			&:hover {
-		// 				border: 2px solid rgb(150, 148, 148);
-		// 				cursor: pointer;
-		// 			}
-		// 		}
-		// 	}
-		// }
-
+		
 
 	}
 
 	.search-categories-container {
 		display: flex;
-		justify-content: space-between;
-		padding: 0 1%;
-		margin: 30px 0;
+		justify-content: center;
+		// padding: 0 1%;
+		margin: 35px auto;
+		max-width: 1024px;
 
 		// @include laptop {
 		//   flex-direction: column;
@@ -180,27 +144,47 @@
 		//   align-items: center;
 		// }
 
+			
+
+	.catagory-container {	
+		display: flex;
+		flex-direction: row;
+		max-width: 1024px;
+		width: 94%;
+
+		.catagory-label {
+			padding: 6px 0px 0px 0px;
+			font-size: 2rem;
+			font-weight: bold;
+			min-width: 180px;
+			font-family: $font;
+			margin: auto;
+
+			@include tablet {
+				display: none;
+			}
+
+		}
+
 		.categories {
 			display: flex;
 			justify-content: center;
+			flex-wrap: wrap;
 			border: 2px solid #ccc;
 			border-radius: 25px;
 			background-color: white;
 			/* width: 49%; */
-			height: 50px;
+			height: auto;
+			padding: 10px 0px;
 
-			// @include laptop {
-			// 	width: 70%;
-			// 	margin-bottom: 20px;
-			// }
 			@include tablet {
 				width: 90%;
-				margin-bottom: 20px;
+				margin: 130px auto 20px auto;
+				padding: 0px;
 			}
 			@include phone {
 				// display: none;
-				height: 170px;
-				flex-direction: column;
+				height: auto;
 				align-items: center;
 				flex-wrap: wrap;
 			}
@@ -208,15 +192,19 @@
 			.categories-tab {
 				display: flex;
 				align-items: center;
-				font-size: 1.5rem;
+				font-size: 1.8rem;
 				text-align: center;
-				padding: 0 10px;
+				padding: 5px 15px;
 
 				&:hover {
-					background: (rgba(85, 115, 179, 0.863));
-					color: white;
+					
+					color: $blue;
 					border-radius: 5px;
 					cursor: pointer;
+				}
+				@include tablet {
+					padding:20px 10px;
+					font-size: 1.6rem;
 				}
 
 				@include phone {
@@ -225,15 +213,16 @@
 			}
 
 			.selected {
-				background: (rgba(76, 103, 161, 0.966));
-				color: white;
+				
+				color: $orange;
 				border-radius: 5px;
 
 				&:hover {
-					background: (rgba(85, 115, 179, 0.863));
+					color:$blue;
 				}
 			}
 		}
+	}
 
 		.search-bar {
 			width: 65%;
@@ -243,50 +232,59 @@
 			top: 58%;
 			left:17%;
 
-			// @include laptop {
-			// 	width: 70%;
-			// }
 
 			@include tablet {
 				width: 90%;
+				position: absolute;
+				top: 58%;
+				left: 6%;
+				margin: auto;
+				height: 60px;
 			}
 
 			@include phone {
 				width: 90%;
 			}
 
+			.search-icon {
+				padding: 20px;
+				background: $orange;
+				// border: 2px solid #ccc;
+				border-left:0px;
+				border-radius: 0px 5px 5px 0px;	
+				&:hover {
+					cursor: pointer;
+				}
+				@include tablet {
+					width: 60px;
+				}
+				
+			}
+
 			.search-input {
 				width: 60%;
 				border: 2px solid #ccc;
-				border-radius: 4px;
+				border-right: 0px;
+				border-radius: 5px 0px 0px 5px;
 				font-size: 2rem;
 				background-color: white;
 				padding: 12px 0 12px 3%;
 				-webkit-transition: width 0.4s ease-in-out;
 				transition: width 0.4s ease-in-out;
+				outline-color: $blue;
 
-				// ==========vvv SEARCH BAR ICON vvv==========
-				// background-image: url("../../images//search-image.png");
-				// background-position: 0 center;
-				// background-repeat: no-repeat;
-				// border: 1px solid #ccc;
-				// -webkit-border-radius: 4px;
-				// -moz-border-radius: 4px;
-				// -ms-border-radius: 4px;
-				// -o-border-radius: 4px;
-				// border-radius: 4px;
-				// padding: 10px 5px 10px 20px;
-				// text-indent: 20px;
-				// -webkit-transition: all 0.2s;
-				// -moz-transition: all 2s;
-				// transition: all 0.2s;
-				// width: 200px;
-				// ==========^^^ SEARCH BAR ICON ^^^==========
+				@include tablet {
+					font-size: 1.8rem;
+					height: 60px;
+				}
+				
 				@include phone {
 					width: 90%;
 				}
 				&:hover {
-					border: 2px solid rgb(124, 124, 124);
+					border: 2px  solid rgb(124, 124, 124);
+					border-right: 0px;
+					border-radius: 5px 0px 0px 5px;
 				}
 
 				&:focus {
@@ -296,55 +294,147 @@
 		}
 	}
 
-	.job-links {
-		text-decoration: none;
-		color: black;
+	.all-jobs{
+		max-width: 1024px;
+		margin: auto;
+		width: 100%;
 
-		.each-job {
+		@include tablet {
+			width: 90%;
+		}
+		.job-list-headers {
 			display: flex;
-			justify-content: space-between;
-			font-size: 2.5rem;
-			margin-top: 20px;
-			margin: 20px 1% 0;
-			background-color: white;
-			border: 2px solid #ccc;
-			border-radius: 5px;
-			padding: 1% 1%;
+			flex-direction: row;
+			// justify-content: space-around;
+			width: 100%;
+			max-width: 1024px;
+			margin: auto;
 
-			&:hover {
-				border: 2px solid rgb(124, 124, 124);
+			
+			
+			.job-title {
+				font-size: 2rem;
+				font-family: $font;
+				color: $dark;
+				font-weight: bold;
+				line-height: 1.1;
+				width: 29%;
+				padding-left:40px;
+				// border-bottom: 2px solid $blue;
+
+				@include tablet {
+					padding-left:20px;
+				}
 			}
+			.company-title {
+				font-size: 2rem;
+				font-family: $font;
+				color: $dark;
+				font-weight: bold;
+				width: 29%;
+				// border-bottom: 2px solid $blue;
+			}
+			.salary-title {
+				font-size: 2rem;
+				font-family: $font;
+				color: $dark;
+				font-weight: bold;
+				width: 26%;
+				// border-bottom: 2px solid $blue;
+			}
+			.date-posted-title {
+				font-size: 2rem;
+				font-family: $font;
+				color: $dark;
+				font-weight: bold;
+				width: 150px;
+				// border-bottom: 2px solid $blue;
+			}
+		}
 
-			.left-side {
+		.job-links {
+			text-decoration: none;
+			color: black;
+			width: 98%;
+			display: flex;
+			margin: auto;
+			max-width: 1024px;
+			
+			justify-content: center;
+			
+			
+
+			.each-job {
+				
 				display: flex;
-				width: 90%;
+				justify-content: center;
+				font-size: 1.8rem;
+				margin-top: 20px;
+				margin: 15px 1% 0;
+				background-color: white;
+				border: 2px solid $light-gray;
+				color: $dark;
+				border-radius: 5px;
+				padding: 1.5% 1%;
+				width: 100%;
 
-				// @include laptop {
-				// 	width: 75%;
-				// }
-				@include phone {
-					width: 70%;
+				&:hover {
+					
+					border: 2px solid $blue;
+					background: $background;
+					
 				}
 
-				#job-title {
-					font-weight: 600;
+				.left-side {
+					display: flex;
+					width: 95%;
+					justify-content: flex-start;
+
+					@include tablet {
+						width: 85%;
+					}
+					@media screen and (max-width : 670px ) {
+						width: 75%;
+					}
+					@include phone {
+						width: 70%;
+					}
+
+					.job {
+						width: 33%;
+						font-weight: bold;
+						padding-right: 10px;
+					}
+
+					.company {
+						width: 38%;
+						@include tablet {
+							width: 30%;
+						}
+					}
+
+					.salary {
+						// padding-left: 60px;
+						width: 35%;
+						@include tablet {
+							width: 30%;
+						}
+						// color:$blue;
+					}
 				}
 
-				.spacing {
-					margin: 0 1.5%;
-				}
-			}
+				.date {
+					width:13%;
+					// padding-right: 10px;
 
-			.right-side {
-				width: 10%;
-
-				// @include laptop {
-				// 	width: 25%;
-				// }
-				@include phone {
-					width: 25%;
+					// @include laptop {
+					// 	width: 25%;
+					// }
+					@include phone {
+						width: 30%;
+					}
 				}
 			}
 		}
-	}
+}
 }

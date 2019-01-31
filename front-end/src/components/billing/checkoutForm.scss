@@ -21,169 +21,190 @@ $light-gray: #cecece;
 $break-small: 645px;
 
 .strikethrough {
-  text-decoration: line-through;
+	text-decoration: line-through;
 }
 
 //Header
-.billing-contaner {
-  .header {
-    .main-header {
-      .billing-header {
-        font-size: 2.8rem;
-        margin-bottom: 20px;
-      }
-    }
-    .sub-header {
-      display: flex;
-      justify-content: center;
+.billing-container {
+	width: 100%;
+	max-width: 1024px;
+	margin: auto;
 
-      .billing-subheader {
-        font-size: 1.8rem;
-        margin-bottom: 12px;
+	.header {
+		.main-header {
+			padding: 30px 0;
+			.billing-header {
+				font-size: 5rem;
+				margin-bottom: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		}
+		hr {
+			height: 4px;
+			color: #{$blue};
+			width: 50rem;
+			margin: 15px 0;
+		}
+		.sub-header {
+			display: flex;
+			justify-content: center;
 
-        .gotcha {
-          color: red;
-        }
-      }
-    }
-  }
-}
+			.billing-subheader {
+				font-size: 2.8rem;
+				margin-bottom: 20px;
 
-// Parent for all card and purchase container
-.checkout {
-  display: flex;
-  padding: 20px;
-  border-radius: 50px;
-  width: 100%;
-  background: #{$white};
+				.gotcha {
+					color: red;
+				}
+			}
+		}
+	}
+	// Parent for all card and purchase container
+	.checkout {
+		display: flex;
+		padding: 40px;
+		border-radius: 20px;
+		width: 100%;
+		background: #{$white};
+		justify-content: space-around;
 
-  .left-side {
-    border: 1px solid red;
-    // Purchase options starts
-    .purchase-options {
-      display: flex;
-      flex-direction: column;
-      @media screen and (max-width: $break-small) {
-        align-items: center;
-        padding: 10px;
-      }
+		.left-side {
+			// Purchase options starts
+			.purchase-options {
+				display: flex;
+				flex-direction: column;
+				@media screen and (max-width: $break-small) {
+					align-items: center;
+					padding: 10px;
+				}
 
-      .options {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 18px;
-        padding: 12px;
+				.options {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					margin: 50px 25px;
+					padding: 3px 25px;
 
-        @media screen and (max-width: $break-small) {
-          align-items: center;
-        }
+					@media screen and (max-width: $break-small) {
+						align-items: center;
+					}
 
-        label {
-          font-size: 1.6rem;
-          padding: 5px;
-          margin: 5px;
-        }
-      }
-    }
+					label {
+						font-size: 1.8rem;
+						padding: 10px;
+						margin: 10px;
+					}
+				}
+			}
 
-    // Card Info begins
-    .card-info {
-      display: flex;
-      flex-direction: column;
-      width: 17%;
-      margin: 25px;
-      padding: 17px;
-      @media screen and (max-width: $break-small) {
-        width: 100%;
-        margin-top: 0px;
-        align-items: center;
-      }
+			// Card Info begins
+			.card-info {
+				display: flex;
+				flex-direction: column;
+				width: 55%;
+				margin: 0px 70px;
+				@media screen and (max-width: $break-small) {
+					width: 100%;
+					margin-top: 0px;
+					align-items: center;
+				}
 
-      .card-info-labels {
-        display: flex;
-        font-size: 1.6rem;
-        padding-top: 20px;
+				.card-info-labels {
+					display: flex;
+					font-size: 2rem;
+					padding-top: 20px;
+					margin-bottom: 7px;
 
-        .card-info-placeholder-cnum {
-          font-size: 1.4rem;
-        }
-      }
+					.card-info-placeholder-cnum {
+						font-size: 1.8rem;
+					}
+				}
 
-      .card-info-placeholder-exp {
-        font-size: 1.4rem;
-      }
+				.card-info-placeholder-exp {
+					font-size: 1.8rem;
+				}
 
-      .card-info-placeholder-cvc {
-        font-size: 1.4rem;
-      }
+				.card-info-placeholder-cvc {
+					font-size: 1.8rem;
+				}
 
-      .button-section {
-        display: flex;
-        justify-content: space-between;
+				.button-section {
+					display: flex;
+					justify-content: space-between;
 
-        .purchase-button {
-          margin: 20px;
-          background: $blue;
-          padding: 10px 20px;
-          font-size: 1.6rem;
-          color: $white;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-        }
+					.purchase-button {
+						margin: 20px 25px;
+						background: #{$orange};
+						padding: 10px 5rem;
+						font-size: 1.8rem;
+						color: $white;
+						border: none;
+						border-radius: 5px;
+						cursor: pointer;
+					}
 
-        .cancel-button {
-          margin: 20px 0px;
-          background: $orange;
-          padding: 10px 20px;
-          font-size: 1.6rem;
-          color: $white;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-        }
-      }
+					.cancel-button {
+						margin: 20px 25px;
+						background: #{$blue};
+						padding: 10px 5rem;
+						font-size: 1.8rem;
+						color: $white;
+						border: none;
+						border-radius: 5px;
+						cursor: pointer;
+					}
+				}
 
-      .powered-by-stripe {
-        align-self: center;
-        margin: 10px;
-      }
-    }
-  }
+				.powered-by-stripe {
+					align-self: center;
+					margin: 20px;
+				}
+			}
+		}
 
-  .right-side {
-    border: 1px solid blue;
+		.right-side {
+			//Balance of job credits
+			.balance-container {
+				display: flex;
+				font-size: 1.8rem;
+				justify-content: flex-end;
+			}
 
-    //Balance of job credits
-    .balance-container {
-    }
+			//Jobs Purchased Postings
+			.billing-jobs {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				margin: 88px;
 
-    //Jobs Purchased Postings
-    .billing-jobs {
-      width: 100%;
+				.job-links h3 {
+					display: flex;
+					font-size: 2rem;
+					align-content: center;
+					margin-bottom: 30px;
+					padding: 25px;
 
-      .job-links {
-        display: flex;
-        margin: 0 10%;
-        font-size: 2rem;
+					.billing-job {
+						display: flex;
+						justify-content: flex-start;
+						font-size: 1.8rem;
+						width: 100%;
+					}
 
-        .billing-job {
-          font-size: 2rem;
-          padding-right: 3%;
-          width: 80%;
-        }
-
-        @media screen and (max-width: $break-small) {
-          flex-direction: row;
-          justify-content: center;
-        }
-      }
-      .job-links a {
-        width: 30%;
-        display: flex;
-        justify-content: start;
-      }
-    }
-  }
+					@media screen and (max-width: $break-small) {
+						flex-direction: row;
+						justify-content: center;
+					}
+				}
+				.job-links a {
+					width: 100%;
+					font-size: 1.6rem;
+				}
+			}
+		}
+		footer {
+			padding: 30px 0;
+		}
+	}
 }

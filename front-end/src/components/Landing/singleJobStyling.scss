@@ -63,6 +63,11 @@
       @include tablet {
         width: 90%;
       }
+
+      p {
+        width: 70%;
+        text-align: center;
+      }
     }
 
     .joint-columns {

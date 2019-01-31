@@ -9,7 +9,13 @@ import Search from "./search";
 
 import Categories from "./categories";
 import Header from "./header";
-import LoadingBar from "../../images/loading-bars.svg";
+
+import LoadingBar from "../../images/design/png/loading-bar.svg";
+
+import NewProfileForm from "../CompanyProfile/newProfileForm.js";
+import bigLogo from '../../images/design/png/logos/logo with white text.png'
+
+
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -21,22 +27,73 @@ class JobsContainer extends Component {
       searchJobs: [],
       search: "",
       fetching: false,
-      error: false
+      error: false,
+      newProfileModalVisible: false,
+      attempted: false
     };
   }
 
   componentDidMount() {
-    this.setState({ fetching: true }, () => {
-      axios
-        .get(`${url}/api/jobs`)
-        .then(res => {
-          this.setState({ jobs: res.data, fetching: false });
-        })
-        .catch(err => {
-          this.setState({ error: true, fetching: false });
-        });
-    });
+    this.setState(
+      { fetching: true },
+      () => {
+        axios
+          .get(`${url}/api/jobs`)
+          .then(res => {
+            this.setState({ jobs: res.data, fetching: false });
+          })
+          .catch(err => {
+            this.setState({ error: true, fetching: false });
+          });
+      },
+      async () => {
+        try {
+          if (this.props.authUser) {
+            const response = await axios.post(
+              `${url}/api/auth/hasAccountInfo`,
+              { user_uid: this.props.authUser.uid }
+            );
+            if (response.data.status === "no account information") {
+              await this.setState({
+                newProfileModalVisible: true,
+                attempted: true
+              });
+            } else {
+              await this.setState({ attempted: true });
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    );
   }
+
+  componentDidUpdate() {
+    if (this.props.authUser && !this.state.attempted) {
+      axios
+        .post(`${url}/api/auth/hasAccountInfo`, {
+          user_uid: this.props.authUser.uid
+        })
+        .then(response => {
+          if (response.data.status === "no account information") {
+            this.setState({
+              newProfileModalVisible: true,
+              attempted: true
+            });
+          } else {
+            this.setState({ attempted: true });
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
+
+  closeNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: false });
+  };
 
   searchByCategory = category => {
     if (category !== "all") {
@@ -68,7 +125,7 @@ class JobsContainer extends Component {
 
   onEnter = event => {
     window.scroll({
-      top: 425,
+      top: 380,
       left: 100,
       behavior: 'smooth'
     });
@@ -93,6 +150,8 @@ class JobsContainer extends Component {
       <div className="jobs-container container">
       
         <Header authUser={this.props.authUser} />
+        <img className ='header-logo' alt = 'logo'src = {bigLogo}></img>
+        <div className = 'white-box'></div>
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search
@@ -102,7 +161,7 @@ class JobsContainer extends Component {
           />
         </div>
         {this.state.fetching ? (
-          <img src={LoadingBar} alt="loading" />
+          <img  className = 'loading-bar' src={LoadingBar} alt="loading" />
         ) : this.state.jobs.length ? (
           <JobList
             jobs={this.state.search ? this.state.searchJobs : this.state.jobs}
@@ -110,8 +169,14 @@ class JobsContainer extends Component {
         ) : this.state.error ? (
           <div>Error retrieving jobs</div>
         ) : (
-          <div>No results found</div>
+          <div className = 'no-results'>No results found</div>
         )}
+        {this.state.newProfileModalVisible ? (
+          <NewProfileForm
+            authUser={this.props.authUser}
+            closeNewProfileModal={this.closeNewProfileModal}
+          />
+        ) : null}
       </div>
     );
   }
