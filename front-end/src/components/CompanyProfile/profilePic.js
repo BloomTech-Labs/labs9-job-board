@@ -16,11 +16,17 @@ class ProfilePic extends Component {
   uploadPhoto() {
     let _this = this;
     window.cloudinary.openUploadWidget(
-      { cloud_name: "dg9vhfqmb", upload_preset: "dzsxr7v2" },
+      {
+        cloud_name: "dg9vhfqmb",
+        upload_preset: "dzsxr7v2",
+        multiple: false
+      },
       function(error, result) {
-        console.log(result);
-        if (result) {
-          _this.setState({ profilePic: _this.state.profilePic.concat(result) });
+        console.log("result", result);
+        if (result.event === "success") {
+          _this.setState({
+            profilePic: _this.state.profilePic.concat(result.info)
+          });
           _this.props.setUrl(_this.state.profilePic);
         } else {
           console.log(error);
@@ -30,7 +36,7 @@ class ProfilePic extends Component {
   }
 
   render() {
-    // console.log("pic", this.state);
+    console.log("pic", this.state.profilePic);
     return (
       <div>
         {this.state.profilePic.length > 0 ? (
