@@ -30,7 +30,10 @@ class SingleJob extends Component {
   };
 
   clickHandler() {
-    window.location = `mailto:${this.state.job.application_method}`;
+    window.location =
+      `mailto:${this.state.job.application_method}?subject=${
+        this.state.job.title
+      }&body=` + window.location;
   }
 
   shareHandler() {
@@ -43,10 +46,7 @@ class SingleJob extends Component {
       window.location;
   }
   render() {
-    // console.log("this.props", this.state.job);
-    // if (!this.state.job) {
-    //   return <img src={LoadingBar} alt="loading bar" className="loading" />;
-    // }
+    console.log(this.state);
     return (
       <div className="single-job-container">
         {!this.state.job ? (
