@@ -39,7 +39,7 @@ class SingleJob extends Component {
 
   reportHandler() {
     window.location =
-      "mailto:mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body=" +
+      "mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body=" +
       window.location;
   }
   render() {
