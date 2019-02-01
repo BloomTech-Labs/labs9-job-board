@@ -14,8 +14,10 @@ import LoadingCircle from "../../images/loading-circle.svg";
 import Balance from "./Balance";
 import UserJobs from "./UserJobs.js";
 
+// Variable used for our DB
 const URL = process.env.REACT_APP_DB_URL;
 
+// Initial state of the checkout form
 const DEFAULT_STATE = {
   selectedOption: "",
   selectionMessage: "",
@@ -26,6 +28,7 @@ const DEFAULT_STATE = {
   failureVisible: false
 };
 
+// Amounts set to purchase
 const AMOUNT_TO_PURCHASE = {
   999: "Job (1) - $9.99",
   9999: "Jobs (12) - $99.99",
@@ -41,11 +44,11 @@ class CheckoutForm extends Component {
     };
     this.submit = this.submit.bind(this);
   }
-  // reset the form to the DEFAULT_STATE
+  // reset the form to the DEFAULT_STATE once payment has been made
   resetForm = () => {
     this.setState({ ...DEFAULT_STATE });
   };
-
+  // setting the form to the DEFAULT_STATE
   setDefaultState = () => {
     this.setState({ ...DEFAULT_STATE });
   };
@@ -54,21 +57,22 @@ class CheckoutForm extends Component {
   handleOptionChange = event => {
     this.setState({ selectedOption: event.target.value });
   };
-
+  //the submit function when a radio button has been selected
   async submit(ev) {
     ev.preventDefault();
+    //logic that awaits to see if an option was selected and if true then process that selection with payment to create a token
     if (this.state.selectedOption) {
       await this.setState({ processing: true });
       let createResponse = await this.props.stripe.createToken();
       console.log(createResponse);
-
+      //if there is no errors, then apply that option with the auth user account in our DB
       if (!createResponse.error && createResponse.token.id) {
         const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
           source: createResponse.token.id,
           option: this.state.selectedOption,
           user_uid: this.props.authUser.uid
         });
-
+        //if the card payment (test) has been successful then use status of succeeded
         if (stripeResponse.data.status && stripeResponse.data.amount) {
           if (stripeResponse.data.status === "succeeded") {
             this.setState(
@@ -78,6 +82,7 @@ class CheckoutForm extends Component {
                 purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
               },
               () => {
+                //set a timeout for payment to process and reset to the DEFAULT_STATE
                 setTimeout(() => {
                   this.setState({ ...DEFAULT_STATE });
                   this.cardElement.clear();
@@ -86,6 +91,7 @@ class CheckoutForm extends Component {
                 }, 3000);
               }
             );
+            //set a timeout for failed payments as well to reset to the DEFAULT_STATE
           } else {
             await this.setState(
               {
@@ -106,6 +112,7 @@ class CheckoutForm extends Component {
         } else {
           await this.setState({ processing: false });
         }
+        // if there are errors in the card number, exp date, and cvc
       } else {
         if (createResponse.error) {
           if (createResponse.error.code === "incomplete_number") {
@@ -121,12 +128,14 @@ class CheckoutForm extends Component {
               paymentMessage: "Form incomplete. Check CVC."
             });
           }
+          // reject with a message that a token could not be created for Stripe
         } else {
           this.setState({
             paymentMessage: "Error creating Stripe token."
           });
         }
       }
+      //a selection must be made before card payment can be processed
     } else {
       this.setState({ selectionMessage: "Please choose an option." });
     }

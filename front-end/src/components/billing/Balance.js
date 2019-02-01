@@ -12,7 +12,7 @@ class Balance extends React.Component {
 			attempted: false,
 		};
 	}
-
+	// Collects the balance of an Auth User once they have made a successful payment to post a job
 	fetchBalance() {
 		this.setState({ fetching: true, attempted: true }, () => {
 			axios
@@ -44,13 +44,13 @@ class Balance extends React.Component {
 
 		return `${month}/${day}/${year}`;
 	}
-
+	// Gives the balance currently
 	componentDidMount() {
 		if (this.props.authUser) {
 			this.fetchBalance();
 		}
 	}
-
+	// When a payment has been made additional credits will be updated to current balance
 	componentDidUpdate() {
 		if (this.props.authUser && !this.state.attempted) {
 			this.fetchBalance();
@@ -69,9 +69,6 @@ class Balance extends React.Component {
 				{this.state.balance.expiration
 					? `Unlimited until ${this.formatDate(this.state.balance.expiration)}`
 					: ''}
-				{/* <p className={this.state.balance.expiration ? 'strikethrough' : ''}>
-					{`${this.state.balance.balance} postings`}
-				</p> */}
 			</div>
 		) : (
 			<div>Loading...</div>

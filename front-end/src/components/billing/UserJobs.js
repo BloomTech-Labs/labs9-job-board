@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import LoadingBar from '../../images/loading-bars.svg';
 
+// Url Variable
 const URL = process.env.REACT_APP_DB_URL;
 
 class UserJobs extends React.Component {
@@ -16,18 +17,21 @@ class UserJobs extends React.Component {
 			attempted: false,
 		};
 	}
-
+	//logic to fetch jobs that was purchased by the Auth User from the db
 	fetchJobs() {
 		this.setState({ fetching: true, attempted: true }, () => {
 			axios
 				.get(`${URL}/api/jobs/user/${this.props.authUser.uid}`)
 				.then(response => {
+					//lists out the jobs of auth user in the db
 					if (response.data.length) {
 						this.setState({ jobs: response.data, fetching: false });
+						//no jobs will be if none exists in the db
 					} else {
 						this.setState({ message: 'No jobs posted', fetching: false });
 					}
 				})
+				//catching error
 				.catch(error => {
 					this.setState({
 						message: 'Error retrieving jobs',
@@ -36,25 +40,25 @@ class UserJobs extends React.Component {
 				});
 		});
 	}
-
+	//if the auth user did have purchased post job credits then that list of job will be displayed
 	componentDidMount() {
 		if (this.props.authUser) {
 			this.fetchJobs();
 		}
 	}
-
+	//update the jobs if credits were purchases attempted
 	componentDidUpdate() {
 		if (this.props.authUser && !this.state.attempted) {
 			this.fetchJobs();
 		}
 	}
 
+	// if there are jobs in the auth user that was purchased, those jobs (mapped) will then be rendered on the billing page where they can view those postings and update those postings and add new job listing
 	render() {
 		return (
 			<div className="billing-jobs">
 				<h3>Your Job Postings:</h3>
 				<div className="job-links">
-					{/* MAP HERE TO CREATE A NEW .each-job DIV FOR EACH JOB*/}
 					{this.state.fetching ? (
 						<img src={LoadingBar} alt="loading bar" />
 					) : this.state.jobs.length ? (
