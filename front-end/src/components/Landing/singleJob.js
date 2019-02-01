@@ -11,6 +11,7 @@ class SingleJob extends Component {
     };
   }
 
+  //setting a single job on state: get request
   componentDidMount() {
     const id = this.props.match.params.id;
     this.fetchJob(id);
@@ -29,6 +30,7 @@ class SingleJob extends Component {
       });
   };
 
+  //creates an email setting fields of to, subject and body with info specific to the individual job
   clickHandler() {
     window.location =
       `mailto:${this.state.job.application_method}?subject=${
@@ -36,17 +38,18 @@ class SingleJob extends Component {
       }&body=` + window.location;
   }
 
+  //creates an email with link to specific job
   shareHandler() {
     window.location = "mailto:?subject=Check this Job!&body=" + window.location;
   }
 
+  // creates email to company to report job
   reportHandler() {
     window.location =
       "mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body=" +
       window.location;
   }
   render() {
-    console.log(this.state);
     return (
       <div className="single-job-container">
         {!this.state.job ? (
