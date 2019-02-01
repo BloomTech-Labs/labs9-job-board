@@ -20,6 +20,7 @@
     flex-direction: column;
     align-items: center;
 
+    //container for account pic/text/edit btn
     .pic-account {
       width: 50rem;
       display: flex;
@@ -65,7 +66,7 @@
       padding: 40px 40px 10px 40px;
       margin: 40px 5%;
 
-      //two columns of text
+      //container of text
       .company-text {
         width: 49%;
         display: flex;
@@ -77,9 +78,9 @@
         }
       }
 
+      //company text
       .company-text p {
         width: 100%;
-        // border-radius: 5px;
         font-size: 1.8rem;
         text-align: start;
         padding: 10px;
@@ -87,6 +88,7 @@
         margin-bottom: 30px;
       }
 
+      //company labels
       label {
         padding: 0 0 7px 0;
         font-size: 2rem;
