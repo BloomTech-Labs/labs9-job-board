@@ -9,10 +9,7 @@ class ProfilePic extends Component {
     };
   }
 
-  // setUrl() {
-  //   this.setState({ url: this.state.profilePic[0].url });
-  // }
-
+  //uploads company profile pic to cloundinary and styles form
   uploadPhoto() {
     let _this = this;
     window.cloudinary.openUploadWidget(
