@@ -19,7 +19,20 @@ class ProfilePic extends Component {
       {
         cloud_name: "dg9vhfqmb",
         upload_preset: "dzsxr7v2",
-        multiple: false
+        multiple: false,
+        styles: {
+          palette: {
+            window: "#444444",
+            windowBorder: "#646464",
+            tabIcon: "#ED8361",
+            menuIcons: "#5A616A",
+            textDark: "#F5F5F5",
+            textLight: "#646464",
+            link: "#90B0BA",
+            action: "#FF620C",
+            inactiveTabIcon: "#E89980"
+          }
+        }
       },
       function(error, result) {
         console.log("result", result);
