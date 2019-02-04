@@ -97,6 +97,10 @@
         color: #{$dark};
       }
 
+      #companySummary {
+        font-family: sans-serif;
+      }
+
       //line between company text
       .company-border {
         border: 4px solid #{$background};
