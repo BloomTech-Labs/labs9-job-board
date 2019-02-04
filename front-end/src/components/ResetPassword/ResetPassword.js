@@ -13,6 +13,7 @@ class ResetPassword extends React.Component {
     };
   }
 
+  // toggle modal telling user to check their email for link from Firebase
   toggleModal = () => {
     this.setState(prevState => ({
       modalVisible: !prevState.modalVisible
@@ -20,6 +21,7 @@ class ResetPassword extends React.Component {
   };
 
   render() {
+    // if user is already authenticated, redirect to landing
     return this.props.authUser ? (
       <Redirect to={ROUTES.LANDING} />
     ) : (

@@ -98,7 +98,7 @@ router.post("/charge", async (req, res) => {
 });
 
 // [GET] /api/billing/balance/:id
-// returns either expiration date of unlimited job posting or balance
+// returns balance and expiry date if valid
 router.get("/balance/:id", (req, res) => {
   const user_uid = req.params.id;
 

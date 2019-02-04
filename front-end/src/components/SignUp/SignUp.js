@@ -17,6 +17,7 @@ const DEFAULT_STATE = {
 };
 
 // component for /sign-up route
+// if user is already authenticated, redirect to landing
 const SignUp = props => {
   return props.authUser ? <Redirect to={ROUTES.LANDING} /> : <SignUpForm />;
 };
@@ -105,16 +106,18 @@ class SignUpFormUnconnected extends React.Component {
   };
 
   render() {
-    // verifies password and email non-empty
+    // verifies password and email non-empty, and passwords match
     const isInvalid =
       this.state.password !== this.state.confirmPassword ||
       this.state.password === "" ||
       this.state.email === "";
 
+    // passwords match, but not empty
     const passwordMatch =
       this.state.password === this.state.confirmPassword &&
       this.state.password !== "";
 
+    // password/confirmation password not empty
     const passwordNotEmpty =
       this.state.password !== "" && this.state.confirmPassword !== "";
 
