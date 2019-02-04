@@ -323,9 +323,8 @@ Our production PostgresQL database is hosted through Heroku. The following instr
 	4. `cd billing`
 	
 6.  Click on `billing.js` add your test publishable key to `<StripeProvider></StripeProvider>`. 
-See below:
-``` 
-//billing.js
+See below example of billing.js file:
+```javascript
 import React, { Component } from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
 
@@ -359,6 +358,7 @@ class Billing extends Component {
        </StripeProvider>
 ```
 ### You can view your payment transactions from the Dashboard once you have configured the API keys into the project. 
+
 
 <!-- Cloudinary-->
 <!-- Firebase -->
