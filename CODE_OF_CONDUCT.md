@@ -45,5 +45,5 @@ threatening, offensive, or harmful.
 
 ## Appendix A - Borrowed info from to be incorporated into our project
 
-[homepage]: http://contributor-covenant.org
-[node]: https://github.com/nodejs
+[homepage]: (http://contributor-covenant.org)
+[node]: (https://github.com/nodejs)
