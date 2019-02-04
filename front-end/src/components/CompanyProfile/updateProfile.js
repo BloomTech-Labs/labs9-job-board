@@ -23,6 +23,7 @@ class UpdateProfile extends Component {
     };
   }
 
+  //setting state to account profile
   componentDidMount() {
     if (this.props.authUser) {
       const user_uid = this.props.authUser.uid;
@@ -60,10 +61,12 @@ class UpdateProfile extends Component {
         })
         .catch(err => {
           console.log(err);
+          this.props.history.push("/");
         });
     }
   };
 
+  //put request to save edits
   updateUser = e => {
     e.preventDefault();
     const id = this.props.match.params.id;
@@ -89,23 +92,23 @@ class UpdateProfile extends Component {
     this.openEditor();
   };
 
+  //inputs to state
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //toggle between edit page and account page
   openEditor = () => {
     this.setState({ companyEditor: !this.state.companyEditor });
   };
 
+  //sets user picture on state
   setUrl = num => {
     this.setState({ image: num[0].url });
   };
 
   render() {
-    console.log(this.state);
-    // if (!this.state.company) {
-    //   return <img src={LoadingBar} alt="loading bar" className="loading" />;
-    // }
+    console.log("url", this.state.url);
     return (
       <div className="profile-container">
         {!this.state.company ? (

@@ -1,3 +1,4 @@
+//account profile/edit
 .profile-container {
   max-width: 1024px;
   margin: auto;
@@ -5,18 +6,21 @@
   padding: 30px 0;
   min-height: 100vh;
 
+  //page loader
   .loading-container {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
+  //all company info on account page
   .companyInfo {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    //container for account pic/text/edit btn
     .pic-account {
       width: 50rem;
       display: flex;
@@ -27,11 +31,13 @@
         width: 90%;
       }
     }
+    //border line
     .border {
       border-bottom: 4px solid #{$blue};
       width: 100%;
       margin: 15px 0;
     }
+
     .pic-account h1 {
       font-size: 5rem;
       color: #{$dark};
@@ -40,7 +46,7 @@
         font-size: 4rem;
       }
     }
-
+    //profile pic
     .avatar {
       border-radius: 50%;
       margin-bottom: 15px;
@@ -50,6 +56,7 @@
       object-fit: cover;
     }
 
+    //account info container
     .all-company-info {
       background-color: white;
       width: 100%;
@@ -59,6 +66,7 @@
       padding: 40px 40px 10px 40px;
       margin: 40px 5%;
 
+      //container of text
       .company-text {
         width: 49%;
         display: flex;
@@ -70,9 +78,9 @@
         }
       }
 
+      //company text
       .company-text p {
         width: 100%;
-        // border-radius: 5px;
         font-size: 1.8rem;
         text-align: start;
         padding: 10px;
@@ -80,6 +88,7 @@
         margin-bottom: 30px;
       }
 
+      //company labels
       label {
         padding: 0 0 7px 0;
         font-size: 2rem;
@@ -88,11 +97,13 @@
         color: #{$dark};
       }
 
+      //line between company text
       .company-border {
         border: 4px solid #{$background};
         margin: 0px 40px;
       }
 
+      // inputs on edit page
       input {
         width: 100%;
         border-radius: 5px;
@@ -111,6 +122,7 @@
         }
       }
 
+      //for company summary on edit page
       textarea {
         width: 100%;
         border-radius: 5px;
@@ -130,6 +142,7 @@
         }
       }
 
+      //buttons on edit page
       .btns-save-cancel {
         margin: 50px 10px 0 10px;
         border-radius: 5px;
@@ -140,6 +153,8 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        //save button
         .save {
           width: 45%;
           background-color: #{$auth-submit-bg};
@@ -153,6 +168,8 @@
             margin-bottom: 30px;
           }
         }
+
+        //cancel button
         .cancel {
           width: 45%;
           background-color: #{$Navbar};
@@ -178,6 +195,8 @@
         width: 90%;
       }
     }
+
+    //placeholder for pic on edit page
     .profile-pic-button {
       border-radius: 50%;
       height: 200px;
@@ -186,9 +205,15 @@
       cursor: pointer;
       font-size: 1.8rem;
       margin-bottom: 15px;
+      color: #{$dark};
+
+      span {
+        display: block;
+      }
     }
   }
 
+  //edit button
   .edit-btn {
     padding: 10px 5rem;
     border-radius: 5px;
@@ -201,6 +226,7 @@
     background-color: #{$blue};
   }
 
+  //links for billing and change password
   .menu-pass-bill {
     width: 100%;
     display: flex;
