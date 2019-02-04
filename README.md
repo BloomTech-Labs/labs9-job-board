@@ -108,7 +108,136 @@ Once you have node and a package manager:
 6. Once completed run `yarn start` to start the application
 
 <!-- Contributing -->
-<!-- Data Modals -->
+<!-- Data Modals --> 	
+# Data Models
+All data models are built using migrations created with the SQL query builder Knex.js. The migrations are structured for a PostgresQL database.
+
+### Login Table
+The ‘login’ table is used to store basic user information upon account creation. This allows the user to navigate the site as an authenticated user without being forced to complete their profile information.
+
+```javascript
+// Login table data model
+tbl.increments();
+
+// Firebase ID
+tbl
+.string("user_uid", 255)
+.notNullable()
+.unique();
+
+tbl
+.string("email", 128)
+.unique()
+.notNullable();
+});
+
+tbl
+.timestamp("created_at")
+.defaultTo(knex.raw("now()"))
+.notNullable();
+```
+### Users Table
+The ‘users’ table stores the profile and balance information for a user. A user’s row is initially created once the ‘New Account Info’ form displayed on the front end is completed.
+```javascript
+// Users table data model
+// primary key
+tbl.increments();
+
+// Firebase user id
+tbl
+.string("user_uid", 255)
+.notNullable()
+.unique()
+.references("user_uid")
+.inTable("login");
+
+tbl.string("first_name", 255).notNullable();
+
+tbl.string("last_name", 255).notNullable();
+
+tbl
+.string("email", 128)
+.unique()
+.notNullable();
+
+tbl.string("company_name", 255).notNullable();
+
+tbl.string("summary", 500).notNullable();
+
+tbl.string("application_method", 128).notNullable();
+
+tbl.string("avatar_image", 200);
+
+tbl
+.integer("balance")
+.notNullable()
+.defaultTo(0);
+
+tbl
+.boolean("unlimited")
+.notNullable()
+.defaultTo(false);
+
+tbl.timestamp("expiration");
+
+tbl
+.timestamp("created_at")
+.defaultTo(knex.raw("now()"))
+.notNullable();
+
+tbl
+.timestamp("updated_at")
+.defaultTo(knex.raw("now()"))
+.notNullable();
+});
+};
+```
+### Jobs Table
+The ‘jobs’ table holds all the information about a job posting as well as a foreign key reference to the user who posted the job within the ‘users’ table. A user is not able to create a job posting if they have not completed the ‘New Account Info’ form and do not have a valid balance (have not purchased any listing privileges).
+```javascript
+// primary key
+tbl.increments(); // generate and id field and make it autoincfement and the primary key
+
+tbl.string("title", 255).notNullable();
+
+tbl.string("salary").notNullable();
+
+tbl.string("top_skills", 128);
+
+tbl.string("add_skills", 203);
+
+tbl.string("familiar", 128);
+
+tbl.string("description", 4000).notNullable();
+
+tbl.string("requirements", 5000);
+
+tbl
+.boolean("active")
+.notNullable()
+.defaultTo(true);
+
+tbl
+.boolean("college_degree")
+.notNullable()
+.defaultTo(false);
+
+tbl
+.date("created_at")
+.defaultTo(knex.raw("now()"))
+.notNullable();
+
+//foreign key to users DB
+tbl
+.integer("users_id")
+.unsigned()
+.references("id")
+.inTable("users")
+.notNullable();
+
+tbl.string("category");
+```
+
 <!-- Postgres -->
 <!-- Stripe -->
 <!-- Cloudinary-->
