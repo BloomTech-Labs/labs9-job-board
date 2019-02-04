@@ -59,6 +59,17 @@ Deployed [here](https://knowledge-without-college.herokuapp.com/test)
 
 
 <!-- Testing -->
+# Testing
+Testing of this application was completed through every stage of development using terminal logging, PGAdmin page, Chrome DevTools, and Postman. Testing was incorperated into this application by each contributor before submitting a pull request to the master branch and after each merge to ensure all elements of the code were working together properly.
+
+In addition, all pull requests wer reviewed by one or more team members, along with our project manager. 
+
+The application was set to continuously deploy to Netlify and Heroku. In order to satisfy the requirements of continuous deployment, our deployment branch was automatically checked upon every pull request to make sure the new code would not break the build.
+
+Additional testing for both the front end and back end was also written and can be found at the file path below
+* Front End (front-end/src/App.test.js)
+* Backend (backend/_ _tests_ _ )
+
 <!-- Installation Instructions -->
 <!-- Contributing -->
 <!-- Data Modals -->
