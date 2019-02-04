@@ -239,6 +239,75 @@ tbl.string("category");
 ```
 
 <!-- Postgres -->
+# PostgresQL
+### Set up – Development
+Below are the techniques used by members of our team to create a local database to use during development.
+#### Mac
+##### Installation/Run
+1. First run the following command in your terminal to install PostgresQL using Homebrew. If you do not have Homebrew installed, visit <https://brew.sh>.
+    - `brew install postgresql`
+2. Next, run the following command to start PostgresQL locally.
+    - `brew services start postgresql`
+3. Finally, run the following command to enter the psql CLI with the user 'postgres'.
+    - `psql postgres`
+##### Create Database
+After running the command in step 3 of Installation/Run, you should now see something similar to: 
+[img]
+
+To create a new database, run the query:
+- `CREATE DATABASE database_name;`
+
+Once the database has been created, run the following to connect to it.
+- `\c database_name;`
+
+[img]
+##### Run Migrations/Seeds
+Now that you are connected to your local PostgresQL database through the psql CLI, go into the 'knexfile.js' within the root of the 'backend' directory. Change the variables within the development connection to match the database you just created.
+[img]
+Once the variables are correct for your local configuration,
+1. In the terminal run the following to populate your new database with the tables defined in the Knex migrations.
+    - `knex migrate:latest`
+
+2. To create test data for development, run the following within the terminal to populate the tables with premade seed data.
+    - `knex seed:run`
+
+3. To test that the migrations and seeds have run correctly is to query each table within the psql CLI to see if the columns are correct. For example,
+    - `SELECT * FROM users;`
+
+Once you have verified that the migrations and seeds ran correctly, you are ready to use PostgresQL for development.
+
+#### Windows
+##### Installation/Run
+Install PostgresQL: <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>
+Follow the instructions provided with the installation and be sure to **remember the username and password you create**.
+Once the installation has completed, open PGAdmin and sign in with your new credentials.
+
+##### Create Database
+Within PGAdmin, create a new database.
+
+##### Run Migrations/Seeds
+Now that the new database has been created, open the 'knexfile.js' within the root of the 'backend' directory.
+Change the variables within the development connection to match the database you just created. Make sure to include 'password' or Knex will not be able to authenticate the connection.
+[img]
+Once the variables are correct for your local configuration, follow steps 1 through 3 in the 'Run Migrations/Seeds' section of the Mac instructions.
+
+### Set up - Production
+Our production PostgresQL database is hosted through Heroku. The following instructions will be for **Heroku deployment only**.
+1. Create or log in to your account on <https://www.heroku.com/>. From the dashboard, select the 'New' button and choose 'Create new app' from the dropdown menu.
+2. After creating your new app, select 'Configure add-ons' to the right of the 'Installed add-ons' header. Within the 'Add-ons' search bar, look for 'postgres' and select 'Heroku Postgres'. After selecting it, you can choose your plan and then provision the new add-on.
+3. Navigate to the 'Settings' tab on your app dashboard (not the database dashboard). Under the 'Buildpacks' section, add both of the following. The first will allow you to use a subdirectory (for this application, 'backend') as the root for the deployment build.
+    - `https://github.com/timanovsky/subdir-heroku-buildpack.git`
+    - `heroku/nodejs`
+4. Next, we'll find the URI that you'll need to place within the configuration variables. Navigate to the 'Overview' tab on the app dashboard. Click on 'Heroku Postgres' within your 'Installed add-ons' and you will be redirect to your database dashboard. Select 'Settings' and then 'View credentials...' to find your URI.
+5. Go back to your app dashboard and within the 'Settings' tab, add the following configuration variables (Config Vars).
+    - **DATABASE_URL**: the URI found in step 4
+    - **DB**: production
+    - **PROJECT_PATH**: backend
+6. Next we will population the database with the tables defined in the Knex migrations. Within Heroku, select 'More' and choose 'Run console'. Once the console appears, type `bash` to access the command line. Within the command line run `knex migrate:latest` to run the Knex migrations. Now within the database dashboard it should now show that the database contains 5 tables and your production database is deployed.
+
+
+
+
 <!-- Stripe -->
 <!-- Cloudinary-->
 <!-- Firebase -->
