@@ -1,22 +1,17 @@
-# Knowledge Without College
+<h1 align="center">Labs9 Knowledge Without College</h1>
+<div align="center"> <img src="https://i.ibb.co/8cjQJn1/logo-with-light-green-text.png" alt="Knoledge Without College Blue and Orange Logo"/></div>
 
-Knowledge Without College is a JavaScript app that eases the job search for people who may not have a college degree and helps companies find employees based on their required skills.
+<div align="center"><h2>Brought to you by:</h2>
 
-## Motivation
+<a href="https://github.com/brianmgre">Brian Gregorious</a>
 
-## Language and Tools
+<a href="https://github.com/Charletta">Charletta Bullard</a>
 
-## Deployment
+<a href="https://github.com/sarahtennis">Sarah Tennis</a>
 
-## Usage
+<a href="https://github.com/SavannahGreuel">Savannah Greuel</a>
 
-## How to Run
-
-## Contributing
-
-## Visuals
-
-## Authors and Acknowledgement
-
-## License
-
+<a href="https://github.com/yusufnafey">Yusuf Nafey</a>
+</div>
+<br>
+<br>
