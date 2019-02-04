@@ -76,20 +76,20 @@ Additional testing for both the front end and back end was also written and can 
 ### Environment Variables
 
 ##### Front-end variables:
-` REACT_APP_DB_URL = url` is the connection to the Heroku database
+* ` REACT_APP_DB_URL = url` is the connection to the Heroku database
 See Firebase section for Firebase variables
 See Cloundinary for Cloudinary variables
 
 ##### Back-end variables:
 
-`DATABASE_URL` is the variable given by Heroku, link to connect to database 
-`DB` which relays `dbEnviroment` to use production or development
-The rest of the variables are for connecting Postgres locally.
+* `DATABASE_URL` is the variable given by Heroku, link to connect to database 
+* `DB` which relays `dbEnviroment` to use production or development
 
-`DB_HOST` would be the `localhost` on your computer
-`DB_NAME` is your database name
-`DB_USER` is the username you setup
-`DB_PASS` is your password
+The rest of the variables are for connecting Postgres locally.
+* `DB_HOST` would be the `localhost` on your computer
+* `DB_NAME` is your database name
+* `DB_USER` is the username you setup
+* `DB_PASS` is your password
 
 ### Using the Application
 
