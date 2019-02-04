@@ -41,7 +41,7 @@ class NewProfileForm extends Component {
       summary: this.state.companySummary,
       application_method: this.state.applicationInbox,
       avatar_image:
-        this.state.image || "https://imageshack.com/a/img923/1112/alm70A.png"
+        this.state.image || "https://imageshack.com/a/img923/1112/alm70A.png" // default avatar img
     };
 
     axios
@@ -67,10 +67,6 @@ class NewProfileForm extends Component {
   };
 
   render() {
-    // if (this.props.authUser) {
-    //   console.log(this.state.uid);
-    // }
-
     return (
       <div className="new-profile-view">
         <div className="new-profile-container">

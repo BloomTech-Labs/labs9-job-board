@@ -1,3 +1,4 @@
+// react route endpoints
 export const LANDING = "/";
 export const JOB = "/jobs/:id";
 export const POST_JOB = "/post-job";

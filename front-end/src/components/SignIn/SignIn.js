@@ -15,6 +15,7 @@ class SignIn extends React.Component {
   }
 
   render() {
+    // redirect to landing if user is already authenticated
     return this.props.authUser ? (
       <Redirect to={ROUTES.LANDING} />
     ) : (
@@ -52,7 +53,7 @@ class SignInFormUnconnected extends React.Component {
           user_uid = authUser.user.uid;
           email = authUser.user.email;
 
-          // checks if in login table
+          // checks if Firebase ID from response is in login table
           return axios.post(`${URL}/api/auth/login`, {
             user_uid,
             email
@@ -62,6 +63,7 @@ class SignInFormUnconnected extends React.Component {
         }
       })
       .then(response => {
+        // if already in or newly inserted into login table, redirect to landing
         if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
@@ -99,6 +101,7 @@ class SignInFormUnconnected extends React.Component {
         }
       })
       .then(response => {
+        // if already in or newly inserted into login table, redirect to landing
         if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
@@ -113,6 +116,7 @@ class SignInFormUnconnected extends React.Component {
   };
 
   render() {
+    // email and password cannot be empty strings
     const isInvalid = this.state.password === "" || this.state.email === "";
 
     return (

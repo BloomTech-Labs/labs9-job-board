@@ -1,76 +1,78 @@
+// TO BE REDESIGNED
+
 //payment container
 .payment-modal-container {
-	position: fixed;
-	height: 100vh;
-	width: 100vw;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: rgba(39, 62, 74, 0);
-	-webkit-transition: background-color 1s ease-out;
-	-moz-transition: background-color 1s ease-out;
-	-o-transition: background-color 1s ease-out;
-	transition: background-color 1s ease-out;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(39, 62, 74, 0);
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
 
-	//payment card that gets displayed
-	.payment-modal-card {
-		height: 200px;
-		width: 300px;
-		background: rgba(255, 255, 255, 0);
-		border: 2px solid rgba(39, 62, 74, 0);
-		-webkit-transition: background-color 1s ease-out;
-		-moz-transition: background-color 1s ease-out;
-		-o-transition: background-color 1s ease-out;
-		transition: background-color 1s ease-out;
+  //payment card that gets displayed
+  .payment-modal-card {
+    height: 200px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(39, 62, 74, 0);
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
 
-		//modal header design
-		.payment-modal-header {
-			font-size: 2.4rem;
-			color: rgba(255, 255, 255, 0);
-			-webkit-transition: color 1s ease-out;
-			-moz-transition: color 1s ease-out;
-			-o-transition: color 1s ease-out;
-			transition: color 1s ease-out;
-		}
+    //modal header design
+    .payment-modal-header {
+      font-size: 2.4rem;
+      color: rgba(255, 255, 255, 0);
+      -webkit-transition: color 1s ease-out;
+      -moz-transition: color 1s ease-out;
+      -o-transition: color 1s ease-out;
+      transition: color 1s ease-out;
+    }
 
-		//for success modal message design
-		.success {
-			color: green;
-			-webkit-transition: color 1s ease-out;
-			-moz-transition: color 1s ease-out;
-			-o-transition: color 1s ease-out;
-			transition: color 1s ease-out;
-		}
+    //for success modal message design
+    .success {
+      color: green;
+      -webkit-transition: color 1s ease-out;
+      -moz-transition: color 1s ease-out;
+      -o-transition: color 1s ease-out;
+      transition: color 1s ease-out;
+    }
 
-		//for failure modal message design
-		.failure {
-			color: red;
-			-webkit-transition: color 1s ease-out;
-			-moz-transition: color 1s ease-out;
-			-o-transition: color 1s ease-out;
-			transition: color 1s ease-out;
-		}
-	}
+    //for failure modal message design
+    .failure {
+      color: red;
+      -webkit-transition: color 1s ease-out;
+      -moz-transition: color 1s ease-out;
+      -o-transition: color 1s ease-out;
+      transition: color 1s ease-out;
+    }
+  }
 
-	//visible design of the modal
-	.visible {
-		background: rgba(255, 255, 255, 1);
-		border: 2px solid rgba(39, 62, 74, 1);
-		-webkit-transition: background-color 1s ease-out;
-		-moz-transition: background-color 1s ease-out;
-		-o-transition: background-color 1s ease-out;
-		transition: background-color 1s ease-out;
-	}
+  //visible design of the modal
+  .visible {
+    background: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(39, 62, 74, 1);
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
+  }
 }
 //visual design of the modal
 .visible {
-	z-index: 100;
-	background: rgba(39, 62, 74, 0.8);
-	-webkit-transition: background-color 1s ease-out;
-	-moz-transition: background-color 1s ease-out;
-	-o-transition: background-color 1s ease-out;
-	transition: background-color 1s ease-out;
+  z-index: 100;
+  background: rgba(39, 62, 74, 0.8);
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
 }

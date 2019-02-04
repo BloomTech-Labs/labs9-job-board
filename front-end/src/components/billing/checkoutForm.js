@@ -72,9 +72,10 @@ class CheckoutForm extends Component {
           option: this.state.selectedOption,
           user_uid: this.props.authUser.uid
         });
-        //if the card payment (test) has been successful then use status of succeeded
+        // status and amount are truthy, check if status is 'succeeded'
         if (stripeResponse.data.status && stripeResponse.data.amount) {
           if (stripeResponse.data.status === "succeeded") {
+            // if 'succeeded', display success modal
             this.setState(
               {
                 processing: false,
@@ -82,7 +83,7 @@ class CheckoutForm extends Component {
                 purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
               },
               () => {
-                //set a timeout for payment to process and reset to the DEFAULT_STATE
+                // clear form and reset state if payment successed (timeout for modal visible)
                 setTimeout(() => {
                   this.setState({ ...DEFAULT_STATE });
                   this.cardElement.clear();
@@ -91,8 +92,8 @@ class CheckoutForm extends Component {
                 }, 3000);
               }
             );
-            //set a timeout for failed payments as well to reset to the DEFAULT_STATE
           } else {
+            // if payment is not 'succeeded', display failure modal
             await this.setState(
               {
                 processing: false,
@@ -100,6 +101,7 @@ class CheckoutForm extends Component {
                 purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
               },
               () => {
+                // clear form and reset state if payment failed (timeout for modal visible)
                 setTimeout(() => {
                   this.setState({ ...DEFAULT_STATE });
                   this.cardElement.clear();
@@ -112,8 +114,8 @@ class CheckoutForm extends Component {
         } else {
           await this.setState({ processing: false });
         }
-        // if there are errors in the card number, exp date, and cvc
       } else {
+        // set display message if errors in the card number, exp date, and cvc
         if (createResponse.error) {
           if (createResponse.error.code === "incomplete_number") {
             this.setState({
@@ -128,14 +130,14 @@ class CheckoutForm extends Component {
               paymentMessage: "Form incomplete. Check CVC."
             });
           }
-          // reject with a message that a token could not be created for Stripe
+          // handle default if token.id does not exist (did not create valid Stripe token)
         } else {
           this.setState({
             paymentMessage: "Error creating Stripe token."
           });
         }
       }
-      //a selection must be made before card payment can be processed
+      // display message if no radio button selection has been made
     } else {
       this.setState({ selectionMessage: "Please choose an option." });
     }
