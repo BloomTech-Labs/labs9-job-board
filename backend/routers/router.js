@@ -4,7 +4,8 @@ const db = require("../db/config");
 const router = express.Router();
 
 //-------------USER ENDPOINTS-------------------
-//GET all users
+// GET /api/users
+// returns all users in users table
 router.get("/users", (req, res) => {
   db("users")
     .then(users => {
@@ -15,24 +16,23 @@ router.get("/users", (req, res) => {
     });
 });
 
-//POST new user
+// POST /api/users
+// create new user in users table
 router.post("/users", (req, res) => {
-  console.log("in new user");
   const user = req.body;
 
   db("users")
     .insert(user)
     .then(ids => {
-      console.log("ids", ids);
       res.status(201).json(ids);
     })
     .catch(err => {
-      console.log("err", err);
       res.status(500).json({ message: "Error inserting user", err });
     });
 });
 
-//GET user by id
+// GET /api/users/:id
+// return user by primary key id
 router.get("/users/:id", (req, res) => {
   const { id } = req.params;
 
@@ -53,7 +53,8 @@ router.get("/users/:id", (req, res) => {
     });
 });
 
-//UPDATE user
+// UPDATE /api/user
+// update user in users table by Firebase ID (user_uid)
 router.put("/user", (req, res) => {
   const changes = req.body;
   const user_uid = changes.user_uid;
@@ -76,6 +77,8 @@ router.put("/user", (req, res) => {
     });
 });
 
+// [DELETE] /api/users/:id
+// delete user in users table by primary key id
 router.delete("/users/:id", (req, res) => {
   const { id } = req.params;
   db("users")
@@ -99,6 +102,8 @@ router.delete("/users/:id", (req, res) => {
     });
 });
 
+// [GET] /api/company/:user_uid
+// returns user in users table by Firebase ID (user_uid)
 router.get("/company/:user_uid", (req, res) => {
   const post = req.params;
   const user_uid = post.user_uid;

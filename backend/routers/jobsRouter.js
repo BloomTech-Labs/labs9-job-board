@@ -3,6 +3,7 @@ const express = require("express");
 const db = require("../db/config");
 const router = express.Router();
 
+// data types object for jobs table fields
 const jobDataTypes = {
   user_uid: "string",
   title: "string",
@@ -46,7 +47,7 @@ router.get("", (req, res) => {
 });
 
 // [GET] /api/jobs/category/:category
-// returns all jobs with provided category
+// returns all active jobs with provided category
 router.get("/category/:category", (req, res) => {
   const { category } = req.params;
 
@@ -132,6 +133,7 @@ router.post("", (req, res) => {
   const newJob = { ...req.body };
   const insertObject = {}; // used to build object that will be inserted
 
+  // conditional for all required fields
   if (newJob.title && newJob.salary && newJob.description && newJob.user_uid) {
     db("users")
       .select("id", "balance", "unlimited", "expiration")
@@ -144,8 +146,11 @@ router.post("", (req, res) => {
         response = response[0];
         id = response.id;
 
+        // if status is unlimited, and non-null expiration
         if (response.unlimited && response.expiration) {
+          // expiry is still valid (in the future)
           if (unlimitedExpired(response.expiration)) {
+            // decrease users balance by 1
             if (response.balance) {
               return db("users")
                 .where({ user_uid: newJob.user_uid })
@@ -157,7 +162,9 @@ router.post("", (req, res) => {
             return true;
           }
         } else {
+          // if the balance is truthy (not 0)
           if (response.balance) {
+            // decrease users balance by 1
             return db("users")
               .where({ user_uid: newJob.user_uid })
               .decrement("balance", 1);
@@ -171,6 +178,7 @@ router.post("", (req, res) => {
           throw "Error decrementing account balance";
         }
 
+        // build new insert object
         Object.keys(newJob).forEach(key => {
           if (key !== "created_at") {
             if (
@@ -182,7 +190,7 @@ router.post("", (req, res) => {
           }
         });
         insertObject.users_id = id;
-        console.log("insertObject", insertObject);
+
         return db("jobs")
           .insert(insertObject)
           .returning("id");
@@ -217,6 +225,7 @@ router.post("", (req, res) => {
 router.delete("/:id", (req, res) => {
   const id = Number(req.params.id);
 
+  // if req.params.id not parseable to Number, status 400, to protect database
   if (!id) {
     res.status(400).json({ message: "Invalid id" });
     return;
@@ -245,6 +254,7 @@ router.put("/:id", (req, res) => {
   const updateJob = { ...req.body };
   const id = Number(req.params.id);
 
+  // if req.params.id not parseable to Number, status 400, to protect database
   if (!id) {
     res.status(400).json({ message: "Invalid id" });
     return;
@@ -252,11 +262,14 @@ router.put("/:id", (req, res) => {
 
   const putObject = {};
 
+  // build put object using data types object
   Object.keys(updateJob).forEach(key => {
     if (typeof updateJob[key] === jobDataTypes[key]) {
+      // if boolean (regardless of actual truthiness), write to put object
       if (typeof updateJob[key] === "boolean") {
         putObject[key] = updateJob[key];
       } else if (updateJob[key]) {
+        // else if not a boolean and truthy
         putObject[key] = updateJob[key];
       }
     }

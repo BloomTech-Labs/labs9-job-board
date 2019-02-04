@@ -8,6 +8,7 @@ const db = require("../db/config");
 const stripe = require("stripe")(stripeSecret);
 const router = express.Router();
 
+// billing plan object to pass to Stripe
 const billingOptions = {
   job1: {
     amount: 999,
@@ -34,6 +35,7 @@ router.post("/charge", async (req, res) => {
 
   if (option && source && user_uid) {
     try {
+      // adds billing object to the charge object to be sent to Stripe
       const chargeObject = Object.assign(billingOptions[option], { source });
 
       let status = await stripe.charges.create(chargeObject);
@@ -41,30 +43,37 @@ router.post("/charge", async (req, res) => {
       if (status.amount && status.status === "succeeded") {
         switch (status.amount) {
           case 999:
+            // if purchase was for $9.99, increase balance by 1
             await db("users")
               .where({ user_uid })
               .increment("balance", 1);
             break;
           case 9999:
+            // if purchase was $99.99, increase balance by 12
             await db("users")
               .where({ user_uid })
               .increment("balance", 12);
             break;
           case 29999:
+            /* if purchase was $299.99, either set expiry to 30 
+             days future or add 30 days to current expiry */
             let unlimitedStatus = await db("users")
               .select("unlimited", "expiration")
               .where({ user_uid });
             unlimitedStatus = unlimitedStatus[0];
             if (
+              // if status is unlimited, and expiry is still valid
               unlimitedStatus.unlimited &&
               !unlimitedExpired(unlimitedStatus.expiration)
             ) {
+              // add 30 days to current expiry
               await db("users")
                 .where({ user_uid })
                 .update({
                   expiration: addMonthToDate(unlimitedStatus.expiration)
                 });
             } else {
+              // set new expiry 30 days future
               await db("users")
                 .where({ user_uid })
                 .update({
@@ -81,7 +90,6 @@ router.post("/charge", async (req, res) => {
         throw new Error();
       }
     } catch (err) {
-      console.log(err);
       res.status(500).json({ message: "Error processing payment" });
     }
   } else {
@@ -102,7 +110,9 @@ router.get("/balance/:id", (req, res) => {
         if (response.length) {
           const user = response[0];
           if (user.unlimited && user.expiration) {
+            /* if status is unlimited and expiration non-null */
             if (unlimitedExpired(user.expiration)) {
+              // ----------------------- TO DO -------------------------
               // reset unlimited=false and expiration=null
               // change if statement once unlimited is reset if expired
               res.status(200).json({ balance: user.balance, expiration: null });
@@ -144,6 +154,7 @@ function unlimitedExpired(date) {
   return expiration - now > 0 ? false : true;
 }
 
+// returns date string with added 30 days
 function addMonthToDate(date) {
   let expiration;
 
