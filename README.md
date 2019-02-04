@@ -423,4 +423,18 @@ If using a ‘.env’ file, ensure that there are no spaces or quotes within the
 With the environmental variables in place, you can now use your Firebase account within the application.
 
 <!-- Payment Structure -->
+# Payment Structure
+A person who is *searching* for a job does **not** need to make any payments for our service
+
+Employers who wish to post a job have the following options
+* Unlimited job postings for **$299/month**
+* 12 job postings for **$99**
+* Single job posting for **$10**
+
 <!-- Design-->
+# Design
+* [**Original Wireframe**](https://balsamiq.cloud/snv27r3/pm32vyi/rEED1)
+* [**Design Mockup Files**](https://drive.google.com/open?id=1VfwXI4HIowU-0MhYwDwMwPz4B3FTq_kc)
+### Styles & Theming
+This project's themes are found in the variables-mixins.scss file. The mixin variables (ex: text color) are defined and used across all pages.
+
