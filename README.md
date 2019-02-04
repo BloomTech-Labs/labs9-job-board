@@ -37,7 +37,7 @@ Deployed [here](https://knowledge-without-college.netlify.com/)
 Deployed [here](https://knowledge-without-college.herokuapp.com/test)
 
 <!-- Reasoning -->
-## Reasoning
+### Reasoning
 
 * React.js
     * We chose to work with React as our framework. When we planned out how we were going to build out our application, we noticed that our components would be interacting with one another. Not only that, but the components were being reused in many different situations. Using a framework like React, which helps with the user experience and an has increased speed with the virtual DOM, seemed like the best route to take.
