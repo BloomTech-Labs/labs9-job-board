@@ -305,10 +305,61 @@ Our production PostgresQL database is hosted through Heroku. The following instr
     - **PROJECT_PATH**: backend
 6. Next we will population the database with the tables defined in the Knex migrations. Within Heroku, select 'More' and choose 'Run console'. Once the console appears, type `bash` to access the command line. Within the command line run `knex migrate:latest` to run the Knex migrations. Now within the database dashboard it should now show that the database contains 5 tables and your production database is deployed.
 
-
-
-
 <!-- Stripe -->
+# Stripe
+
+#### A Stripe Dashboard account will need to be created. Here are the instructions:
+1. Click on the icon in the upper right to either SignUp/SignIn for Stripe
+2. Complete the Stripe SignUp form to create your Stripe Account
+3. Once you have your account created, please proceed in going into the dashboard and click on the `Home` section on the left side and click on `Get Your API Keys `. These keys will need to be integrated into the project environmental variables.
+4. There are two keys that will be needed for the project:
+    1. Publishable Test Key `tk-1234` example
+    2. Secret Test Key (need to click on and authenticate to review, if authentication successful, key will be revealed) `sk-1234` need to be added to the Heroku Database in the `Reveal Config Vars` section under settings.
+* NOTE: Make sure that you are using the `Test` keys and not the `Live` keys. The difference between the two is that the `Test` does not create an actual charge whereas the `Live` key does.
+5. Once you have your `Test` Publishable API Key, you want to: 
+    1. `cd front-end`
+	2. `cd src`
+	3. `cd components`
+	4. `cd billing`
+	
+6.  Click on `billing.js` add your test publishable key to `<StripeProvider></StripeProvider>`. 
+See below:
+``` 
+//billing.js
+import React, { Component } from "react";
+import { Elements, StripeProvider } from "react-stripe-elements";
+
+import CheckoutForm from "./checkoutForm";
+
+class Billing extends Component {
+ constructor(props) {
+   super(props);
+ }
+ // Billing is treated like App.js in React, it holds the props of Stripe
+ // contains StripeProvider wrapper and Stripe Elements form
+ render() {
+   return (
+     <div>
+       <StripeProvider apiKey="pk_test_77iYkIzmRpuMiC1SxkCkMIBp">
+         <div className="billing-container">
+           <div className="header">
+             <div className="main-header">Billing</div>
+             <hr />
+             <div className="sub-header">
+               {`This isn't your typical purchase.`} <br />{" "}
+               {"This is going to be a"}
+               <em className="gotcha"> game changer.</em>
+             </div>
+           </div>
+           <Elements>
+             {/* Stripe Elements form */}
+             <CheckoutForm authUser={this.props.authUser} />
+           </Elements>
+         </div>
+       </StripeProvider>
+```
+### You can view your payment transactions from the Dashboard once you have configured the API keys into the project. 
+
 <!-- Cloudinary-->
 <!-- Firebase -->
 <!-- Payment Structure -->
