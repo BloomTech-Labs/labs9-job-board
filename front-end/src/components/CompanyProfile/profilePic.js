@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+const cloudName = process.env.REACT_APP_CLOUDINARY_URL;
+const preset = process.env.REACT_APP_CLOUDINARY_PRESET;
+
 class ProfilePic extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +17,8 @@ class ProfilePic extends Component {
     let _this = this;
     window.cloudinary.openUploadWidget(
       {
-        cloud_name: "dg9vhfqmb",
-        upload_preset: "dzsxr7v2",
+        cloud_name: `${cloudName}`,
+        upload_preset: `${preset}`,
         multiple: false,
         styles: {
           palette: {
