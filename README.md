@@ -71,6 +71,42 @@ Additional testing for both the front end and back end was also written and can 
 * Backend (backend/_ _tests_ _ )
 
 <!-- Installation Instructions -->
+# Installation Instructions
+
+### Environment Variables
+
+##### Front-end variables:
+` REACT_APP_DB_URL = url` is the connection to the Heroku database
+See Firebase section for Firebase variables
+See Cloundinary for Cloudinary variables
+
+##### Back-end variables:
+
+`DATABASE_URL` is the variable given by Heroku, link to connect to database 
+`DB` which relays `dbEnviroment` to use production or development
+The rest of the variables are for connecting Postgres locally.
+
+`DB_HOST` would be the `localhost` on your computer
+`DB_NAME` is your database name
+`DB_USER` is the username you setup
+`DB_PASS` is your password
+
+### Using the Application
+
+* You will need:
+	* Node
+    - Package manager
+        - **Yarn** was used to build this project and will continued to be used for maintenance
+
+Once you have node and a package manager:
+  
+1. Fork and clone repo
+2.  Add an `.env` file to both `front-end` and `backend` at the root of each folder (same level as package.json file). Add Environment Variables for both front-end and backend. 
+3. `cd` into `backend`. Run `yarn install` to  install the necessary node_modules
+4. `cd ..` to get back to main folder and `cd` into `front-end`
+5. Run `yarn install` from `front-end` folder to install the necessary node_modules
+6. Once completed run `yarn start` to start the application
+
 <!-- Contributing -->
 <!-- Data Modals -->
 <!-- Postgres -->
