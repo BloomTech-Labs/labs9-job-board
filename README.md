@@ -15,3 +15,35 @@
 </div>
 <br>
 <br>
+
+<!-- Table Of Contents -->
+
+<!-- Tech Stack -->
+# Tech Stack
+### Frontend built using:
+* React.js
+* SCSS
+* Netlify
+
+Deployed [here](https://knowledge-without-college.netlify.com/)
+
+### Backend built using:
+* PostgresQL
+* Knex
+* Express
+* Node.js
+* Heroku
+
+Deployed [here](https://knowledge-without-college.herokuapp.com/test)
+
+<!-- Reasoning -->
+<!-- Testing -->
+<!-- Installation Instructions -->
+<!-- Contributing -->
+<!-- Data Modals -->
+<!-- Postgres -->
+<!-- Stripe -->
+<!-- Cloudinary-->
+<!-- Firebase -->
+<!-- Payment Structure -->
+<!-- Design-->
