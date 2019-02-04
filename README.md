@@ -368,6 +368,25 @@ class Billing extends Component {
 
 
 <!-- Cloudinary-->
+# Cloudinary
+
+Cloundinary stores all of our companies’ profile images. Cloundinary provides a public URL and the URL is stored in our Postgres database as a string. Cloundinary was used instead of using our database for better overall performance. Images can be extremely large files because of dimensions, quality or both. Adding large images directly to our database could limit performance especially as the application scales. Direct placement also hinders our ability to edit a photo’s: dimensions, quality, shape, etc., and storing an URL as a string is much more in line with the functionality of a database’s functionality.
+Storing users’ images in a public repository should not be an issue for our users. The only users with profile images are corporations and not the actual people looking for jobs. Therefore, we expect these images to include corporate logos, names, etc., all of which are already publicly available.
+Cloundinary keeps the image from ever touching our backend by directly routing the image to Cloundinary’s storage.  A successful upload will provide a response with a public URL to the image. During upload, the image is edited to our specifications: reduced to 200px by 200px, quality to medium, and the border is set with a radius to max transforming it into a circle. Quality is one of, if not the main factor in determining the overall size of an image file. All images are reduced to medium quality for faster loading speeds and usability. The typical user cannot notice the difference between a high-quality photo vs a medium quality one. We have determined the tradeoffs in performance are worth the reduction in image quality.
+
+Upload Manipulations:
+```Resize & crop: width: 250px height: 250px
+Corner radius: max
+Quality: 80
+access mode: Public
+```
+
+Environment Variables:
+
+`REACT_APP_CLOUDINARY_URL=cloudName` is your cloud name from your Cloudinary account.
+
+`REACT_APP_CLOUDINARY_PRESET=preset` is your name of your upload presets. 
+
 <!-- Firebase -->
 <!-- Payment Structure -->
 <!-- Design-->
