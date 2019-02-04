@@ -411,12 +411,12 @@ Next, you will need to add the configuration setup to your environmental variabl
 If you are running the application in development, include the following within a ‘.env’ file at the root of the ‘front-end’ directory. If you are running in production, add the following as environmental variables to your front end deployment.
 
 ```
-REACT_APP_API_KEY=apiKey
-REACT_APP_AUTH_DOMAIN=authDomain
-REACT_APP_DATABASE_URL=databaseURL
-REACT_APP_PROJECT_ID=projectId
-REACT_APP_STORAGE_BUCKET=storageBucket
-REACT_APP_MESSAGING_SENDER_ID=messagingSenderId
+REACT_APP_API_KEY = apiKey
+REACT_APP_AUTH_DOMAIN = authDomain
+REACT_APP_DATABASE_URL = databaseURL
+REACT_APP_PROJECT_ID = projectId
+REACT_APP_STORAGE_BUCKET = storageBucket
+REACT_APP_MESSAGING_SENDER_ID = messagingSenderId
 ```
 If using a ‘.env’ file, ensure that there are no spaces or quotes within the file. Simply replace the name of each value with the value from the Firebase configuration modal. React is aware of all variables within a ‘.env’ file that have ‘REACT_APP_’ at the beginning.
 
