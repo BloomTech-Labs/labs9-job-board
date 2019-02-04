@@ -6,6 +6,7 @@ import axios from "axios";
 const URL = process.env.REACT_APP_DB_URL;
 
 class EditJob extends Component {
+  // Treated as the main app for the data to edit a job
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +24,7 @@ class EditJob extends Component {
 
   id = Number(this.props.match.params.id);
 
+  // Pulls in data from the job into the input fields on edit job page
   componentDidMount() {
     axios
       .get(`${URL}/api/jobs/${this.id}`)
@@ -48,11 +50,10 @@ class EditJob extends Component {
       });
   }
 
+  // Updates state with the new data entered
   updateJob = event => {
     event.preventDefault();
-
     const putObject = {};
-
     Object.keys(this.state).forEach(key => {
       if (this.state[key]) {
         putObject[key] = this.state[key];
@@ -80,26 +81,31 @@ class EditJob extends Component {
     console.log(putObject);
   };
 
+  // Changes the toggle for the job from being active/inactive
   jobActiveToggle = () => {
     this.setState(prevState => {
       return { active: !prevState.active };
     });
   };
 
+  // Handles the category of the job
+  categoryHandler = selected => {
+    this.setState({ category: selected.value });
+  };
+
+  // Changes the toggle for the job from requiring/not requiring a degree
   requiresDegreeToggle = () => {
     this.setState(prevState => {
       return { college_degree: !prevState.college_degree };
     });
   };
 
-  categoryHandler = selected => {
-    this.setState({ category: selected.value });
-  };
-
+  // Allows inputs to be filled in
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // Clears inputs
   handleCancel = event => {
     this.props.history.push("/billing");
   };

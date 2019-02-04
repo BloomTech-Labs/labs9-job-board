@@ -5,6 +5,7 @@ class JobForm extends React.Component {
     super(props);
   }
 
+  // Renders all of the form for the page
   render() {
     return (
       <div className="post-job-container">

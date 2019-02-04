@@ -6,6 +6,7 @@ import axios from "axios";
 const URL = process.env.REACT_APP_DB_URL;
 
 class PostJob extends Component {
+  // Treated as the main app for the data to post a job
   constructor(props) {
     super(props);
     this.state = {
@@ -22,11 +23,10 @@ class PostJob extends Component {
     };
   }
 
+  // Changes the data in the state to add a new job
   addJob = event => {
     event.preventDefault();
-
     const postObject = {};
-
     Object.keys(this.state).forEach(key => {
       if (this.state[key] || key === "active" || key === "college_degree") {
         postObject[key] = this.state[key];
@@ -56,26 +56,31 @@ class PostJob extends Component {
     }
   };
 
+  // Changes the toggle for the job from being active/inactive
   jobActiveToggle = () => {
     this.setState(prevState => {
       return { active: !prevState.active };
     });
   };
 
+  // Handles the category of the job
   categoryHandler = selected => {
     this.setState({ category: selected.value });
   };
 
+  // Changes the toggle for the job from requiring/not requiring a degree
   requiresDegreeToggle = () => {
     this.setState(prevState => {
       return { college_degree: !prevState.college_degree };
     });
   };
 
+  // Allows inputs to be filled in
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // Clears inputs
   handleCancel = event => {
     this.props.history.push("");
   };
