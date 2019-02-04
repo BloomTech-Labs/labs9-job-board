@@ -388,5 +388,39 @@ Environment Variables:
 `REACT_APP_CLOUDINARY_PRESET=preset` is your name of your upload presets. 
 
 <!-- Firebase -->
+# Firebase
+This application uses Firebase for user authentication. Through this service, users are able to authenticate using email and password and Google OAuth. The service also provides functions for resetting forgotten passwords and changing the password after being authenticated.
+
+### Set-up
+To use Firebase within the application, create an account at <https://firebase.google.com/> if you do not already have one. Once you have signed in, click “Add project” and fill out the necessary information to create a new project.
+
+From the project console, select ‘Authentication’ under ‘Develop’ within the side navigation menu. You should see an empty table of authenticated users. Next, you will need to choose the settings. Select ‘Sign-in method’ from the blue navigation bar at the top of the screen.
+
+#### Sign-in providers
+Firebase offers many different sign-in providers, but this application is configured to use only ‘Email/Password’ and ‘Google.’ Enable both of these providers. Please note, email link has not been tested with this application and should be disabled to avoid additional testing and refactoring.
+
+#### Authorized domains
+Under the ‘Authorized domains’ section, add the URL for your front end deployment (if only using in development, localhost is already included as a default domain). This prevents Firebase from blocking requests made from your front end.
+
+#### Advanced
+Within the ‘Advanced’ settings, ensure that ‘One account per email address’ is selected. This prevents users from creating multiple accounts with the same email address.
+
+#### Environmental Variables
+Next, you will need to add the configuration setup to your environmental variables. Within the Firebase project console, select ‘Web setup’ from the blue navigation bar at the top of the screen. A modal will open displaying your unique configuration variables.
+
+If you are running the application in development, include the following within a ‘.env’ file at the root of the ‘front-end’ directory. If you are running in production, add the following as environmental variables to your front end deployment.
+
+```
+REACT_APP_API_KEY=apiKey
+REACT_APP_AUTH_DOMAIN=authDomain
+REACT_APP_DATABASE_URL=databaseURL
+REACT_APP_PROJECT_ID=projectId
+REACT_APP_STORAGE_BUCKET=storageBucket
+REACT_APP_MESSAGING_SENDER_ID=messagingSenderId
+```
+If using a ‘.env’ file, ensure that there are no spaces or quotes within the file. Simply replace the name of each value with the value from the Firebase configuration modal. React is aware of all variables within a ‘.env’ file that have ‘REACT_APP_’ at the beginning.
+
+With the environmental variables in place, you can now use your Firebase account within the application.
+
 <!-- Payment Structure -->
 <!-- Design-->
