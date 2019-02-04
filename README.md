@@ -17,6 +17,35 @@
 <br>
 
 <!-- Table Of Contents -->
+# Table of Contents
+* ###  [Table of Contents](#table-of-contents)
+* ### [Tech Stack](#tech-stack)
+    * [Frontend](#frontend-built-using)
+    * [Backend](#backend-built-using)
+* ### [Reasoning](#reasoning)
+	* [React](#react.js)
+	* [Netlify](#netlify)
+	* [Express/Node](#Express/Node.js)
+	* [Heroku](#heroku)
+	* [CSS/SCSS](#css/scss)
+* ###  [Testing](#testing)
+* ### [Installation Instructions](#installation-instructions)
+	* [Environment Variables](#environment-variables)
+	* [Using the Application](#using-the-application)
+* ###  [Contributing](#contributing)
+* ### [Data Models](#data-models)
+	* [Login Table](#login-table)
+	* [Users Table](#users-table)
+	* [Jobs Table](#jobs-table)
+* ###  [PostgreSQL](#postgresql)
+	* [Mac](#mac)
+	* [Windows](#windows)
+* ### [Stripe](#stripe)
+* ### [Cloudinary](#cloudinary)
+* ### [Firebase](#firebase)
+* ### [Payment Structure](#payment-structure)
+* ### [Design](#design)
+
 
 <!-- Tech Stack -->
 # Tech Stack
