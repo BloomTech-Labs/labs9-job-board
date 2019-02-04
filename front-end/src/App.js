@@ -6,7 +6,6 @@ import { withFirebase } from "./components/Firebase";
 
 import Routes from "./components/Routes/Routes.js";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,7 @@ class App extends Component {
     };
   }
 
-  
+  // adds event listener that updates state once Firebase instance detects change in the auth user status
   componentDidMount() {
     this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
       authUser
@@ -32,7 +31,6 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <Navigation authUser={this.state.authUser} /> */}
           <Routes className="routes" authUser={this.state.authUser} />
         </div>
       </Router>
