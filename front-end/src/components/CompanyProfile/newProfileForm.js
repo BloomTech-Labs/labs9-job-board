@@ -59,6 +59,14 @@ class NewProfileForm extends Component {
       });
   };
 
+  componentWillMount() {
+    document.body.style.overflow = "hidden";
+  }
+
+  componentWillUnmount() {
+    document.body.style.overflow = null;
+  }
+
   handleInputChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
