@@ -109,7 +109,7 @@ class UpdateProfile extends Component {
   //info and push them back to the homepage
   closeNewProfileModal = async () => {
     await this.setState({ newProfileModalVisible: false });
-    this.props.history.push("/billing");
+    await this.componentDidMount();
   };
 
   //inputs to state
