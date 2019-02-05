@@ -63,6 +63,11 @@ class CheckoutForm extends Component {
     this.expiryElement.clear(),
     this.cvcElement.clear();
   };
+
+  //restarting page
+  restartPage() {
+    window.location.reload();
+  }
   
   //the submit function when a radio button has been selected
   async submit(ev) {
@@ -71,7 +76,6 @@ class CheckoutForm extends Component {
     if (this.state.selectedOption) {
       await this.setState({ processing: true });
       let createResponse = await this.props.stripe.createToken();
-      console.log(createResponse);
       //if there is no errors, then apply that option with the auth user account in our DB
       if (!createResponse.error && createResponse.token.id) {
         const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
@@ -96,6 +100,8 @@ class CheckoutForm extends Component {
                   this.cardElement.clear();
                   this.expiryElement.clear();
                   this.cvcElement.clear();
+                  //page refreshes after modal displays
+                  this.restartPage();
                 }, 3000);
               }
             );
