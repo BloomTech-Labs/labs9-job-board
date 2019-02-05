@@ -48,7 +48,8 @@ class NewProfileForm extends Component {
       .post(`${url}/api/users`, newUser)
       .then(response => {
         if (response) {
-          this.props.closeNewProfileModal();
+          this.props.closeModal();
+          // this.props.closeNewProfileModal();
         } else {
           throw new Error();
         }
