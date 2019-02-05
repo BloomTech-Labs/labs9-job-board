@@ -14,9 +14,10 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      host: "https://knowledge-without-college.herokuapp.com",
-      user: "charlettabullard",
-      database: "test",
+      host: "localhost",
+      user: "username",
+      password: "password",
+      database: "database_name",
       charset: "utf8"
     },
     migrations: {

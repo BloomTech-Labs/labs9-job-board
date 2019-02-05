@@ -9,9 +9,9 @@ const ProfileForm = props => {
         <Link to="/billing" className="link-bill">
           Billing
         </Link>
-        <Link to="/" className="link-pass">
+        <div className="link-pass" onClick={props.toggleModal}>
           Change Password
-        </Link>
+        </div>
       </div>
       <div className="pic-account">
         <ProfilePic setUrl={props.setUrl} />

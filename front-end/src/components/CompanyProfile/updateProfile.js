@@ -3,6 +3,7 @@ import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
+import ChangePasswordModal from "./ChangePasswordModal";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -19,7 +20,8 @@ class UpdateProfile extends Component {
       companyName: "",
       companySummary: "",
       applicationInbox: "",
-      uid: ""
+      uid: "",
+      changePasswordVisible: true
     };
   }
 
@@ -64,6 +66,12 @@ class UpdateProfile extends Component {
           this.props.history.push("/");
         });
     }
+  };
+
+  toggleModal = () => {
+    this.setState(prevState => {
+      return { changePasswordVisible: !prevState.changePasswordVisible };
+    });
   };
 
   //put request to save edits
@@ -128,13 +136,20 @@ class UpdateProfile extends Component {
             editCompanyName={this.state.companyName}
             editCompanySummary={this.state.companySummary}
             editApplicationInbox={this.state.applicationInbox}
+            authUser={this.props.authUser}
+            toggleModal={this.toggleModal}
           />
         ) : (
           <ProfileInfo
             company={this.state.company}
             openEditor={this.openEditor}
+            authUser={this.props.authUser}
+            toggleModal={this.toggleModal}
           />
         )}
+        {this.state.changePasswordVisible ? (
+          <ChangePasswordModal toggleModal={this.toggleModal} />
+        ) : null}
       </div>
     );
   }

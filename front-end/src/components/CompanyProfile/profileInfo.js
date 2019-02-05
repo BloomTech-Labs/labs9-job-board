@@ -2,15 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProfileInfo = props => {
+  console.log(props.authUser);
+
   return (
     <div className="companyInfo">
       <div className="menu-pass-bill">
         <Link to="/billing" className="link-bill">
           Billing
         </Link>
-        <Link to="/" className="link-pass">
-          Change Password
-        </Link>
+        {props.authUser &&
+        (props.authUser.providerData.length > 1 ||
+          props.authUser.providerData[0].providerId === "password") ? (
+          <div className="link-pass" onClick={props.toggleModal}>
+            Change Password
+          </div>
+        ) : null}
       </div>
       <div className="pic-account">
         <img src={props.company.avatar_image} className="avatar" />
