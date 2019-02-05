@@ -18,10 +18,14 @@ const ProfileInfo = props => {
         ) : null}
       </div>
       <div className="pic-account">
-        <img src={props.company.avatar_image} className="avatar" />
+        <img
+          src={props.company.avatar_image}
+          className="avatar"
+          alt="company-logo"
+        />
         <h1>Your Account</h1>
-        <div className="border" />
         <p>Job balance: {props.company.balance}</p>
+        <div className="border" />
         <button onClick={props.openEditor} className="edit-btn edit">
           Edit Account
         </button>
