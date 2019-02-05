@@ -35,18 +35,26 @@ class ChangePasswordModalUnconnected extends React.Component {
   submitHandler = async event => {
     event.preventDefault();
 
-    const response = await this.props.firebase.doPasswordUpdate(
-      this.state.currentPassword,
-      this.state.newPassword
-    );
+    try {
+      const response = await this.props.firebase.doPasswordUpdate(
+        this.state.currentPassword,
+        this.state.newPassword
+      );
 
-    if (!response) {
-      await this.setState({
-        alert: { message: "Successfully updated password" }
-      });
-      setTimeout(() => this.props.toggleModal(), 2000);
-    } else {
-      await this.setState({ alert: response });
+      if (!response) {
+        await this.setState({
+          alert: { message: "Successfully updated password" }
+        });
+        setTimeout(() => this.props.toggleModal(), 2000);
+      } else {
+        await this.setState({ alert: response });
+      }
+    } catch (error) {
+      if (error.message) {
+        this.setState({ alert: error });
+      } else {
+        this.setState({ alert: { message: "Error changing password" } });
+      }
     }
   };
 
@@ -70,7 +78,6 @@ class ChangePasswordModalUnconnected extends React.Component {
           <div className="header-divider" />
           <form className="change-password-form" onSubmit={this.submitHandler}>
             <input
-              className="auth-input"
               type="password"
               onChange={this.inputHandler}
               placeholder="Current Password"
@@ -79,20 +86,23 @@ class ChangePasswordModalUnconnected extends React.Component {
               autoComplete="false"
             />
             <input
-              className="auth-input"
               type="password"
               onChange={this.inputHandler}
               placeholder="New Password"
               value={this.state.newPassword}
               name="newPassword"
+              autoComplete="false"
             />
             <input
-              className="auth-input"
+              className={`${
+                !emptyInput ? (!notMatching ? " match" : " noMatch") : ""
+              }`}
               type="password"
               onChange={this.inputHandler}
               placeholder="Confirm New Password"
               value={this.state.confirmNewPassword}
               name="confirmNewPassword"
+              autoComplete="false"
             />
             {this.state.alert.message ? (
               <span className="change-password-error">
@@ -101,7 +111,9 @@ class ChangePasswordModalUnconnected extends React.Component {
             ) : null}
             <div className="button-container">
               <button
-                className="change-password-button save-button"
+                className={`change-password-button save-button${
+                  emptyInput || notMatching ? "" : " active"
+                }`}
                 disabled={emptyInput || notMatching}
                 type="submit"
               >
