@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
+import NewProfileForm from "./newProfileForm";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
 
 const url = process.env.REACT_APP_DB_URL;
@@ -19,7 +20,8 @@ class UpdateProfile extends Component {
       companyName: "",
       companySummary: "",
       applicationInbox: "",
-      uid: ""
+      uid: "",
+      newProfileModalVisible: false
     };
   }
 
@@ -61,7 +63,8 @@ class UpdateProfile extends Component {
         })
         .catch(err => {
           console.log(err);
-          this.props.history.push("/");
+          // this.props.history.push("/");
+          this.openNewProfileModal();
         });
     }
   };
@@ -92,6 +95,15 @@ class UpdateProfile extends Component {
     this.openEditor();
   };
 
+  openNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: true });
+  };
+
+  closeNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: false });
+    this.props.history.push("/");
+  };
+
   //inputs to state
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -108,7 +120,7 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log("url", this.state.url);
+    console.log("url", this.props);
     return (
       <div className="profile-container">
         {!this.state.company ? (
@@ -135,6 +147,13 @@ class UpdateProfile extends Component {
             openEditor={this.openEditor}
           />
         )}
+        {this.state.newProfileModalVisible ? (
+          <NewProfileForm
+            authUser={this.props.authUser}
+            openNewProfileModal={this.openNewProfileModal}
+            closeNewProfileModal={this.closeNewProfileModal}
+          />
+        ) : null}
       </div>
     );
   }
