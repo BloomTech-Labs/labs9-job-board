@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import SignOut from "../SignOut/SignOut.js";
 
-import LoadingBar from "../../images/loading-bars.svg";
+// import LoadingBar from "../../images/loading-bars.svg";
 
 //import * as ROUTES from "../../constants/routes";
 

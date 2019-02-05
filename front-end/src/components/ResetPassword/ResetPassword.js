@@ -13,6 +13,7 @@ class ResetPassword extends React.Component {
     };
   }
 
+  // toggle modal telling user to check their email for link from Firebase
   toggleModal = () => {
     this.setState(prevState => ({
       modalVisible: !prevState.modalVisible
@@ -20,6 +21,7 @@ class ResetPassword extends React.Component {
   };
 
   render() {
+    // if user is already authenticated, redirect to landing
     return this.props.authUser ? (
       <Redirect to={ROUTES.LANDING} />
     ) : (
@@ -80,9 +82,7 @@ class ResetPasswordFormUnconnected extends React.Component {
                 autoComplete="on"
               />
               <button
-                className={`auth-form-button${
-                  invalidInput ? "" : " not-disabled"
-                }`}
+                className={`auth-form-button${invalidInput ? "" : " active"}`}
                 disabled={invalidInput}
               >
                 Reset Password

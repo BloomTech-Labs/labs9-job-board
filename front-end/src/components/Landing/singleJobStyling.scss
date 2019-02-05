@@ -3,24 +3,40 @@
   margin: auto;
   background-color: #{$background};
   padding: 30px 0;
+  min-height: 100vh;
 
+  //loader
+  .loading-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  //job information container
   .job-listing {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 
+    //company pic, name, summary, apply btn container
     .job-pic-summary {
       width: 50rem;
       display: flex;
       flex-direction: column;
       align-items: center;
 
+      //company pic
       img {
         border-radius: 50%;
         margin-bottom: 15px;
+        height: 200px;
+        max-height: 100%;
+        width: 200px;
+        object-fit: cover;
       }
 
+      //company name
       h1 {
         font-size: 5rem;
         color: #{$dark};
@@ -30,12 +46,14 @@
         }
       }
 
+      //border between company name/summary
       .border {
         border-bottom: 4px solid #{$blue};
         width: 100%;
         margin: 15px 0;
       }
 
+      //company summary
       h2 {
         font-size: 2.8rem;
         color: #{$dark};
@@ -46,6 +64,7 @@
         }
       }
 
+      //apply button
       .apply-btn {
         padding: 10px 6rem;
         border-radius: 5px;
@@ -70,6 +89,7 @@
       }
     }
 
+    //all job container
     .joint-columns {
       background-color: white;
       width: 100%;
@@ -79,48 +99,41 @@
       padding: 10px 40px 40px 40px;
       margin: 40px 5%;
 
+      //border between separating job info in two
       .job-border {
         border: 4px solid #{$background};
         margin: 0 40px;
       }
+      //job column settings
       .job-column {
         width: 49%;
         display: flex;
         flex-direction: column;
         align-items: center;
 
+        // title and salary container
         .title-salary {
           display: flex;
           width: 100%;
           flex-direction: column;
 
+          //salary
+          p {
+            width: 100%;
+            font-size: 2rem;
+            margin: 0 0;
+            padding: 0 0;
+            text-align: center;
+          }
+          //job title
           .title {
-            margin: 30px 0;
-
-            @include tablet {
-              width: 48%;
-              margin: 30px 0 0 0;
-            }
+            margin: 30px 0 5px 0;
+            font-weight: bold;
+            font-size: 2.8rem;
+            width: 100%;
 
             @include phone {
-              font-size: 2.8rem;
-              font-weight: bold;
-            }
-          }
-
-          @include tablet {
-            flex-direction: row;
-            justify-content: space-between;
-
-            p {
-              margin-top: 30px;
-              width: 48%;
-
-              @include phone {
-                margin-top: 0;
-                text-align: center;
-                padding: 0 0;
-              }
+              margin: 20px 0 5px 0;
             }
           }
 
@@ -130,8 +143,8 @@
           }
         }
 
+        // rest of job information
         p {
-          background-color: #{$background};
           width: 100%;
           border-radius: 5px;
           font-size: 1.8rem;
@@ -144,15 +157,16 @@
           }
         }
 
+        // job labels
         label {
-          padding: 30px 0 7px 10px;
-          font-weight: bold;
+          padding: 30px 0 7px 0px;
           font-size: 2rem;
           width: 100%;
           text-align: left;
           color: #{$dark};
         }
 
+        // apply button
         .apply-btn {
           padding: 10px 0;
           border-radius: 5px;
@@ -169,6 +183,40 @@
           }
         }
 
+        //container for degree required and apply button
+        .apply-college {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding-top: 20px;
+
+          @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .apply-btn {
+              width: 50%;
+            }
+
+            //degree required
+            .degree {
+              width: 50%;
+            }
+          }
+          @include phone {
+            flex-direction: column;
+
+            .degree {
+              width: 100%;
+            }
+
+            .apply-btn {
+              width: 100%;
+            }
+          }
+        }
+
+        //share container for share/report
         .share {
           margin: 30px 0 0 0;
           font-size: 1.6rem;
@@ -177,19 +225,7 @@
           display: flex;
           justify-content: center;
 
-          i {
-            font-size: 3rem;
-            width: 50%;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            color: #{$blue};
-
-            &:hover {
-              color: #{$auth-submit-bg};
-            }
-          }
-
+          //labels for each share/report
           h3 {
             width: 50%;
             background-color: none;
@@ -212,6 +248,11 @@
       @include tablet {
         flex-direction: column;
         align-items: center;
+        width: 90%;
+      }
+
+      @include phone {
+        padding: 0px 20px 20px 20px;
       }
     }
   }

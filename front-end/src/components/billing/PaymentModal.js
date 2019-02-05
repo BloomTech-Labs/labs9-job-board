@@ -1,7 +1,6 @@
 import React from "react";
 
-import "./PaymentModal.scss";
-
+//This is the payment modal logic that pops up once a payment has either been successful or if the payment has failed
 const PaymentModal = props => {
   return (
     <div

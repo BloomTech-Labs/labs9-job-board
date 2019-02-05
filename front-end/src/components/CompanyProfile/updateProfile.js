@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
+import NewProfileForm from "./newProfileForm";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
+import ChangePasswordModal from "./ChangePasswordModal";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -19,10 +21,13 @@ class UpdateProfile extends Component {
       companyName: "",
       companySummary: "",
       applicationInbox: "",
-      uid: ""
+      uid: "",
+      changePasswordVisible: false,
+      newProfileModalVisible: false
     };
   }
 
+  //setting state to account profile
   componentDidMount() {
     if (this.props.authUser) {
       const user_uid = this.props.authUser.uid;
@@ -40,7 +45,6 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
-          // console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -60,10 +64,18 @@ class UpdateProfile extends Component {
         })
         .catch(err => {
           console.log(err);
+          this.openNewProfileModal();
         });
     }
   };
 
+  toggleModal = () => {
+    this.setState(prevState => {
+      return { changePasswordVisible: !prevState.changePasswordVisible };
+    });
+  };
+
+  //put request to save edits
   updateUser = e => {
     e.preventDefault();
     const id = this.props.match.params.id;
@@ -82,33 +94,47 @@ class UpdateProfile extends Component {
     axios
       .put(`${url}/api/user`, updatedUser)
       .then(res => {
-        // console.log("response", res);
         this.setState({ company: res.data });
       })
       .catch(err => console.log(err));
     this.openEditor();
   };
 
+  //to encourage the user to fillout their info
+  openNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: true });
+  };
+
+  //to close the modal if a user does not want to add their
+  //info and push them back to the homepage
+  closeNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: false });
+    this.props.history.push("/billing");
+  };
+
+  //inputs to state
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //toggle between edit page and account page
   openEditor = () => {
     this.setState({ companyEditor: !this.state.companyEditor });
   };
 
+  //sets user picture on state
   setUrl = num => {
     this.setState({ image: num[0].url });
   };
 
   render() {
-    // console.log(this.state);
-    if (!this.state.company) {
-      return <img src={LoadingBar} alt="loading bar" className="loading" />;
-    }
     return (
       <div className="profile-container">
-        {this.state.companyEditor ? (
+        {!this.state.company ? (
+          <div className="loading-container">
+            <img src={LoadingBar} alt="loading bar" className="loading" />
+          </div>
+        ) : this.state.companyEditor ? (
           <ProfileForm
             openEditor={this.openEditor}
             updateUser={this.updateUser}
@@ -121,13 +147,28 @@ class UpdateProfile extends Component {
             editCompanyName={this.state.companyName}
             editCompanySummary={this.state.companySummary}
             editApplicationInbox={this.state.applicationInbox}
+            authUser={this.props.authUser}
+            toggleModal={this.toggleModal}
           />
         ) : (
           <ProfileInfo
             company={this.state.company}
             openEditor={this.openEditor}
+            authUser={this.props.authUser}
+            toggleModal={this.toggleModal}
           />
         )}
+        {this.state.changePasswordVisible ? (
+          <ChangePasswordModal toggleModal={this.toggleModal} />
+        ) : null}
+
+        {this.state.newProfileModalVisible ? (
+          <NewProfileForm
+            authUser={this.props.authUser}
+            openNewProfileModal={this.openNewProfileModal}
+            closeNewProfileModal={this.closeNewProfileModal}
+          />
+        ) : null}
       </div>
     );
   }

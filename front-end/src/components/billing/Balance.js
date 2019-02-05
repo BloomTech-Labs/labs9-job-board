@@ -12,7 +12,8 @@ class Balance extends React.Component {
       attempted: false
     };
   }
-
+  /* returns and sets in state the users current balance object
+  (both integer balance of individual job purchases and valid expiry) */
   fetchBalance() {
     this.setState({ fetching: true, attempted: true }, () => {
       axios
@@ -36,6 +37,7 @@ class Balance extends React.Component {
     });
   }
 
+  // formats date month/day/year
   formatDate(date) {
     const newDate = new Date(date);
     let month = newDate.getMonth() + 1;
@@ -45,12 +47,13 @@ class Balance extends React.Component {
     return `${month}/${day}/${year}`;
   }
 
+  // on mount, if valid authUser then fetch user's balance object
   componentDidMount() {
     if (this.props.authUser) {
       this.fetchBalance();
     }
   }
-
+  // on update, if valid authUser and fetch unattempted then fetch user's balance object
   componentDidUpdate() {
     if (this.props.authUser && !this.state.attempted) {
       this.fetchBalance();
@@ -59,10 +62,20 @@ class Balance extends React.Component {
 
   render() {
     return this.props.authUser ? (
-      <div className="balance-container">
-        <span>Balance: 10 postings</span>
+      <div className="billing-balance">
+        <h3>
+          Your Balance:
+          <p className={this.state.balance.expiration ? "strikethrough" : ""}>
+            {/* if valid expiration, show unlimited until expiry and balance with strikethrough */}
+            {`${this.state.balance.balance} postings`}
+          </p>
+        </h3>
+        {this.state.balance.expiration
+          ? `Unlimited until ${this.formatDate(this.state.balance.expiration)}`
+          : ""}
       </div>
     ) : (
+      // before component has access to props to see authenticated user
       <div>Loading...</div>
     );
   }

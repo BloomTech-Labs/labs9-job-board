@@ -1,3 +1,6 @@
+// TO BE REDESIGNED
+
+//payment container
 .payment-modal-container {
   position: fixed;
   height: 100vh;
@@ -14,6 +17,7 @@
   -o-transition: background-color 1s ease-out;
   transition: background-color 1s ease-out;
 
+  //payment card that gets displayed
   .payment-modal-card {
     height: 200px;
     width: 300px;
@@ -24,6 +28,7 @@
     -o-transition: background-color 1s ease-out;
     transition: background-color 1s ease-out;
 
+    //modal header design
     .payment-modal-header {
       font-size: 2.4rem;
       color: rgba(255, 255, 255, 0);
@@ -33,6 +38,7 @@
       transition: color 1s ease-out;
     }
 
+    //for success modal message design
     .success {
       color: green;
       -webkit-transition: color 1s ease-out;
@@ -41,6 +47,7 @@
       transition: color 1s ease-out;
     }
 
+    //for failure modal message design
     .failure {
       color: red;
       -webkit-transition: color 1s ease-out;
@@ -50,6 +57,7 @@
     }
   }
 
+  //visible design of the modal
   .visible {
     background: rgba(255, 255, 255, 1);
     border: 2px solid rgba(39, 62, 74, 1);
@@ -59,7 +67,7 @@
     transition: background-color 1s ease-out;
   }
 }
-
+//visual design of the modal
 .visible {
   z-index: 100;
   background: rgba(39, 62, 74, 0.8);
