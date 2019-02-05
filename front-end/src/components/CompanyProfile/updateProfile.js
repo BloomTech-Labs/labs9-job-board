@@ -123,7 +123,7 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log("url", this.props);
+    console.log("url", this.state);
     return (
       <div className="profile-container">
         {!this.state.company ? (
