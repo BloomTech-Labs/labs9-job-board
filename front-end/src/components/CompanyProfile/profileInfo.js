@@ -16,6 +16,7 @@ const ProfileInfo = props => {
         <img src={props.company.avatar_image} className="avatar" />
         <h1>Your Account</h1>
         <div className="border" />
+        <p>Job balance: {props.company.balance}</p>
         <button onClick={props.openEditor} className="edit-btn edit">
           Edit Account
         </button>

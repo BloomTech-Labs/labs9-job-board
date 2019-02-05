@@ -35,7 +35,6 @@ class ProfilePic extends Component {
         }
       },
       function(error, result) {
-        console.log("result", result);
         if (result.event === "success") {
           _this.setState({
             profilePic: _this.state.profilePic.concat(result.info)
@@ -49,7 +48,6 @@ class ProfilePic extends Component {
   }
 
   render() {
-    console.log("pic", this.state.profilePic);
     return (
       <div>
         {this.state.profilePic.length > 0 ? (
