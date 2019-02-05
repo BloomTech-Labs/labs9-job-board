@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
+import NewProfileForm from "./newProfileForm";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
+import ChangePasswordModal from "./ChangePasswordModal";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -19,7 +21,9 @@ class UpdateProfile extends Component {
       companyName: "",
       companySummary: "",
       applicationInbox: "",
-      uid: ""
+      uid: "",
+      changePasswordVisible: false,
+      newProfileModalVisible: false
     };
   }
 
@@ -41,7 +45,6 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
-          console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -61,9 +64,15 @@ class UpdateProfile extends Component {
         })
         .catch(err => {
           console.log(err);
-          this.props.history.push("/");
+          this.openNewProfileModal();
         });
     }
+  };
+
+  toggleModal = () => {
+    this.setState(prevState => {
+      return { changePasswordVisible: !prevState.changePasswordVisible };
+    });
   };
 
   //put request to save edits
@@ -85,11 +94,22 @@ class UpdateProfile extends Component {
     axios
       .put(`${url}/api/user`, updatedUser)
       .then(res => {
-        console.log("response", res);
         this.setState({ company: res.data });
       })
       .catch(err => console.log(err));
     this.openEditor();
+  };
+
+  //to encourage the user to fillout their info
+  openNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: true });
+  };
+
+  //to close the modal if a user does not want to add their
+  //info and push them back to the homepage
+  closeNewProfileModal = async () => {
+    await this.setState({ newProfileModalVisible: false });
+    this.props.history.push("/billing");
   };
 
   //inputs to state
@@ -108,7 +128,6 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log("url", this.state.url);
     return (
       <div className="profile-container">
         {!this.state.company ? (
@@ -128,13 +147,28 @@ class UpdateProfile extends Component {
             editCompanyName={this.state.companyName}
             editCompanySummary={this.state.companySummary}
             editApplicationInbox={this.state.applicationInbox}
+            authUser={this.props.authUser}
+            toggleModal={this.toggleModal}
           />
         ) : (
           <ProfileInfo
             company={this.state.company}
             openEditor={this.openEditor}
+            authUser={this.props.authUser}
+            toggleModal={this.toggleModal}
           />
         )}
+        {this.state.changePasswordVisible ? (
+          <ChangePasswordModal toggleModal={this.toggleModal} />
+        ) : null}
+
+        {this.state.newProfileModalVisible ? (
+          <NewProfileForm
+            authUser={this.props.authUser}
+            openNewProfileModal={this.openNewProfileModal}
+            closeNewProfileModal={this.closeNewProfileModal}
+          />
+        ) : null}
       </div>
     );
   }

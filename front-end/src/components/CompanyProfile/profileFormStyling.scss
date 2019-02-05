@@ -27,6 +27,10 @@
       flex-direction: column;
       align-items: center;
 
+      p {
+        font-size: 1.8rem;
+      }
+
       @include tablet {
         width: 90%;
       }
@@ -240,6 +244,14 @@
     padding: 0 1% 10px 1%;
 
     .link-pass {
+      color: #{$blue};
+      text-decoration: underline;
+      margin-left: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
       @include tablet {
         text-align: end;
       }

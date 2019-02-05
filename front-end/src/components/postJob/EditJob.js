@@ -27,7 +27,7 @@ class EditJob extends Component {
     axios
       .get(`${URL}/api/jobs/${this.id}`)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.length) {
           this.setState({
             title: response.data[0].title,
@@ -77,7 +77,7 @@ class EditJob extends Component {
         });
     }
 
-    console.log(putObject);
+    // console.log(putObject);
   };
 
   jobActiveToggle = () => {

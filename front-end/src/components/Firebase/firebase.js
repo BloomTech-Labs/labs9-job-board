@@ -19,7 +19,9 @@ class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
+    this.emailProvider = new app.auth.EmailAuthProvider();
     this.googleProvider = new app.auth.GoogleAuthProvider();
+    this.authCredential = app.auth.EmailAuthProvider.credential;
     // this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
@@ -33,7 +35,7 @@ class Firebase {
   };
 
   doSignInWithGooglePopUp = () => {
-    console.log("in popup");
+    // console.log("in popup");
     return this.auth.signInWithPopup(this.googleProvider);
   };
 
@@ -82,8 +84,17 @@ class Firebase {
   };
 
   // CHANGE PASSWORD
-  doPasswordUpdate = password => {
-    this.auth.currentUser.updatePassword(password);
+  doPasswordUpdate = async (currentPassword, newPassword) => {
+    const user = this.auth.currentUser;
+    try {
+      const credential = this.authCredential(user.email, currentPassword);
+
+      await user.reauthenticateAndRetrieveDataWithCredential(credential);
+
+      return user.updatePassword(newPassword);
+    } catch (error) {
+      return error;
+    }
   };
 }
 

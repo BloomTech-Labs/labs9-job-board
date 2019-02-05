@@ -9,14 +9,20 @@ const ProfileForm = props => {
         <Link to="/billing" className="link-bill">
           Billing
         </Link>
-        <Link to="/" className="link-pass">
-          Change Password
-        </Link>
+        {/* does not show change password button for Google auth ONLY accounts */}
+        {props.authUser &&
+        (props.authUser.providerData.length > 1 ||
+          props.authUser.providerData[0].providerId === "password") ? (
+          <div className="link-pass" onClick={props.toggleModal}>
+            Change Password
+          </div>
+        ) : null}
       </div>
       <div className="pic-account">
         <ProfilePic setUrl={props.setUrl} />
         <h1>Edit Your Account</h1>
         <div className="border" />
+        <p>Job balance: {props.company.balance}</p>
         <button onClick={props.openEditor} className="edit-btn edit">
           Edit Account
         </button>

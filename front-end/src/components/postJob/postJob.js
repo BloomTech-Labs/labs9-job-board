@@ -43,7 +43,7 @@ class PostJob extends Component {
       axios
         .post(`${URL}/api/jobs`, postObject)
         .then(response => {
-          console.log("response", response);
+          // console.log("response", response);
           if (response.status === 201) {
             this.props.history.push(`/jobs/${response.data.id}`);
           }

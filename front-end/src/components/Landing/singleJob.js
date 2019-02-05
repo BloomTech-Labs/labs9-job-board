@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
+
 const url = process.env.REACT_APP_DB_URL;
+const email = process.env.REACT_APP_DB_EMAIL;
 
 class SingleJob extends Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class SingleJob extends Component {
     this.fetchJob(id);
   }
 
+  //takes id from job that user clicks
   fetchJob = id => {
     axios
       .get(`${url}/api/jobs/${id}`)
@@ -46,7 +49,7 @@ class SingleJob extends Component {
   // creates email to company to report job
   reportHandler() {
     window.location =
-      "mailto:support@knowledgewithoutcollege.com?subject=Please review this Job listing&body=" +
+      `mailto:${email}?subject=Please review this Job listing&body=` +
       window.location;
   }
 

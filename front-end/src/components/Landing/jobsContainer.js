@@ -161,7 +161,7 @@ class JobsContainer extends Component {
       const searchJobs = preState.jobs.filter(result => {
         return result.title.toLowerCase().includes(preState.search);
       });
-      console.log(searchJobs);
+      // console.log(searchJobs);
       return { searchJobs: searchJobs };
     });
   };

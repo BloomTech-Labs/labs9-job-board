@@ -35,21 +35,19 @@ class ProfilePic extends Component {
         }
       },
       function(error, result) {
-        console.log("result", result);
         if (result.event === "success") {
           _this.setState({
             profilePic: _this.state.profilePic.concat(result.info)
           });
           _this.props.setUrl(_this.state.profilePic);
         } else {
-          console.log(error);
+          // console.log(error);
         }
       }
     );
   }
 
   render() {
-    console.log("pic", this.state.profilePic);
     return (
       <div>
         {this.state.profilePic.length > 0 ? (
