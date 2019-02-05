@@ -77,6 +77,12 @@
 				width: 100%;
 			}
 
+			.selection-message {
+				margin-top: 20px;
+				font-size: 1.4rem;
+				color: #{$orange};
+			}
+
 			// Purchase options starts
 			.purchase-options {
 				display: flex;
@@ -99,9 +105,6 @@
 							margin: 0 7px 0 0;
 						}
 					}
-				}
-				span {
-					margin-top: 20px;
 				}
 			}
 

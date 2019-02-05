@@ -196,7 +196,7 @@ class CheckoutForm extends Component {
               </label>
             </form>
           </div>
-          <span>{this.state.selectionMessage || null}</span>
+          <span className="selection-message">{this.state.selectionMessage || null}</span>
 
           <div className="card-info">
             <div className="card-info-flex">
