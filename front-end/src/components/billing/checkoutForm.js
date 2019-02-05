@@ -10,7 +10,7 @@ import axios from "axios";
 import PaymentModal from "./PaymentModal.js";
 
 import StripeLogo from "../../images/powered_by_stripe.png";
-import LoadingCircle from "../../images/loading-circle.svg";
+import LoadingCircle from "../../images/design/png/loading-bar.svg";
 import Balance from "./Balance";
 import UserJobs from "./UserJobs.js";
 
@@ -67,6 +67,11 @@ class CheckoutForm extends Component {
     );
   };
 
+  //restarting page
+  restartPage() {
+    window.location.reload();
+  }
+
   //the submit function when a radio button has been selected
   async submit(ev) {
     ev.preventDefault();
@@ -74,7 +79,6 @@ class CheckoutForm extends Component {
     if (this.state.selectedOption) {
       await this.setState({ processing: true });
       let createResponse = await this.props.stripe.createToken();
-      console.log(createResponse);
       //if there is no errors, then apply that option with the auth user account in our DB
       if (!createResponse.error && createResponse.token.id) {
         const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
@@ -99,6 +103,8 @@ class CheckoutForm extends Component {
                   this.cardElement.clear();
                   this.expiryElement.clear();
                   this.cvcElement.clear();
+                  //page refreshes after modal displays
+                  this.restartPage();
                 }, 3000);
               }
             );
@@ -191,7 +197,9 @@ class CheckoutForm extends Component {
               </label>
             </form>
           </div>
-          <span>{this.state.selectionMessage || null}</span>
+          <span className="selection-message">
+            {this.state.selectionMessage || null}
+          </span>
 
           <div className="card-info">
             <div className="card-info-flex">

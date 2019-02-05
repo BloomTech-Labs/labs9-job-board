@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Jobs from "./job";
 
 const JobList = props => {
-  console.log("My props yo:", props);
+  // console.log("My props yo:", props);
   return (
     <div className="all-jobs">
       <div className ='job-list-headers'>

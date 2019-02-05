@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import LoadingBar from "../../images/loading-bars.svg";
+import LoadingBar from "../../images/design/png/loading-bar.svg";
 
 // Url Variable
 const URL = process.env.REACT_APP_DB_URL;

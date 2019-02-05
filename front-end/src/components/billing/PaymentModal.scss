@@ -40,7 +40,7 @@
 
     //for success modal message design
     .success {
-      color: green;
+      color: $dark;
       -webkit-transition: color 1s ease-out;
       -moz-transition: color 1s ease-out;
       -o-transition: color 1s ease-out;
@@ -49,7 +49,7 @@
 
     //for failure modal message design
     .failure {
-      color: red;
+      color: $orange;
       -webkit-transition: color 1s ease-out;
       -moz-transition: color 1s ease-out;
       -o-transition: color 1s ease-out;
@@ -59,8 +59,12 @@
 
   //visible design of the modal
   .visible {
-    background: rgba(255, 255, 255, 1);
-    border: 2px solid rgba(39, 62, 74, 1);
+    display: flex;
+    line-height: 1.25;
+    padding-top: 50px;
+    text-align: center;
+    background: $background;
+    border-radius: 5px;
     -webkit-transition: background-color 1s ease-out;
     -moz-transition: background-color 1s ease-out;
     -o-transition: background-color 1s ease-out;
@@ -70,7 +74,7 @@
 //visual design of the modal
 .visible {
   z-index: 100;
-  background: rgba(39, 62, 74, 0.8);
+  background: #44444449;
   -webkit-transition: background-color 1s ease-out;
   -moz-transition: background-color 1s ease-out;
   -o-transition: background-color 1s ease-out;

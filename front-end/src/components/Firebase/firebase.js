@@ -23,7 +23,7 @@ class Firebase {
   // SIGN IN - Google OAuth
   // opens new window for user to sign in through Google
   doSignInWithGooglePopUp = () => {
-    console.log("in popup");
+    // console.log("in popup");
     return this.auth.signInWithPopup(this.googleProvider);
   };
 
