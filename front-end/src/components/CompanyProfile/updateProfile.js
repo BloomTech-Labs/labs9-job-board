@@ -95,13 +95,16 @@ class UpdateProfile extends Component {
     this.openEditor();
   };
 
+  //to encourage the user to fillout their info
   openNewProfileModal = async () => {
     await this.setState({ newProfileModalVisible: true });
   };
 
+  //to close the modal if a user does not want to add their
+  //info and push them back to the homepage
   closeNewProfileModal = async () => {
     await this.setState({ newProfileModalVisible: false });
-    this.props.history.push("/");
+    this.props.history.push("/billing");
   };
 
   //inputs to state
