@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProfileInfo = props => {
-  console.log(props.authUser);
-
   return (
     <div className="companyInfo">
       <div className="menu-pass-bill">
         <Link to="/billing" className="link-bill">
           Billing
         </Link>
+        {/* does not show change password button for Google auth ONLY accounts */}
         {props.authUser &&
         (props.authUser.providerData.length > 1 ||
           props.authUser.providerData[0].providerId === "password") ? (

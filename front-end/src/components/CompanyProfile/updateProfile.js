@@ -21,7 +21,7 @@ class UpdateProfile extends Component {
       companySummary: "",
       applicationInbox: "",
       uid: "",
-      changePasswordVisible: true
+      changePasswordVisible: false
     };
   }
 

@@ -11,7 +11,8 @@ class ChangePasswordModalUnconnected extends React.Component {
       newPassword: "",
       confirmNewPassword: "",
       uid: "",
-      idReceived: false
+      idReceived: false,
+      alert: ""
     };
   }
 
@@ -38,7 +39,15 @@ class ChangePasswordModalUnconnected extends React.Component {
       this.state.currentPassword,
       this.state.newPassword
     );
-    console.log("change submit", response);
+
+    if (!response) {
+      await this.setState({
+        alert: { message: "Successfully updated password" }
+      });
+      setTimeout(() => this.props.toggleModal(), 2000);
+    } else {
+      await this.setState({ alert: response });
+    }
   };
 
   render() {
@@ -50,7 +59,16 @@ class ChangePasswordModalUnconnected extends React.Component {
     return (
       <div className="change-password-container">
         <div className="change-password-card">
-          <form className="auth-form" onSubmit={this.submitHandler}>
+          <div
+            className="close-button"
+            onClick={() => this.props.toggleModal()}
+          >
+            x
+          </div>
+          <h2>Change Password</h2>
+          <h4>Out with the old. In with the new.</h4>
+          <div className="header-divider" />
+          <form className="change-password-form" onSubmit={this.submitHandler}>
             <input
               className="auth-input"
               type="password"
@@ -58,6 +76,7 @@ class ChangePasswordModalUnconnected extends React.Component {
               placeholder="Current Password"
               value={this.state.currentPassword}
               name="currentPassword"
+              autoComplete="false"
             />
             <input
               className="auth-input"
@@ -75,20 +94,27 @@ class ChangePasswordModalUnconnected extends React.Component {
               value={this.state.confirmNewPassword}
               name="confirmNewPassword"
             />
-            <button
-              className="submit-button"
-              disabled={emptyInput || notMatching}
-              type="submit"
-            >
-              Submit
-            </button>
-            <button
-              type="button"
-              className="cancel-button"
-              onClick={this.props.toggleModal}
-            >
-              Cancel
-            </button>
+            {this.state.alert.message ? (
+              <span className="change-password-error">
+                {this.state.alert.message}
+              </span>
+            ) : null}
+            <div className="button-container">
+              <button
+                className="change-password-button save-button"
+                disabled={emptyInput || notMatching}
+                type="submit"
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                className="change-password-button cancel-button"
+                onClick={this.props.toggleModal}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>

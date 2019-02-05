@@ -236,6 +236,14 @@
     padding: 0 1% 10px 1%;
 
     .link-pass {
+      color: #{$blue};
+      text-decoration: underline;
+      margin-left: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
       @include tablet {
         text-align: end;
       }
