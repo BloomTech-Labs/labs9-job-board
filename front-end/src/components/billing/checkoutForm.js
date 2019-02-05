@@ -108,7 +108,7 @@ class CheckoutForm extends Component {
                 purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
               },
               () => {
-                // clear form and reset state if payment failed (timeout for modal visible)
+                // clear form and reset state if payment was successful modal displays
                 setTimeout(() => {
                   this.setState({ ...DEFAULT_STATE });
                   this.cardElement.clear();
