@@ -116,21 +116,18 @@
         }
 
         .line-card {
-          border: 1px solid #{$dark};
+          border-bottom: 0.5px solid #{$dark};
           width: 138px;
-          height: 20px;
         }
 
         .line-expiration {
-          border: 1px solid #{$dark};
+          border-bottom: 0.5px solid #{$dark};
           width: 55px;
-          height: 20px;
         }
 
         .line-cvc {
-          border: 1px solid #{$dark};
-          width: 30px;
-          height: 20px;
+          border-bottom: 0.5px solid #{$dark};
+          width: 34px;
         }
 
         .card-info-labels {
