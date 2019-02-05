@@ -35,7 +35,7 @@ class Firebase {
   };
 
   doSignInWithGooglePopUp = () => {
-    console.log("in popup");
+    // console.log("in popup");
     return this.auth.signInWithPopup(this.googleProvider);
   };
 

@@ -41,7 +41,7 @@ class ProfilePic extends Component {
           });
           _this.props.setUrl(_this.state.profilePic);
         } else {
-          console.log(error);
+          // console.log(error);
         }
       }
     );

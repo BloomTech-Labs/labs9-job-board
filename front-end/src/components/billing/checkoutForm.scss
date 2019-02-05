@@ -143,6 +143,7 @@
 					justify-content: space-evenly;
 					align-items: flex-start;
 					width: 100%;
+					
 
 					.purchase-button {
 						background: #{$orange};
@@ -152,6 +153,11 @@
 						border: none;
 						border-radius: 5px;
 						cursor: pointer;
+						max-height: 40px;
+						img {
+							height: 25px;
+							width: 60px;
+						}
 					}
 
 					.cancel-button {
