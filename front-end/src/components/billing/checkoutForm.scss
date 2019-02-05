@@ -1,258 +1,275 @@
 .strikethrough {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 //Header
 .billing-container {
-	width: 100%;
-	max-width: 1024px;
-	margin: auto;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
 
-	.header {
-		text-align: center;
-		margin: 0 5%;
+  .header {
+    text-align: center;
+    margin: 0 5%;
 
-		.main-header {
-			margin-top: 30px;
-			color: #{$dark};
-			font-size: 5rem;
+    .main-header {
+      margin-top: 30px;
+      color: #{$dark};
+      font-size: 5rem;
 
-			@include phone {
-				font-size: 4rem;
-			}
-		}
+      @include phone {
+        font-size: 4rem;
+      }
+    }
 
-		hr {
-			width: 50rem;
-			height: 4px;
-			background: #{$auth-divider};
-			border: none;
-			margin: 15px auto;
+    hr {
+      width: 50rem;
+      height: 4px;
+      background: #{$auth-divider};
+      border: none;
+      margin: 15px auto;
 
-			@include tablet {
-				width: 90%;
-			}
-		}
+      @include tablet {
+        width: 90%;
+      }
+    }
 
-		.sub-header {
-			font-size: 2.8rem;
+    .sub-header {
+      font-size: 2.8rem;
 
-			@include phone {
-				font-size: 2rem;
-			}
+      @include phone {
+        font-size: 2rem;
+      }
 
-			.gotcha {
-				color: #{$orange};
-				font-weight: 600;
-			}
-		}
-	}
-	// Parent for all card and purchase container
-	.checkout {
-		display: flex;
-		padding: 40px;
-		border-radius: 20px;
-		background: #{$white};
-		justify-content: space-around;
-		margin: 40px 5%;
+      .gotcha {
+        color: #{$orange};
+        font-weight: 600;
+      }
+    }
+  }
+  // Parent for all card and purchase container
+  .checkout {
+    display: flex;
+    padding: 40px;
+    border-radius: 20px;
+    background: #{$white};
+    justify-content: space-around;
+    margin: 40px 5%;
 
-		@include tablet {
-			flex-direction: column;
-		}
+    @include tablet {
+      flex-direction: column;
+    }
 
-		@include phone {
-			padding: 20px;
-		}
+    @include phone {
+      padding: 20px;
+    }
 
-		.line {
-			@include tablet {
-				display: none;
-			}
-		}
+    .line {
+      @include tablet {
+        display: none;
+      }
+    }
 
-		.left-side {
-			width: 50%;
+    .left-side {
+      width: 50%;
 
-			@include tablet {
-				width: 100%;
-			}
+      @include tablet {
+        width: 100%;
+      }
 
-			// Purchase options starts
-			.purchase-options {
-				display: flex;
-				flex-direction: column;
+      // Purchase options starts
+      .purchase-options {
+        display: flex;
+        flex-direction: column;
 
-				@include tablet {
-					width: 100%;
-				}
+        @include tablet {
+          width: 100%;
+        }
 
-				.options {
-					display: flex;
-					flex-direction: column;
-					align-items: flex-start;
+        .options {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
 
-					label {
-						font-size: 1.8rem;
-						margin-bottom: 20px;
+          label {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
 
-						input {
-							margin: 0 7px 0 0;
-						}
-					}
-				}
-				span {
-					margin-top: 20px;
-				}
-			}
+            input {
+              margin: 0 7px 0 0;
+            }
+          }
+        }
+        span {
+          margin-top: 20px;
+        }
+      }
 
-			// Card Info begins
-			.card-info {
-				display: flex;
-				flex-direction: column;
-				width: 100%;
+      // Card Info begins
+      .card-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
-				@include tablet {
-					width: 100%;
-				}
+        @include tablet {
+          width: 100%;
+        }
 
-				.card-info-labels {
-					display: flex;
-					font-size: 2rem;
-					margin: 20px 0 7px 0;
+        .line-card {
+          border-bottom: 1px solid #{$dark};
+          width: 138px;
+        }
 
-					.__PrivateStripeElement {
-						margin: 50px;
-					}
+        .line-expiration {
+          border-bottom: 1px solid #{$dark};
+          width: 55px;
+        }
 
-					.card-info-placeholder-cnum {
-						font-size: 5rem;
-					}
-				}
+        .line-cvc {
+          border-bottom: 1px solid #{$dark};
+          width: 30px;
+        }
 
-				.card-info-placeholder-exp {
-					font-size: 1.8rem;
-				}
+        .card-info-labels {
+          display: flex;
+          font-size: 2rem;
+          margin: 20px 0 7px 0;
 
-				.card-info-placeholder-cvc {
-					font-size: 1.8rem;
-				}
+          .__PrivateStripeElement {
+            margin: 50px;
+          }
 
-				.button-section {
-					margin-top: 20px;
-					display: flex;
-					justify-content: space-evenly;
-					align-items: flex-start;
-					width: 100%;
+          .card-info-placeholder-cnum {
+            font-size: 5rem;
+          }
+        }
 
-					.purchase-button {
-						background: #{$orange};
-						padding: 10px 5rem;
-						font-size: 1.8rem;
-						color: $white;
-						border: none;
-						border-radius: 5px;
-						cursor: pointer;
-					}
+        .card-info-placeholder-exp {
+          font-size: 1.8rem;
+        }
 
-					.cancel-button {
-						background: #{$blue};
-						padding: 10px 5rem;
-						font-size: 1.8rem;
-						color: $white;
-						border: none;
-						border-radius: 5px;
-						cursor: pointer;
-					}
-				}
+        .card-info-placeholder-cvc {
+          font-size: 1.8rem;
+        }
 
-				p {
-					margin: 0 auto;
-					a {
-						img {
-							margin: 0;
-						}
-					}
-				}
+        .button-section {
+          margin-top: 20px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: flex-start;
+          width: 100%;
 
-				.powered-by-stripe {
-					align-self: center;
-					margin: 20px;
-				}
-			}
-		}
-		// container that holds the data of the right side
-		.right-side {
-			width: 50%;
-			padding-left: 4rem;
+          .purchase-button {
+            background: #{$orange};
+            padding: 10px 5rem;
+            font-size: 1.8rem;
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
 
-			@include tablet {
-				width: 100%;
-				padding: 0;
-			}
+          .cancel-button {
+            background: #{$blue};
+            padding: 10px 5rem;
+            font-size: 1.8rem;
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
 
-			h3 {
-				font-size: 2rem;
-				font-weight: 600;
-				margin-bottom: 5px;
-			}
+        p {
+          margin: 0 auto;
+          a {
+            img {
+              margin: 0;
+            }
+          }
+        }
 
-			//Jobs Purchased Postings
-			.billing-jobs {
-				.job-links {
-					.each-job {
-						font-size: 1.8rem;
-						text-align: center;
-						display: flex;
-						justify-content: flex-start;
-						align-items: center;
-						margin-bottom: 10px;
+        .powered-by-stripe {
+          align-self: center;
+          margin: 20px;
+        }
+      }
+    }
+    // container that holds the data of the right side
+    .right-side {
+      width: 50%;
+      padding-left: 4rem;
 
-						a {
-							text-decoration: none;
-							color: #{$dark};
-							text-align: left;
+      @include tablet {
+        width: 100%;
+        padding: 0;
+      }
 
-							&:hover {
-								color: #{$blue};
-							}
+      h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
 
-							i {
-								font-size: 2rem;
-							}
-						}
+      //Jobs Purchased Postings
+      .billing-jobs {
+        .job-links {
+          font-size: 1.8rem;
 
-						.job-name {
-							width: 90%;
-						}
+          .each-job {
+            font-size: 1.8rem;
+            text-align: center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
 
-						.edit-icon {
-							width: 10%;
-						}
-					}
-				}
-				.job-links a {
-					width: 100%;
-					font-size: 1.6rem;
-				}
-			}
+            a {
+              text-decoration: none;
+              color: #{$dark};
+              text-align: left;
 
-			//Balance of job credits
-			.billing-balance {
-				margin-top: 50px;
-				font-size: 1.8rem;
+              &:hover {
+                color: #{$blue};
+              }
 
-				@include tablet {
-					margin-top: 20px;
-				}
+              i {
+                font-size: 2rem;
+              }
+            }
 
-				h3 {
-					p {
-						margin-top: 5px;
-						font-size: 1.8rem;
-						font-weight: 400;
-					}
-				}
-			}
-		}
-	}
+            .job-name {
+              width: 90%;
+            }
+
+            .edit-icon {
+              width: 10%;
+            }
+          }
+        }
+        .job-links a {
+          width: 100%;
+          font-size: 1.6rem;
+        }
+      }
+
+      //Balance of job credits
+      .billing-balance {
+        margin-top: 50px;
+        font-size: 1.8rem;
+
+        @include tablet {
+          margin-top: 20px;
+        }
+
+        h3 {
+          p {
+            margin-top: 5px;
+            font-size: 1.8rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
 }
