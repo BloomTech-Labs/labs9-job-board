@@ -18,12 +18,12 @@ class ProfilePic extends Component {
     window.cloudinary.openUploadWidget(
       { cloud_name: "dg9vhfqmb", upload_preset: "dzsxr7v2" },
       function(error, result) {
-        console.log(result);
+        // console.log(result);
         if (result) {
           _this.setState({ profilePic: _this.state.profilePic.concat(result) });
           _this.props.setUrl(_this.state.profilePic);
         } else {
-          console.log(error);
+          // console.log(error);
         }
       }
     );

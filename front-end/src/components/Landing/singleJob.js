@@ -43,7 +43,7 @@ class SingleJob extends Component {
       window.location;
   }
   render() {
-    console.log("this.props", this.state.job);
+    // console.log("this.props", this.state.job);
     if (!this.state.job) {
       return <div>Loading Job...</div>;
     }

@@ -40,7 +40,7 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
-          console.log("get response", res);
+          // console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -82,7 +82,7 @@ class UpdateProfile extends Component {
     axios
       .put(`${url}/api/user`, updatedUser)
       .then(res => {
-        console.log("response", res);
+        // console.log("response", res);
         this.setState({ company: res.data });
       })
       .catch(err => console.log(err));
@@ -102,7 +102,7 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     if (!this.state.company) {
       return <img src={LoadingBar} alt="loading bar" className="loading" />;
     }

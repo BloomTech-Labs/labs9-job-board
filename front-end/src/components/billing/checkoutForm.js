@@ -61,7 +61,7 @@ class CheckoutForm extends Component {
 		if (this.state.selectedOption) {
 			await this.setState({ processing: true });
 			let createResponse = await this.props.stripe.createToken();
-			console.log(createResponse);
+			// console.log(createResponse);
 
 			if (!createResponse.error && createResponse.token.id) {
 				const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
