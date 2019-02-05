@@ -43,7 +43,6 @@ class UpdateProfile extends Component {
       axios
         .get(`${url}/api/company/${user_uid}`)
         .then(res => {
-          console.log("get response", res);
           this.setState(() => ({
             company: res.data
           }));
@@ -63,7 +62,6 @@ class UpdateProfile extends Component {
         })
         .catch(err => {
           console.log(err);
-          // this.props.history.push("/");
           this.openNewProfileModal();
         });
     }
@@ -88,7 +86,6 @@ class UpdateProfile extends Component {
     axios
       .put(`${url}/api/user`, updatedUser)
       .then(res => {
-        console.log("response", res);
         this.setState({ company: res.data });
       })
       .catch(err => console.log(err));
@@ -123,7 +120,6 @@ class UpdateProfile extends Component {
   };
 
   render() {
-    console.log("url", this.state);
     return (
       <div className="profile-container">
         {!this.state.company ? (
