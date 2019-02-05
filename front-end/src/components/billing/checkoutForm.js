@@ -40,7 +40,6 @@ class CheckoutForm extends Component {
     super(props);
     this.state = {
       ...DEFAULT_STATE,
-      inputValue: props.inputValue
     };
     this.submit = this.submit.bind(this);
   }
@@ -57,6 +56,14 @@ class CheckoutForm extends Component {
   handleOptionChange = event => {
     this.setState({ selectedOption: event.target.value });
   };
+
+  //update the input value when the cancel button is clicked
+  updateInput = val => {
+    return this.setState({ ...DEFAULT_STATE }),  this.cardElement.clear(),
+    this.expiryElement.clear(),
+    this.cvcElement.clear();
+  };
+  
   //the submit function when a radio button has been selected
   async submit(ev) {
     ev.preventDefault();
@@ -101,7 +108,7 @@ class CheckoutForm extends Component {
                 purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
               },
               () => {
-                // clear form and reset state if payment failed (timeout for modal visible)
+                // clear form and reset state if payment was successful modal displays
                 setTimeout(() => {
                   this.setState({ ...DEFAULT_STATE });
                   this.cardElement.clear();
@@ -143,10 +150,7 @@ class CheckoutForm extends Component {
     }
   }
 
-  //update the input value when the cancel button is clicked
-  updateInput = val => {
-    return this.setState({ inputValue: val });
-  };
+  
 
   render() {
     return (
@@ -222,7 +226,7 @@ class CheckoutForm extends Component {
               </button>
               <button
                 className="cancel-button"
-                onClick={this.resetForm}
+                onClick={this.updateInput}
                 type="button"
               >
                 Cancel
