@@ -191,24 +191,26 @@ class CheckoutForm extends Component {
           <div className="card-info">
             <div className="card-info-flex">
               <p className="card-info-labels"> Card Number</p>
-              <CardNumberElement
-                className="card-info-placeholder-cnum"
-                onReady={element => (this.cardElement = element)}
-              />
-              <div className="line-card" />
+              <div className="line-card">
+                <CardNumberElement
+                  className="card-info-placeholder-cnum"
+                  onReady={element => (this.cardElement = element)}
+                />
+              </div>
               <p className="card-info-labels"> Expiration Date</p>
-              <CardExpiryElement
-                className="card-info-placeholder-exp"
-                onReady={element => (this.expiryElement = element)}
-              />
-              <div className="line-expiration" />
-
+              <div className="line-expiration">
+                <CardExpiryElement
+                  className="card-info-placeholder-exp"
+                  onReady={element => (this.expiryElement = element)}
+                />
+              </div>
               <p className="card-info-labels"> CVC </p>
-              <CardCVCElement
-                className="card-info-placeholder-cvc"
-                onReady={element => (this.cvcElement = element)}
-              />
-              <div className="line-cvc" />
+              <div className="line-cvc">
+                <CardCVCElement
+                  className="card-info-placeholder-cvc"
+                  onReady={element => (this.cvcElement = element)}
+                />
+              </div>
             </div>
 
             <div className="button-section">
