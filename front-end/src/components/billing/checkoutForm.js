@@ -63,6 +63,11 @@ class CheckoutForm extends Component {
     this.expiryElement.clear(),
     this.cvcElement.clear();
   };
+
+  //restarting page
+  restartPage() {
+    window.location.reload();
+  }
   
   //the submit function when a radio button has been selected
   async submit(ev) {
@@ -95,6 +100,8 @@ class CheckoutForm extends Component {
                   this.cardElement.clear();
                   this.expiryElement.clear();
                   this.cvcElement.clear();
+                  //page refreshes after modal displays
+                  this.restartPage();
                 }, 3000);
               }
             );
