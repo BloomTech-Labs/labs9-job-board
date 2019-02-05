@@ -20,10 +20,6 @@ import * as ROUTES from "../../constants/routes";
 import "./Routes.scss";
 
 class Routes extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="routes">

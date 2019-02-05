@@ -63,7 +63,7 @@ class SingleJob extends Component {
         ) : (
           <div className="job-listing">
             <div className="job-pic-summary">
-              <img src={this.state.job.avatar_image} />
+              <img src={this.state.job.avatar_image} alt="company avatar" />
               <h1>{this.state.job.company_name}</h1>
               <div className="border" />
               <h2>{this.state.job.summary}</h2>

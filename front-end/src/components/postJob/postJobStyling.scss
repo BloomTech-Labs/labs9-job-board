@@ -210,7 +210,7 @@
         .categories {
           width: 35%;
           display: flex;
-          justify-content: start;
+          justify-content: flex-start;
 
           @include tablet {
             width: 100%;

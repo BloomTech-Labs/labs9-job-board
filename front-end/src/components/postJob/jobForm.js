@@ -1,10 +1,6 @@
 import React from "react";
 
 class JobForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="post-job-container">

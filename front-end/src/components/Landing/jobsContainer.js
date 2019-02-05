@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import seachFilter from '../../images/design/png/filter-button.png'
 import JobList from "./jobList";
-import { Link } from "react-scroll";
-//import Jobs from "./job";
 
 import Search from "./search";
 
@@ -14,9 +11,7 @@ import Header from "./header";
 import LoadingBar from "../../images/design/png/loading-bar.svg";
 
 import NewProfileForm from "../CompanyProfile/newProfileForm.js";
-import bigLogo from '../../images/design/png/logos/logo with white text.png'
-
-
+import bigLogo from "../../images/design/png/logos/logo with white text.png";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -130,30 +125,30 @@ class JobsContainer extends Component {
   };
 
   conditionalScroll = event => {
-    let windowSize = (window.innerWidth);
+    let windowSize = window.innerWidth;
 
-    if (windowSize<=500) {
-      this.onEnterMobile()
-    }  else {
-      this.onEnter()
+    if (windowSize <= 500) {
+      this.onEnterMobile();
+    } else {
+      this.onEnter();
     }
-  }
+  };
 
   onEnterMobile = event => {
     window.scroll({
       top: 120,
       left: 100,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
-  }
+  };
 
   onEnter = event => {
     window.scroll({
       top: 380,
       left: 90,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
-  }
+  };
 
   searchResults = event => {
     this.handleInput(event);
@@ -172,21 +167,20 @@ class JobsContainer extends Component {
 
     return (
       <div className="jobs-container container">
-      
         <Header authUser={this.props.authUser} />
-        <img className ='header-logo' alt = 'logo'src = {bigLogo}></img>
-        <div className = 'white-box'></div>
-        
+        <img className="header-logo" alt="logo" src={bigLogo} />
+        <div className="white-box" />
+
         <div className="search-categories-container">
           <Categories searchByCategory={this.searchByCategory} />
           <Search
             searchResults={this.searchResults}
             search={this.state.search}
-            conditionalScroll = {this.conditionalScroll}
+            conditionalScroll={this.conditionalScroll}
           />
         </div>
         {this.state.fetching ? (
-          <img  className = 'loading-bar' src={LoadingBar} alt="loading" />
+          <img className="loading-bar" src={LoadingBar} alt="loading" />
         ) : this.state.jobs.length ? (
           <JobList
             jobs={this.state.search ? this.state.searchJobs : this.state.jobs}
@@ -194,7 +188,7 @@ class JobsContainer extends Component {
         ) : this.state.error ? (
           <div>Error retrieving jobs</div>
         ) : (
-          <div className = 'no-results'>No results found</div>
+          <div className="no-results">No results found</div>
         )}
         {this.state.newProfileModalVisible ? (
           <NewProfileForm

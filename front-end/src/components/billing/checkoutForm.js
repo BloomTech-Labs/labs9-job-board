@@ -39,7 +39,7 @@ class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...DEFAULT_STATE,
+      ...DEFAULT_STATE
     };
     this.submit = this.submit.bind(this);
   }
@@ -59,11 +59,14 @@ class CheckoutForm extends Component {
 
   //update the input value when the cancel button is clicked
   updateInput = val => {
-    return this.setState({ ...DEFAULT_STATE }),  this.cardElement.clear(),
-    this.expiryElement.clear(),
-    this.cvcElement.clear();
+    return this.setState(
+      { ...DEFAULT_STATE },
+      this.cardElement.clear(),
+      this.expiryElement.clear(),
+      this.cvcElement.clear()
+    );
   };
-  
+
   //the submit function when a radio button has been selected
   async submit(ev) {
     ev.preventDefault();
@@ -149,8 +152,6 @@ class CheckoutForm extends Component {
       this.setState({ selectionMessage: "Please choose an option." });
     }
   }
-
-  
 
   render() {
     return (

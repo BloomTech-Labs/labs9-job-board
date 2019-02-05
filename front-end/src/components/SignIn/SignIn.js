@@ -5,15 +5,9 @@ import axios from "axios";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants/routes";
 
-// import "./SignIn.scss";
-
 const URL = process.env.REACT_APP_DB_URL;
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     // redirect to landing if user is already authenticated
     return this.props.authUser ? (
@@ -41,6 +35,7 @@ class SignInFormUnconnected extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // click handler for Sign in with Google button
   googleAuthSubmit = event => {
     event.preventDefault();
 
@@ -59,7 +54,7 @@ class SignInFormUnconnected extends React.Component {
             email
           });
         } else {
-          throw { message: "Error authenticating. Please try again." };
+          throw new Error("Error authenticating. Please try again.");
         }
       })
       .then(response => {
@@ -67,7 +62,7 @@ class SignInFormUnconnected extends React.Component {
         if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          throw { message: "Error verifying login, please try again." };
+          throw new Error("Error verifying login, please try again.");
         }
       })
       .catch(async error => {
@@ -97,7 +92,7 @@ class SignInFormUnconnected extends React.Component {
             email: firebase_email
           });
         } else {
-          throw { message: "Error creating user. Please try again." };
+          throw new Error("Error creating user. Please try again.");
         }
       })
       .then(response => {
@@ -105,7 +100,7 @@ class SignInFormUnconnected extends React.Component {
         if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          throw { message: "Error verifying login, please try again." };
+          throw new Error("Error verifying login, please try again.");
         }
       })
       .catch(async error => {
