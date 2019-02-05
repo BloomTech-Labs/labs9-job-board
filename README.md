@@ -3,7 +3,7 @@
 
 <div align="center"><h2>Brought to you by:</h2>
 
-<a href="https://github.com/brianmgre">Brian Gregorious</a>
+<a href="https://github.com/brianmgre">Brian Gregorius</a>
 
 <a href="https://github.com/Charletta">Charletta Bullard</a>
 
@@ -41,7 +41,7 @@
 	* [Mac](#mac)
 	* [Windows](#windows)
 * ### [Stripe](#stripe)
-* ### [Cloudinary](#cloudinary)
+* ### [Cloudinary](#Cloudinary)
 * ### [Firebase](#firebase)
 * ### [Payment Structure](#payment-structure)
 * ### [Design](#design)
