@@ -4,9 +4,6 @@ import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./checkoutForm";
 
 class Billing extends Component {
-  constructor(props) {
-    super(props);
-  }
   // Billing is treated like App.js in React, it holds the props of Stripe
   // contains StripeProvider wrapper and Stripe Elements form
   render() {

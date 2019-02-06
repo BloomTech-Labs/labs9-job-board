@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import Loading from "../../images/design/png/loading-bar.svg";
+
 const URL = process.env.REACT_APP_DB_URL;
 
 class Balance extends React.Component {
@@ -63,20 +65,20 @@ class Balance extends React.Component {
   render() {
     return this.props.authUser ? (
       <div className="billing-balance">
-        <h3>
-          Your Balance:
-          <p className={this.state.balance.expiration ? "strikethrough" : ""}>
-            {/* if valid expiration, show unlimited until expiry and balance with strikethrough */}
-            {`${this.state.balance.balance} postings`}
-          </p>
-        </h3>
-        {this.state.balance.expiration
-          ? `Unlimited until ${this.formatDate(this.state.balance.expiration)}`
-          : ""}
+        <h3>Your Balance:</h3>
+        {this.state.balance.expiration ? (
+          <p>{`Unlimited until ${this.formatDate(
+            this.state.balance.expiration
+          )}`}</p>
+        ) : null}
+        <p className={this.state.balance.expiration ? "strikethrough" : ""}>
+          {/* if valid expiration, show unlimited until expiry and balance with strikethrough */}
+          {`${this.state.balance.balance} postings`}
+        </p>
       </div>
     ) : (
       // before component has access to props to see authenticated user
-      <div>Loading...</div>
+      <img src={Loading} alt="loading" />
     );
   }
 }

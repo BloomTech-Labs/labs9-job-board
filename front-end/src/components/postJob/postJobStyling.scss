@@ -214,7 +214,7 @@
         .categories {
           width: 35%;
           display: flex;
-          justify-content: start;
+          justify-content: flex-start;
 
           @include tablet {
             width: 100%;
@@ -233,10 +233,8 @@
               width: 30rem;
             }
 
-            // option {
-            //   :hover {
-            //     background-color: #{$blue};
-            //   }
+            // option:checked {
+            //   background-color: #{$blue};
             // }
           }
         }
@@ -254,10 +252,22 @@
 
           #cancel-button {
             background-color: #{$blue};
+            transition: all 0.4s ease;
+
+            &:hover {
+              background: $dark-blue;
+              transition: all 0.4s ease;
+            }
           }
 
           #save-button {
             background-color: #{$orange};
+            transition: all 0.4s ease;
+
+            &:hover {
+              background: $dark-orange;
+              transition: all 0.4s ease;
+            }
           }
 
           .post-job-buttons {

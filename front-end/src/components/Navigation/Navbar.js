@@ -5,10 +5,6 @@ import SideMenuToggleButton from "./SideMenuToggleButton";
 import logo from "../../images/design/png/logos/logo with owl to left.png";
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     let url = window.location.pathname;
     let myNav = document.getElementById("mynav");

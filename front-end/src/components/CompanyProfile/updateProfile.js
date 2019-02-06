@@ -77,7 +77,6 @@ class UpdateProfile extends Component {
   //put request to save edits
   updateUser = e => {
     e.preventDefault();
-    const id = this.props.match.params.id;
 
     const updatedUser = {
       user_uid: this.state.uid,

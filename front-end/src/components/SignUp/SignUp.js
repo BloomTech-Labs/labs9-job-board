@@ -51,14 +51,14 @@ class SignUpFormUnconnected extends React.Component {
             email
           });
         } else {
-          throw { message: "Error authenticating. Please try again." };
+          throw new Error("Error authenticating. Please try again.");
         }
       })
       .then(response => {
         if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          throw { message: "Error verifying login, please try again." };
+          throw new Error("Error verifying login, please try again.");
         }
       })
       .catch(async error => {
@@ -88,14 +88,14 @@ class SignUpFormUnconnected extends React.Component {
             email: firebase_email
           });
         } else {
-          throw { message: "Error creating user. Please try again." };
+          throw new Error("Error creating user. Please try again.");
         }
       })
       .then(response => {
         if (response.status === 200 || response.status === 201) {
           this.props.history.push(ROUTES.LANDING);
         } else {
-          throw { message: "Error verifying login, please try again." };
+          throw new Error("Error verifying login, please try again.");
         }
       })
       .catch(async error => {

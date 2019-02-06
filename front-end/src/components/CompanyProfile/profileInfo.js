@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Balance from "../billing/Balance";
 
 const ProfileInfo = props => {
   return (
@@ -21,11 +22,13 @@ const ProfileInfo = props => {
         <img
           src={props.company.avatar_image}
           className="avatar"
-          alt="company-logo"
+          alt="company logo"
         />
         <h1>Your Account</h1>
-        <p>Job balance: {props.company.balance}</p>
+        <Balance authUser={props.authUser} />
         <div className="border" />
+        {/* <p>Job balance: {props.company.balance}</p> */}
+
         <button onClick={props.openEditor} className="edit-btn edit">
           Edit Account
         </button>

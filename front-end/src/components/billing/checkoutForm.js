@@ -10,7 +10,7 @@ import axios from "axios";
 import PaymentModal from "./PaymentModal.js";
 
 import StripeLogo from "../../images/powered_by_stripe.png";
-import LoadingCircle from "../../images/design/png/loading-bar.svg";
+import Loading from "../../images/design/png/loading-bar.svg";
 import Balance from "./Balance";
 import UserJobs from "./UserJobs.js";
 
@@ -39,7 +39,7 @@ class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...DEFAULT_STATE,
+      ...DEFAULT_STATE
     };
     this.submit = this.submit.bind(this);
   }
@@ -59,104 +59,124 @@ class CheckoutForm extends Component {
 
   //update the input value when the cancel button is clicked
   updateInput = val => {
-    return this.setState({ ...DEFAULT_STATE }),  this.cardElement.clear(),
-    this.expiryElement.clear(),
-    this.cvcElement.clear();
+    return this.setState(
+      { ...DEFAULT_STATE },
+      this.cardElement.clear(),
+      this.expiryElement.clear(),
+      this.cvcElement.clear()
+    );
   };
 
   //restarting page
   restartPage() {
     window.location.reload();
   }
-  
+
   //the submit function when a radio button has been selected
   async submit(ev) {
-    ev.preventDefault();
-    //logic that awaits to see if an option was selected and if true then process that selection with payment to create a token
-    if (this.state.selectedOption) {
-      await this.setState({ processing: true });
-      let createResponse = await this.props.stripe.createToken();
-      //if there is no errors, then apply that option with the auth user account in our DB
-      if (!createResponse.error && createResponse.token.id) {
-        const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
-          source: createResponse.token.id,
-          option: this.state.selectedOption,
-          user_uid: this.props.authUser.uid
-        });
-        // status and amount are truthy, check if status is 'succeeded'
-        if (stripeResponse.data.status && stripeResponse.data.amount) {
-          if (stripeResponse.data.status === "succeeded") {
-            // if 'succeeded', display success modal
-            this.setState(
-              {
-                processing: false,
-                successVisible: true,
-                purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
-              },
-              () => {
-                // clear form and reset state if payment successed (timeout for modal visible)
-                setTimeout(() => {
-                  this.setState({ ...DEFAULT_STATE });
-                  this.cardElement.clear();
-                  this.expiryElement.clear();
-                  this.cvcElement.clear();
-                  //page refreshes after modal displays
-                  this.restartPage();
-                }, 3000);
-              }
-            );
-          } else {
-            // if payment is not 'succeeded', display failure modal
-            await this.setState(
-              {
-                processing: false,
-                failureVisible: true,
-                purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
-              },
-              () => {
-                // clear form and reset state if payment was successful modal displays
-                setTimeout(() => {
-                  this.setState({ ...DEFAULT_STATE });
-                  this.cardElement.clear();
-                  this.expiryElement.clear();
-                  this.cvcElement.clear();
-                }, 3000);
-              }
-            );
-          }
-        } else {
-          await this.setState({ processing: false });
-        }
-      } else {
-        // set display message if errors in the card number, exp date, and cvc
-        if (createResponse.error) {
-          if (createResponse.error.code === "incomplete_number") {
-            this.setState({
-              paymentMessage: "Form incomplete. Check card number."
-            });
-          } else if (createResponse.error.code === "incomplete_expiry") {
-            this.setState({
-              paymentMessage: "Form incomplete. Check expiration date."
-            });
-          } else if (createResponse.error.code === "incomplete_cvc") {
-            this.setState({
-              paymentMessage: "Form incomplete. Check CVC."
-            });
-          }
-          // handle default if token.id does not exist (did not create valid Stripe token)
-        } else {
-          this.setState({
-            paymentMessage: "Error creating Stripe token."
+    try {
+      ev.preventDefault();
+      await this.setState({
+        selectionMessage: "",
+        paymentMessage: "",
+        processing: true
+      });
+      //logic that awaits to see if an option was selected and if true then process that selection with payment to create a token
+      if (this.state.selectedOption) {
+        let createResponse = await this.props.stripe.createToken();
+
+        //if there is no errors, then apply that option with the auth user account in our DB
+        if (!createResponse.error && createResponse.token.id) {
+          const stripeResponse = await axios.post(`${URL}/api/billing/charge`, {
+            source: createResponse.token.id,
+            option: this.state.selectedOption,
+            user_uid: this.props.authUser.uid
           });
+          // status and amount are truthy, check if status is 'succeeded'
+          if (stripeResponse.data.status && stripeResponse.data.amount) {
+            if (stripeResponse.data.status === "succeeded") {
+              // if 'succeeded', display success modal
+              this.setState(
+                {
+                  processing: false,
+                  successVisible: true,
+                  purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
+                },
+                () => {
+                  // clear form and reset state if payment successed (timeout for modal visible)
+                  setTimeout(() => {
+                    this.setState({ ...DEFAULT_STATE });
+                    this.cardElement.clear();
+                    this.expiryElement.clear();
+                    this.cvcElement.clear();
+                    //page refreshes after modal displays
+                    this.restartPage();
+                  }, 3000);
+                }
+              );
+            } else {
+              // if payment is not 'succeeded', display failure modal
+              await this.setState(
+                {
+                  processing: false,
+                  failureVisible: true,
+                  purchase: AMOUNT_TO_PURCHASE[stripeResponse.data.amount]
+                },
+                () => {
+                  // clear form and reset state if payment was successful modal displays
+                  setTimeout(() => {
+                    this.setState({ ...DEFAULT_STATE });
+                    this.cardElement.clear();
+                    this.expiryElement.clear();
+                    this.cvcElement.clear();
+                  }, 3000);
+                }
+              );
+            }
+          } else {
+            await this.setState({ processing: false });
+          }
+        } else {
+          // set display message if errors in the card number, exp date, and cvc
+          if (createResponse.error) {
+            if (createResponse.error.code === "incomplete_number") {
+              this.setState({
+                paymentMessage: "Form incomplete. Check card number.",
+                processing: false
+              });
+            } else if (createResponse.error.code === "incomplete_expiry") {
+              this.setState({
+                paymentMessage: "Form incomplete. Check expiration date.",
+                processing: false
+              });
+            } else if (createResponse.error.code === "incomplete_cvc") {
+              this.setState({
+                paymentMessage: "Form incomplete. Check CVC.",
+                processing: false
+              });
+            }
+            // handle default if token.id does not exist (did not create valid Stripe token)
+          } else {
+            this.setState({
+              paymentMessage: "Error creating Stripe token.",
+              processing: false
+            });
+          }
         }
+        // display message if no radio button selection has been made
+      } else {
+        this.setState({
+          selectionMessage: "Please choose an option.",
+          processing: false
+        });
       }
-      // display message if no radio button selection has been made
-    } else {
-      this.setState({ selectionMessage: "Please choose an option." });
+    } catch (error) {
+      this.setState({
+        selectionMessage: "Error processing payment.",
+        processing: false
+      });
     }
   }
-
-  
 
   render() {
     return (
@@ -196,7 +216,9 @@ class CheckoutForm extends Component {
               </label>
             </form>
           </div>
-          <span className="selection-message">{this.state.selectionMessage || null}</span>
+          <span className="selection-message">
+            {this.state.selectionMessage || null}
+          </span>
 
           <div className="card-info">
             <div className="card-info-flex">
@@ -222,6 +244,9 @@ class CheckoutForm extends Component {
                 />
               </div>
             </div>
+            <span className="payment-message">
+              {this.state.paymentMessage || null}
+            </span>
 
             <div className="button-section">
               <button
@@ -231,7 +256,7 @@ class CheckoutForm extends Component {
                 disabled={!this.props.authUser}
               >
                 {this.state.processing ? (
-                  <img src={LoadingCircle} alt="loading" />
+                  <img src={Loading} alt="loading" />
                 ) : (
                   "Purchase"
                 )}
@@ -245,7 +270,6 @@ class CheckoutForm extends Component {
               </button>
             </div>
 
-            <span>{this.state.paymentMessage || null}</span>
             <p>
               <a href="https://stripe.com/">
                 <img

@@ -45,11 +45,25 @@
     .pic-account h1 {
       font-size: 5rem;
       color: #{$dark};
+      margin-bottom: 15px;
 
       @include tablet {
         font-size: 4rem;
       }
     }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    p {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
     //profile pic
     .avatar {
       border-radius: 50%;
@@ -161,14 +175,17 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        outline-color: #{$blue};
 
         //save button
         .save {
           width: 45%;
           background-color: #{$auth-submit-bg};
+          transition: all 0.4s ease;
 
           &:hover {
             background-color: #{$auth-submit-bg-hover};
+            transition: all 0.4s ease;
           }
 
           @include phone {
@@ -180,7 +197,13 @@
         //cancel button
         .cancel {
           width: 45%;
-          background-color: #{$Navbar};
+          background-color: #{$blue};
+          transition: all 0.4s ease;
+
+          &:hover {
+            transition: all 0.4s ease;
+            background: $dark-blue;
+          }
 
           @include phone {
             width: 100%;
@@ -229,9 +252,16 @@
     color: white;
     font-size: 1.6rem;
     cursor: pointer;
+    outline-color: #{$blue};
   }
   .edit {
     background-color: #{$blue};
+    transition: all 0.4s ease;
+
+    &:hover {
+      background: $dark-blue;
+      transition: all 0.4s ease;
+    }
   }
 
   //links for billing and change password
@@ -258,6 +288,7 @@
     }
 
     .link-bill {
+      outline-color: #{$blue};
       @include tablet {
         text-align: start;
         padding: 0 3%;
@@ -266,7 +297,6 @@
 
     a {
       color: #{$blue};
-      width: 20rem;
       text-align: end;
     }
 

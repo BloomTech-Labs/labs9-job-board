@@ -1,10 +1,10 @@
 import React from "react";
-import searchIcon from '../../images/design/png/search-icon-white.png'
+import searchIcon from "../../images/design/png/search-icon-white.png";
 //import search from "../../images/search-image.png";
 
 const Search = props => {
   return (
-    <form className="search-bar" onClick = {props.conditionalScroll}>
+    <form className="search-bar" onClick={props.conditionalScroll}>
       <input
         placeholder="Search jobs..."
         type="text"
@@ -12,9 +12,14 @@ const Search = props => {
         onChange={props.searchResults}
         value={props.search}
         className="search-input"
-        onSubmit = {props.searchResults}
+        onSubmit={props.searchResults}
       />
-      <img  onClick = {props.searchResults} src = {searchIcon} className = 'search-icon'></img>
+      <img
+        onClick={props.searchResults}
+        src={searchIcon}
+        className="search-icon"
+        alt="search icon"
+      />
     </form>
   );
 };

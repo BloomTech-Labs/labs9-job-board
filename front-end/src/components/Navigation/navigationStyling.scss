@@ -201,11 +201,13 @@
     font-size: 2rem;
     font-family: $font;
     text-align: left;
+    transition: all 0.4s ease;
 
     &:hover,
     &:active {
       color: $white;
       background-color: #777777;
+      transition: all 0.4s ease;
     }
   }
 

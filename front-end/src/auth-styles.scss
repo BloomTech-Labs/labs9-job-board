@@ -93,17 +93,17 @@
           color: $auth-submit-text;
           outline-color: $blue;
           font-size: 1.8rem;
-          transition: all 0.5s ease;
+          transition: all 0.4s ease;
         }
 
         .active {
           background: $auth-submit-bg;
-          transition: all 0.5s ease;
+          transition: all 0.4s ease;
 
           &:hover {
             cursor: pointer;
             background: $auth-submit-bg-hover;
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
           }
         }
 
@@ -123,12 +123,12 @@
           justify-content: center;
           border: none;
           border-radius: 5px;
-          transition: all 0.5s ease-in-out;
+          transition: all 0.4s ease-in-out;
 
           &:hover {
             cursor: pointer;
             background-color: $auth-google-btn-bg-hover;
-            transition: all 0.5s ease-in-out;
+            transition: all 0.4s ease-in-out;
           }
         }
 

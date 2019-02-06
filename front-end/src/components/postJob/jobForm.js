@@ -1,11 +1,6 @@
 import React from "react";
 
 class JobForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  // Renders all of the form for the page
   render() {
     return (
       <div className="post-job-container">
@@ -14,9 +9,7 @@ class JobForm extends React.Component {
             {this.props.pageTitle ? "Edit Job" : "Post a Job"}
           </h1>
           <hr />
-          <h2 className="sub-header">
-            Find the employee that fits your needs.
-          </h2>
+          <h2 className="sub-header">Find the employee who fits your needs.</h2>
         </div>
         <form className="job-form" onSubmit={this.props.submitHandler}>
           <div className="post-job-top">

@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import seachFilter from "../../images/design/png/filter-button.png";
 import JobList from "./jobList";
-import { Link } from "react-scroll";
-//import Jobs from "./job";
 
 import Search from "./search";
 

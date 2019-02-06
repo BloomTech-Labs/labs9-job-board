@@ -1,10 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
 
-import axios from "axios";
-
-const URL = process.env.REACT_APP_DB_URL;
-
 // configuration provided with Firebase account
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -22,43 +18,13 @@ class Firebase {
     this.emailProvider = new app.auth.EmailAuthProvider();
     this.googleProvider = new app.auth.GoogleAuthProvider();
     this.authCredential = app.auth.EmailAuthProvider.credential;
-    // this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
-  redirectResult = () => {
-    return this.auth.getRedirectResult();
-  };
-
   // SIGN IN - Google OAuth
-  doSignInWithGoogle = () => {
-    return this.auth.signInWithRedirect(this.googleProvider);
-  };
-
+  // opens new window for user to sign in through Google
   doSignInWithGooglePopUp = () => {
     // console.log("in popup");
     return this.auth.signInWithPopup(this.googleProvider);
-  };
-
-  // SIGN IN - Facebook OAuth
-  // doSignInWithFacebook = () => {
-  //   return this.auth.signInWithRedirect(this.facebookProvider);
-  // }
-
-  // REDIRECT RESULT
-  // unsure if this will be needed
-  doGetRedirectData = () => {
-    this.auth
-      .getRedirectResult()
-      .then(result => {
-        return result;
-      })
-      .then(user => {
-        if (this.authRedirected) return; // Skip
-
-        // Do stuff.
-
-        this.authRedirected = true; // Mark redirected
-      });
   };
 
   // SIGN UP - email and password
@@ -74,16 +40,20 @@ class Firebase {
   };
 
   // SIGN OUT
+  // used for all authentication providers
   doSignOut = () => {
     return this.auth.signOut();
   };
 
   // PASSWORD RESET
+  // firebase sends email to user to reset forgotten password
   doPasswordReset = email => {
     return this.auth.sendPasswordResetEmail(email);
   };
 
   // CHANGE PASSWORD
+  // only accessible to users with 'password' provider
+  // reauthenticates user before updating password
   doPasswordUpdate = async (currentPassword, newPassword) => {
     const user = this.auth.currentUser;
     try {
