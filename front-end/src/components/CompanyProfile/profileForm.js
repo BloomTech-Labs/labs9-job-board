@@ -35,7 +35,7 @@ const ProfileForm = props => {
           <label>First Name</label>
           <input
             id="firstName"
-            placeholder={props.company.first_name}
+            placeholder="John"
             name="firstName"
             type="text"
             value={props.editFirstName}
@@ -44,7 +44,7 @@ const ProfileForm = props => {
           <label>Last Name</label>
           <input
             id="lastName"
-            placeholder={props.company.last_name}
+            placeholder="Doe"
             name="lastName"
             type="text"
             value={props.editLastName}
@@ -53,7 +53,7 @@ const ProfileForm = props => {
           <label>Email</label>
           <input
             id="email"
-            placeholder={props.company.email}
+            placeholder="johndoe@gmail.com"
             name="email"
             type="text"
             value={props.editEmail}
@@ -62,7 +62,7 @@ const ProfileForm = props => {
           <label>Applications Inbox</label>
           <input
             id="applicationInbox"
-            placeholder={props.company.application_method}
+            placeholder="applications@stessa.com"
             name="applicationInbox"
             type="text"
             value={props.editApplicationInbox}
@@ -74,7 +74,7 @@ const ProfileForm = props => {
           <label>Company Name</label>
           <input
             id="companyName"
-            placeholder={props.company.company_name}
+            placeholder="Stessa Solutions Inc."
             name="companyName"
             type="text"
             value={props.editCompanyName}
@@ -83,7 +83,7 @@ const ProfileForm = props => {
           <label>Company Summary</label>
           <textarea
             id="companySummary"
-            placeholder={props.company.summary}
+            placeholder="Solving one problem at a time."
             name="companySummary"
             type="text"
             value={props.editCompanySummary}
