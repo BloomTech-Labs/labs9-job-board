@@ -58,13 +58,11 @@ class CheckoutForm extends Component {
   };
 
   //update the input value when the cancel button is clicked
-  updateInput = val => {
-    return this.setState(
-      { ...DEFAULT_STATE },
-      this.cardElement.clear(),
-      this.expiryElement.clear(),
-      this.cvcElement.clear()
-    );
+  updateInput = () => {
+    this.setState({ ...DEFAULT_STATE });
+    this.cardElement.clear();
+    this.expiryElement.clear();
+    this.cvcElement.clear();
   };
 
   //restarting page
