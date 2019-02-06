@@ -10,7 +10,7 @@ import axios from "axios";
 import PaymentModal from "./PaymentModal.js";
 
 import StripeLogo from "../../images/powered_by_stripe.png";
-import LoadingCircle from "../../images/design/png/loading-bar.svg";
+import Loading from "../../images/design/png/loading-bar.svg";
 import Balance from "./Balance";
 import UserJobs from "./UserJobs.js";
 
@@ -250,7 +250,7 @@ class CheckoutForm extends Component {
                 disabled={!this.props.authUser}
               >
                 {this.state.processing ? (
-                  <img src={LoadingCircle} alt="loading" />
+                  <img src={Loading} alt="loading" />
                 ) : (
                   "Purchase"
                 )}

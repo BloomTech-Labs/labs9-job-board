@@ -5,14 +5,11 @@ import JobsContainer from "../Landing/jobsContainer";
 import SingleJob from "../Landing/singleJob";
 import PostJob from "../postJob/postJob";
 import EditJob from "../postJob/EditJob";
-//import Profile from "../CompanyProfile/profileForm.js";
 import UpdateProfile from "../CompanyProfile/updateProfile.js";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import Billing from "../billing/billing";
-//import RedirectPage from "../RedirectPage/RedirectPage";
-// import NewProfileForm from "../CompanyProfile/newProfileForm";
 import Navigation from "../Navigation/Navigation";
 import Footer from "../Navigation/Footer";
 
@@ -44,7 +41,6 @@ class Routes extends Component {
             <EditJob {...props} authUser={this.props.authUser} />
           )}
         />
-        {/* <Route path={ROUTES.COMPANY_PROFILE} component={Profile} /> */}
         <Route
           path={ROUTES.BILLING}
           render={props => (
@@ -57,24 +53,12 @@ class Routes extends Component {
         />
         <Route path={ROUTES.SIGN_IN} render={() => <SignIn />} />
         <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
-        {/* <Route
-          path={ROUTES.REDIRECT}
-          render={props => (
-            <RedirectPage {...props} authUser={this.props.authUser} />
-          )}
-        /> */}
         <Route
           path={ROUTES.ACCOUNT}
           render={props => (
             <UpdateProfile {...props} authUser={this.props.authUser} />
           )}
         />
-        {/* <Route
-          path={ROUTES.NEW_PROFILE}
-          render={props => (
-            <NewProfileForm {...props} authUser={this.props.authUser} />
-          )}
-        /> */}
         <Footer />
       </div>
     );

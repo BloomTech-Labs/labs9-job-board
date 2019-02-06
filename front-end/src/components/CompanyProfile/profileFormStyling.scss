@@ -50,6 +50,20 @@
         font-size: 4rem;
       }
     }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    p {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
     //profile pic
     .avatar {
       border-radius: 50%;
@@ -233,6 +247,7 @@
     border: none;
     color: white;
     font-size: 1.6rem;
+    margin-top: 15px;
     cursor: pointer;
     outline-color: #{$blue};
   }

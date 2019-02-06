@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Balance from "../billing/Balance";
 
 const ProfileInfo = props => {
   return (
@@ -25,7 +26,8 @@ const ProfileInfo = props => {
         />
         <h1>Your Account</h1>
         <div className="border" />
-        <p>Job balance: {props.company.balance}</p>
+        <Balance authUser={props.authUser} />
+        {/* <p>Job balance: {props.company.balance}</p> */}
         <button onClick={props.openEditor} className="edit-btn edit">
           Edit Account
         </button>
