@@ -48,7 +48,8 @@ class NewProfileForm extends Component {
       .post(`${url}/api/users`, newUser)
       .then(response => {
         if (response) {
-          this.props.closeNewProfileModal();
+          this.props.closeModal();
+          // this.props.closeNewProfileModal();
         } else {
           throw new Error();
         }
@@ -57,6 +58,16 @@ class NewProfileForm extends Component {
         alert("Error adding user to database");
       });
   };
+
+  //removes double scroll bar when modal appears
+  componentWillMount() {
+    document.body.style.overflow = "hidden";
+  }
+
+  //displays orginial scroll bar
+  componentWillUnmount() {
+    document.body.style.overflow = null;
+  }
 
   handleInputChange = event => {
     this.setState({ [event.target.name]: event.target.value });

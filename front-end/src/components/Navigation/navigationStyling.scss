@@ -187,6 +187,10 @@
   text-align: left;
   flex-wrap: wrap;
 
+  .sign-out:hover {
+    cursor: pointer;
+  }
+
   a {
     width: 100%;
     padding: 30px 20px;

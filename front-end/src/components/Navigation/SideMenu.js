@@ -12,6 +12,7 @@ class sideMenu extends React.Component {
       sideMenuClass = "open";
     }
     return (
+      // Design of the side menu
       <nav className={sideMenuClass}>
         {this.props.authUser ? (
           <div className="side-menu-navigation-items">
@@ -27,7 +28,7 @@ class sideMenu extends React.Component {
             <NavLink onClick={this.props.click} to="/account">
               Account Settings
             </NavLink>
-            <SignOut className="sign-out" />
+            <SignOut onClick={this.props.click} className="sign-out" />
           </div>
         ) : (
           <div className="side-menu-navigation-items">

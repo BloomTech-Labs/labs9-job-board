@@ -45,6 +45,7 @@
     .pic-account h1 {
       font-size: 5rem;
       color: #{$dark};
+      margin-bottom: 15px;
 
       @include tablet {
         font-size: 4rem;
@@ -54,7 +55,6 @@
     h3 {
       font-size: 2rem;
       font-weight: 600;
-      margin-bottom: 5px;
       display: inline-block;
       margin-right: 10px;
     }
@@ -113,6 +113,10 @@
         width: 100%;
         text-align: left;
         color: #{$dark};
+      }
+
+      #companySummary {
+        font-family: sans-serif;
       }
 
       //line between company text
@@ -247,7 +251,6 @@
     border: none;
     color: white;
     font-size: 1.6rem;
-    margin-top: 15px;
     cursor: pointer;
     outline-color: #{$blue};
   }

@@ -23,11 +23,11 @@ const ProfileForm = props => {
       <div className="pic-account">
         <ProfilePic setUrl={props.setUrl} />
         <h1>Edit Your Account</h1>
+        <Balance authUser={props.authUser} />
         <div className="border" />
         {/* <p>Job balance: {props.company.balance}</p> */}
-        <Balance authUser={props.authUser} />
         <button onClick={props.openEditor} className="edit-btn edit">
-          Edit Account
+          Cancel
         </button>
       </div>
       <form onSubmit={props.updateUser} className="all-company-info">

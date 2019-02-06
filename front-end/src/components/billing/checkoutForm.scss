@@ -123,6 +123,21 @@
           width: 100%;
         }
 
+        .line-card {
+          border-bottom: 0.5px solid #{$dark};
+          width: 138px;
+        }
+
+        .line-expiration {
+          border-bottom: 0.5px solid #{$dark};
+          width: 55px;
+        }
+
+        .line-cvc {
+          border-bottom: 0.5px solid #{$dark};
+          width: 34px;
+        }
+
         .card-info-labels {
           display: flex;
           font-size: 2rem;
@@ -225,6 +240,7 @@
       //Jobs Purchased Postings
       .billing-jobs {
         .job-links {
+          font-size: 1.8rem;
           .each-job {
             font-size: 1.8rem;
             text-align: center;

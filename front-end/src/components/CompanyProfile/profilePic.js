@@ -19,18 +19,23 @@ class ProfilePic extends Component {
       {
         cloud_name: `${cloudName}`,
         upload_preset: `${preset}`,
+        showAdvancedOptions: false,
         multiple: false,
         styles: {
           palette: {
             window: "#444444",
-            windowBorder: "#646464",
-            tabIcon: "#ED8361",
+            windowBorder: "#90B0BA",
+            tabIcon: "#E07655",
             menuIcons: "#5A616A",
             textDark: "#F5F5F5",
-            textLight: "#646464",
-            link: "#90B0BA",
+            textLight: "#FFFFFF",
+            link: "#E89980",
             action: "#FF620C",
-            inactiveTabIcon: "#E89980"
+            inactiveTabIcon: "#E89980",
+            error: "#E89980",
+            inProgress: "#E89980",
+            complete: "#E89980",
+            sourceBg: "#F5F5F5"
           }
         }
       },

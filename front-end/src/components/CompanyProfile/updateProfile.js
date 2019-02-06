@@ -49,7 +49,6 @@ class UpdateProfile extends Component {
             company: res.data
           }));
         })
-
         .then(() => {
           this.setState({
             email: this.state.company.email,
@@ -100,15 +99,19 @@ class UpdateProfile extends Component {
   };
 
   //to encourage the user to fillout their info
-  openNewProfileModal = async () => {
-    await this.setState({ newProfileModalVisible: true });
+  openNewProfileModal = () => {
+    this.setState({ newProfileModalVisible: true });
   };
 
   //to close the modal if a user does not want to add their
   //info and push them back to the homepage
-  closeNewProfileModal = async () => {
-    await this.setState({ newProfileModalVisible: false });
-    this.props.history.push("/billing");
+  closeNewProfileModal = () => {
+    this.props.history.push("/");
+  };
+
+  closeModal = () => {
+    this.setState({ newProfileModalVisible: false });
+    this.componentDidMount();
   };
 
   //inputs to state
@@ -166,6 +169,7 @@ class UpdateProfile extends Component {
             authUser={this.props.authUser}
             openNewProfileModal={this.openNewProfileModal}
             closeNewProfileModal={this.closeNewProfileModal}
+            closeModal={this.closeModal}
           />
         ) : null}
       </div>

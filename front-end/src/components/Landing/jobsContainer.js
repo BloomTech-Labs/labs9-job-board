@@ -96,6 +96,10 @@ class JobsContainer extends Component {
     await this.setState({ newProfileModalVisible: false });
   };
 
+  closeModal = async () => {
+    await this.setState({ newProfileModalVisible: false });
+  };
+
   searchByCategory = category => {
     if (category !== "all") {
       axios
@@ -194,6 +198,7 @@ class JobsContainer extends Component {
           <NewProfileForm
             authUser={this.props.authUser}
             closeNewProfileModal={this.closeNewProfileModal}
+            closeModal={this.closeModal}
           />
         ) : null}
       </div>
