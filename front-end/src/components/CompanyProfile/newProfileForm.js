@@ -59,6 +59,16 @@ class NewProfileForm extends Component {
       });
   };
 
+  //removes double scroll bar when modal appears
+  componentWillMount() {
+    document.body.style.overflow = "hidden";
+  }
+
+  //displays orginial scroll bar
+  componentWillUnmount() {
+    document.body.style.overflow = null;
+  }
+
   handleInputChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
