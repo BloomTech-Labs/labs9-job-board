@@ -74,9 +74,11 @@
         cursor: pointer;
         outline-color: $blue;
         background-color: #{$auth-submit-bg};
+        transition: all 0.4s ease;
 
         &:hover {
           background-color: #{$auth-submit-bg-hover};
+          transition: all 0.4s ease;
         }
       }
 
@@ -97,7 +99,7 @@
       border-radius: 20px;
       display: flex;
       flex-direction: row;
-      padding: 10px 40px 40px 40px;
+      padding: 40px;
       margin: 40px 5%;
 
       //border between separating job info in two
@@ -176,12 +178,14 @@
           font-size: 1.6rem;
           cursor: pointer;
           background-color: #{$auth-submit-bg};
+          transition: all 0.4s ease;
           outline-color: $blue;
           margin: 30px 0;
           width: 100%;
 
           &:hover {
             background-color: #{$auth-submit-bg-hover};
+            transition: all 0.4s ease;
           }
         }
 
@@ -237,9 +241,11 @@
             justify-content: center;
             text-decoration: underline;
             color: #{$blue};
+            transition: all 0.4s ease;
 
             &:hover {
               color: #{$auth-submit-bg};
+              transition: all 0.4s ease;
             }
           }
         }
