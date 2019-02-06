@@ -135,6 +135,7 @@
     }
 
     textarea {
+      font-family: Roboto, sans-serif;
       width: 100%;
       min-height: 30px;
       height: 150px;
@@ -150,6 +151,7 @@
 
       &::placeholder {
         color: $light-gray;
+        font-family: Roboto, sans-serif;
       }
     }
 
