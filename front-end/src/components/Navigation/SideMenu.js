@@ -41,7 +41,7 @@ class sideMenu extends React.Component {
             <NavLink onClick={this.props.click} to="/account">
               Account Settings
             </NavLink>
-            <SignOut className="sign-out" />
+            <SignOut onClick={this.props.click} className="sign-out" />
           </div>
         ) : (
           <div className="side-menu-navigation-items">

@@ -140,6 +140,10 @@
             border: none;
             color: #{$dark};
 
+            &:focus {
+              outline-color: #{$blue};
+            }
+
             &::placeholder {
               color: #{$light-gray};
             }

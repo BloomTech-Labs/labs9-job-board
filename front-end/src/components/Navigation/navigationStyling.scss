@@ -1,243 +1,240 @@
 @import "../../variables-mixins.scss";
 
 .navbar-container {
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	transition: background-color .5s ease 0s;
-	background-color: transparent;
-	height: 90px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: background-color 0.5s ease 0s;
+  background-color: transparent;
+  height: 90px;
 
-	
-	.navbar-navigation {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		height: 100%;
-		padding: 0 3%;
+  .navbar-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 3%;
 
-		@include phone {
-			padding: 0 6%;
-		}
-		
-		.navbar-logo {
-			margin-left: 1%;
-			text-align: left;
-			
-			img {
-				width: 225px;
-				margin-left: 10px;
+    @include phone {
+      padding: 0 6%;
+    }
 
-				@include tablet {
-					display:none;
-				}
+    .navbar-logo {
+      margin-left: 1%;
+      text-align: left;
 
-				
-			}
-			
-		}
-	}
-	
-	.toggle-button {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		height: 34px;
-		width: 36px;
-		background: transparent;
-		border: none;
-		cursor: pointer;
-		padding: 0;
-		@include phone {
-			height: 28px;
-	}
-		
-		&:focus {
-			outline: none;
-		}
-		
-		.toggle-button-line {
-			width: 36px;
-			height: 3px;
-			background-color: $white;
-			@include phone {
-					width: 30px;
-			}
-		}
-	}
+      img {
+        width: 225px;
+        margin-left: 10px;
+
+        @include tablet {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .toggle-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 34px;
+    width: 36px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    @include phone {
+      height: 28px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    .toggle-button-line {
+      width: 36px;
+      height: 3px;
+      background-color: $white;
+      @include phone {
+        width: 30px;
+      }
+    }
+  }
 }
 
 .solid {
-	background-color: $Navbar;
-	transition: background-color .5s ease 0s;
-	z-index: 100;
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 90px;
-	.navbar-navigation {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		height: 100%;
-		padding: 0 3%;
+  background-color: $Navbar;
+  transition: background-color 0.5s ease 0s;
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px;
+  .navbar-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 3%;
 
-		@include phone {
-			padding: 0 6%;
-		}
-		
-		.navbar-logo {
-			margin-left: 1%;
-			text-align: left;
-			
-			img {
-				width: 225px;
-				margin-left: 10px;
-				@include phone {
-					width: 175px;
-				}
-			}
-			
-		}
-				.toggle-button {
-					display: flex;
-					flex-direction: column;
-					justify-content: space-around;
-					height: 34px;
-					width: 36px;
-					background: transparent;
-					border: none;
-					cursor: pointer;
-					padding: 0;
-					@include phone {
-						height: 28px;
-				}
-					
-					&:focus {
-						outline: none;
-					}
-					
-					.toggle-button-line {
-						width: 36px;
-						height: 3px;
-						background-color: $white;
+    @include phone {
+      padding: 0 6%;
+    }
 
-						@include phone {
-							width: 30px;
-					}
-					}
-				}
-	}
+    .navbar-logo {
+      margin-left: 1%;
+      text-align: left;
+
+      img {
+        width: 225px;
+        margin-left: 10px;
+        @include phone {
+          width: 175px;
+        }
+      }
+    }
+    .toggle-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 34px;
+      width: 36px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      @include phone {
+        height: 28px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      .toggle-button-line {
+        width: 36px;
+        height: 3px;
+        background-color: $white;
+
+        @include phone {
+          width: 30px;
+        }
+      }
+    }
+  }
 }
-	
 
 .side-menu {
-	min-height: 600px;
-	height: 100%;
-	box-shadow: 1px 0 20px rgba(0, 0, 0, 0.8);
-	position: fixed;
-	background-color: $dark;
-	top: 0;
-	left: 0;
-	width: 20%;
-	z-index: 200;
-	transform: translateX(-100%);
-	transition: transform 0.3s ease-out;
+  min-height: 600px;
+  height: 100%;
+  box-shadow: 1px 0 20px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  background-color: $dark;
+  top: 0;
+  left: 0;
+  width: 20%;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
 
-	// @include laptop {
-	//   width: 30%;
-	// }
+  // @include laptop {
+  //   width: 30%;
+  // }
 
-	@include tablet {
-		width: 35%;
-	}
+  @include tablet {
+    width: 35%;
+  }
 
-	@include phone {
-		width: 40%;
-	}
+  @include phone {
+    width: 40%;
+  }
 }
 
 .open {
-	height: 100%;
-	min-height: 500px;
-	background-color:$dark ;
-	box-shadow: .5px 0 5px rgba(0, 0, 0, 0.8);
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 23%;
-	z-index: 200;
-	flex-wrap: wrap;
-	transform: translateX(0);
-	transition: transform 0.3s ease-out;
+  height: 100%;
+  min-height: 500px;
+  background-color: $dark;
+  box-shadow: 0.5px 0 5px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 23%;
+  z-index: 200;
+  flex-wrap: wrap;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
 
-	// @include laptop {
-	// 	width: 30%;
-	// }
+  // @include laptop {
+  // 	width: 30%;
+  // }
 
-	@include tablet {
-		width: 35%;
-	}
+  @include tablet {
+    width: 35%;
+  }
 
-	@include phone {
-		width: 40%;
-	}
+  @include phone {
+    width: 40%;
+  }
 }
 
 .side-menu-navigation-items {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	text-align: left;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+  flex-wrap: wrap;
 
-	a {
-		width: 100%;
-		padding: 30px 20px;
-		color: $white;
-		text-decoration: none;
-		background-color: $dark ;
-		border-bottom: 1px solid grey;
-		font-size: 2rem;
-		font-family: $font;
-		text-align: left;
+  .sign-out:hover {
+    cursor: pointer;
+  }
 
-		&:hover,
-		&:active {
-			color: $white;
-			background-color: #777777;
-		}
-	}
+  a {
+    width: 100%;
+    padding: 30px 20px;
+    color: $white;
+    text-decoration: none;
+    background-color: $dark;
+    border-bottom: 1px solid grey;
+    font-size: 2rem;
+    font-family: $font;
+    text-align: left;
 
-	.sign-out {
-		width: 100%;
-		padding: 30px 20px;
-		color: $white;
-		text-decoration: none;
-		background-color: $dark ;
-		border: none;
-		border-bottom: 1px solid grey;
-		font-size: 2rem;
-		font-family: $font;
-		text-align: left;
-		
+    &:hover,
+    &:active {
+      color: $white;
+      background-color: #777777;
+    }
+  }
 
-		&:hover,
-		&:active {
-			color: $white;
-			background-color: #777777;
-		}
-	}
+  .sign-out {
+    width: 100%;
+    padding: 30px 20px;
+    color: $white;
+    text-decoration: none;
+    background-color: $dark;
+    border: none;
+    border-bottom: 1px solid grey;
+    font-size: 2rem;
+    font-family: $font;
+    text-align: left;
+
+    &:hover,
+    &:active {
+      color: $white;
+      background-color: #777777;
+    }
+  }
 }
 
 .backdrop {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background: rgba(58, 56, 56, 0.295);
-	z-index: 100;
-	top: 0;
-	left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(58, 56, 56, 0.295);
+  z-index: 100;
+  top: 0;
+  left: 0;
 }
