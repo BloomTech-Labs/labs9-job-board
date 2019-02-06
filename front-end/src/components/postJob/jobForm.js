@@ -16,7 +16,7 @@ class JobForm extends React.Component {
             <div className="input-container">
               <div className="top">
                 <div className="title-and-input">
-                  <label className="input-titles" for="title">
+                  <label className="input-titles" htmlFor="title">
                     Title
                   </label>
                   <input
@@ -28,7 +28,7 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label className="input-titles" for="salary">
+                  <label className="input-titles" htmlFor="salary">
                     Salary
                   </label>
                   <input
@@ -42,7 +42,7 @@ class JobForm extends React.Component {
               </div>
               <div className="bottom">
                 <div className="title-and-input">
-                  <label className="input-titles" for="top-skills">
+                  <label className="input-titles" htmlFor="top-skills">
                     Top 5 Skills (separate with commas)
                   </label>
                   <input
@@ -54,7 +54,7 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label className="input-titles" for="additional-skills">
+                  <label className="input-titles" htmlFor="additional-skills">
                     More Skills (separate with commas)
                   </label>
                   <input
@@ -66,7 +66,7 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label className="input-titles" for="familiar-with">
+                  <label className="input-titles" htmlFor="familiar-with">
                     Remaining Skills (separate with commas)
                   </label>
                   <input
@@ -78,7 +78,7 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label className="input-titles" for="description">
+                  <label className="input-titles" htmlFor="description">
                     Description
                   </label>
                   <textarea
@@ -90,7 +90,7 @@ class JobForm extends React.Component {
                   />
                 </div>
                 <div className="title-and-input">
-                  <label className="input-titles" for="requirements">
+                  <label className="input-titles" htmlFor="requirements">
                     Requirements
                   </label>
                   <textarea
@@ -116,7 +116,7 @@ class JobForm extends React.Component {
                     checked={this.props.active}
                     id="toggle-slider"
                   />
-                  <span class="slider round" />
+                  <span className="slider round" />
                 </label>
                 <h5>Active</h5>
               </div>
@@ -132,7 +132,7 @@ class JobForm extends React.Component {
                     id="checkbox-input"
                     checked={this.props.college_degree}
                   />
-                  <span class="slider round" />
+                  <span className="slider round" />
                 </label>
                 <h5>This job requires a degree</h5>
               </div>
