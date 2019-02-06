@@ -367,8 +367,6 @@
 
         &:focus {
           width: 67%;
-          border-radius: 5px 0px 0px 5px;
-
           @include phone {
             width: 100%;
             outline-width: 0.25px;

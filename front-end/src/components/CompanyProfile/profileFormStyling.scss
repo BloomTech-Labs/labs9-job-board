@@ -132,7 +132,7 @@
         font-size: 1.8rem;
         text-align: start;
         padding: 10px;
-        color: #{$light-gray};
+        color: #{$dark};
         border: none;
         background-color: #{$background};
         border: none;
@@ -140,7 +140,10 @@
 
         &:focus {
           outline-color: #{$blue};
-          color: #{$dark};
+        }
+
+        &::placeholder {
+          color: #{$light-gray};
         }
       }
 
