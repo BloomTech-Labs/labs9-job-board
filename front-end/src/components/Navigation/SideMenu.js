@@ -25,6 +25,7 @@ class sideMenu extends React.Component {
       sideMenuClass = "open";
     }
     return (
+      // Design of the side menu
       <nav className={sideMenuClass}>
         {this.props.authUser ? (
           <div className="side-menu-navigation-items">
@@ -35,7 +36,7 @@ class sideMenu extends React.Component {
               Post A Job
             </NavLink>
             <NavLink onClick={this.props.click} to="/billing">
-              Billing 
+              Billing
             </NavLink>
             <NavLink onClick={this.props.click} to="/account">
               Account Settings
@@ -56,7 +57,6 @@ class sideMenu extends React.Component {
             <NavLink onClick={this.props.click} to="/sign-in">
               Employer Sign In
             </NavLink>
-            
           </div>
         )}
       </nav>
