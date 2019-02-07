@@ -55,7 +55,7 @@ class EditJob extends Component {
     event.preventDefault();
     const putObject = {};
     Object.keys(this.state).forEach(key => {
-      if (this.state[key]) {
+      if (this.state[key] || key === "active" || key === "college_degree") {
         putObject[key] = this.state[key];
       }
     });
