@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import ProfileForm from "./profileForm";
 import ProfileInfo from "./profileInfo";
@@ -23,7 +24,8 @@ class UpdateProfile extends Component {
       applicationInbox: "",
       uid: "",
       changePasswordVisible: false,
-      newProfileModalVisible: false
+      newProfileModalVisible: false,
+      uidChecked: false
     };
   }
 
@@ -32,11 +34,15 @@ class UpdateProfile extends Component {
     if (this.props.authUser) {
       const user_uid = this.props.authUser.uid;
       this.fetchCompany(user_uid);
-    } else {
-      setTimeout(() => {
-        const user_uid = this.props.authUser.uid;
-        this.fetchCompany(user_uid);
-      }, 933);
+      this.setState({ uidChecked: true });
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.authUser && !this.state.uidChecked) {
+      const user_uid = this.props.authUser.uid;
+      this.fetchCompany(user_uid);
+      this.setState({ uidChecked: true });
     }
   }
 
@@ -62,8 +68,11 @@ class UpdateProfile extends Component {
           });
         })
         .catch(err => {
-          console.log(err);
-          this.openNewProfileModal();
+          if (err.response.status === 404) {
+            this.openNewProfileModal();
+          } else {
+            alert(err);
+          }
         });
     }
   };
@@ -133,9 +142,13 @@ class UpdateProfile extends Component {
     return (
       <div className="profile-container">
         {!this.state.company ? (
-          <div className="loading-container">
-            <img src={LoadingBar} alt="loading bar" className="loading" />
-          </div>
+          this.props.authUser === null ? (
+            <Redirect to="/" />
+          ) : (
+            <div className="loading-container">
+              <img src={LoadingBar} alt="loading bar" className="loading" />
+            </div>
+          )
         ) : this.state.companyEditor ? (
           <ProfileForm
             openEditor={this.openEditor}

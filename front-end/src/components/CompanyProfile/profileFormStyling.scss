@@ -288,9 +288,12 @@
       color: #{$blue};
       text-decoration: underline;
       margin-left: 10px;
+      transition: all 0.4s ease;
 
       &:hover {
         cursor: pointer;
+        color: $orange;
+        transition: all 0.4s ease;
       }
 
       @include tablet {
@@ -300,6 +303,13 @@
 
     .link-bill {
       outline-color: #{$blue};
+      transition: all 0.4s ease;
+
+      &:hover {
+        color: $orange;
+        transition: all 0.4s ease;
+      }
+
       @include tablet {
         text-align: start;
         padding: 0 3%;

@@ -65,18 +65,14 @@ class UserJobs extends React.Component {
           ) : this.state.jobs.length ? (
             this.state.jobs.map(job => {
               return (
-                <div className="each-job">
+                <div className="each-job" key={job.id}>
                   {/* links to individual job's page */}
-                  <Link
-                    className="job-name"
-                    to={`/jobs/${job.id}`}
-                    key={job.id}
-                  >
+                  <Link className="job-name" to={`/jobs/${job.id}`}>
                     {job.title}
                   </Link>
                   {/* links to edit view for individual job */}
                   <Link className="edit-icon" to={`/edit-job/${job.id}`}>
-                    <i class="fas fa-edit" />
+                    <i className="fas fa-edit" />
                   </Link>
                 </div>
               );

@@ -6,6 +6,16 @@
   display: flex;
   align-items: center;
 
+  a {
+    color: $blue;
+    transition: all 0.4s ease;
+
+    &:hover {
+      color: $orange;
+      transition: all 0.4s ease;
+    }
+  }
+
   @include tablet {
     justify-content: center;
   }

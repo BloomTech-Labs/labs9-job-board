@@ -268,15 +268,12 @@ class CheckoutForm extends Component {
               </button>
             </div>
 
-            <p>
-              <a href="https://stripe.com/">
-                <img
-                  src={StripeLogo}
-                  alt="Powered by Stripe"
-                  className="powered-by-stripe"
-                />
-              </a>
-            </p>
+            <img
+              src={StripeLogo}
+              alt="Powered by Stripe"
+              className="powered-by-stripe"
+              onClick={() => window.open("https://stripe.com/", "_blank")}
+            />
           </div>
         </div>
         <hr className="line" />

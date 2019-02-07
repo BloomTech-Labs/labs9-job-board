@@ -206,12 +206,12 @@
           }
         }
 
-        p {
+        img {
           margin: 0 auto;
-          a {
-            img {
-              margin: 0;
-            }
+          padding: 0;
+
+          &:hover {
+            cursor: pointer;
           }
         }
 
