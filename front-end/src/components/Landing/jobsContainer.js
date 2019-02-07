@@ -173,8 +173,7 @@ class JobsContainer extends Component {
 
   render() {
     // console.log("click", this.handleInput);
-    console.log("Search", this.state);
-
+    // console.log("Search", this.state);
     return (
       <div className="jobs-container container">
         <Header authUser={this.props.authUser} />
