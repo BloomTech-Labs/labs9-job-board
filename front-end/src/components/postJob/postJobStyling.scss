@@ -68,6 +68,7 @@
           padding: 10px;
           border: none;
           border-radius: 5px;
+          color: #{$dark};
 
           &:focus {
             outline-color: #{$blue};
