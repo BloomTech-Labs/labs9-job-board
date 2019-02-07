@@ -73,7 +73,9 @@ class Balance extends React.Component {
         ) : null}
         <p className={this.state.balance.expiration ? "strikethrough" : ""}>
           {/* if valid expiration, show unlimited until expiry and balance with strikethrough */}
-          {`${this.state.balance.balance} postings`}
+          {typeof this.state.balance.balance === "number"
+            ? `${this.state.balance.balance} postings`
+            : "N/A"}
         </p>
       </div>
     ) : (
