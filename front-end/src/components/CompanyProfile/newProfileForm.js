@@ -41,7 +41,7 @@ class NewProfileForm extends Component {
       summary: this.state.companySummary,
       application_method: this.state.applicationInbox,
       avatar_image:
-        this.state.image || "https://imageshack.com/a/img923/1112/alm70A.png" // default avatar img
+        this.state.image || "https://i.ibb.co/d45NRww/default-avatar.png" // default avatar img
     };
 
     axios
