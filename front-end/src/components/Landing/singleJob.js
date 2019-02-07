@@ -15,6 +15,7 @@ class SingleJob extends Component {
 
   //setting a single job on state: get request
   componentDidMount() {
+    window.scrollTo(0, 0);
     const id = this.props.match.params.id;
     this.fetchJob(id);
   }
