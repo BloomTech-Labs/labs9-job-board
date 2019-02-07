@@ -132,7 +132,7 @@
         font-size: 1.8rem;
         text-align: start;
         padding: 10px;
-        color: #{$light-gray};
+        color: #{$dark};
         border: none;
         background-color: #{$background};
         border: none;
@@ -141,6 +141,10 @@
         &:focus {
           outline-color: #{$blue};
           color: #{$dark};
+        }
+
+        &::placeholer {
+          color: #{$light-gray};
         }
       }
 
@@ -152,7 +156,7 @@
         text-align: start;
         padding: 10px;
         font-family: "Roboto", sans-serif;
-        color: #{$light-gray};
+        color: #{$dark};
         resize: none;
         line-height: 2.5rem;
         background-color: #{$background};
@@ -161,6 +165,10 @@
         &:focus {
           outline-color: #{$blue};
           color: #{$dark};
+        }
+
+        &::placeholer {
+          color: #{$light-gray};
         }
       }
 
