@@ -158,7 +158,9 @@ class JobsContainer extends Component {
     this.handleInput(event);
     this.setState(preState => {
       const searchJobs = preState.jobs.filter(result => {
-        return result.title.toLowerCase().includes(preState.search);
+        return result.title
+          .toLowerCase()
+          .includes(preState.search.toLowerCase());
       });
       // console.log(searchJobs);
       return { searchJobs: searchJobs };
