@@ -145,6 +145,10 @@
         &::placeholder {
           color: #{$light-gray};
         }
+
+        &::placeholer {
+          color: #{$light-gray};
+        }
       }
 
       //for company summary on edit page
@@ -155,7 +159,7 @@
         text-align: start;
         padding: 10px;
         font-family: "Roboto", sans-serif;
-        color: #{$light-gray};
+        color: #{$dark};
         resize: none;
         line-height: 2.5rem;
         background-color: #{$background};
@@ -164,6 +168,10 @@
         &:focus {
           outline-color: #{$blue};
           color: #{$dark};
+        }
+
+        &::placeholer {
+          color: #{$light-gray};
         }
       }
 
