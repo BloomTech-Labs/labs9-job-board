@@ -86,7 +86,7 @@ class JobForm extends React.Component {
                     value={this.props.description}
                     name="description"
                     onChange={this.props.handleInput}
-                    placeholder="We are looking for a Junior Developer."
+                    placeholder="We are searching for a talented Web Developer with a passion for the web and a desire to create dynamic projects..."
                   />
                 </div>
                 <div className="title-and-input">
@@ -98,7 +98,10 @@ class JobForm extends React.Component {
                     value={this.props.requirements}
                     name="requirements"
                     onChange={this.props.handleInput}
-                    placeholder="You must know how to..."
+                    placeholder="0-3 years experience
+Excellent problem solver
+Solid understanding of Object Oriented Programming
+Outstanding verbal and written communication skills"
                   />
                 </div>
               </div>
