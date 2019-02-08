@@ -158,7 +158,13 @@ class JobsContainer extends Component {
     this.handleInput(event);
     this.setState(preState => {
       const searchJobs = preState.jobs.filter(result => {
-        return result.title.toLowerCase().includes(preState.search);
+        return (
+          result.title.toLowerCase().includes(preState.search.toLowerCase()) ||
+          result.salary.includes(preState.search) ||
+          result.company_name
+            .toLowerCase()
+            .includes(preState.search.toLowerCase())
+        );
       });
       // console.log(searchJobs);
       return { searchJobs: searchJobs };
@@ -167,8 +173,7 @@ class JobsContainer extends Component {
 
   render() {
     // console.log("click", this.handleInput);
-    // console.log("Search", this.state.search);
-
+    // console.log("Search", this.state);
     return (
       <div className="jobs-container container">
         <Header authUser={this.props.authUser} />
